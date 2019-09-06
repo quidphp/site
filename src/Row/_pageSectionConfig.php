@@ -15,7 +15,10 @@ use Quid\Base;
 trait _pageSectionConfig
 {
 	// trait
-	use _pageSection; use _pageConfig;
+	use _pageSection;
+	use _pageConfig;
+	
+	
 	// dynamicPageClass
 	// retourne le nom de la classe de la route de page dynamique
 	// la page dynamique a un segment et peut avoir différentes uris de page
