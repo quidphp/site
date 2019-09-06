@@ -1,1 +1,1 @@
-# quidphp-site
+# QuidPHP/Site
