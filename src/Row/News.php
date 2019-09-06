@@ -1,5 +1,12 @@
 <?php
 declare(strict_types=1);
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
+ */
+
 namespace Quid\Site\Row;
 use Quid\Core;
 use Quid\Main;
@@ -10,20 +17,20 @@ class News extends Core\RowAlias implements Main\Contract\Meta
 {
 	// trait
 	use _meta;
-	
-	
+
+
 	// config
-	public static $config = array(
-		'key'=>array('slug_[lang]',0),
-		'@app'=>array(
-			'order'=>array('date'=>'desc'),
-			'where'=>array(array('datetimeStart','<=',array(Base\Date::class,'timestamp'))))
-	);
-	
-	
+	public static $config = [
+		'key'=>['slug_[lang]',0],
+		'@app'=>[
+			'order'=>['date'=>'desc'],
+			'where'=>[['datetimeStart','<=',[Base\Date::class,'timestamp']]]]
+	];
+
+
 	// isVisible
 	// retourne vrai si la nouvelle est visible
-	public function isVisible():bool 
+	public function isVisible():bool
 	{
 		return (parent::isVisible() && $this['datetimeStart']->isAfter())? true:false;
 	}

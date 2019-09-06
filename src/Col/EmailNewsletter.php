@@ -1,5 +1,12 @@
 <?php
 declare(strict_types=1);
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
+ */
+
 namespace Quid\Site\Col;
 use Quid\Base\Html;
 use Quid\Site;
@@ -10,32 +17,32 @@ use Quid\Base;
 class EmailNewsletter extends Core\Col\EmailAlias
 {
 	// config
-	public static $config = array(
+	public static $config = [
 		'service'=>'newsletter' // custom, nom du service d'infolettre
-	);
-	
-	
+	];
+
+
 	// formComplex
 	// génère le formulaire complex pour emailNewsletter
 	public function formComplex($value=true,?array $attr=null,?array $option=null):string
 	{
 		$return = parent::formComplex($value,$attr,$option);
-		
+
 		$email = Base\Obj::cast($value);
 		if(Base\Validate::isEmail($email))
 		$return .= $this->formNewsletter($email);
-		
+
 		return $return;
 	}
-	
-	
+
+
 	// formNewsletter
 	// génère le bloc indiquant si le email est dans l'infolettre
-	protected function formNewsletter(string $email):string 
+	protected function formNewsletter(string $email):string
 	{
 		$return = '';
 		$service = $this->getService();
-		
+
 		if(!empty($service))
 		{
 			$lang = $this->db()->lang();
@@ -46,11 +53,11 @@ class EmailNewsletter extends Core\Col\EmailAlias
 			$return .= Html::span($lang->bool($subscribed),'value');
 			$return .= Html::divCl();
 		}
-		
+
 		return $return;
 	}
-	
-	
+
+
 	// getService
 	// retourne le service mailchimp
 	public function getService():?Site\Contract\Newsletter
@@ -60,7 +67,7 @@ class EmailNewsletter extends Core\Col\EmailAlias
 
 		if(is_string($service))
 		$return = $this->service($service);
-		
+
 		return $return;
 	}
 }

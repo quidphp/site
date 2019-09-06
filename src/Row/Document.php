@@ -1,5 +1,12 @@
 <?php
 declare(strict_types=1);
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
+ */
+
 namespace Quid\Site\Row;
 use Quid\Core;
 use Quid\Main;
@@ -9,12 +16,12 @@ class Document extends Core\RowAlias implements Main\Contract\Meta
 {
 	// trait
 	use _meta;
-	
-	
+
+
 	// config
-	public static $config = array(
-		'key'=>array('slug_[lang]',0),
-	);
+	public static $config = [
+		'key'=>['slug_[lang]',0],
+	];
 }
 
 // config

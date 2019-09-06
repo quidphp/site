@@ -1,5 +1,12 @@
 <?php
 declare(strict_types=1);
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
+ */
+
 namespace Quid\Site\Row;
 use Quid\Core;
 
@@ -8,16 +15,16 @@ trait _pageSectionSlug
 {
 	// trait
 	use _pageSectionConfig;
-	
-	
+
+
 	// config
-	public static $configSectionSlug = array(
-		'cols'=>array(
-			'slug_fr'=>array('slug'=>array(self::class,'makeSlug'),'exists'=>false),
-			'slug_en'=>array('slug'=>array(self::class,'makeSlug'),'exists'=>false),
-			'slugPath_fr'=>array('slug'=>array(self::class,'makeSlug'),'exists'=>false),
-			'slugPath_en'=>array('slug'=>array(self::class,'makeSlug'),'exists'=>false))
-	);
+	public static $configSectionSlug = [
+		'cols'=>[
+			'slug_fr'=>['slug'=>[self::class,'makeSlug'],'exists'=>false],
+			'slug_en'=>['slug'=>[self::class,'makeSlug'],'exists'=>false],
+			'slugPath_fr'=>['slug'=>[self::class,'makeSlug'],'exists'=>false],
+			'slugPath_en'=>['slug'=>[self::class,'makeSlug'],'exists'=>false]]
+	];
 
 
 	// getSlugPrepend
@@ -26,25 +33,25 @@ trait _pageSectionSlug
 	{
 		$return = null;
 		$parent = (!empty($cell))? $cell->row():null;
-		
+
 		if(empty($parent))
 		{
 			$parent = $row['page_id'] ?? null;
-			
+
 			if(is_int($parent))
 			{
 				$table = static::tableFromFqcn();
 				$parent = $table->row($parent);
 			}
 		}
-		
+
 		if(!empty($parent))
 		{
 			$section = $parent->section();
 			if(!empty($section))
 			$return = $section->cellName();
 		}
-		
+
 		return $return;
 	}
 }

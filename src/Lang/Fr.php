@@ -1,5 +1,12 @@
-<?php 
+<?php
 declare(strict_types=1);
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
+ */
+
 namespace Quid\Site\Lang;
 use Quid\Lemur;
 
@@ -7,20 +14,20 @@ use Quid\Lemur;
 class Fr extends Lemur\Lang\Fr
 {
 	// config
-	public static $config = array(
-		
+	public static $config = [
+
 		// newsletter
-		'newsletter'=>array(
+		'newsletter'=>[
 			'email'=>'Courriel',
 			'firstName'=>'Prénom',
 			'lastName'=>'Nom de famille'
-		),
-		
+		],
+
 		// table
-		'table'=>array(
-			
+		'table'=>[
+
 			// label
-			'label'=>array(
+			'label'=>[
 				'contact'=>'Contact',
 				'document'=>'Document',
 				'event'=>'Événement',
@@ -33,129 +40,129 @@ class Fr extends Lemur\Lang\Fr
 				'pageContent'=>'Contenu de page',
 				'poll'=>'Sondage',
 				'pollSubmit'=>'Sondage - Réponse',
-				'section'=>'Section')
-		),
-		
+				'section'=>'Section']
+		],
+
 		// col
-		'col'=>array(
-			
+		'col'=>[
+
 			// label
-			'label'=>array(
-				
+			'label'=>[
+
 				// *
-				'*'=>array(
+				'*'=>[
 					'googleMaps'=>'Géo-localisation',
-					'youTube'=>"YouTube",
-					'vimeo'=>"Vimeo",
-					'newsletter'=>"Infolettre"
-				),
-				
-				// contact 
-				'contact'=>array(
+					'youTube'=>'YouTube',
+					'vimeo'=>'Vimeo',
+					'newsletter'=>'Infolettre'
+				],
+
+				// contact
+				'contact'=>[
 					'email'=>'Adresse courriel',
 					'name'=>'Prénom et nom',
 					'phone'=>'Numéro de téléphone'
-				)
-			)
-		),
-		
+				]
+			]
+		],
+
 		// com
-		'com'=>array(
-			
+		'com'=>[
+
 			// neg
-			'neg'=>array(
-				
+			'neg'=>[
+
 				// newsletter
-				'newsletter'=>array(
-					
+				'newsletter'=>[
+
 					// subscribe
-					'subscribe'=>array(
+					'subscribe'=>[
 						'failure'=>"Erreur lors de l'ajout de votre courriel à notre liste d'envoi.",
 						'duplicate'=>"Votre courriel est déjà dans notre liste d'envoi."
-					)
-				),
-				
+					]
+				],
+
 				// insert
-				'insert'=>array(
-					'contact'=>array(
+				'insert'=>[
+					'contact'=>[
 						'failure'=>"Erreur lors de l'envoie du message."
-					)
-				),
-				
+					]
+				],
+
 				// eventSubmit
-				'eventSubmit'=>array(
+				'eventSubmit'=>[
 					'duplicate'=>"Cet utilisateur est déjà inscrit à l'événement"
-				),
-				
+				],
+
 				// pollSubmit
-				'pollSubmit'=>array(
+				'pollSubmit'=>[
 					'duplicate'=>'Cet utilisateur a déjà voté sur ce sondage'
-				),
-				
+				],
+
 				// formSubmit
-				'formSubmit'=>array(
+				'formSubmit'=>[
 					'duplicate'=>'Cet utilisateur a déjà répondu au formulaire'
-				)
-			),
-			
+				]
+			],
+
 			// pos
-			'pos'=>array(
-				
+			'pos'=>[
+
 				// newsletter
-				'newsletter'=>array(
-					
+				'newsletter'=>[
+
 					// subscribe
-					'subscribe'=>array(
+					'subscribe'=>[
 						'success'=>"Votre courriel a été ajouté à notre liste d'envoi. Vous recevrez sous peu un courriel de confirmation."
-					)
-				),
-				
+					]
+				],
+
 				// insert
-				'insert'=>array(
-					'contact'=>array(
-						'success'=>"Merci, le message a été envoyé !"
-					)
-				)
-			)
-		),
-		
+				'insert'=>[
+					'contact'=>[
+						'success'=>'Merci, le message a été envoyé !'
+					]
+				]
+			]
+		],
+
 		// route
-		'route'=>array(
-			
+		'route'=>[
+
 			// label
-			'label'=>array(
+			'label'=>[
 				'contactSubmit'=>'Contact - Soumettre',
 				'newsletterSubmit'=>'Infolettre - Soumettre',
-			)
-		),
-		
+			]
+		],
+
 		// cms
-		'@cms'=>array(
-			
+		'@cms'=>[
+
 			// jsonForm
-			'jsonForm'=>array(
+			'jsonForm'=>[
 				'label'=>'Libellé',
 				'required'=>'Requis',
 				'description'=>'Description',
 				'type'=>'Type',
 				'choices'=>'Choix de réponse (un par ligne)',
-			),
-			
+			],
+
 			// emailNewsletter
-			'emailNewsletter'=>array(
+			'emailNewsletter'=>[
 				'label'=>"Inscrit sur l'infolettre"
-			),
-			
+			],
+
 			// hierarchy
-			'hierarchy'=>array(
+			'hierarchy'=>[
 				'noParent'=>'Aucun parent'
-			),
-			
+			],
+
 			// table
-			'table'=>array(
-				
+			'table'=>[
+
 				// description
-				'description'=>array(
+				'description'=>[
 					'contact'=>'Archive des messages envoyés via le formulaire de la page de contact',
 					'document'=>'Gère les documents',
 					'event'=>'Gérer et créer les événements',
@@ -165,59 +172,59 @@ class Fr extends Lemur\Lang\Fr
 					'media'=>'Gère les médias comme les photos, vidéos et fichiers.',
 					'news'=>'Gère les nouvelles et actualités',
 					'page'=>"Pages accessibles via l'application",
-					'pageContent'=>"Contenu à afficher dans les différentes pages",
+					'pageContent'=>'Contenu à afficher dans les différentes pages',
 					'poll'=>'Gérer et créer des sondages',
 					'pollSubmit'=>'Contient tous les votes aux différents sondages',
-					'section'=>"Regroupement de pages")
-			),
-			
+					'section'=>'Regroupement de pages']
+			],
+
 			// col
-			'col'=>array(
-				
+			'col'=>[
+
 				// description
-				'description'=>array(
-					
+				'description'=>[
+
 					// *
-					'*'=>array(
+					'*'=>[
 						'googleMaps'=>'Entrer une adresse complète comme dans Google Maps, utiliser des virgules.',
 						'youTube'=>'Entrer une URL YouTube complète',
 						'vimeo'=>'Entrer une URL Vimeo complète'
-					),
-					
+					],
+
 					// section
-					'section'=>array(
+					'section'=>[
 						'page_id'=>'Spécifie la page racine de la section',
 						'page_ids'=>'Spécifie les pages de premier niveau de la section'
-					),
-					
+					],
+
 					// page
-					'page'=>array(
+					'page'=>[
 						'page_id'=>'Spécifie la page parent de la page',
 						'pageContent_ids'=>'Spécifie les contenus de la page'
-					),
-					
+					],
+
 					// contact
-					'contact'=>array(
+					'contact'=>[
 						'message'=>'Contenu du message'
-					)
-				)
-			),
-			
+					]
+				]
+			],
+
 			// relation
-			'relation'=>array(
-				
-				// jsonForm 
-				'jsonForm'=>array(
+			'relation'=>[
+
+				// jsonForm
+				'jsonForm'=>[
 					'inputText'=>'Champ texte',
 					'textarea'=>'Champ texte long',
 					'select'=>'Menu de sélection',
 					'radio'=>'Boutons radios (un choix)',
 					'checkbox'=>'Cases à cocher (multiples choix)'
-				)
-			),
-			
+				]
+			],
+
 			// tinycme
-			'tinymce'=>array(
+			'tinymce'=>[
 				'paragraph'=>'Paragraphe',
 				'superscript'=>'Exposant',
 				'header2'=>'En-tête 2',
@@ -229,9 +236,9 @@ class Fr extends Lemur\Lang\Fr
 				'alignRight'=>'Aligner à droite',
 				'floatLeft'=>'Flotter à gauche',
 				'floatRight'=>'Flotter à droite'
-			)
-		)
-	);
+			]
+		]
+	];
 }
 
 // config

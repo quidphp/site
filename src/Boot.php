@@ -1,5 +1,12 @@
 <?php
 declare(strict_types=1);
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
+ */
+
 namespace Quid\Site;
 use Quid\Lemur;
 use Quid\Core;
@@ -8,30 +15,30 @@ use Quid\Core;
 abstract class Boot extends Lemur\Boot
 {
 	// config
-	public static $config = array(
-		'finderShortcut'=>array( // shortcut pour finder
-			'vendorSite'=>'[vendor]/quidphp/site'),
-		'symlink'=>array(
-			'[vendorSite]/js/tinymce'=>'[publicJs]/tinymce'),
-		'concatenatePhp'=>array(
-			'quid'=>array(
-				'option'=>array(
-					'namespace'=>array(
-						__NAMESPACE__=>array('closure'=>true),
-						Test::class=>array('closure'=>false))))),	
-		'config'=>array(
-			Core\Db::class=>array(
-				'option'=>array(
-					'cols'=>array(
-						'content_en'=>array('class'=>Col\TinyMce::class),
-						'content_fr'=>array('class'=>Col\TinyMce::class),
-						'content'=>array('class'=>Col\TinyMce::class),
-						'googleMaps'=>array('class'=>Col\GoogleMaps::class,'panel'=>'localization'),
-						'youTube'=>array('class'=>Col\YouTube::class,'general'=>false,'panel'=>'media'),
-						'vimeo'=>array('class'=>Col\Vimeo::class,'general'=>false,'panel'=>'media'))))),
-		'@app'=>array(
-			'config'=>array(
-				Core\Route::class=>array(
+	public static $config = [
+		'finderShortcut'=>[ // shortcut pour finder
+			'vendorSite'=>'[vendor]/quidphp/site'],
+		'symlink'=>[
+			'[vendorSite]/js/tinymce'=>'[publicJs]/tinymce'],
+		'concatenatePhp'=>[
+			'quid'=>[
+				'option'=>[
+					'namespace'=>[
+						__NAMESPACE__=>['closure'=>true],
+						Test::class=>['closure'=>false]]]]],
+		'config'=>[
+			Core\Db::class=>[
+				'option'=>[
+					'cols'=>[
+						'content_en'=>['class'=>Col\TinyMce::class],
+						'content_fr'=>['class'=>Col\TinyMce::class],
+						'content'=>['class'=>Col\TinyMce::class],
+						'googleMaps'=>['class'=>Col\GoogleMaps::class,'panel'=>'localization'],
+						'youTube'=>['class'=>Col\YouTube::class,'general'=>false,'panel'=>'media'],
+						'vimeo'=>['class'=>Col\Vimeo::class,'general'=>false,'panel'=>'media']]]]],
+		'@app'=>[
+			'config'=>[
+				Core\Route::class=>[
 					'metaTitle'=>['typeLabel'=>true],
 					'jsInit'=>'$(document).ready(function() { $(this).navigation(); });',
 					'docOpen'=>[
@@ -42,7 +49,7 @@ abstract class Boot extends Lemur\Boot
 								'jquery'=>'js/jquery/jquery.js',
 								'include'=>'js/include.js',
 								'type'=>'js/%type%.js']],
-						'wrapper'=>['#wrapper']])),
+						'wrapper'=>['#wrapper']]]],
 			'compileScss'=>[
 				'[publicCss]/app.css'=>[
 					0=>'[vendorLemur]/scss/normalize/normalize.css',
@@ -53,28 +60,28 @@ abstract class Boot extends Lemur\Boot
 				'[publicJs]/include.js'=>[
 					0=>'[vendorLemur]/js/include',
 					1=>'[vendorSite]/js/include'],
-				'[publicJs]/app.js'=>'[privateJs]/app']),
-		'@cms'=>array(
-			'config'=>array(
-				Core\Route::class=>array(
-					'docOpen'=>array(
-						'head'=>array(
-							'js'=>array(
-								'tinymce'=>'js/tinymce/tinymce.min.js'))))),
-			'compileScss'=>array(
-				'[publicCss]/cms.css'=>array(
-					30=>'[vendorSite]/scss/cms/form.scss'),
-				'[publicCss]/tinymce.css'=>array(
+				'[publicJs]/app.js'=>'[privateJs]/app']],
+		'@cms'=>[
+			'config'=>[
+				Core\Route::class=>[
+					'docOpen'=>[
+						'head'=>[
+							'js'=>[
+								'tinymce'=>'js/tinymce/tinymce.min.js']]]]],
+			'compileScss'=>[
+				'[publicCss]/cms.css'=>[
+					30=>'[vendorSite]/scss/cms/form.scss'],
+				'[publicCss]/tinymce.css'=>[
 					0=>'[vendorLemur]/scss/include/include.scss',
 					1=>'[privateScss]/cms/include.scss',
 					30=>'[vendorSite]/scss/cms/tinymce.scss',
-					50=>'[privateScss]/cms/tinymce.scss')),
-			'concatenateJs'=>array(
-				'[publicJs]/include.js'=>array(
-					1=>'[vendorSite]/js/include'),
-				'[publicJs]/cms.js'=>array(
-					1=>'[vendorSite]/js/cms')))
-	);
+					50=>'[privateScss]/cms/tinymce.scss']],
+			'concatenateJs'=>[
+				'[publicJs]/include.js'=>[
+					1=>'[vendorSite]/js/include'],
+				'[publicJs]/cms.js'=>[
+					1=>'[vendorSite]/js/cms']]]
+	];
 }
 
 // config

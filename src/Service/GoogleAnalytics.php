@@ -1,29 +1,35 @@
 <?php
 declare(strict_types=1);
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
+ */
+
 namespace Quid\Site\Service;
 use Quid\Core;
-use Quid\Base;
 
 // googleAnalytics
 class GoogleAnalytics extends Core\ServiceRequestAlias
 {
 	// config
-	public static $config = array(
+	public static $config = [
 		'uri'=>'https://www.google-analytics.com/analytics.js' // uri vers les cript analytics
-	);
-	
-	
+	];
+
+
 	// apiKey
 	// retourne la clé d'api
-	public function apiKey():string 
+	public function apiKey():string
 	{
 		return $this->getOption('key');
 	}
-	
-	
+
+
 	// docOpenScript
 	// retourne le script en début de document
-	public function docOpenScript() 
+	public function docOpenScript()
 	{
 		$return = "\n";
 		$return .= "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n";
@@ -32,7 +38,7 @@ class GoogleAnalytics extends Core\ServiceRequestAlias
 		$return .= "})(window,document,'script','".static::$config['uri']."','ga');\n";
 		$return .= "ga('create', '".$this->apiKey()."', 'auto');\n";
 		$return .= "ga('send', 'pageview');\n";
-		
+
 		return $return;
 	}
 }
