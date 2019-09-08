@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Quid\Site\Col;
 
 // tinyMceAdvanced
-// class for a column which transforms the textarea in a complex tinymce wysiwyg editor
+// class for a column which transforms the textarea in a complex tinymce WYSIWYG editor
 class TinyMceAdvanced extends TinyMceAlias
 {
 	// config

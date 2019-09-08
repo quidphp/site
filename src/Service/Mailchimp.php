@@ -13,7 +13,7 @@ use Quid\Core;
 use Quid\Base;
 
 // mailchimp
-// class that provides some methods to communication with mailchimp (subcribe to a list)
+// class that provides some methods to communication with mailchimp (subscribe to a list)
 class Mailchimp extends Core\ServiceRequestAlias implements Site\Contract\Newsletter
 {
 	// config

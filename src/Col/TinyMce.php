@@ -12,7 +12,7 @@ use Quid\Core;
 use Quid\Base;
 
 // tinyMce
-// class for a column which transforms the textarea in a simple tinymce wysiwyg editor
+// class for a column which transforms the textarea in a simple tinymce WYSIWYG editor
 class TinyMce extends Core\Col\TextareaAlias
 {
 	// config

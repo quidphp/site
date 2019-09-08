@@ -13,7 +13,7 @@ use Quid\Main;
 use Quid\Base;
 
 // googleGeocoding
-// class used to make googleGeocoding localization request
+// class used to make googleGeocoding localization requests
 class GoogleGeocoding extends Core\ServiceRequestAlias
 {
 	// config

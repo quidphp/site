@@ -15,7 +15,7 @@ use Quid\Orm;
 use Quid\Base;
 
 // jsonFormRelation
-// cass to manage a column containing a relation value to another column which is a jsonForm
+// class to manage a column containing a relation value to another column which is a jsonForm
 class JsonFormRelation extends Core\Col\JsonArrayAlias
 {
 	// config

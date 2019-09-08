@@ -64,9 +64,9 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
     - [GoogleMaps](src/Col/GoogleMaps.php) | Class for a googleMaps column, with geo-localization data
     - [Hierarchy](src/Col/Hierarchy.php) | Class for an hierarchy column, like a website page sitemap
     - [JsonForm](src/Col/JsonForm.php) | Class for a column containing a json form (advanced jsonArray)
-    - [JsonFormRelation](src/Col/JsonFormRelation.php) | Cass to manage a column containing a relation value to another column which is a jsonForm
-    - [TinyMce](src/Col/TinyMce.php) | Class for a column which transforms the textarea in a simple tinymce wysiwyg editor
-    - [TinyMceAdvanced](src/Col/TinyMceAdvanced.php) | Class for a column which transforms the textarea in a complex tinymce wysiwyg editor
+    - [JsonFormRelation](src/Col/JsonFormRelation.php) | Class to manage a column containing a relation value to another column which is a jsonForm
+    - [TinyMce](src/Col/TinyMce.php) | Class for a column which transforms the textarea in a simple tinymce WYSIWYG editor
+    - [TinyMceAdvanced](src/Col/TinyMceAdvanced.php) | Class for a column which transforms the textarea in a complex tinymce WYSIWYG editor
     - [Vimeo](src/Col/Vimeo.php) | Class for a column containing a vimeo video
     - [YouTube](src/Col/YouTube.php) | Class for a column containing a youTube video
 - [Contract](src/Contract)
@@ -98,24 +98,24 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
     - [PageContent](src/Row/PageContent.php) | Class for a content which is the children of a page
     - [Poll](src/Row/Poll.php) | Class to work with a row of the poll table
     - [PollSubmit](src/Row/PollSubmit.php) | Class to work with a row of the pollSubmit table
-    - [Section](src/Row/Section.php) | Class for a row which reprensents a section containing one or many pages
+    - [Section](src/Row/Section.php) | Class for a row which represents a section containing one or many pages
     - [_meta](src/Row/_meta.php) | Trait with methods to make a row a meta-source
     - [_pageConfig](src/Row/_pageConfig.php) | Trait related to the configuration of a row representing a page
     - [_pageSection](src/Row/_pageSection.php) | Trait with methods to deal with a page row within a section
     - [_pageSectionConfig](src/Row/_pageSectionConfig.php) | Trait related to the configuration of a row representing a page within a section
     - [_pageSectionSlug](src/Row/_pageSectionSlug.php) | Trait related to the slug of a page within a section
-    - [_sectionPages](src/Row/_sectionPages.php) | Trait related to a row reprensenting a section which contains pages
+    - [_sectionPages](src/Row/_sectionPages.php) | Trait related to a row representing a section which contains pages
 - [Service](src/Service)
     - [Github](src/Service/Github.php) | Class that grants some static methods related to github
     - [GoogleAnalytics](src/Service/GoogleAnalytics.php) | Class that provides some methods to integrate googleAnalytics tracking
-    - [GoogleGeocoding](src/Service/GoogleGeocoding.php) | Class used to make googleGeocoding localization request
+    - [GoogleGeocoding](src/Service/GoogleGeocoding.php) | Class used to make googleGeocoding localization requests
     - [GoogleMaps](src/Service/GoogleMaps.php) | Class used to generate javascript googleMaps
-    - [IpApi](src/Service/IpApi.php) | Class that grants methods to use the ipApi API, that converts IP to localization data
-    - [Mailchimp](src/Service/Mailchimp.php) | Class that provides some methods to communication with mailchimp (subcribe to a list)
+    - [IpApi](src/Service/IpApi.php) | Class that grants methods to use the ipApi API, which converts IP to localization data
+    - [Mailchimp](src/Service/Mailchimp.php) | Class that provides some methods to communication with mailchimp (subscribe to a list)
     - [Office365](src/Service/Office365.php) | Class that grants some static methods related to office365
     - [PdfCrowd](src/Service/PdfCrowd.php) | Class that provides some methods to communication with pdfcrowd (and generate a pdf from html)
-    - [Vimeo](src/Service/Vimeo.php) | Class used to make request to the vimeo API
-    - [YouTube](src/Service/YouTube.php) | Class that can be used to make request to the youTube API
+    - [Vimeo](src/Service/Vimeo.php) | Class used to make requests to the vimeo API
+    - [YouTube](src/Service/YouTube.php) | Class that can be used to make requests to the youTube API
 	
 ### Testing
 **QuidPHP/Site** contains 3 test classes:
