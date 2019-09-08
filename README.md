@@ -52,28 +52,28 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
 
 ### Overview
 **QuidPHP/Site** contains 57 classes and traits. Here is an overview:
-- [Boot](src/Boot.php)
+- [Boot](src/Boot.php) | Extended abstract class for the object that bootstraps the app and cms
 - [Cell](src/Cell)
-    - [GoogleMaps](src/Cell/GoogleMaps.php)
-    - [JsonForm](src/Cell/JsonForm.php)
-    - [JsonFormRelation](src/Cell/JsonFormRelation.php)
-    - [Vimeo](src/Cell/Vimeo.php)
-    - [YouTube](src/Cell/YouTube.php)
+    - [GoogleMaps](src/Cell/GoogleMaps.php) | Class to work with a cell containing google maps geo-localization data
+    - [JsonForm](src/Cell/JsonForm.php) | Class to work with a cell containing a json form (advanced jsonArray)
+    - [JsonFormRelation](src/Cell/JsonFormRelation.php) | Class to manage a cell containing a relation value to another cell containing a json form
+    - [Vimeo](src/Cell/Vimeo.php) | Class for dealing with a cell containing a vimeo video
+    - [YouTube](src/Cell/YouTube.php) | Class for working with a cell containing a youTube video
 - [Col](src/Col)
-    - [EmailNewsletter](src/Col/EmailNewsletter.php)
-    - [GoogleMaps](src/Col/GoogleMaps.php)
-    - [Hierarchy](src/Col/Hierarchy.php)
-    - [JsonForm](src/Col/JsonForm.php)
-    - [JsonFormRelation](src/Col/JsonFormRelation.php)
-    - [TinyMce](src/Col/TinyMce.php)
-    - [TinyMceAdvanced](src/Col/TinyMceAdvanced.php)
-    - [Vimeo](src/Col/Vimeo.php)
-    - [YouTube](src/Col/YouTube.php)
+    - [EmailNewsletter](src/Col/EmailNewsletter.php) | Class for an email newsletter column (subscribes to a third-party newsletter)
+    - [GoogleMaps](src/Col/GoogleMaps.php) | Class for a googleMaps column, with geo-localization data
+    - [Hierarchy](src/Col/Hierarchy.php) | Class for an hierarchy column, like a website page sitemap
+    - [JsonForm](src/Col/JsonForm.php) | Class for a column containing a json form (advanced jsonArray)
+    - [JsonFormRelation](src/Col/JsonFormRelation.php) | Cass to manage a column containing a relation value to another column which is a jsonForm
+    - [TinyMce](src/Col/TinyMce.php) | Class for a column which transforms the textarea in a simple tinymce wysiwyg editor
+    - [TinyMceAdvanced](src/Col/TinyMceAdvanced.php) | Class for a column which transforms the textarea in a complex tinymce wysiwyg editor
+    - [Vimeo](src/Col/Vimeo.php) | Class for a column containing a vimeo video
+    - [YouTube](src/Col/YouTube.php) | Class for a column containing a youTube video
 - [Contract](src/Contract)
-    - [Newsletter](src/Contract/Newsletter.php)
+    - [Newsletter](src/Contract/Newsletter.php) | Interface to describe methods for a newsletter third-party service
 - [Lang](src/Lang)
-    - [En](src/Lang/En.php)
-    - [Fr](src/Lang/Fr.php)
+    - [En](src/Lang/En.php) | English language content used by this namespace
+    - [Fr](src/Lang/Fr.php) | French language content used by this namespace
 - [Route](src/Route)
     - [ContactSubmit](src/Route/ContactSubmit.php)
     - [NewsletterSubmit](src/Route/NewsletterSubmit.php) | MewsletterSubmit
