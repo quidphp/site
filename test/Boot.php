@@ -13,6 +13,7 @@ use Quid\Core;
 use Quid\Base;
 
 // boot
+// class for testing Quid\Site\Boot
 class Boot extends Base\Test
 {
 	// trigger

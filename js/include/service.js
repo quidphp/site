@@ -1,3 +1,11 @@
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/lemur/blob/master/LICENSE
+ */
+ 
+// service
+// script containing logic for third-party services
 (function ($, document, window) {
 	
 	// googleAnalytics

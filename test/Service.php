@@ -13,6 +13,7 @@ use Quid\Core;
 use Quid\Base;
 
 // service
+// class for testing services
 class Service extends Base\Test
 {
 	// trigger
