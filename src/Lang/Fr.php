@@ -11,6 +11,7 @@ namespace Quid\Site\Lang;
 use Quid\Lemur;
 
 // fr
+// french language content used by this namespace
 class Fr extends Lemur\Lang\Fr
 {
 	// config

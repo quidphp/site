@@ -12,6 +12,7 @@ use Quid\Lemur;
 use Quid\Core;
 
 // boot
+// extended abstract class for the object that bootstraps the app and cms
 abstract class Boot extends Lemur\Boot
 {
 	// config

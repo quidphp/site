@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Quid\Site\Contract;
 
 // newsletter
+// interface to describe methods for a newsletter third-party service
 interface Newsletter
 {
 	// memberInfo

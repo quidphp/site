@@ -12,6 +12,7 @@ use Quid\Core;
 use Quid\Base;
 
 // jsonFormRelation
+// class to manage a cell containing a relation value to another cell containing a json form
 class JsonFormRelation extends Core\Cell\JsonArrayRelationAlias
 {
 	// config

@@ -12,6 +12,7 @@ use Quid\Site;
 use Quid\Core;
 
 // vimeo
+// class for a column containing a vimeo video
 class Vimeo extends Core\Col\VideoAlias
 {
 	// config

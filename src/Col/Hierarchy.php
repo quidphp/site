@@ -14,6 +14,7 @@ use Quid\Orm;
 use Quid\Base;
 
 // hierarchy
+// class for an hierarchy column, like a website page sitemap
 class Hierarchy extends Core\Col\EnumAlias
 {
 	// config

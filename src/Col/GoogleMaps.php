@@ -16,6 +16,7 @@ use Quid\Main;
 use Quid\Base;
 
 // googleMaps
+// class for a googleMaps column, with geo-localization data
 class GoogleMaps extends Core\ColAlias
 {
 	// config

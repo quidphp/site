@@ -14,6 +14,7 @@ use Quid\Core;
 use Quid\Main;
 
 // googleMaps
+// class to work with a cell containing google maps geo-localization data
 class GoogleMaps extends Core\CellAlias
 {
 	// config

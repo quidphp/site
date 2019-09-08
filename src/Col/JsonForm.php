@@ -14,6 +14,7 @@ use Quid\Core;
 use Quid\Base;
 
 // jsonForm
+// class for a column containing a json form (advanced jsonArray)
 class JsonForm extends Core\Col\JsonArrayAlias
 {
 	// config

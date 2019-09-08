@@ -11,6 +11,7 @@ namespace Quid\Site\Cell;
 use Quid\Core;
 
 // youTube
+// class for working with a cell containing a youTube video
 class YouTube extends Core\Cell\VideoAlias
 {
 	// config

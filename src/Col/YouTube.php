@@ -12,6 +12,7 @@ use Quid\Site;
 use Quid\Core;
 
 // youTube
+// class for a column containing a youTube video
 class YouTube extends Core\Col\VideoAlias
 {
 	// config

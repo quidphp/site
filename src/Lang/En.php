@@ -11,6 +11,7 @@ namespace Quid\Site\Lang;
 use Quid\Lemur;
 
 // en
+// english language content used by this namespace
 class En extends Lemur\Lang\En
 {
 	// config

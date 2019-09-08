@@ -14,6 +14,7 @@ use Quid\Core;
 use Quid\Base;
 
 // emailNewsletter
+// class for an email newsletter column (subscribes to a third-party newsletter)
 class EmailNewsletter extends Core\Col\EmailAlias
 {
 	// config
