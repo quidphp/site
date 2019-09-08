@@ -84,7 +84,7 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
     - [_pageSection](src/Route/_pageSection.php) | Trait that provides basic logic for a page route within a section
     - [_specificPointer](src/Route/_specificPointer.php) | Trait that grants methods to deal with a specific resource represent by a pointer (table/id)
     - [_specificSlug](src/Route/_specificSlug.php) | Trait with methods to work with a specific resource represent by a URI slug
-    - [_specificSlugSection](src/Route/_specificSlugSection.php) | Trait with methods to work with a specific resource, within a section, represent by a URI slug
+    - [_specificSlugSection](src/Route/_specificSlugSection.php) | Trait to work with a specific resource, within a section, represent by a URI slug
 - [Row](src/Row)
     - [Contact](src/Row/Contact.php) | Class to work with a row of the contact table, stores contact messages
     - [Document](src/Row/Document.php) | Class to work with a row of the document table

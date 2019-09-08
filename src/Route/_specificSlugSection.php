@@ -11,7 +11,7 @@ namespace Quid\Site\Route;
 use Quid\Core;
 
 // _specificSlugSection
-// trait with methods to work with a specific resource, within a section, represent by a URI slug
+// trait to work with a specific resource, within a section, represent by a URI slug
 trait _specificSlugSection
 {
 	// trait
