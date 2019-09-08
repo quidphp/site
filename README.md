@@ -1,7 +1,7 @@
 # QuidPHP/Site
 
 ## About
-**QuidPHP/Site** is LOREM IPSUM. It is part of the [QuidPHP](https://github.com/quidphp/project) package. 
+**QuidPHP/Site** is an extended platform to build a website using the QuidPHP framework and LemurCMS. It is part of the [QuidPHP](https://github.com/quidphp/project) package. 
 
 ## License
 **QuidPHP/Site** is available as an open-source software under the [MIT license](LICENSE).
@@ -24,7 +24,7 @@ Once installed, the **Quid\Site** namespace will be available within your PHP ap
 - [quidphp/orm](https://github.com/quidphp/orm) | Quid\Orm - PHP library that provides database access and a comprehensive Object-Relational Mapper
 - [quidphp/routing](https://github.com/quidphp/routing) | Quid\Routing - PHP library that provides a simple route matching and triggering procedure
 - [quidphp/core](https://github.com/quidphp/core) | Quid\Core - PHP library that provides an extendable platform to create dynamic applications
-- [quidphp/lemur](https://github.com/quidphp/lemur) | Quid\Lemur - Lemur, a CMS built on top of the QuidPHP framework
+- [quidphp/lemur](https://github.com/quidphp/lemur) | Quid\Lemur - LemurCMS, a CMS built on top of the QuidPHP framework
 - [verot/class.upload.php](https://github.com/verot/class.upload.php) | Verot\Upload - A popular PHP class used for resizing images
 - [phpmailer/phpmailer](https://github.com/phpmailer/phpmailer) | PHPMailer\PHPMailer - The classic email sending library for PHP
 - [tedivm/jshrink](https://github.com/tedious/JShrink) | JShrink - Javascript Minifier built in PHP
@@ -33,7 +33,7 @@ Once installed, the **Quid\Site** namespace will be available within your PHP ap
 All dependencies will be resolved by using the [Composer](https://getcomposer.org) installation process.
 
 ## Included
-**QuidPHP/Site** comes bundled with the following front-end packages:
+**QuidPHP/Site** comes bundled with the following front-end package:
 - [tinymce/tinymce](https://github.com/tinymce/tinymce) | TinyMCE - The popular web-based WYSIWYG editor
 
 ## Comment
