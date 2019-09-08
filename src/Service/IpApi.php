@@ -13,6 +13,7 @@ use Quid\Main;
 use Quid\Base;
 
 // ipApi
+// class that grants methods to use the ipApi API, that converts IP to localization data
 class IpApi extends Core\ServiceRequestAlias
 {
 	// config

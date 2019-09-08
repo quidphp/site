@@ -11,6 +11,7 @@ namespace Quid\Site\Row;
 use Quid\Core;
 
 // _sectionPages
+// trait related to a row reprensenting a section which contains pages
 trait _sectionPages
 {
 	// inMenu

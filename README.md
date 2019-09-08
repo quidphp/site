@@ -75,47 +75,47 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
     - [En](src/Lang/En.php) | English language content used by this namespace
     - [Fr](src/Lang/Fr.php) | French language content used by this namespace
 - [Route](src/Route)
-    - [ContactSubmit](src/Route/ContactSubmit.php)
-    - [NewsletterSubmit](src/Route/NewsletterSubmit.php) | MewsletterSubmit
-    - [_breadcrumbs](src/Route/_breadcrumbs.php)
-    - [_generalFeed](src/Route/_generalFeed.php)
-    - [_page](src/Route/_page.php)
-    - [_pageBreadcrumbs](src/Route/_pageBreadcrumbs.php)
-    - [_pageSection](src/Route/_pageSection.php)
-    - [_specificPointer](src/Route/_specificPointer.php)
-    - [_specificSlug](src/Route/_specificSlug.php)
-    - [_specificSlugSection](src/Route/_specificSlugSection.php)
+    - [ContactSubmit](src/Route/ContactSubmit.php) | Abstract class for a contact submit route
+    - [NewsletterSubmit](src/Route/NewsletterSubmit.php) | Abstract class for a newsletter submit route
+    - [_breadcrumbs](src/Route/_breadcrumbs.php) | Trait that provides methods related to generating breadcrumbs
+    - [_generalFeed](src/Route/_generalFeed.php) | Trait that grants methods related a general feed (load more)
+    - [_page](src/Route/_page.php) | Trait that provides basic logic for a page route
+    - [_pageBreadcrumbs](src/Route/_pageBreadcrumbs.php) | Trait that provides methods related to generating breadcrumbs for a page
+    - [_pageSection](src/Route/_pageSection.php) | Trait that provides basic logic for a page route within a section
+    - [_specificPointer](src/Route/_specificPointer.php) | Trait that grants methods to deal with a specific resource represent by a pointer (table/id)
+    - [_specificSlug](src/Route/_specificSlug.php) | Trait with methods to work with a specific resource represent by a URI slug
+    - [_specificSlugSection](src/Route/_specificSlugSection.php) | Trait with methods to work with a specific resource, within a section, represent by a URI slug
 - [Row](src/Row)
-    - [Contact](src/Row/Contact.php)
-    - [Document](src/Row/Document.php)
-    - [Event](src/Row/Event.php)
-    - [EventSubmit](src/Row/EventSubmit.php)
-    - [Form](src/Row/Form.php)
-    - [FormSubmit](src/Row/FormSubmit.php)
-    - [Media](src/Row/Media.php)
-    - [News](src/Row/News.php)
-    - [Page](src/Row/Page.php)
-    - [PageContent](src/Row/PageContent.php)
-    - [Poll](src/Row/Poll.php)
-    - [PollSubmit](src/Row/PollSubmit.php)
-    - [Section](src/Row/Section.php)
-    - [_meta](src/Row/_meta.php)
-    - [_pageConfig](src/Row/_pageConfig.php)
-    - [_pageSection](src/Row/_pageSection.php)
-    - [_pageSectionConfig](src/Row/_pageSectionConfig.php)
-    - [_pageSectionSlug](src/Row/_pageSectionSlug.php)
-    - [_sectionPages](src/Row/_sectionPages.php)
+    - [Contact](src/Row/Contact.php) | Class to work with a row of the contact table, stores contact messages
+    - [Document](src/Row/Document.php) | Class to work with a row of the document table
+    - [Event](src/Row/Event.php) | Class to work with a row of the event table
+    - [EventSubmit](src/Row/EventSubmit.php) | Class to work with a row of the event submit table
+    - [Form](src/Row/Form.php) | Class to deal with a row of the form table
+    - [FormSubmit](src/Row/FormSubmit.php) | Class to deal with a row of the formSubmit table
+    - [Media](src/Row/Media.php) | Class to work with a row of the media table, can contain medias, storages and videos
+    - [News](src/Row/News.php) | Class to work with a row of the news table
+    - [Page](src/Row/Page.php) | Class for a row which represents a page
+    - [PageContent](src/Row/PageContent.php) | Class for a content which is the children of a page
+    - [Poll](src/Row/Poll.php) | Class to work with a row of the poll table
+    - [PollSubmit](src/Row/PollSubmit.php) | Class to work with a row of the pollSubmit table
+    - [Section](src/Row/Section.php) | Class for a row which reprensents a section containing one or many pages
+    - [_meta](src/Row/_meta.php) | Trait with methods to make a row a meta-source
+    - [_pageConfig](src/Row/_pageConfig.php) | Trait related to the configuration of a row representing a page
+    - [_pageSection](src/Row/_pageSection.php) | Trait with methods to deal with a page row within a section
+    - [_pageSectionConfig](src/Row/_pageSectionConfig.php) | Trait related to the configuration of a row representing a page within a section
+    - [_pageSectionSlug](src/Row/_pageSectionSlug.php) | Trait related to the slug of a page within a section
+    - [_sectionPages](src/Row/_sectionPages.php) | Trait related to a row reprensenting a section which contains pages
 - [Service](src/Service)
-    - [Github](src/Service/Github.php) | GitHub
-    - [GoogleAnalytics](src/Service/GoogleAnalytics.php)
-    - [GoogleGeocoding](src/Service/GoogleGeocoding.php)
-    - [GoogleMaps](src/Service/GoogleMaps.php)
-    - [IpApi](src/Service/IpApi.php)
-    - [Mailchimp](src/Service/Mailchimp.php)
-    - [Office365](src/Service/Office365.php)
-    - [PdfCrowd](src/Service/PdfCrowd.php)
-    - [Vimeo](src/Service/Vimeo.php)
-    - [YouTube](src/Service/YouTube.php)
+    - [Github](src/Service/Github.php) | Class that grants some static methods related to github
+    - [GoogleAnalytics](src/Service/GoogleAnalytics.php) | Class that provides some methods to integrate googleAnalytics tracking
+    - [GoogleGeocoding](src/Service/GoogleGeocoding.php) | Class used to make googleGeocoding localization request
+    - [GoogleMaps](src/Service/GoogleMaps.php) | Class used to generate javascript googleMaps
+    - [IpApi](src/Service/IpApi.php) | Class that grants methods to use the ipApi API, that converts IP to localization data
+    - [Mailchimp](src/Service/Mailchimp.php) | Class that provides some methods to communication with mailchimp (subcribe to a list)
+    - [Office365](src/Service/Office365.php) | Class that grants some static methods related to office365
+    - [PdfCrowd](src/Service/PdfCrowd.php) | Class that provides some methods to communication with pdfcrowd (and generate a pdf from html)
+    - [Vimeo](src/Service/Vimeo.php) | Class used to make request to the vimeo API
+    - [YouTube](src/Service/YouTube.php) | Class that can be used to make request to the youTube API
 	
 ### Testing
 **QuidPHP/Site** contains 3 test classes:

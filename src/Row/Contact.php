@@ -14,6 +14,7 @@ use Quid\Main;
 use Quid\Base;
 
 // contact
+// class to work with a row of the contact table, stores contact messages
 abstract class Contact extends Core\RowAlias
 {
 	// config

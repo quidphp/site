@@ -13,6 +13,7 @@ use Quid\Main;
 use Quid\Base;
 
 // news
+// class to work with a row of the news table
 class News extends Core\RowAlias implements Main\Contract\Meta
 {
 	// trait

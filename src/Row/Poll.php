@@ -14,6 +14,7 @@ use Quid\Main;
 use Quid\Base;
 
 // poll
+// class to work with a row of the poll table
 abstract class Poll extends Core\RowAlias
 {
 	// config

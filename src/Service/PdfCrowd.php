@@ -12,6 +12,7 @@ use Quid\Core;
 use Quid\Base;
 
 // pdfCrowd
+// class that provides some methods to communication with pdfcrowd (and generate a pdf from html)
 class PdfCrowd extends Core\ServiceRequestAlias
 {
 	// config

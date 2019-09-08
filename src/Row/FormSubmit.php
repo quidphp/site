@@ -14,6 +14,7 @@ use Quid\Orm;
 use Quid\Main;
 
 // formSubmit
+// class to deal with a row of the formSubmit table
 class FormSubmit extends Core\RowAlias
 {
 	// config

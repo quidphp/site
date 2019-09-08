@@ -12,6 +12,7 @@ use Quid\Core;
 use Quid\Base;
 
 // office365
+// class that grants some static methods related to office365
 class Office365 extends Core\ServiceAlias
 {
 	// config

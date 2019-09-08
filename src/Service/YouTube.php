@@ -13,6 +13,7 @@ use Quid\Main;
 use Quid\Base;
 
 // youTube
+// class that can be used to make request to the youTube API
 class YouTube extends Core\ServiceVideoAlias
 {
 	// config

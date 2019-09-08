@@ -14,6 +14,7 @@ use Quid\Main;
 use Quid\Base;
 
 // page
+// class for a row which represents a page
 class Page extends Core\RowAlias implements Main\Contract\Meta
 {
 	// trait

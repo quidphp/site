@@ -15,6 +15,7 @@ use Quid\Main;
 use Quid\Base;
 
 // form
+// class to deal with a row of the form table
 abstract class Form extends Core\RowAlias implements Main\Contract\Meta
 {
 	// trait

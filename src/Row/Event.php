@@ -15,6 +15,7 @@ use Quid\Main;
 use Quid\Base;
 
 // event
+// class to work with a row of the event table
 abstract class Event extends Core\RowAlias implements Main\Contract\Meta
 {
 	// trait

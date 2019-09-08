@@ -11,6 +11,7 @@ namespace Quid\Site\Service;
 use Quid\Core;
 
 // googleAnalytics
+// class that provides some methods to integrate googleAnalytics tracking
 class GoogleAnalytics extends Core\ServiceRequestAlias
 {
 	// config

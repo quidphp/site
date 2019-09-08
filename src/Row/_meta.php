@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Quid\Site\Row;
 
 // _meta
+// trait with methods to make a row a meta-source
 trait _meta
 {
 	// metaTitle

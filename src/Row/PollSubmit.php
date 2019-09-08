@@ -14,6 +14,7 @@ use Quid\Main;
 use Quid\Base;
 
 // pollSubmit
+// class to work with a row of the pollSubmit table
 class PollSubmit extends Core\RowAlias
 {
 	// config

@@ -11,6 +11,7 @@ namespace Quid\Site\Route;
 use Quid\Core;
 
 // _specificPointer
+// trait that grants methods to deal with a specific resource represent by a pointer (table/id)
 trait _specificPointer
 {
 	// onBefore

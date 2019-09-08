@@ -12,6 +12,7 @@ use Quid\Core;
 use Quid\Orm;
 
 // _specificSlug
+// trait with methods to work with a specific resource represent by a URI slug
 trait _specificSlug
 {
 	// onBefore

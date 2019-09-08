@@ -13,7 +13,8 @@ use Quid\Site;
 use Quid\Core;
 use Quid\Base;
 
-// mewsletterSubmit
+// newsletterSubmit
+// abstract class for a newsletter submit route
 abstract class NewsletterSubmit extends Core\RouteAlias
 {
 	// trait

@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Quid\Site\Route;
 
 // _pageBreadcrumbs
+// trait that provides methods related to generating breadcrumbs for a page
 trait _pageBreadcrumbs
 {
 	// getBreadcrumbs

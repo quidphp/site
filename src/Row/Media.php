@@ -14,6 +14,7 @@ use Quid\Main;
 use Quid\Base;
 
 // media
+// class to work with a row of the media table, can contain medias, storages and videos
 class Media extends Core\RowAlias
 {
 	// config

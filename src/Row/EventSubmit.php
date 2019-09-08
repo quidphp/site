@@ -14,6 +14,7 @@ use Quid\Main;
 use Quid\Base;
 
 // eventSubmit
+// class to work with a row of the event submit table
 class EventSubmit extends Core\RowAlias
 {
 	// config

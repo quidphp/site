@@ -12,6 +12,7 @@ use Quid\Core;
 use Quid\Base;
 
 // _pageSectionConfig
+// trait related to the configuration of a row representing a page within a section
 trait _pageSectionConfig
 {
 	// trait

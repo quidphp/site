@@ -12,6 +12,7 @@ use Quid\Core;
 use Quid\Main;
 
 // document
+// class to work with a row of the document table
 class Document extends Core\RowAlias implements Main\Contract\Meta
 {
 	// trait

@@ -11,6 +11,7 @@ namespace Quid\Site\Route;
 use Quid\Core;
 
 // contactSubmit
+// abstract class for a contact submit route
 abstract class ContactSubmit extends Core\RouteAlias
 {
 	// trait

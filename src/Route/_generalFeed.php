@@ -13,6 +13,7 @@ use Quid\Core;
 use Quid\Base;
 
 // _generalFeed
+// trait that grants methods related a general feed (load more)
 trait _generalFeed
 {
 	// trait

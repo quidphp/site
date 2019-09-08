@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Quid\Site\Row;
 
 // _pageSection
+// trait with methods to deal with a page row within a section
 trait _pageSection
 {
 	// dynamic

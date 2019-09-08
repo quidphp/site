@@ -12,6 +12,7 @@ use Quid\Site;
 use Quid\Core;
 
 // _page
+// trait that provides basic logic for a page route
 trait _page
 {
 	// dynamique

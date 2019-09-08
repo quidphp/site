@@ -11,6 +11,7 @@ namespace Quid\Site\Row;
 use Quid\Core;
 
 // _pageSectionSlug
+// trait related to the slug of a page within a section
 trait _pageSectionSlug
 {
 	// trait

@@ -11,6 +11,7 @@ namespace Quid\Site\Route;
 use Quid\Site;
 
 // _pageSection
+// trait that provides basic logic for a page route within a section
 trait _pageSection
 {
 	// trait

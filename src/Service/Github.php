@@ -12,7 +12,8 @@ use Quid\Core;
 use Quid\Main;
 use Quid\Base;
 
-// gitHub
+// github
+// class that grants some static methods related to github
 class Github extends Core\ServiceAlias
 {
 	// config

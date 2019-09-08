@@ -11,6 +11,7 @@ namespace Quid\Site\Route;
 use Quid\Base\Html;
 
 // _breadcrumbs
+// trait that provides methods related to generating breadcrumbs
 trait _breadcrumbs
 {
 	// getBreadcrumbs

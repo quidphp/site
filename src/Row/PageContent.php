@@ -11,6 +11,7 @@ namespace Quid\Site\Row;
 use Quid\Core;
 
 // pageContent
+// class for a content which is the children of a page
 class PageContent extends Core\RowAlias
 {
 	// config

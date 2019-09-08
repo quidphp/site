@@ -12,6 +12,7 @@ use Quid\Core;
 use Quid\Base;
 
 // googleMaps
+// class used to generate javascript googleMaps
 class GoogleMaps extends Core\ServiceRequestAlias
 {
 	// config

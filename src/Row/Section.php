@@ -12,6 +12,7 @@ use Quid\Base\Html;
 use Quid\Core;
 
 // section
+// class for a row which reprensents a section containing one or many pages
 abstract class Section extends Core\RowAlias
 {
 	// config

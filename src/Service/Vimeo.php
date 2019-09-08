@@ -13,6 +13,7 @@ use Quid\Main;
 use Quid\Base;
 
 // vimeo
+// class used to make request to the vimeo API
 class Vimeo extends Core\ServiceVideoAlias
 {
 	// config
