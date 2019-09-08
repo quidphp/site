@@ -21,9 +21,9 @@ class Table extends Base\Test
 	{
 		// prepare
 		$db = Core\Boot::inst()->db();
-		
+
 		// col
-		
+
 		// prepare
 		$table = 'ormCol';
 		$tb = $db[$table];
@@ -70,10 +70,10 @@ class Table extends Base\Test
 		assert($googleMaps->hasNullDefault());
 		assert(!$googleMaps->hasNotEmptyDefault());
 		assert($googleMaps->default() === null);
-		
-		
+
+
 		// cell
-		
+
 		// prepare
 		$table = 'ormCell';
 		assert($db->truncate($table) instanceof \PDOStatement);
