@@ -14,12 +14,12 @@ use Quid\Lemur;
 // extended abstract class that provides app logic for a role
 abstract class Role extends Lemur\Role
 {
-	// config
-	public static $config = [
-		'can'=>array(
-			'login'=>array('app'=>false)
-		)
-	];
+    // config
+    public static $config = [
+        'can'=>[
+            'login'=>['app'=>false]
+        ]
+    ];
 }
 
 // config

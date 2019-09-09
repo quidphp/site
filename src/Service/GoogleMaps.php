@@ -15,38 +15,38 @@ use Quid\Base;
 // class used to generate javascript googleMaps
 class GoogleMaps extends Core\ServiceRequestAlias
 {
-	// config
-	public static $config = [
-		'js'=>'//maps.googleapis.com/maps/api/js?v=3&key=%value%', // uri vers fichier js à charger
-		'uri'=>'https://maps.google.com/maps?q=%value%' // uri vers googleMaps
-	];
+    // config
+    public static $config = [
+        'js'=>'//maps.googleapis.com/maps/api/js?v=3&key=%value%', // uri vers fichier js à charger
+        'uri'=>'https://maps.google.com/maps?q=%value%' // uri vers googleMaps
+    ];
 
 
-	// apiKey
-	// retourne la clé d'api
-	public function apiKey():string
-	{
-		return $this->getOption('key');
-	}
+    // apiKey
+    // retourne la clé d'api
+    public function apiKey():string
+    {
+        return $this->getOption('key');
+    }
 
 
-	// docOpenJs
-	// retourne l'uri vers le fichier js à charger
-	public function docOpenJs()
-	{
-		return Base\Str::replace(['%value%'=>$this->apiKey()],static::$config['js']);
-	}
+    // docOpenJs
+    // retourne l'uri vers le fichier js à charger
+    public function docOpenJs()
+    {
+        return Base\Str::replace(['%value%'=>$this->apiKey()],static::$config['js']);
+    }
 
 
-	// uri
-	// méthode statique pour générer une uri vers googleMaps
-	public static function uri(string $value):string
-	{
-		$return = Base\Str::replace(['%value%'=>$value],static::$config['uri']);
-		$return = Base\Uri::absolute($return);
+    // uri
+    // méthode statique pour générer une uri vers googleMaps
+    public static function uri(string $value):string
+    {
+        $return = Base\Str::replace(['%value%'=>$value],static::$config['uri']);
+        $return = Base\Uri::absolute($return);
 
-		return $return;
-	}
+        return $return;
+    }
 }
 
 // config

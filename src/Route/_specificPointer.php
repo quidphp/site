@@ -14,35 +14,35 @@ use Quid\Core;
 // trait that grants methods to deal with a specific resource represent by a pointer (table/id)
 trait _specificPointer
 {
-	// onBefore
-	// avant le lancement de la route
-	protected function onBefore()
-	{
-		return $this->pointer()->isVisible();
-	}
+    // onBefore
+    // avant le lancement de la route
+    protected function onBefore()
+    {
+        return $this->pointer()->isVisible();
+    }
 
 
-	// hasPointer
-	// retourne vrai si le pointeur existe
-	protected function hasPointer():bool
-	{
-		return ($this->segment('pointer') instanceof Core\Row)? true:false;
-	}
+    // hasPointer
+    // retourne vrai si le pointeur existe
+    protected function hasPointer():bool
+    {
+        return ($this->segment('pointer') instanceof Core\Row)? true:false;
+    }
 
 
-	// pointer
-	// retourne la ligne de pointeur
-	protected function pointer():Core\Row
-	{
-		return $this->segment('pointer');
-	}
+    // pointer
+    // retourne la ligne de pointeur
+    protected function pointer():Core\Row
+    {
+        return $this->segment('pointer');
+    }
 
 
-	// pointerRoute
-	// retourne la route de la ligne du pointeur
-	protected function pointerRoute():Core\Route
-	{
-		return $this->pointer()->route();
-	}
+    // pointerRoute
+    // retourne la route de la ligne du pointeur
+    protected function pointerRoute():Core\Route
+    {
+        return $this->pointer()->route();
+    }
 }
 ?>

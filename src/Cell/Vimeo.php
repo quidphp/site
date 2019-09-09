@@ -14,8 +14,8 @@ use Quid\Core;
 // class for dealing with a cell containing a vimeo video
 class Vimeo extends Core\Cell\VideoAlias
 {
-	// config
-	public static $config = [];
+    // config
+    public static $config = [];
 }
 
 // config

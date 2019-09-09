@@ -15,14 +15,14 @@ use Quid\Main;
 // class to work with a row of the document table
 class Document extends Core\RowAlias implements Main\Contract\Meta
 {
-	// trait
-	use _meta;
+    // trait
+    use _meta;
 
 
-	// config
-	public static $config = [
-		'key'=>['slug_[lang]',0],
-	];
+    // config
+    public static $config = [
+        'key'=>['slug_[lang]',0],
+    ];
 }
 
 // config

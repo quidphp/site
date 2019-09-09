@@ -15,12 +15,12 @@ use Quid\Core;
 // class for a column containing a vimeo video
 class Vimeo extends Core\Col\VideoAlias
 {
-	// config
-	public static $config = [
-		'cell'=>Site\Cell\Vimeo::class,
-		'preValidate'=>['uriHost'=>'vimeo.com'],
-		'service'=>'vimeo' // custom, clé du service utilisé
-	];
+    // config
+    public static $config = [
+        'cell'=>Site\Cell\Vimeo::class,
+        'preValidate'=>['uriHost'=>'vimeo.com'],
+        'service'=>'vimeo' // custom, clé du service utilisé
+    ];
 }
 
 // config

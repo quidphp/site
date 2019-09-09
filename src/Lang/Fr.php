@@ -14,241 +14,241 @@ use Quid\Lemur;
 // french language content used by this namespace
 class Fr extends Lemur\Lang\Fr
 {
-	// config
-	public static $config = [
+    // config
+    public static $config = [
 
-		// newsletter
-		'newsletter'=>[
-			'email'=>'Courriel',
-			'firstName'=>'Prénom',
-			'lastName'=>'Nom de famille'
-		],
+        // newsletter
+        'newsletter'=>[
+            'email'=>'Courriel',
+            'firstName'=>'Prénom',
+            'lastName'=>'Nom de famille'
+        ],
 
-		// table
-		'table'=>[
+        // table
+        'table'=>[
 
-			// label
-			'label'=>[
-				'contact'=>'Contact',
-				'document'=>'Document',
-				'event'=>'Événement',
-				'eventSubmit'=>'Événement - Inscription',
-				'form'=>'Formulaire',
-				'formSubmit'=>'Formulaire - Réponse',
-				'media'=>'Médiathèque',
-				'news'=>'Nouvelles',
-				'page'=>'Page',
-				'pageContent'=>'Contenu de page',
-				'poll'=>'Sondage',
-				'pollSubmit'=>'Sondage - Réponse',
-				'section'=>'Section']
-		],
+            // label
+            'label'=>[
+                'contact'=>'Contact',
+                'document'=>'Document',
+                'event'=>'Événement',
+                'eventSubmit'=>'Événement - Inscription',
+                'form'=>'Formulaire',
+                'formSubmit'=>'Formulaire - Réponse',
+                'media'=>'Médiathèque',
+                'news'=>'Nouvelles',
+                'page'=>'Page',
+                'pageContent'=>'Contenu de page',
+                'poll'=>'Sondage',
+                'pollSubmit'=>'Sondage - Réponse',
+                'section'=>'Section']
+        ],
 
-		// col
-		'col'=>[
+        // col
+        'col'=>[
 
-			// label
-			'label'=>[
+            // label
+            'label'=>[
 
-				// *
-				'*'=>[
-					'googleMaps'=>'Géo-localisation',
-					'youTube'=>'YouTube',
-					'vimeo'=>'Vimeo',
-					'newsletter'=>'Infolettre'
-				],
+                // *
+                '*'=>[
+                    'googleMaps'=>'Géo-localisation',
+                    'youTube'=>'YouTube',
+                    'vimeo'=>'Vimeo',
+                    'newsletter'=>'Infolettre'
+                ],
 
-				// contact
-				'contact'=>[
-					'email'=>'Adresse courriel',
-					'name'=>'Prénom et nom',
-					'phone'=>'Numéro de téléphone'
-				]
-			]
-		],
+                // contact
+                'contact'=>[
+                    'email'=>'Adresse courriel',
+                    'name'=>'Prénom et nom',
+                    'phone'=>'Numéro de téléphone'
+                ]
+            ]
+        ],
 
-		// com
-		'com'=>[
+        // com
+        'com'=>[
 
-			// neg
-			'neg'=>[
+            // neg
+            'neg'=>[
 
-				// newsletter
-				'newsletter'=>[
+                // newsletter
+                'newsletter'=>[
 
-					// subscribe
-					'subscribe'=>[
-						'failure'=>"Erreur lors de l'ajout de votre courriel à notre liste d'envoi.",
-						'duplicate'=>"Votre courriel est déjà dans notre liste d'envoi."
-					]
-				],
+                    // subscribe
+                    'subscribe'=>[
+                        'failure'=>"Erreur lors de l'ajout de votre courriel à notre liste d'envoi.",
+                        'duplicate'=>"Votre courriel est déjà dans notre liste d'envoi."
+                    ]
+                ],
 
-				// insert
-				'insert'=>[
-					'contact'=>[
-						'failure'=>"Erreur lors de l'envoie du message."
-					]
-				],
+                // insert
+                'insert'=>[
+                    'contact'=>[
+                        'failure'=>"Erreur lors de l'envoie du message."
+                    ]
+                ],
 
-				// eventSubmit
-				'eventSubmit'=>[
-					'duplicate'=>"Cet utilisateur est déjà inscrit à l'événement"
-				],
+                // eventSubmit
+                'eventSubmit'=>[
+                    'duplicate'=>"Cet utilisateur est déjà inscrit à l'événement"
+                ],
 
-				// pollSubmit
-				'pollSubmit'=>[
-					'duplicate'=>'Cet utilisateur a déjà voté sur ce sondage'
-				],
+                // pollSubmit
+                'pollSubmit'=>[
+                    'duplicate'=>'Cet utilisateur a déjà voté sur ce sondage'
+                ],
 
-				// formSubmit
-				'formSubmit'=>[
-					'duplicate'=>'Cet utilisateur a déjà répondu au formulaire'
-				]
-			],
+                // formSubmit
+                'formSubmit'=>[
+                    'duplicate'=>'Cet utilisateur a déjà répondu au formulaire'
+                ]
+            ],
 
-			// pos
-			'pos'=>[
+            // pos
+            'pos'=>[
 
-				// newsletter
-				'newsletter'=>[
+                // newsletter
+                'newsletter'=>[
 
-					// subscribe
-					'subscribe'=>[
-						'success'=>"Votre courriel a été ajouté à notre liste d'envoi. Vous recevrez sous peu un courriel de confirmation."
-					]
-				],
+                    // subscribe
+                    'subscribe'=>[
+                        'success'=>"Votre courriel a été ajouté à notre liste d'envoi. Vous recevrez sous peu un courriel de confirmation."
+                    ]
+                ],
 
-				// insert
-				'insert'=>[
-					'contact'=>[
-						'success'=>'Merci, le message a été envoyé !'
-					]
-				]
-			]
-		],
+                // insert
+                'insert'=>[
+                    'contact'=>[
+                        'success'=>'Merci, le message a été envoyé !'
+                    ]
+                ]
+            ]
+        ],
 
-		// route
-		'route'=>[
+        // route
+        'route'=>[
 
-			// label
-			'label'=>[
-				'contactSubmit'=>'Contact - Soumettre',
-				'newsletterSubmit'=>'Infolettre - Soumettre',
-			]
-		],
-		
-		// relation
-		'relation'=>array(
-				
-			// contextType
-			'contextType'=>array(
-				'app'=>'Application'
-			)
-		),
-		
-		// cms
-		'@cms'=>[
+            // label
+            'label'=>[
+                'contactSubmit'=>'Contact - Soumettre',
+                'newsletterSubmit'=>'Infolettre - Soumettre',
+            ]
+        ],
 
-			// jsonForm
-			'jsonForm'=>[
-				'label'=>'Libellé',
-				'required'=>'Requis',
-				'description'=>'Description',
-				'type'=>'Type',
-				'choices'=>'Choix de réponse (un par ligne)',
-			],
+        // relation
+        'relation'=>[
 
-			// emailNewsletter
-			'emailNewsletter'=>[
-				'label'=>"Inscrit sur l'infolettre"
-			],
+            // contextType
+            'contextType'=>[
+                'app'=>'Application'
+            ]
+        ],
 
-			// hierarchy
-			'hierarchy'=>[
-				'noParent'=>'Aucun parent'
-			],
+        // cms
+        '@cms'=>[
 
-			// table
-			'table'=>[
+            // jsonForm
+            'jsonForm'=>[
+                'label'=>'Libellé',
+                'required'=>'Requis',
+                'description'=>'Description',
+                'type'=>'Type',
+                'choices'=>'Choix de réponse (un par ligne)',
+            ],
 
-				// description
-				'description'=>[
-					'contact'=>'Archive des messages envoyés via le formulaire de la page de contact',
-					'document'=>'Gère les documents',
-					'event'=>'Gérer et créer les événements',
-					'eventSubmit'=>'Inscription des utilisateurs aux événements',
-					'form'=>'Gérer et créer des formulaires',
-					'formSubmit'=>'Réponses des usagers aux formulaires',
-					'media'=>'Gère les médias comme les photos, vidéos et fichiers.',
-					'news'=>'Gère les nouvelles et actualités',
-					'page'=>"Pages accessibles via l'application",
-					'pageContent'=>'Contenu à afficher dans les différentes pages',
-					'poll'=>'Gérer et créer des sondages',
-					'pollSubmit'=>'Contient tous les votes aux différents sondages',
-					'section'=>'Regroupement de pages']
-			],
+            // emailNewsletter
+            'emailNewsletter'=>[
+                'label'=>"Inscrit sur l'infolettre"
+            ],
 
-			// col
-			'col'=>[
+            // hierarchy
+            'hierarchy'=>[
+                'noParent'=>'Aucun parent'
+            ],
 
-				// description
-				'description'=>[
+            // table
+            'table'=>[
 
-					// *
-					'*'=>[
-						'googleMaps'=>'Entrer une adresse complète comme dans Google Maps, utiliser des virgules.',
-						'youTube'=>'Entrer une URL YouTube complète',
-						'vimeo'=>'Entrer une URL Vimeo complète'
-					],
+                // description
+                'description'=>[
+                    'contact'=>'Archive des messages envoyés via le formulaire de la page de contact',
+                    'document'=>'Gère les documents',
+                    'event'=>'Gérer et créer les événements',
+                    'eventSubmit'=>'Inscription des utilisateurs aux événements',
+                    'form'=>'Gérer et créer des formulaires',
+                    'formSubmit'=>'Réponses des usagers aux formulaires',
+                    'media'=>'Gère les médias comme les photos, vidéos et fichiers.',
+                    'news'=>'Gère les nouvelles et actualités',
+                    'page'=>"Pages accessibles via l'application",
+                    'pageContent'=>'Contenu à afficher dans les différentes pages',
+                    'poll'=>'Gérer et créer des sondages',
+                    'pollSubmit'=>'Contient tous les votes aux différents sondages',
+                    'section'=>'Regroupement de pages']
+            ],
 
-					// section
-					'section'=>[
-						'page_id'=>'Spécifie la page racine de la section',
-						'page_ids'=>'Spécifie les pages de premier niveau de la section'
-					],
+            // col
+            'col'=>[
 
-					// page
-					'page'=>[
-						'page_id'=>'Spécifie la page parent de la page',
-						'pageContent_ids'=>'Spécifie les contenus de la page'
-					],
+                // description
+                'description'=>[
 
-					// contact
-					'contact'=>[
-						'message'=>'Contenu du message'
-					]
-				]
-			],
+                    // *
+                    '*'=>[
+                        'googleMaps'=>'Entrer une adresse complète comme dans Google Maps, utiliser des virgules.',
+                        'youTube'=>'Entrer une URL YouTube complète',
+                        'vimeo'=>'Entrer une URL Vimeo complète'
+                    ],
 
-			// relation
-			'relation'=>[
-				
-				// jsonForm
-				'jsonForm'=>[
-					'inputText'=>'Champ texte',
-					'textarea'=>'Champ texte long',
-					'select'=>'Menu de sélection',
-					'radio'=>'Boutons radios (un choix)',
-					'checkbox'=>'Cases à cocher (multiples choix)'
-				]
-			],
+                    // section
+                    'section'=>[
+                        'page_id'=>'Spécifie la page racine de la section',
+                        'page_ids'=>'Spécifie les pages de premier niveau de la section'
+                    ],
 
-			// tinycme
-			'tinymce'=>[
-				'paragraph'=>'Paragraphe',
-				'superscript'=>'Exposant',
-				'header2'=>'En-tête 2',
-				'header3'=>'En-tête 3',
-				'header4'=>'En-tête 4',
-				'header5'=>'En-tête 5',
-				'alignLeft'=>'Aligner à gauche',
-				'alignCenter'=>'Aligner au centre',
-				'alignRight'=>'Aligner à droite',
-				'floatLeft'=>'Flotter à gauche',
-				'floatRight'=>'Flotter à droite'
-			]
-		]
-	];
+                    // page
+                    'page'=>[
+                        'page_id'=>'Spécifie la page parent de la page',
+                        'pageContent_ids'=>'Spécifie les contenus de la page'
+                    ],
+
+                    // contact
+                    'contact'=>[
+                        'message'=>'Contenu du message'
+                    ]
+                ]
+            ],
+
+            // relation
+            'relation'=>[
+
+                // jsonForm
+                'jsonForm'=>[
+                    'inputText'=>'Champ texte',
+                    'textarea'=>'Champ texte long',
+                    'select'=>'Menu de sélection',
+                    'radio'=>'Boutons radios (un choix)',
+                    'checkbox'=>'Cases à cocher (multiples choix)'
+                ]
+            ],
+
+            // tinycme
+            'tinymce'=>[
+                'paragraph'=>'Paragraphe',
+                'superscript'=>'Exposant',
+                'header2'=>'En-tête 2',
+                'header3'=>'En-tête 3',
+                'header4'=>'En-tête 4',
+                'header5'=>'En-tête 5',
+                'alignLeft'=>'Aligner à gauche',
+                'alignCenter'=>'Aligner au centre',
+                'alignRight'=>'Aligner à droite',
+                'floatLeft'=>'Flotter à gauche',
+                'floatRight'=>'Flotter à droite'
+            ]
+        ]
+    ];
 }
 
 // config

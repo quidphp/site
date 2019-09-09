@@ -16,37 +16,37 @@ use Quid\Base;
 // class used to make requests to the vimeo API
 class Vimeo extends Core\ServiceVideoAlias
 {
-	// config
-	public static $config = [
-		'required'=>['provider_url','video_id','html'],
-		'video'=>[
-			'name'=>'title',
-			'date'=>'upload_date',
-			'description'=>'description',
-			'absolute'=>[self::class,'videoAbsolute'],
-			'thumbnail'=>'thumbnail_url',
-			'html'=>'html'],
-		'target'=>'https://vimeo.com/api/oembed.json?url=%value%' // uri target pour vimeo
-	];
+    // config
+    public static $config = [
+        'required'=>['provider_url','video_id','html'],
+        'video'=>[
+            'name'=>'title',
+            'date'=>'upload_date',
+            'description'=>'description',
+            'absolute'=>[self::class,'videoAbsolute'],
+            'thumbnail'=>'thumbnail_url',
+            'html'=>'html'],
+        'target'=>'https://vimeo.com/api/oembed.json?url=%value%' // uri target pour vimeo
+    ];
 
 
-	// videoAbsolute
-	// retourne l'uri absolut pour la vidéo vimeo
-	// callback utilisé par la classe video
-	public static function videoAbsolute(Main\Video $video):?string
-	{
-		$return = null;
-		$provider = $video->get('provider_url');
-		$videoId = $video->get('video_id');
+    // videoAbsolute
+    // retourne l'uri absolut pour la vidéo vimeo
+    // callback utilisé par la classe video
+    public static function videoAbsolute(Main\Video $video):?string
+    {
+        $return = null;
+        $provider = $video->get('provider_url');
+        $videoId = $video->get('video_id');
 
-		if(!empty($provider) && !empty($videoId))
-		{
-			$change = ['path'=>$videoId];
-			$return = Base\Uri::change($change,$provider);
-		}
+        if(!empty($provider) && !empty($videoId))
+        {
+            $change = ['path'=>$videoId];
+            $return = Base\Uri::change($change,$provider);
+        }
 
-		return $return;
-	}
+        return $return;
+    }
 }
 
 // config

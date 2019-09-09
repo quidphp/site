@@ -17,83 +17,83 @@ use Quid\Main;
 // class to work with a cell containing google maps geo-localization data
 class GoogleMaps extends Core\CellAlias
 {
-	// config
-	public static $config = [];
+    // config
+    public static $config = [];
 
 
-	// export
-	// retourne la valeur pour l'exportation de cellules relation
-	public function export(?array $option=null):array
-	{
-		return $this->exportCommon($this->input(),$option);
-	}
+    // export
+    // retourne la valeur pour l'exportation de cellules relation
+    public function export(?array $option=null):array
+    {
+        return $this->exportCommon($this->input(),$option);
+    }
 
 
-	// localization
-	// retourne l'objet de localization ou null
-	public function localization():?Main\Localization
-	{
-		return $this->get();
-	}
+    // localization
+    // retourne l'objet de localization ou null
+    public function localization():?Main\Localization
+    {
+        return $this->get();
+    }
 
 
-	// html
-	// output la colonne googleMaps sous forme de map simple
-	public function html(?int $zoom=null):?string
-	{
-		$return = null;
-		$localization = $this->localization();
+    // html
+    // output la colonne googleMaps sous forme de map simple
+    public function html(?int $zoom=null):?string
+    {
+        $return = null;
+        $localization = $this->localization();
 
-		if(!empty($localization))
-		$return = $this->col()->html($localization,$zoom);
+        if(!empty($localization))
+        $return = $this->col()->html($localization,$zoom);
 
-		return $return;
-	}
-
-
-	// address
-	// retourne l'adresse formaté à partir de l'objet localization googleMaps
-	public function address():?string
-	{
-		$return = null;
-		$localization = $this->localization();
-
-		if(!empty($localization))
-		$return = $localization->get('address');
-
-		return $return;
-	}
+        return $return;
+    }
 
 
-	// uri
-	// retourne l'uri absolu vers googleMaps
-	public function uri():?string
-	{
-		$return = null;
-		$input = $this->input();
+    // address
+    // retourne l'adresse formaté à partir de l'objet localization googleMaps
+    public function address():?string
+    {
+        $return = null;
+        $localization = $this->localization();
 
-		if(!empty($input))
-		{
-			$service = Site\Service\GoogleMaps::class;
-			$return = $service::uri($input);
-		}
+        if(!empty($localization))
+        $return = $localization->get('address');
 
-		return $return;
-	}
+        return $return;
+    }
 
 
-	// input
-	// retourne l'input de googleMaps
-	public function input():?string
-	{
-		$return = null;
-		$localization = $this->localization();
+    // uri
+    // retourne l'uri absolu vers googleMaps
+    public function uri():?string
+    {
+        $return = null;
+        $input = $this->input();
 
-		if(!empty($localization))
-		$return = $localization->input();
+        if(!empty($input))
+        {
+            $service = Site\Service\GoogleMaps::class;
+            $return = $service::uri($input);
+        }
 
-		return $return;
-	}
+        return $return;
+    }
+
+
+    // input
+    // retourne l'input de googleMaps
+    public function input():?string
+    {
+        $return = null;
+        $localization = $this->localization();
+
+        if(!empty($localization))
+        $return = $localization->input();
+
+        return $return;
+    }
 }
 
 // config

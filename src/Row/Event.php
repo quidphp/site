@@ -18,140 +18,140 @@ use Quid\Base;
 // class to work with a row of the event table
 abstract class Event extends Core\RowAlias implements Main\Contract\Meta
 {
-	// trait
-	use _meta;
+    // trait
+    use _meta;
 
 
-	// config
-	public static $config = [
-		'key'=>['slug_[lang]',0],
-		'cols'=>[
-			'datetimeStart'=>['required'=>true,'general'=>true],
-			'datetimeEnd'=>['required'=>true]],
-		'@cms'=>[
-			'route'=>[
-				'export'=>Lemur\Cms\GeneralExportDialog::class],
-			'specificOperation'=>[self::class,'specificOperation']]
-	];
+    // config
+    public static $config = [
+        'key'=>['slug_[lang]',0],
+        'cols'=>[
+            'datetimeStart'=>['required'=>true,'general'=>true],
+            'datetimeEnd'=>['required'=>true]],
+        '@cms'=>[
+            'route'=>[
+                'export'=>Lemur\Cms\GeneralExportDialog::class],
+            'specificOperation'=>[self::class,'specificOperation']]
+    ];
 
 
-	// category
-	// retourne la catégorie de l'activité
-	abstract public function category():Core\Row;
+    // category
+    // retourne la catégorie de l'activité
+    abstract public function category():Core\Row;
 
 
-	// submitClass
-	// retourne la classe pour s'inscrire à une activité
-	abstract protected static function submitClass():string;
+    // submitClass
+    // retourne la classe pour s'inscrire à une activité
+    abstract protected static function submitClass():string;
 
 
-	// isDay
-	// retourne vrai si l'activité a lieu durant le jour du timestamp donnée en argument
-	// pour les activités à multiple jour, retourne vrai si la date est dans un des jours de l'activité
-	public function isDay(int $timestamp):bool
-	{
-		$return = false;
-		$start = $this['datetimeStart']->value();
-		$end = $this['datetimeEnd']->value();
+    // isDay
+    // retourne vrai si l'activité a lieu durant le jour du timestamp donnée en argument
+    // pour les activités à multiple jour, retourne vrai si la date est dans un des jours de l'activité
+    public function isDay(int $timestamp):bool
+    {
+        $return = false;
+        $start = $this['datetimeStart']->value();
+        $end = $this['datetimeEnd']->value();
 
-		if(is_int($start) && is_int($end))
-		{
-			if(Base\Date::isDay($start,null,$timestamp) || Base\Date::isDay($end,null,$timestamp) || Base\Number::in($start,$timestamp,$end))
-			$return = true;
-		}
+        if(is_int($start) && is_int($end))
+        {
+            if(Base\Date::isDay($start,null,$timestamp) || Base\Date::isDay($end,null,$timestamp) || Base\Number::in($start,$timestamp,$end))
+            $return = true;
+        }
 
-		return $return;
-	}
-
-
-	// date
-	// retourne la date de début et fin de l'activité en une string
-	public function date(?array $option=null):string
-	{
-		return Base\Date::formatStartEnd($this['datetimeStart'],$this['datetimeEnd'],Base\Arr::plus(['format'=>1,'formatDay'=>0],$option));
-	}
+        return $return;
+    }
 
 
-	// exportArray
-	// génère un tableau d'exportation, utilie pour faire un fichier ICS ou ajout au calendrier via office365
-	public function exportArray():array
-	{
-		$return = [];
-
-		$return['dateStart'] = $this['datetimeStart'];
-		$return['dateEnd'] = $this['datetimeEnd'];
-		$return['name'] = $this->cellName();
-		$return['description'] = $this->cellContent();
-		$return['location'] = null;
-		$return['uri'] = null;
-		$return['id'] = $this->primary();
-		$return['app'] = static::boot()->label();
-
-		return $return;
-	}
+    // date
+    // retourne la date de début et fin de l'activité en une string
+    public function date(?array $option=null):string
+    {
+        return Base\Date::formatStartEnd($this['datetimeStart'],$this['datetimeEnd'],Base\Arr::plus(['format'=>1,'formatDay'=>0],$option));
+    }
 
 
-	// office365
-	// créer le lien pour ajouter l'activité au calendrier d'office 365
-	public function office365():string
-	{
-		return Site\Service\Office365::event($this->exportArray());
-	}
+    // exportArray
+    // génère un tableau d'exportation, utilie pour faire un fichier ICS ou ajout au calendrier via office365
+    public function exportArray():array
+    {
+        $return = [];
+
+        $return['dateStart'] = $this['datetimeStart'];
+        $return['dateEnd'] = $this['datetimeEnd'];
+        $return['name'] = $this->cellName();
+        $return['description'] = $this->cellContent();
+        $return['location'] = null;
+        $return['uri'] = null;
+        $return['id'] = $this->primary();
+        $return['app'] = static::boot()->label();
+
+        return $return;
+    }
 
 
-	// canSubscribe
-	// retourne vrai s'il est possible de s'inscrire à l'activité
-	public function canSubscribe(bool $visible=true):bool
-	{
-		return (($visible === false || $this->isVisible()) && $this['subscribe']->isEqual(1))? true:false;
-	}
+    // office365
+    // créer le lien pour ajouter l'activité au calendrier d'office 365
+    public function office365():string
+    {
+        return Site\Service\Office365::event($this->exportArray());
+    }
 
 
-	// isSubscribed
-	// retourne vrai si l'utilisateur est inscrit à l'activité
-	public function isSubscribed(Main\Contract\User $user):bool
-	{
-		return static::submitClass()::exists($this,$user);
-	}
+    // canSubscribe
+    // retourne vrai s'il est possible de s'inscrire à l'activité
+    public function canSubscribe(bool $visible=true):bool
+    {
+        return (($visible === false || $this->isVisible()) && $this['subscribe']->isEqual(1))? true:false;
+    }
 
 
-	// subscribe
-	// inscrit l'utilisateur à l'activité
-	public function subscribe(Main\Contract\User $user,?array $option=null):?EventSubmit
-	{
-		return static::submitClass()::subscribe($this,$user,$option);
-	}
+    // isSubscribed
+    // retourne vrai si l'utilisateur est inscrit à l'activité
+    public function isSubscribed(Main\Contract\User $user):bool
+    {
+        return static::submitClass()::exists($this,$user);
+    }
 
 
-	// unsubscribe
-	// désinscrit l'utilisateur à l'activité
-	public function unsubscribe(Main\Contract\User $user,?array $option=null):?int
-	{
-		return static::submitClass()::unsubscribe($this,$user,$option);
-	}
+    // subscribe
+    // inscrit l'utilisateur à l'activité
+    public function subscribe(Main\Contract\User $user,?array $option=null):?EventSubmit
+    {
+        return static::submitClass()::subscribe($this,$user,$option);
+    }
 
 
-	// specificOperation
-	// dans le cms, permet l'exportation des inscriptions en CSV
-	public static function specificOperation(self $row):string
-	{
-		$r = '';
+    // unsubscribe
+    // désinscrit l'utilisateur à l'activité
+    public function unsubscribe(Main\Contract\User $user,?array $option=null):?int
+    {
+        return static::submitClass()::unsubscribe($this,$user,$option);
+    }
 
-		if($row->table()->hasPermission('specificOperation'))
-		{
-			$export = $row->routeClass('export');
-			$table = EventSubmit::tableFromFqcn();
 
-			if(!empty($export) && $row->isUpdateable() && $row->canSubscribe(false) && $table->hasPermission('export') && $row->hasRelationChilds($table))
-			{
-				$segment = ['table'=>$table,'order'=>'id','direction'=>'desc','filter'=>['event_id'=>$row]];
-				$export = $export::makeOverload($segment)->initSegment();
-				$r .= $export->aDialog();
-			}
-		}
+    // specificOperation
+    // dans le cms, permet l'exportation des inscriptions en CSV
+    public static function specificOperation(self $row):string
+    {
+        $r = '';
 
-		return $r;
-	}
+        if($row->table()->hasPermission('specificOperation'))
+        {
+            $export = $row->routeClass('export');
+            $table = EventSubmit::tableFromFqcn();
+
+            if(!empty($export) && $row->isUpdateable() && $row->canSubscribe(false) && $table->hasPermission('export') && $row->hasRelationChilds($table))
+            {
+                $segment = ['table'=>$table,'order'=>'id','direction'=>'desc','filter'=>['event_id'=>$row]];
+                $export = $export::makeOverload($segment)->initSegment();
+                $r .= $export->aDialog();
+            }
+        }
+
+        return $r;
+    }
 }
 
 // config

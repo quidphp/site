@@ -15,58 +15,58 @@ use Quid\Base;
 // class that grants some static methods related to office365
 class Office365 extends Core\ServiceAlias
 {
-	// config
-	public static $config = [
-		'uri'=>'https://outlook.office.com/owa/'
-	];
+    // config
+    public static $config = [
+        'uri'=>'https://outlook.office.com/owa/'
+    ];
 
 
-	// mailto
-	// génère un lien mailto pour office365
-	public static function mailto(string $email):string
-	{
-		$return = null;
+    // mailto
+    // génère un lien mailto pour office365
+    public static function mailto(string $email):string
+    {
+        $return = null;
 
-		if(Base\Validate::isEmail($email))
-		{
-			$uri = static::$config['uri'];
-			$query = [];
-			$query['path'] = '/mail/action/compose';
-			$query['to'] = $email;
+        if(Base\Validate::isEmail($email))
+        {
+            $uri = static::$config['uri'];
+            $query = [];
+            $query['path'] = '/mail/action/compose';
+            $query['to'] = $email;
 
-			$return = Base\Uri::changeQuery($query,$uri);
-		}
+            $return = Base\Uri::changeQuery($query,$uri);
+        }
 
-		return $return;
-	}
+        return $return;
+    }
 
 
-	// event
-	// génère un lien d'ajout au calendrier pour office365
-	public static function event(array $array):?string
-	{
-		$return = null;
-		$array = Base\Obj::cast($array);
+    // event
+    // génère un lien d'ajout au calendrier pour office365
+    public static function event(array $array):?string
+    {
+        $return = null;
+        $array = Base\Obj::cast($array);
 
-		if(Base\Arr::keysExists(['dateStart','dateEnd','name','description','location'],$array))
-		{
-			if(is_int($array['dateStart']) && is_int($array['dateEnd']) && is_string($array['name']))
-			{
-				$uri = static::$config['uri'];
-				$query = [];
-				$query['path'] = '/calendar/action/compose';
-				$query['subject'] = Base\Str::excerpt(255,$array['name'],['removeLineBreaks'=>true]);
-				$query['location'] = Base\Str::excerpt(255,$array['location'] ?? '',['removeLineBreaks'=>true]);
-				$query['body'] = Base\Str::excerpt(255,$array['description'] ?? '',['removeLineBreaks'=>true]);
-				$query['startdt'] = Base\Date::format('office365',$array['dateStart']);
-				$query['enddt'] = Base\Date::format('office365',$array['dateEnd']);
+        if(Base\Arr::keysExists(['dateStart','dateEnd','name','description','location'],$array))
+        {
+            if(is_int($array['dateStart']) && is_int($array['dateEnd']) && is_string($array['name']))
+            {
+                $uri = static::$config['uri'];
+                $query = [];
+                $query['path'] = '/calendar/action/compose';
+                $query['subject'] = Base\Str::excerpt(255,$array['name'],['removeLineBreaks'=>true]);
+                $query['location'] = Base\Str::excerpt(255,$array['location'] ?? '',['removeLineBreaks'=>true]);
+                $query['body'] = Base\Str::excerpt(255,$array['description'] ?? '',['removeLineBreaks'=>true]);
+                $query['startdt'] = Base\Date::format('office365',$array['dateStart']);
+                $query['enddt'] = Base\Date::format('office365',$array['dateEnd']);
 
-				$return = Base\Uri::changeQuery($query,$uri);
-			}
-		}
+                $return = Base\Uri::changeQuery($query,$uri);
+            }
+        }
 
-		return $return;
-	}
+        return $return;
+    }
 }
 
 // config

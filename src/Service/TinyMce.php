@@ -14,16 +14,16 @@ use Quid\Core;
 // class that provides a method to integrate tinyMce WYSIWYG editor
 class TinyMce extends Core\ServiceAlias
 {
-	// config
-	public static $config = [];
+    // config
+    public static $config = [];
 
 
-	// docOpenJs
-	// retourne le javascript à lier en début de document
-	public function docOpenJs()
-	{
-		return 'js/tinymce/tinymce.min.js';
-	}
+    // docOpenJs
+    // retourne le javascript à lier en début de document
+    public function docOpenJs()
+    {
+        return 'js/tinymce/tinymce.min.js';
+    }
 }
 
 // config

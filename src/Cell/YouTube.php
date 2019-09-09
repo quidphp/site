@@ -14,8 +14,8 @@ use Quid\Core;
 // class for working with a cell containing a youTube video
 class YouTube extends Core\Cell\VideoAlias
 {
-	// config
-	public static $config = [];
+    // config
+    public static $config = [];
 }
 
 // config
