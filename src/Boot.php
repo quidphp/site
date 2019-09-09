@@ -44,7 +44,6 @@ abstract class Boot extends Lemur\Boot
 			'sessionVersionMatch'=>false,
 			'config'=>[
 				Core\Route::class=>[
-					'metaTitle'=>['typeLabel'=>true],
 					'jsInit'=>'$(document).ready(function() { $(this).navigation(); });',
 					'docOpen'=>[
 						'head'=>[
