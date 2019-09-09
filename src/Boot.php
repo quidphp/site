@@ -15,82 +15,6 @@ use Quid\Core;
 // extended abstract class for the object that bootstraps the app and cms
 abstract class Boot extends Lemur\Boot
 {
-<<<<<<< HEAD
-	// config
-	public static $config = [
-		'types'=>['app','cms'],
-		'finderShortcut'=>[
-			'vendorSite'=>'[vendor]/quidphp/site'],
-		'symlink'=>[
-			'[vendorSite]/js/tinymce'=>'[publicJs]/tinymce'],
-		'concatenatePhp'=>[
-			'quid'=>[
-				'option'=>[
-					'namespace'=>[
-						__NAMESPACE__=>['closure'=>true],
-						Test::class=>['closure'=>false]]]]],
-		'config'=>[
-			Core\Db::class=>[
-				'option'=>[
-					'cols'=>[
-						'content_en'=>['class'=>Col\TinyMce::class],
-						'content_fr'=>['class'=>Col\TinyMce::class],
-						'content'=>['class'=>Col\TinyMce::class],
-						'googleMaps'=>['class'=>Col\GoogleMaps::class,'panel'=>'localization'],
-						'youTube'=>['class'=>Col\YouTube::class,'general'=>false,'panel'=>'media'],
-						'vimeo'=>['class'=>Col\Vimeo::class,'general'=>false,'panel'=>'media']]]]],
-		'@app'=>[
-			'service'=>array(
-				'jQuery'=>Lemur\Service\JQuery::class),
-			'sessionVersionMatch'=>false,
-			'config'=>[
-				Core\Route::class=>[
-					'jsInit'=>'$(document).ready(function() { $(this).navigation(); });',
-					'docOpen'=>[
-						'head'=>[
-							'css'=>[
-								'type'=>'css/%type%.css'],
-							'js'=>[
-								'include'=>'js/include.js',
-								'type'=>'js/%type%.js']],
-						'wrapper'=>['#wrapper']]]],
-			'compileScss'=>[
-				'[publicCss]/app.css'=>[
-					0=>'[vendorLemur]/scss/normalize/normalize.css',
-					1=>'[vendorLemur]/scss/include/include.scss',
-					2=>'[vendorLemur]/scss/include/component.scss',
-					50=>'[privateScss]/app/app.scss']],
-			'concatenateJs'=>[
-				'[publicJs]/include.js'=>[
-					0=>'[vendorLemur]/js/include',
-					1=>'[vendorSite]/js/include'],
-				'[publicJs]/app.js'=>'[privateJs]/app']],
-		'@cms'=>[
-			'service'=>array(
-				'tinymce'=>Service\TinyMce::class),
-			'compileScss'=>[
-				'[publicCss]/cms.css'=>[
-					30=>'[vendorSite]/scss/cms/form.scss'],
-				'[publicCss]/tinymce.css'=>[
-					0=>'[vendorLemur]/scss/include/include.scss',
-					1=>'[privateScss]/cms/include.scss',
-					30=>'[vendorSite]/scss/cms/tinymce.scss',
-					50=>'[privateScss]/cms/tinymce.scss']],
-			'concatenateJs'=>[
-				'[publicJs]/include.js'=>[
-					1=>'[vendorSite]/js/include'],
-				'[publicJs]/cms.js'=>[
-					1=>'[vendorSite]/js/cms']]]
-	];
-	
-	
-	// isApp
-	// retourne vrai si la clé de l'application roulant présentement est app
-	public function isApp():bool
-	{
-		return ($this->type() === 'app')? true:false;
-	}
-=======
     // config
     public static $config = [
         'types'=>['app','cms'],
@@ -120,7 +44,6 @@ abstract class Boot extends Lemur\Boot
             'sessionVersionMatch'=>false,
             'config'=>[
                 Core\Route::class=>[
-                    'metaTitle'=>['typeLabel'=>true],
                     'jsInit'=>'$(document).ready(function() { $(this).navigation(); });',
                     'docOpen'=>[
                         'head'=>[
@@ -166,7 +89,6 @@ abstract class Boot extends Lemur\Boot
     {
         return ($this->type() === 'app')? true:false;
     }
->>>>>>> 06bd13f49086b6dfb0541a109eb3c040c698f78e
 }
 
 // config
