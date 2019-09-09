@@ -17,60 +17,60 @@ use Quid\Base;
 // class for an email newsletter column (subscribes to a third-party newsletter)
 class EmailNewsletter extends Core\Col\EmailAlias
 {
-	// config
-	public static $config = [
-		'service'=>'newsletter' // custom, nom du service d'infolettre
-	];
+    // config
+    public static $config = [
+        'service'=>'newsletter' // custom, nom du service d'infolettre
+    ];
 
 
-	// formComplex
-	// génère le formulaire complex pour emailNewsletter
-	public function formComplex($value=true,?array $attr=null,?array $option=null):string
-	{
-		$return = parent::formComplex($value,$attr,$option);
+    // formComplex
+    // génère le formulaire complex pour emailNewsletter
+    public function formComplex($value=true,?array $attr=null,?array $option=null):string
+    {
+        $return = parent::formComplex($value,$attr,$option);
 
-		$email = Base\Obj::cast($value);
-		if(Base\Validate::isEmail($email))
-		$return .= $this->formNewsletter($email);
+        $email = Base\Obj::cast($value);
+        if(Base\Validate::isEmail($email))
+        $return .= $this->formNewsletter($email);
 
-		return $return;
-	}
-
-
-	// formNewsletter
-	// génère le bloc indiquant si le email est dans l'infolettre
-	protected function formNewsletter(string $email):string
-	{
-		$return = '';
-		$service = $this->getService();
-
-		if(!empty($service))
-		{
-			$lang = $this->db()->lang();
-			$label = $lang->text('emailNewsletter/label');
-			$subscribed = $service->isSubscribed($email);
-			$return .= Html::divOp('subscribed');
-			$return .= Html::span($label.':','label');
-			$return .= Html::span($lang->bool($subscribed),'value');
-			$return .= Html::divCl();
-		}
-
-		return $return;
-	}
+        return $return;
+    }
 
 
-	// getService
-	// retourne le service mailchimp
-	public function getService():?Site\Contract\Newsletter
-	{
-		$return = null;
-		$service = static::$config['service'];
+    // formNewsletter
+    // génère le bloc indiquant si le email est dans l'infolettre
+    protected function formNewsletter(string $email):string
+    {
+        $return = '';
+        $service = $this->getService();
 
-		if(is_string($service))
-		$return = $this->service($service);
+        if(!empty($service))
+        {
+            $lang = $this->db()->lang();
+            $label = $lang->text('emailNewsletter/label');
+            $subscribed = $service->isSubscribed($email);
+            $return .= Html::divOp('subscribed');
+            $return .= Html::span($label.':','label');
+            $return .= Html::span($lang->bool($subscribed),'value');
+            $return .= Html::divCl();
+        }
 
-		return $return;
-	}
+        return $return;
+    }
+
+
+    // getService
+    // retourne le service mailchimp
+    public function getService():?Site\Contract\Newsletter
+    {
+        $return = null;
+        $service = static::$config['service'];
+
+        if(is_string($service))
+        $return = $this->service($service);
+
+        return $return;
+    }
 }
 
 // config

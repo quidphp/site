@@ -16,25 +16,25 @@ use Quid\Base;
 // class to work with a row of the news table
 class News extends Core\RowAlias implements Main\Contract\Meta
 {
-	// trait
-	use _meta;
+    // trait
+    use _meta;
 
 
-	// config
-	public static $config = [
-		'key'=>['slug_[lang]',0],
-		'@app'=>[
-			'order'=>['date'=>'desc'],
-			'where'=>[['datetimeStart','<=',[Base\Date::class,'timestamp']]]]
-	];
+    // config
+    public static $config = [
+        'key'=>['slug_[lang]',0],
+        '@app'=>[
+            'order'=>['date'=>'desc'],
+            'where'=>[['datetimeStart','<=',[Base\Date::class,'timestamp']]]]
+    ];
 
 
-	// isVisible
-	// retourne vrai si la nouvelle est visible
-	public function isVisible():bool
-	{
-		return (parent::isVisible() && $this['datetimeStart']->isAfter())? true:false;
-	}
+    // isVisible
+    // retourne vrai si la nouvelle est visible
+    public function isVisible():bool
+    {
+        return (parent::isVisible() && $this['datetimeStart']->isAfter())? true:false;
+    }
 }
 
 // config

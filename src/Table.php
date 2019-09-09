@@ -14,14 +14,14 @@ use Quid\Lemur;
 // extended class to represent an existing table within a database, adds app config
 class Table extends Lemur\Table
 {
-	// config
-	public static $config = [
-		'@app'=>[
-			'where'=>true,
-			'search'=>false,
-			'route'=>[
-				'cms'=>Lemur\Cms\Specific::class]]
-	];
+    // config
+    public static $config = [
+        '@app'=>[
+            'where'=>true,
+            'search'=>false,
+            'route'=>[
+                'cms'=>Lemur\Cms\Specific::class]]
+    ];
 }
 
 // config

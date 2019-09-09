@@ -13,20 +13,20 @@ namespace Quid\Site\Route;
 // trait that provides methods related to generating breadcrumbs for a page
 trait _pageBreadcrumbs
 {
-	// getBreadcrumbs
-	// génère les breadcrumbs pour la page
-	public function getBreadcrumbs():array
-	{
-		$return = [];
-		$row = $this->row();
-		$breadcrumbs = $row->breadcrumb();
+    // getBreadcrumbs
+    // génère les breadcrumbs pour la page
+    public function getBreadcrumbs():array
+    {
+        $return = [];
+        $row = $this->row();
+        $breadcrumbs = $row->breadcrumb();
 
-		foreach ($breadcrumbs as $breadcrumb)
-		{
-			$return[] = $breadcrumb->route();
-		}
+        foreach ($breadcrumbs as $breadcrumb)
+        {
+            $return[] = $breadcrumb->route();
+        }
 
-		return $return;
-	}
+        return $return;
+    }
 }
 ?>

@@ -15,61 +15,61 @@ use Quid\Core;
 // trait that provides basic logic for a page route
 trait _page
 {
-	// dynamique
-	protected $row = null;
+    // dynamique
+    protected $row = null;
 
 
-	// onMake
-	// lors de la construction de la route
-	protected function onMake():void
-	{
-		$this->makeRow();
+    // onMake
+    // lors de la construction de la route
+    protected function onMake():void
+    {
+        $this->makeRow();
 
-		return;
-	}
-
-
-	// onBefore
-	// avant le lancement de la route
-	protected function onBefore()
-	{
-		$return = parent::onBefore();
-
-		if($return !== false)
-		{
-			if($this->rowExists() && $this->row()->isVisible())
-			$return = true;
-		}
-
-		return $return;
-	}
+        return;
+    }
 
 
-	// rowExists
-	// retourne vrai si la row existe
-	public function rowExists():bool
-	{
-		return (!empty($this->row))? true:false;
-	}
+    // onBefore
+    // avant le lancement de la route
+    protected function onBefore()
+    {
+        $return = parent::onBefore();
+
+        if($return !== false)
+        {
+            if($this->rowExists() && $this->row()->isVisible())
+            $return = true;
+        }
+
+        return $return;
+    }
 
 
-	// row
-	// retourne la row
-	public function row():Core\Row
-	{
-		return $this->row;
-	}
+    // rowExists
+    // retourne vrai si la row existe
+    public function rowExists():bool
+    {
+        return (!empty($this->row))? true:false;
+    }
 
 
-	// makeRow
-	// construit l'objet row pour la route
-	protected function makeRow():self
-	{
-		$row = static::$config['rowObj'] ?? null;
-		if(is_int($row))
-		$return = $this->row = Site\Row\Page::select($row);
+    // row
+    // retourne la row
+    public function row():Core\Row
+    {
+        return $this->row;
+    }
 
-		return $this;
-	}
+
+    // makeRow
+    // construit l'objet row pour la route
+    protected function makeRow():self
+    {
+        $row = static::$config['rowObj'] ?? null;
+        if(is_int($row))
+        $return = $this->row = Site\Row\Page::select($row);
+
+        return $this;
+    }
 }
 ?>

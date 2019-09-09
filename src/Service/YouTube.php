@@ -16,45 +16,45 @@ use Quid\Base;
 // class that can be used to make requests to the youTube API
 class YouTube extends Core\ServiceVideoAlias
 {
-	// config
-	public static $config = [
-		'required'=>['provider_url','thumbnail_url','html'],
-		'video'=>[
-			'name'=>'title',
-			'absolute'=>[self::class,'videoAbsolute'],
-			'thumbnail'=>'thumbnail_url',
-			'html'=>'html'],
-		'target'=>'https://www.youtube.com/oembed?url=%value%&format=json' // uri target pour youTube
-	];
+    // config
+    public static $config = [
+        'required'=>['provider_url','thumbnail_url','html'],
+        'video'=>[
+            'name'=>'title',
+            'absolute'=>[self::class,'videoAbsolute'],
+            'thumbnail'=>'thumbnail_url',
+            'html'=>'html'],
+        'target'=>'https://www.youtube.com/oembed?url=%value%&format=json' // uri target pour youTube
+    ];
 
 
-	// videoAbsolute
-	// retourne l'uri absolut pour la vidéo youTube
-	// callback utilisé par la classe video
-	public static function videoAbsolute(Main\Video $video):?string
-	{
-		$return = null;
-		$provider = $video->get('provider_url');
-		$thumbnail = $video->get('thumbnail_url');
+    // videoAbsolute
+    // retourne l'uri absolut pour la vidéo youTube
+    // callback utilisé par la classe video
+    public static function videoAbsolute(Main\Video $video):?string
+    {
+        $return = null;
+        $provider = $video->get('provider_url');
+        $thumbnail = $video->get('thumbnail_url');
 
-		if(!empty($provider) && !empty($thumbnail))
-		{
-			$path = Base\Uri::path($thumbnail);
-			$x = Base\Path::arr($path);
-			$key = $x[1] ?? null;
+        if(!empty($provider) && !empty($thumbnail))
+        {
+            $path = Base\Uri::path($thumbnail);
+            $x = Base\Path::arr($path);
+            $key = $x[1] ?? null;
 
-			if(!empty($key))
-			{
-				$query = ['v'=>$key];
-				$change = [];
-				$change['path'] = 'watch';
-				$change['query'] = $query;
-				$return = Base\Uri::change($change,$provider);
-			}
-		}
+            if(!empty($key))
+            {
+                $query = ['v'=>$key];
+                $change = [];
+                $change['path'] = 'watch';
+                $change['query'] = $query;
+                $return = Base\Uri::change($change,$provider);
+            }
+        }
 
-		return $return;
-	}
+        return $return;
+    }
 }
 
 // config

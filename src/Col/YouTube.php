@@ -15,12 +15,12 @@ use Quid\Core;
 // class for a column containing a youTube video
 class YouTube extends Core\Col\VideoAlias
 {
-	// config
-	public static $config = [
-		'cell'=>Site\Cell\YouTube::class,
-		'preValidate'=>['uriHost'=>['youtube.com','www.youtube.com']],
-		'service'=>'youTube' // custom, clé du service utilisé
-	];
+    // config
+    public static $config = [
+        'cell'=>Site\Cell\YouTube::class,
+        'preValidate'=>['uriHost'=>['youtube.com','www.youtube.com']],
+        'service'=>'youTube' // custom, clé du service utilisé
+    ];
 }
 
 // config

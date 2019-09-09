@@ -14,72 +14,72 @@ use Quid\Site;
 // trait that provides basic logic for a page route within a section
 trait _pageSection
 {
-	// trait
-	use _page;
+    // trait
+    use _page;
 
 
-	// dynamique
-	protected $section = null;
+    // dynamique
+    protected $section = null;
 
 
-	// onMake
-	// lors de la construction de la route
-	protected function onMake():void
-	{
-		$this->makeRow();
-		$this->makeSection();
+    // onMake
+    // lors de la construction de la route
+    protected function onMake():void
+    {
+        $this->makeRow();
+        $this->makeSection();
 
-		return;
-	}
-
-
-	// onBefore
-	// avant le lancement de la route
-	protected function onBefore()
-	{
-		$return = false;
-
-		if($this->rowExists() && $this->sectionExists())
-		{
-			if($this->row()->isVisible() && $this->section()->isVisible())
-			{
-				if($this->row()->section() === $this->section())
-				$return = true;
-			}
-		}
-
-		return $return;
-	}
+        return;
+    }
 
 
-	// sectionExists
-	// retourne vrai si la section existe
-	public function sectionExists():bool
-	{
-		return (!empty($this->section))? true:false;
-	}
+    // onBefore
+    // avant le lancement de la route
+    protected function onBefore()
+    {
+        $return = false;
+
+        if($this->rowExists() && $this->sectionExists())
+        {
+            if($this->row()->isVisible() && $this->section()->isVisible())
+            {
+                if($this->row()->section() === $this->section())
+                $return = true;
+            }
+        }
+
+        return $return;
+    }
 
 
-	// section
-	// retourne la section
-	public function section():Site\Row\Section
-	{
-		return $this->section;
-	}
+    // sectionExists
+    // retourne vrai si la section existe
+    public function sectionExists():bool
+    {
+        return (!empty($this->section))? true:false;
+    }
 
 
-	// makeSection
-	// construit la section, utilisé dans onMake
-	protected function makeSection():self
-	{
-		if(empty($this->section))
-		{
-			$section = static::$config['section'] ?? null;
-			if(is_int($section))
-			$this->section = Site\Row\Section::row($section);
-		}
+    // section
+    // retourne la section
+    public function section():Site\Row\Section
+    {
+        return $this->section;
+    }
 
-		return $this;
-	}
+
+    // makeSection
+    // construit la section, utilisé dans onMake
+    protected function makeSection():self
+    {
+        if(empty($this->section))
+        {
+            $section = static::$config['section'] ?? null;
+            if(is_int($section))
+            $this->section = Site\Row\Section::row($section);
+        }
+
+        return $this;
+    }
 }
 ?>
