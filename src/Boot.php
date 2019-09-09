@@ -17,7 +17,8 @@ abstract class Boot extends Lemur\Boot
 {
 	// config
 	public static $config = [
-		'finderShortcut'=>[ // shortcut pour finder
+		'types'=>['app','cms'],
+		'finderShortcut'=>[
 			'vendorSite'=>'[vendor]/quidphp/site'],
 		'symlink'=>[
 			'[vendorSite]/js/tinymce'=>'[publicJs]/tinymce'],
@@ -38,6 +39,9 @@ abstract class Boot extends Lemur\Boot
 						'youTube'=>['class'=>Col\YouTube::class,'general'=>false,'panel'=>'media'],
 						'vimeo'=>['class'=>Col\Vimeo::class,'general'=>false,'panel'=>'media']]]]],
 		'@app'=>[
+			'service'=>array(
+				'jQuery'=>Lemur\Service\JQuery::class),
+			'sessionVersionMatch'=>false,
 			'config'=>[
 				Core\Route::class=>[
 					'metaTitle'=>['typeLabel'=>true],
@@ -47,7 +51,6 @@ abstract class Boot extends Lemur\Boot
 							'css'=>[
 								'type'=>'css/%type%.css'],
 							'js'=>[
-								'jquery'=>'js/jquery/jquery.js',
 								'include'=>'js/include.js',
 								'type'=>'js/%type%.js']],
 						'wrapper'=>['#wrapper']]]],
@@ -63,12 +66,8 @@ abstract class Boot extends Lemur\Boot
 					1=>'[vendorSite]/js/include'],
 				'[publicJs]/app.js'=>'[privateJs]/app']],
 		'@cms'=>[
-			'config'=>[
-				Core\Route::class=>[
-					'docOpen'=>[
-						'head'=>[
-							'js'=>[
-								'tinymce'=>'js/tinymce/tinymce.min.js']]]]],
+			'service'=>array(
+				'tinymce'=>Service\TinyMce::class),
 			'compileScss'=>[
 				'[publicCss]/cms.css'=>[
 					30=>'[vendorSite]/scss/cms/form.scss'],
@@ -83,6 +82,14 @@ abstract class Boot extends Lemur\Boot
 				'[publicJs]/cms.js'=>[
 					1=>'[vendorSite]/js/cms']]]
 	];
+	
+	
+	// isApp
+	// retourne vrai si la clé de l'application roulant présentement est app
+	public function isApp():bool
+	{
+		return ($this->type() === 'app')? true:false;
+	}
 }
 
 // config

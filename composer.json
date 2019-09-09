@@ -1,7 +1,7 @@
 {
     "name": "quidphp/site",
 	"type": "library",
-    "description": "TODO",
+    "description": "Extended platform to build a website using the QuidPHP framework and LemurCMS",
     "keywords": ["quidphp","quid","framework","cms"],
     "homepage": "https://quidphp.com",
     "license": "MIT",
