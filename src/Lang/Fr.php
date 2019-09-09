@@ -136,16 +136,16 @@ class Fr extends Lemur\Lang\Fr
 				'newsletterSubmit'=>'Infolettre - Soumettre',
 			]
 		],
-		
+
 		// relation
-		'relation'=>array(
-				
+		'relation'=>[
+
 			// contextType
-			'contextType'=>array(
+			'contextType'=>[
 				'app'=>'Application'
-			)
-		),
-		
+			]
+		],
+
 		// cms
 		'@cms'=>[
 
@@ -222,7 +222,7 @@ class Fr extends Lemur\Lang\Fr
 
 			// relation
 			'relation'=>[
-				
+
 				// jsonForm
 				'jsonForm'=>[
 					'inputText'=>'Champ texte',

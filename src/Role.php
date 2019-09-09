@@ -16,9 +16,9 @@ abstract class Role extends Lemur\Role
 {
 	// config
 	public static $config = [
-		'can'=>array(
-			'login'=>array('app'=>false)
-		)
+		'can'=>[
+			'login'=>['app'=>false]
+		]
 	];
 }
 

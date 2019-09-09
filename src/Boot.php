@@ -39,8 +39,8 @@ abstract class Boot extends Lemur\Boot
 						'youTube'=>['class'=>Col\YouTube::class,'general'=>false,'panel'=>'media'],
 						'vimeo'=>['class'=>Col\Vimeo::class,'general'=>false,'panel'=>'media']]]]],
 		'@app'=>[
-			'service'=>array(
-				'jQuery'=>Lemur\Service\JQuery::class),
+			'service'=>[
+				'jQuery'=>Lemur\Service\JQuery::class],
 			'sessionVersionMatch'=>false,
 			'config'=>[
 				Core\Route::class=>[
@@ -66,8 +66,8 @@ abstract class Boot extends Lemur\Boot
 					1=>'[vendorSite]/js/include'],
 				'[publicJs]/app.js'=>'[privateJs]/app']],
 		'@cms'=>[
-			'service'=>array(
-				'tinymce'=>Service\TinyMce::class),
+			'service'=>[
+				'tinymce'=>Service\TinyMce::class],
 			'compileScss'=>[
 				'[publicCss]/cms.css'=>[
 					30=>'[vendorSite]/scss/cms/form.scss'],
@@ -82,8 +82,8 @@ abstract class Boot extends Lemur\Boot
 				'[publicJs]/cms.js'=>[
 					1=>'[vendorSite]/js/cms']]]
 	];
-	
-	
+
+
 	// isApp
 	// retourne vrai si la clé de l'application roulant présentement est app
 	public function isApp():bool

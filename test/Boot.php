@@ -22,14 +22,14 @@ class Boot extends Base\Test
 		// prepare
 		$boot = $data['boot'];
 		$lang = $boot->lang();
-		
+
 		// isApp
 		assert(!$boot->isApp());
 
 		// boot
 		assert($boot->langContentClass('en') === Site\Lang\En::class);
 		assert($boot->service('googleMaps') instanceof Core\ServiceRequest);
-		
+
 		// lang
 		assert($lang->existsRelation('contextType/app'));
 		assert($lang->existsRelation('contextType/app','en'));
@@ -39,7 +39,7 @@ class Boot extends Base\Test
 		assert($lang->relation('contextType/app') === 'Application');
 		assert($lang->relation('contextType/app','en') === 'Application');
 		assert($lang->relation('jsonForm') !== $lang->relation('jsonForm',null,false));
-		
+
 		return true;
 	}
 }
