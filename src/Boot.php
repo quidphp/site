@@ -58,12 +58,12 @@ abstract class Boot extends Lemur\Boot
                     0=>'[vendorLemur]/scss/normalize/normalize.css',
                     1=>'[vendorLemur]/scss/include/include.scss',
                     2=>'[vendorLemur]/scss/include/component.scss',
-                    50=>'[privateScss]/app/app.scss']],
+                    50=>'[scss]/app/app.scss']],
             'concatenateJs'=>[
                 '[publicJs]/include.js'=>[
                     0=>'[vendorLemur]/js/include',
                     1=>'[vendorSite]/js/include'],
-                '[publicJs]/app.js'=>'[privateJs]/app']],
+                '[publicJs]/app.js'=>'[js]/app']],
         '@cms'=>[
             'service'=>[
                 'tinymce'=>Service\TinyMce::class],
@@ -72,9 +72,9 @@ abstract class Boot extends Lemur\Boot
                     30=>'[vendorSite]/scss/cms/form.scss'],
                 '[publicCss]/tinymce.css'=>[
                     0=>'[vendorLemur]/scss/include/include.scss',
-                    1=>'[privateScss]/cms/include.scss',
+                    1=>'[scss]/cms/include.scss',
                     30=>'[vendorSite]/scss/cms/tinymce.scss',
-                    50=>'[privateScss]/cms/tinymce.scss']],
+                    50=>'[scss]/cms/tinymce.scss']],
             'concatenateJs'=>[
                 '[publicJs]/include.js'=>[
                     1=>'[vendorSite]/js/include'],

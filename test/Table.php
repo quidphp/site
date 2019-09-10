@@ -32,6 +32,10 @@ class Table extends Base\Test
         $tinymce = $tb['wysiwyg'];
         $form = $tb['form'];
         $myVideo = $tb['myVideo'];
+        $email = $tb['email'];
+        
+        // email
+        assert($email->get() === "<a href='mailto:default@def.james'>default@def.james</a>");
 
         // emailNewsletter
 
