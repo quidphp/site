@@ -19,6 +19,7 @@ Once installed, the **Quid\Site** namespace will be available within your PHP ap
 ## Requirement
 **QuidPHP/Site** requires the following:
 - PHP 7.3+
+- All other requirements specified in [quidphp/core](https://github.com/quidphp/core)
 
 ## Dependency
 **QuidPHP/Site** has the following dependencies:
@@ -54,7 +55,7 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
 - *Core overloading*: This namespace overloads many classes from Quid\Core and Quid\Lemur.
 
 ### Overview
-**QuidPHP/Site** contains 57 classes and traits. Here is an overview:
+**QuidPHP/Site** contains 60 classes and traits. Here is an overview:
 - [Boot](src/Boot.php) | Extended abstract class for the object that bootstraps the app and cms
 - [Cell](src/Cell)
     - [GoogleMaps](src/Cell/GoogleMaps.php) | Class to work with a cell containing google maps geo-localization data
@@ -77,6 +78,7 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
 - [Lang](src/Lang)
     - [En](src/Lang/En.php) | English language content used by this namespace
     - [Fr](src/Lang/Fr.php) | French language content used by this namespace
+- [Role](src/Role.php) | Extended abstract class that provides app logic for a role
 - [Route](src/Route)
     - [ContactSubmit](src/Route/ContactSubmit.php) | Abstract class for a contact submit route
     - [NewsletterSubmit](src/Route/NewsletterSubmit.php) | Abstract class for a newsletter submit route
@@ -117,8 +119,10 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
     - [Mailchimp](src/Service/Mailchimp.php) | Class that provides some methods to communication with mailchimp (subscribe to a list)
     - [Office365](src/Service/Office365.php) | Class that grants some static methods related to office365
     - [PdfCrowd](src/Service/PdfCrowd.php) | Class that provides some methods to communication with pdfcrowd (and generate a pdf from html)
+    - [TinyMce](src/Service/TinyMce.php) | Class that provides a method to integrate tinyMce WYSIWYG editor
     - [Vimeo](src/Service/Vimeo.php) | Class used to make requests to the vimeo API
     - [YouTube](src/Service/YouTube.php) | Class that can be used to make requests to the youTube API
+- [Table](src/Table.php) | Extended class to represent an existing table within a database, adds app config
 	
 ### Testing
 **QuidPHP/Site** contains 3 test classes:
