@@ -30,17 +30,8 @@ class En extends Lemur\Lang\En
             // label
             'label'=>[
                 'contact'=>'Contact',
-                'document'=>'Document',
-                'event'=>'Event',
-                'eventSubmit'=>'Event - Subscription',
-                'form'=>'Form',
-                'formSubmit'=>'Form - Answer',
                 'media'=>'Media',
-                'news'=>'News',
                 'page'=>'Page',
-                'pageContent'=>'Contenu de page',
-                'poll'=>'Poll',
-                'pollSubmit'=>'Poll - Answer',
                 'section'=>'Section']
         ],
 
@@ -174,17 +165,8 @@ class En extends Lemur\Lang\En
                 // description
                 'description'=>[
                     'contact'=>'Archive messages sent via the contact page form',
-                    'document'=>'Manage document files',
-                    'event'=>'Manage and create events',
-                    'eventSubmit'=>'Registration of users to events',
-                    'form'=>'Manage and create forms',
-                    'formSubmit'=>'User responses to forms',
                     'media'=>'Manages media like photos, videos and files.',
-                    'news'=>'Manage news',
                     'page'=>'Pages accessible via the application',
-                    'pageContent'=>'Contenu to show in the different pages',
-                    'poll'=>'Manage and create polls',
-                    'pollSubmit'=>'Contains all votes in different polls',
                     'section'=>'Page grouping']
             ],
 

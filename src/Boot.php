@@ -21,7 +21,7 @@ abstract class Boot extends Lemur\Boot
         'finderShortcut'=>[
             'vendorSite'=>'[vendor]/quidphp/site'],
         'symlink'=>[
-            '[vendorSite]/js/tinymce'=>'[publicJs]/tinymce'],
+            '[vendorSite]/js/vendor/tinymce'=>'[publicJs]/tinymce'],
         'concatenatePhp'=>[
             'quid'=>[
                 'option'=>[
@@ -55,7 +55,7 @@ abstract class Boot extends Lemur\Boot
                         'wrapper'=>['#wrapper']]]],
             'compileScss'=>[
                 '[publicCss]/app.css'=>[
-                    0=>'[vendorLemur]/scss/normalize/normalize.css',
+                    0=>'[vendorLemur]/scss/vendor/normalize/normalize.css',
                     1=>'[vendorLemur]/scss/include/include.scss',
                     2=>'[vendorLemur]/scss/include/component.scss',
                     50=>'[scss]/app/app.scss']],

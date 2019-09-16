@@ -30,17 +30,8 @@ class Fr extends Lemur\Lang\Fr
             // label
             'label'=>[
                 'contact'=>'Contact',
-                'document'=>'Document',
-                'event'=>'Événement',
-                'eventSubmit'=>'Événement - Inscription',
-                'form'=>'Formulaire',
-                'formSubmit'=>'Formulaire - Réponse',
                 'media'=>'Médiathèque',
-                'news'=>'Nouvelles',
                 'page'=>'Page',
-                'pageContent'=>'Contenu de page',
-                'poll'=>'Sondage',
-                'pollSubmit'=>'Sondage - Réponse',
                 'section'=>'Section']
         ],
 
@@ -174,17 +165,8 @@ class Fr extends Lemur\Lang\Fr
                 // description
                 'description'=>[
                     'contact'=>'Archive des messages envoyés via le formulaire de la page de contact',
-                    'document'=>'Gère les documents',
-                    'event'=>'Gérer et créer les événements',
-                    'eventSubmit'=>'Inscription des utilisateurs aux événements',
-                    'form'=>'Gérer et créer des formulaires',
-                    'formSubmit'=>'Réponses des usagers aux formulaires',
                     'media'=>'Gère les médias comme les photos, vidéos et fichiers.',
-                    'news'=>'Gère les nouvelles et actualités',
                     'page'=>"Pages accessibles via l'application",
-                    'pageContent'=>'Contenu à afficher dans les différentes pages',
-                    'poll'=>'Gérer et créer des sondages',
-                    'pollSubmit'=>'Contient tous les votes aux différents sondages',
                     'section'=>'Regroupement de pages']
             ],
 

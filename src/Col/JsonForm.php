@@ -49,7 +49,6 @@ class JsonForm extends Core\Col\JsonArrayAlias
     protected function prepare(array $value):?array
     {
         $return = [];
-        $lang = $this->db()->lang();
 
         if(Base\Arr::isAssoc($value))
         $return = $this->preValidatePrepare($value);
@@ -60,7 +59,7 @@ class JsonForm extends Core\Col\JsonArrayAlias
             {
                 if(is_int($k) && Base\Arr::keysExists(['label','type','description','choices'],$v))
                 {
-                    if(!empty($v['label']) && !empty($v['type']) && !empty($lang->relation(['jsonForm',$v['type']])))
+                    if(!empty($v['label']) && !empty($v['type']))
                     {
                         $v['required'] = (!empty($v['required']))? true:false;
                         $choiceInput = static::isChoicesInput($v['type']);
