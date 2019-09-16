@@ -8,12 +8,12 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Col;
-use Quid\Base\Html;
-use Quid\Site;
-use Quid\Core;
-use Quid\Orm;
-use Quid\Main;
 use Quid\Base;
+use Quid\Base\Html;
+use Quid\Core;
+use Quid\Main;
+use Quid\Orm;
+use Quid\Site;
 
 // googleMaps
 // class for a googleMaps column, with geo-localization data

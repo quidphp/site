@@ -8,8 +8,8 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Route;
-use Quid\Site;
 use Quid\Core;
+use Quid\Site;
 
 // _page
 // trait that provides basic logic for a page route

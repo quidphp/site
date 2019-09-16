@@ -8,8 +8,8 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Service;
-use Quid\Core;
 use Quid\Base;
+use Quid\Core;
 
 // office365
 // class that grants some static methods related to office365

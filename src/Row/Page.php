@@ -8,10 +8,10 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Row;
+use Quid\Base;
 use Quid\Base\Html;
 use Quid\Core;
 use Quid\Main;
-use Quid\Base;
 
 // page
 // class for a row which represents a page

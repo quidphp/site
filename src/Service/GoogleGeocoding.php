@@ -8,9 +8,9 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Service;
+use Quid\Base;
 use Quid\Core;
 use Quid\Main;
-use Quid\Base;
 
 // googleGeocoding
 // class used to make googleGeocoding localization requests

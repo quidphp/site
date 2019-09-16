@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Quid\Site\Cell;
 use Quid\Base\Html;
-use Quid\Site;
 use Quid\Core;
 use Quid\Main;
+use Quid\Site;
 
 // googleMaps
 // class to work with a cell containing google maps geo-localization data

@@ -8,9 +8,9 @@ declare(strict_types=1);
  */
 
 namespace Quid\Test\Site;
-use Quid\Site;
-use Quid\Core;
 use Quid\Base;
+use Quid\Core;
+use Quid\Site;
 
 // boot
 // class for testing Quid\Site\Boot

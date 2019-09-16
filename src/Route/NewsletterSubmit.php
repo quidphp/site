@@ -8,10 +8,10 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Route;
-use Quid\Base\Html;
-use Quid\Site;
-use Quid\Core;
 use Quid\Base;
+use Quid\Base\Html;
+use Quid\Core;
+use Quid\Site;
 
 // newsletterSubmit
 // abstract class for a newsletter submit route

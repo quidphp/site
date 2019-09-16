@@ -8,10 +8,10 @@ declare(strict_types=1);
  */
 
 namespace Quid\Test\Site;
-use Quid\Site;
+use Quid\Base;
 use Quid\Core;
 use Quid\Main;
-use Quid\Base;
+use Quid\Site;
 
 // table
 // class for testing table

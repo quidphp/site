@@ -8,8 +8,8 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Col;
-use Quid\Core;
 use Quid\Base;
+use Quid\Core;
 
 // tinyMce
 // class for a column which transforms the textarea in a simple tinymce WYSIWYG editor

@@ -8,10 +8,10 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Col;
-use Quid\Base\Html;
-use Quid\Site;
-use Quid\Core;
 use Quid\Base;
+use Quid\Base\Html;
+use Quid\Core;
+use Quid\Site;
 
 // emailNewsletter
 // class for an email newsletter column (subscribes to a third-party newsletter)

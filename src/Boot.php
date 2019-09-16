@@ -8,8 +8,8 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site;
-use Quid\Lemur;
 use Quid\Core;
+use Quid\Lemur;
 
 // boot
 // extended abstract class for the object that bootstraps the app and cms

@@ -8,8 +8,8 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Col;
-use Quid\Site;
 use Quid\Core;
+use Quid\Site;
 
 // youTube
 // class for a column containing a youTube video

@@ -8,10 +8,10 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Col;
+use Quid\Base;
 use Quid\Base\Html;
 use Quid\Core;
 use Quid\Orm;
-use Quid\Base;
 
 // hierarchy
 // class for an hierarchy column, like a website page sitemap

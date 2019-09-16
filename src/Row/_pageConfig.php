@@ -8,8 +8,8 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Row;
-use Quid\Core;
 use Quid\Base;
+use Quid\Core;
 
 // _pageConfig
 // trait related to the configuration of a row representing a page

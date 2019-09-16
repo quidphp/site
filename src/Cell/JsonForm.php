@@ -8,8 +8,8 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Cell;
-use Quid\Core;
 use Quid\Base;
+use Quid\Core;
 
 // jsonForm
 // class to work with a cell containing a json form (advanced jsonArray)

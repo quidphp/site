@@ -8,10 +8,10 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Col;
-use Quid\Base\Html;
-use Quid\Site;
-use Quid\Core;
 use Quid\Base;
+use Quid\Base\Html;
+use Quid\Core;
+use Quid\Site;
 
 // jsonForm
 // class for a column containing a json form (advanced jsonArray)

@@ -8,8 +8,8 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Service;
-use Quid\Core;
 use Quid\Base;
+use Quid\Core;
 
 // pdfCrowd
 // class that provides some methods to communication with pdfcrowd (and generate a pdf from html)

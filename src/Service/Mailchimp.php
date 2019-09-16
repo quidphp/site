@@ -8,9 +8,9 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Service;
-use Quid\Site;
-use Quid\Core;
 use Quid\Base;
+use Quid\Core;
+use Quid\Site;
 
 // mailchimp
 // class that provides some methods to communication with mailchimp (subscribe to a list)

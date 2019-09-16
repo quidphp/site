@@ -8,8 +8,8 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Cell;
-use Quid\Core;
 use Quid\Base;
+use Quid\Core;
 
 // jsonFormRelation
 // class to manage a cell containing a relation value to another cell containing a json form

@@ -8,9 +8,9 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Service;
+use Quid\Base;
 use Quid\Core;
 use Quid\Main;
-use Quid\Base;
 
 // ipApi
 // class that grants methods to use the ipApi API, which converts IP to localization data
