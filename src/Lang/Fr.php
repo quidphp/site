@@ -223,6 +223,7 @@ class Fr extends Lemur\Lang\Fr
                 'header3'=>'En-tête 3',
                 'header4'=>'En-tête 4',
                 'header5'=>'En-tête 5',
+                'header6'=>'En-tête 6',
                 'alignLeft'=>'Aligner à gauche',
                 'alignCenter'=>'Aligner au centre',
                 'alignRight'=>'Aligner à droite',

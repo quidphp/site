@@ -223,6 +223,7 @@ class En extends Lemur\Lang\En
                 'header3'=>'Header 3',
                 'header4'=>'Header 4',
                 'header5'=>'Header 5',
+                'header6'=>'Header 6',
                 'alignLeft'=>'Align left',
                 'alignCenter'=>'Align center',
                 'alignRight'=>'Align right',

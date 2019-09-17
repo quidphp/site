@@ -37,7 +37,7 @@ class TinyMce extends Core\Col\TextareaAlias
             'menubar'=>false,
             'paste_enable_default_filters'=>false,
             'paste_word_valid_elements'=>'b,strong,i,em,u,p,h1,h2,h3,h4,h5,h6,ul,ol,li',
-            'preview_styles'=>false,
+            'preview_styles'=>true,
             'style_formats_autohide'=>true,
             'toolbar_drawer'=>'sliding',
             'visualblocks_default_state'=>true,
@@ -47,7 +47,8 @@ class TinyMce extends Core\Col\TextareaAlias
                 13=>['title'=>'header2','format'=>'h2'],
                 14=>['title'=>'header3','format'=>'h3'],
                 15=>['title'=>'header4','format'=>'h4'],
-                16=>['title'=>'header5','format'=>'h5']
+                16=>['title'=>'header5','format'=>'h5'],
+                17=>['title'=>'header6','format'=>'h6']
             ]]
     ];
 

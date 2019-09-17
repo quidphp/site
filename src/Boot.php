@@ -58,6 +58,7 @@ abstract class Boot extends Lemur\Boot
                     0=>'[vendorLemur]/scss/vendor/normalize/normalize.css',
                     1=>'[vendorLemur]/scss/include/include.scss',
                     2=>'[vendorLemur]/scss/include/component.scss',
+                    40=>'[scss]/app/include.scss',
                     50=>'[scss]/app/app.scss']],
             'concatenateJs'=>[
                 '[publicJs]/include.js'=>[
