@@ -19,7 +19,8 @@ class Hierarchy extends Core\Col\EnumAlias
 {
     // config
     public static $config = [
-        'complex'=>'hierarchy'
+        'complex'=>'hierarchy',
+        'excerpt'=>75
     ];
 
 

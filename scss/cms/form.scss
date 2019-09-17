@@ -43,6 +43,10 @@
 	overflow-y: auto;
 	padding: 0 10px;
 	
+    > ul {
+		font-size: 90%;
+	}
+    
 	ul {
 		display: block;
 		list-style-type: none;
