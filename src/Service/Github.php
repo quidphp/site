@@ -97,7 +97,7 @@ class Github extends Core\ServiceAlias
     {
         $return = null;
         $path = Base\Autoload::getDirPath($namespace);
-        
+
         if(!empty($path))
         {
             $return = [];
