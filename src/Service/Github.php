@@ -243,7 +243,7 @@ class Github extends Core\ServiceAlias
         $target = 0;
 
         if($type === 'js')
-        $target = 7;
+        $target = 9;
 
         elseif($type === 'scss')
         $target = 9;
