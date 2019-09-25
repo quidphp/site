@@ -97,7 +97,7 @@ class Github extends Core\ServiceAlias
     {
         $return = null;
         $path = Base\Autoload::getDirPath($namespace);
-
+        
         if(!empty($path))
         {
             $return = [];
@@ -191,7 +191,7 @@ class Github extends Core\ServiceAlias
                 $line .= '- ['.$value['filename'].']('.$value['path'].')';
 
                 if(!empty($value['description']) && $value['description'] !== $value['filename'])
-                $line .= ' | '.$value['description'];
+                $line .= ' - '.$value['description'];
 
                 $lines[] = $line;
             }
