@@ -49,6 +49,6 @@ class GoogleMaps extends Core\ServiceRequestAlias
     }
 }
 
-// config
-GoogleMaps::__config();
+// init
+GoogleMaps::__init();
 ?>

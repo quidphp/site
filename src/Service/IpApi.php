@@ -96,6 +96,6 @@ class IpApi extends Core\ServiceRequestAlias
     }
 }
 
-// config
-IpApi::__config();
+// init
+IpApi::__init();
 ?>

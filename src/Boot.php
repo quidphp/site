@@ -92,6 +92,6 @@ abstract class Boot extends Lemur\Boot
     }
 }
 
-// config
-Boot::__config();
+// init
+Boot::__init();
 ?>

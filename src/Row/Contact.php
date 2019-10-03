@@ -190,6 +190,6 @@ abstract class Contact extends Core\RowAlias
     }
 }
 
-// config
-Contact::__config();
+// init
+Contact::__init();
 ?>

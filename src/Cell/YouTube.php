@@ -18,6 +18,6 @@ class YouTube extends Core\Cell\VideoAlias
     public static $config = [];
 }
 
-// config
-YouTube::__config();
+// init
+YouTube::__init();
 ?>

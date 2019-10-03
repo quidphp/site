@@ -96,6 +96,6 @@ class GoogleMaps extends Core\CellAlias
     }
 }
 
-// config
-GoogleMaps::__config();
+// init
+GoogleMaps::__init();
 ?>

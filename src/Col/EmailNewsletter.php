@@ -73,6 +73,6 @@ class EmailNewsletter extends Core\Col\EmailAlias
     }
 }
 
-// config
-EmailNewsletter::__config();
+// init
+EmailNewsletter::__init();
 ?>

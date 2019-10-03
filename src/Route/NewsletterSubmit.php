@@ -217,6 +217,6 @@ abstract class NewsletterSubmit extends Core\RouteAlias
     }
 }
 
-// config
-NewsletterSubmit::__config();
+// init
+NewsletterSubmit::__init();
 ?>

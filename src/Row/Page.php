@@ -443,6 +443,6 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
     }
 }
 
-// config
-Page::__config();
+// init
+Page::__init();
 ?>

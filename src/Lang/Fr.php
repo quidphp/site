@@ -234,6 +234,6 @@ class Fr extends Lemur\Lang\Fr
     ];
 }
 
-// config
-Fr::__config();
+// init
+Fr::__init();
 ?>

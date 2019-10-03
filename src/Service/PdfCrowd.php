@@ -140,6 +140,6 @@ class PdfCrowd extends Core\ServiceRequestAlias
     }
 }
 
-// config
-PdfCrowd::__config();
+// init
+PdfCrowd::__init();
 ?>

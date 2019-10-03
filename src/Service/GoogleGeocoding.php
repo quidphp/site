@@ -128,6 +128,6 @@ class GoogleGeocoding extends Core\ServiceRequestAlias
     }
 }
 
-// config
-GoogleGeocoding::__config();
+// init
+GoogleGeocoding::__init();
 ?>

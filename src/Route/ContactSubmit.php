@@ -116,6 +116,6 @@ abstract class ContactSubmit extends Core\RouteAlias
     }
 }
 
-// config
-ContactSubmit::__config();
+// init
+ContactSubmit::__init();
 ?>

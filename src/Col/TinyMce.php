@@ -124,6 +124,6 @@ class TinyMce extends Core\Col\TextareaAlias
     }
 }
 
-// config
-TinyMce::__config();
+// init
+TinyMce::__init();
 ?>

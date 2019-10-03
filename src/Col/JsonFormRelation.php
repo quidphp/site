@@ -135,6 +135,6 @@ class JsonFormRelation extends Core\Col\JsonArrayAlias
     }
 }
 
-// config
-JsonFormRelation::__config();
+// init
+JsonFormRelation::__init();
 ?>

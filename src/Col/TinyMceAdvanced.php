@@ -37,6 +37,6 @@ class TinyMceAdvanced extends TinyMceAlias
     ];
 }
 
-// config
-TinyMceAdvanced::__config();
+// init
+TinyMceAdvanced::__init();
 ?>

@@ -388,6 +388,6 @@ class Media extends Core\RowAlias
     }
 }
 
-// config
-Media::__config();
+// init
+Media::__init();
 ?>

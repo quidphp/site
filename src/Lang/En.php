@@ -234,6 +234,6 @@ class En extends Lemur\Lang\En
     ];
 }
 
-// config
-En::__config();
+// init
+En::__init();
 ?>

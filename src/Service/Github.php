@@ -274,6 +274,6 @@ class Github extends Core\ServiceAlias
     }
 }
 
-// config
-GitHub::__config();
+// init
+GitHub::__init();
 ?>

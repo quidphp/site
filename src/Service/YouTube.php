@@ -57,6 +57,6 @@ class YouTube extends Core\ServiceVideoAlias
     }
 }
 
-// config
-YouTube::__config();
+// init
+YouTube::__init();
 ?>

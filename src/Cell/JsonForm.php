@@ -87,6 +87,6 @@ class JsonForm extends Core\Cell\JsonArrayAlias
     }
 }
 
-// config
-JsonForm::__config();
+// init
+JsonForm::__init();
 ?>

@@ -22,6 +22,6 @@ abstract class Role extends Lemur\Role
     ];
 }
 
-// config
-Role::__config();
+// init
+Role::__init();
 ?>

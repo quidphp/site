@@ -18,6 +18,6 @@ class Vimeo extends Core\Cell\VideoAlias
     public static $config = [];
 }
 
-// config
-Vimeo::__config();
+// init
+Vimeo::__init();
 ?>

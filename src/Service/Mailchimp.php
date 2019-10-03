@@ -374,6 +374,6 @@ class Mailchimp extends Core\ServiceRequestAlias implements Site\Contract\Newsle
     }
 }
 
-// config
-Mailchimp::__config();
+// init
+Mailchimp::__init();
 ?>

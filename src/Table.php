@@ -24,6 +24,6 @@ class Table extends Lemur\Table
     ];
 }
 
-// config
-Table::__config();
+// init
+Table::__init();
 ?>

@@ -23,6 +23,6 @@ class YouTube extends Core\Col\VideoAlias
     ];
 }
 
-// config
-YouTube::__config();
+// init
+YouTube::__init();
 ?>

@@ -26,6 +26,6 @@ class TinyMce extends Core\ServiceAlias
     }
 }
 
-// config
-TinyMce::__config();
+// init
+TinyMce::__init();
 ?>

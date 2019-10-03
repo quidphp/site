@@ -117,6 +117,6 @@ class GoogleMaps extends Core\ColAlias
     }
 }
 
-// config
-GoogleMaps::__config();
+// init
+GoogleMaps::__init();
 ?>

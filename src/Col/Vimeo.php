@@ -23,6 +23,6 @@ class Vimeo extends Core\Col\VideoAlias
     ];
 }
 
-// config
-Vimeo::__config();
+// init
+Vimeo::__init();
 ?>

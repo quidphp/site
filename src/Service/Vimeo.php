@@ -49,6 +49,6 @@ class Vimeo extends Core\ServiceVideoAlias
     }
 }
 
-// config
-Vimeo::__config();
+// init
+Vimeo::__init();
 ?>

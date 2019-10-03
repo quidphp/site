@@ -69,6 +69,6 @@ class Office365 extends Core\ServiceAlias
     }
 }
 
-// config
-Office365::__config();
+// init
+Office365::__init();
 ?>

@@ -170,6 +170,6 @@ class JsonForm extends Core\Col\JsonArrayAlias
     }
 }
 
-// config
-JsonForm::__config();
+// init
+JsonForm::__init();
 ?>

@@ -186,6 +186,6 @@ abstract class Section extends Core\RowAlias
     }
 }
 
-// config
-Section::__config();
+// init
+Section::__init();
 ?>

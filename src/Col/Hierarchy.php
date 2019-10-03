@@ -123,6 +123,6 @@ class Hierarchy extends Core\Col\EnumAlias
     }
 }
 
-// config
-Hierarchy::__config();
+// init
+Hierarchy::__init();
 ?>

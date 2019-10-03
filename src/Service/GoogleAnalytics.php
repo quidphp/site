@@ -44,6 +44,6 @@ class GoogleAnalytics extends Core\ServiceRequestAlias
     }
 }
 
-// config
-GoogleAnalytics::__config();
+// init
+GoogleAnalytics::__init();
 ?>
