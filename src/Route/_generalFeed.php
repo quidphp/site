@@ -149,7 +149,7 @@ trait _generalFeed
         {
             $route = $this->changeSegment('page',$pageNext);
             $data = ['href'=>$route];
-            $r .= Html::divOp(['loadMore','data'=>$data]);
+            $r .= Html::divOp(['load-more','data'=>$data]);
             $r .= Html::div(static::langText('common/loadMore'),'text');
             $r .= Html::divCl();
         }

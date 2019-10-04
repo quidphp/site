@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Quid\Site;
 use Quid\Core;
 use Quid\Lemur;
+use Quid\Test;
 
 // boot
 // extended abstract class for the object that bootstraps the app and cms
@@ -27,7 +28,7 @@ abstract class Boot extends Lemur\Boot
                 'option'=>[
                     'namespace'=>[
                         __NAMESPACE__=>['closure'=>true],
-                        Test::class=>['closure'=>false]]]]],
+                        Test\Site::class=>['closure'=>false]]]]],
         'config'=>[
             Core\Db::class=>[
                 'option'=>[

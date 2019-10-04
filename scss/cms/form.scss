@@ -136,6 +136,14 @@
     }
 }
 
+/* RESPONSIVE */
+@media screen and (max-width: 900px), screen and (orientation: portrait) {
+    .specific main .element.jsonForm,
+    .specific main .element.jsonFormRelation {
+        @include jsonArrayResponsive();
+    }
+}
+
 /* PRINT */
 @media print {
     .specific main .element.hierarchy .right .scroller {

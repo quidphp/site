@@ -25,7 +25,7 @@ $(document).ready(function() {
 			$(this).find(".element .googleMaps").googleMaps();
 			$(this).find(".element.tinyMce .tinymce, .element.tinyMceAdvanced .tinymce").each(function(index, el) {
 				var parent = $(this).parents(".element").first();
-				var hasTableRelation = parent.hasClass('tableRelation');
+				var hasTableRelation = parent.hasClass('table-relation');
 				var data = $(this).data('tinymce') || { };
 				var textarea = $(this).parent().find("textarea");
 				

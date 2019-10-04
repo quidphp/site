@@ -93,7 +93,7 @@ class Hierarchy extends Core\Col\EnumAlias
                 if(is_int($k) && array_key_exists($k,$names))
                 {
                     $name = $this->valueComplexExcerpt($names[$k]);
-                    $name .= " (#$k)";
+                    $name = Orm\TableRelation::outputPrimary($k,$name);
 
                     $return .= Html::liOp('choice');
                     $return .= $this->formComplexOutput([$k=>$name],$attr,$option);

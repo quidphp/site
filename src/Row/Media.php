@@ -157,7 +157,7 @@ class Media extends Core\RowAlias
                     $r['content'] = '';
 
                     $excerpt = Base\Str::excerpt(50,$name);
-                    $r['from'] = Html::div(null,['bigIcon','storage']);
+                    $r['from'] = Html::div(null,['big-icon','storage']);
                     $r['from'] .= Html::div($excerpt,'legend');
 
                     $r['to'] = Html::a($uri,$rowName,['target'=>false]);
@@ -237,7 +237,7 @@ class Media extends Core\RowAlias
             $r['content'] .= $content;
 
             $excerpt = Base\Str::excerpt(50,$name);
-            $r['from'] = Html::div(null,['bigIcon','video']);
+            $r['from'] = Html::div(null,['big-icon','video']);
             $r['from'] .= Html::div($excerpt,'legend');
 
             $r['to'] = $html;

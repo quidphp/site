@@ -88,7 +88,7 @@ class JsonFormRelation extends Core\Col\JsonArrayAlias
     // retourne la classe additionnelle à utiliser
     public function classHtml():array
     {
-        return [parent::classHtml(),'addRemove'];
+        return [parent::classHtml(),'add-remove'];
     }
 
 

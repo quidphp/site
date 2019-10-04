@@ -29,11 +29,11 @@ class TinyMceAdvanced extends TinyMceAlias
             'table_cell_advtab'=>true,
             'table_style_by_css'=>true,
             'style_formats'=>[
-                20=>['title'=>'alignLeft','wrapper'=>true,'selector'=>'*','attributes'=>['class'=>'alignLeft']],
-                21=>['title'=>'alignCenter','wrapper'=>true,'selector'=>'*','attributes'=>['class'=>'alignCenter']],
-                22=>['title'=>'alignRight','wrapper'=>true,'selector'=>'*','attributes'=>['class'=>'alignRight']],
-                23=>['title'=>'floatLeft','wrapper'=>true,'selector'=>'*','attributes'=>['class'=>'floatLeft']],
-                24=>['title'=>'floatRight','wrapper'=>true,'selector'=>'*','attributes'=>['class'=>'floatRight']]]]
+                20=>['title'=>'alignLeft','wrapper'=>true,'selector'=>'*','attributes'=>['class'=>'align-left']],
+                21=>['title'=>'alignCenter','wrapper'=>true,'selector'=>'*','attributes'=>['class'=>'align-center']],
+                22=>['title'=>'alignRight','wrapper'=>true,'selector'=>'*','attributes'=>['class'=>'align-right']],
+                23=>['title'=>'floatLeft','wrapper'=>true,'selector'=>'*','attributes'=>['class'=>'float-left']],
+                24=>['title'=>'floatRight','wrapper'=>true,'selector'=>'*','attributes'=>['class'=>'float-right']]]]
     ];
 }
 
