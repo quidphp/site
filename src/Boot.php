@@ -52,8 +52,7 @@ abstract class Boot extends Lemur\Boot
                                 'type'=>'css/%type%.css'],
                             'js'=>[
                                 'include'=>'js/include.js',
-                                'type'=>'js/%type%.js']],
-                        'wrapper'=>['#wrapper']]]],
+                                'type'=>'js/%type%.js']]]]],
             'compileScss'=>[
                 '[publicCss]/app.css'=>[
                     0=>'[vendorLemur]/scss/include/_include.scss',

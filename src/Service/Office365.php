@@ -20,7 +20,15 @@ class Office365 extends Core\ServiceAlias
         'uri'=>'https://outlook.office.com/owa/'
     ];
 
-
+    
+    // construct
+    // constructeur privé
+    private function __construct() 
+    {
+        return;
+    }
+    
+    
     // mailto
     // génère un lien mailto pour office365
     public static function mailto(string $email):string

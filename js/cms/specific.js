@@ -13,7 +13,7 @@ $(document).ready(function() {
 	// route:specificPrepare
     // comportement pour la préparation de certains inputs plus avancés
 	$(this).on('route:specificPrepare', function(event) {
-		var formWrapper = $(".specific .container > .form");
+		var formWrapper = $("main .container > .form");
 		var preparable = formWrapper.triggerHandler('form:getPreparable');
 		
 		// jsonForm
