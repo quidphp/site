@@ -24,8 +24,7 @@ abstract class ContactSubmit extends Core\RouteAlias
             'fr'=>'nous-joindre/soumettre',
             'en'=>'contact-us/submit'],
         'match'=>[
-            'method'=>'post'],
-        'verify'=>[
+            'method'=>'post',
             'post'=>['name','phone','email','message'],
             'csrf'=>true,
             'captcha'=>true,
@@ -34,7 +33,8 @@ abstract class ContactSubmit extends Core\RouteAlias
         'timeout'=>[
             'failure'=>['max'=>8,'timeout'=>600],
             'success'=>['max'=>2,'timeout'=>600]],
-        'row'=>null
+        'row'=>null,
+        'flashPost'=>true
     ];
 
 
@@ -112,7 +112,7 @@ abstract class ContactSubmit extends Core\RouteAlias
     // retourne les champs pour le formulaire
     public static function getFields():array
     {
-        return static::$config['verify']['post'];
+        return static::$config['match']['post'];
     }
 }
 

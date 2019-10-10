@@ -93,9 +93,6 @@ trait _pageConfig
             $allLang = $this->lang()->allLang();
             $config = $this->routeConfig($config);
 
-            if($this->hasOrder())
-            $config['priority'] = $this->getOrder();
-
             if($route::isGroup('home'))
             {
                 if(count($allLang) === 1)

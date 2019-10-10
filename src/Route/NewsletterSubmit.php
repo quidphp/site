@@ -27,8 +27,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
             'fr'=>'infolettre/enregistrement',
             'en'=>'newsletter/subscribe'],
         'match'=>[
-            'method'=>'post'],
-        'verify'=>[
+            'method'=>'post',
             'post'=>['email','firstName','lastName'],
             'timeout'=>true,
             'genuine'=>true,
@@ -150,7 +149,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
     // retourne les champs pour le formulaire
     public static function getFields():array
     {
-        return static::$config['verify']['post'];
+        return static::$config['match']['post'];
     }
 
 
