@@ -54,7 +54,7 @@ class Table extends Base\Test
         // tinyMce
         assert($tinymce->tag() === 'textarea');
         assert(count($tinymce->formAttr()) === 1);
-        assert(count($tinymce->attr()) === 32);
+        assert(count($tinymce->attr()) === 33);
         assert(count($tinymce->attr('tinymce')) === 17);
         assert(strlen($tinymce->formComplex()) > 500);
 
