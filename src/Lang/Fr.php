@@ -79,21 +79,6 @@ class Fr extends Lemur\Lang\Fr
                     'contact'=>[
                         'failure'=>"Erreur lors de l'envoie du message."
                     ]
-                ],
-
-                // eventSubmit
-                'eventSubmit'=>[
-                    'duplicate'=>"Cet utilisateur est déjà inscrit à l'événement"
-                ],
-
-                // pollSubmit
-                'pollSubmit'=>[
-                    'duplicate'=>'Cet utilisateur a déjà voté sur ce sondage'
-                ],
-
-                // formSubmit
-                'formSubmit'=>[
-                    'duplicate'=>'Cet utilisateur a déjà répondu au formulaire'
                 ]
             ],
 

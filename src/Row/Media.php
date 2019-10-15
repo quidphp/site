@@ -173,9 +173,9 @@ class Media extends Core\RowAlias
 
     // videoProvider
     // retourne les providers de videos liés à la ligne
-    public function videoProvider():?array
+    public function videoProvider():array
     {
-        return $this->attr('videoProvider');
+        return (array) $this->attr('videoProvider');
     }
 
 

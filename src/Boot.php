@@ -74,7 +74,7 @@ abstract class Boot extends Lemur\Boot
                 '[publicCss]/tinymce.css'=>[
                     0=>'[vendorLemur]/scss/include/_include.scss',
                     1=>'[scss]/cms/_include.scss',
-                    2=>'[vendorSite]/scss/cms/tinymce.scss',
+                    5=>'[vendorSite]/scss/cms/tinymce.scss',
                     10=>'[scss]/cms/tinymce.scss']],
             'concatenateJs'=>[
                 '[publicJs]/include.js'=>[

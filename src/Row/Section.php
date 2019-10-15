@@ -19,7 +19,7 @@ abstract class Section extends Core\RowAlias
     public static $config = [
         'priority'=>1,
         '@app'=>[
-            'route'=>[
+            'route'=>[ // méthode pour générer la route de la section
                 0=>[self::class,'routeSection']]]
     ];
 

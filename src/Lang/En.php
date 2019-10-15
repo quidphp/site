@@ -79,21 +79,6 @@ class En extends Lemur\Lang\En
                     'contact'=>[
                         'failure'=>'Error sending the message.'
                     ]
-                ],
-
-                // eventSubmit
-                'eventSubmit'=>[
-                    'duplicate'=>'This user already subscribed to the event'
-                ],
-
-                // pollSubmit
-                'pollSubmit'=>[
-                    'duplicate'=>'This user already voted on that poll'
-                ],
-
-                // formSubmit
-                'formSubmit'=>[
-                    'duplicate'=>'This user already submitted the form'
                 ]
             ],
 

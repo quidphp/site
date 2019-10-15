@@ -39,7 +39,12 @@ class Boot extends Base\Test
         assert($lang->relation('contextType/app') === 'Application');
         assert($lang->relation('contextType/app','en') === 'Application');
         assert($lang->relation('jsonForm') !== $lang->relation('jsonForm',null,false));
-
+        assert($lang->required(true,null,['path'=>['tables','formSubmit','json']]) === 'The form is invalid.');
+        assert($lang->pathAlternateTake('required',null,['tables','formSubmit','json']) === 'The form is invalid.');
+        assert(count($lang->pathAlternateValue('required','common',false,['tables','formSubmit','json'])) === 4);
+        assert(count($lang->pathAlternateValue('required','common',true,['tables','formSubmit','json'])) === 2);
+        assert(count($lang->pathAlternate('required',['tables','formSubmit','json'])) === 4);
+        
         return true;
     }
 }
