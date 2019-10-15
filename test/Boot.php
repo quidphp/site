@@ -44,7 +44,7 @@ class Boot extends Base\Test
         assert(count($lang->pathAlternateValue('required','common',false,['tables','formSubmit','json'])) === 4);
         assert(count($lang->pathAlternateValue('required','common',true,['tables','formSubmit','json'])) === 2);
         assert(count($lang->pathAlternate('required',['tables','formSubmit','json'])) === 4);
-        
+
         return true;
     }
 }

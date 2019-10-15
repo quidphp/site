@@ -8,8 +8,8 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\App;
-use Quid\Core;
 use Quid\Base;
+use Quid\Core;
 
 // version
 // class for the version route, accessible via the cli
@@ -17,20 +17,20 @@ class Version extends Core\RouteAlias
 {
     // config
     public static $config = [
-        'path'=>array('-v','-version','-about'), // plusieurs chemins pour la route
-        'match'=>array(
-            'cli'=>true)
+        'path'=>['-v','-version','-about'], // plusieurs chemins pour la route
+        'match'=>[
+            'cli'=>true]
     ];
-    
-    
+
+
     // trigger
     // lancement de la route cli version
-    public function trigger() 
+    public function trigger()
     {
         return $this->outputCli();
     }
-    
-    
+
+
     // outputCli
     // génère le output du cli
     protected function outputCli():string
