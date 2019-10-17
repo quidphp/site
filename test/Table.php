@@ -42,7 +42,7 @@ class Table extends Base\Test
         // googleMaps
         $localization = new Main\Localization(['address'=>'ok','lat'=>2,'lng'=>1,'input'=>'whét asd','countryCode'=>'ca']);
         assert($googleMaps->tag() === 'textarea');
-        assert(strlen($googleMaps->formComplex($localization)) === 138);
+        assert(strlen($googleMaps->formComplex($localization)) === 157);
         assert(strlen($googleMaps->html($localization)) === 72);
 
         // hierarchy
@@ -64,7 +64,7 @@ class Table extends Base\Test
         $vimeo = ['title'=>'James','html'=>'test','thumbnail_url'=>'http://image.com','provider_url'=>'https://vimeo.com','video_id'=>'132132','description'=>'bla','upload_date'=>'2018-07-25 23:30:36'];
         $video = Site\Service\Vimeo::makeVideo($vimeo);
         assert($myVideo instanceof Site\Col\Vimeo);
-        assert(strlen($myVideo->formComplex($video)) === 186);
+        assert(strlen($myVideo->formComplex($video)) === 205);
 
         // youTube
 
@@ -75,7 +75,6 @@ class Table extends Base\Test
         assert($googleMaps->hasNullDefault());
         assert(!$googleMaps->hasNotEmptyDefault());
         assert($googleMaps->default() === null);
-
 
         // cell
 
@@ -101,8 +100,8 @@ class Table extends Base\Test
 
         // vimeo
         assert($vimeo instanceof Site\Cell\Vimeo);
-        assert($vimeo->formComplex() === "<input maxlength='65535' name='vimeo' type='text'/>");
-        assert(strlen($vimeo->formComplexWrap()) === 114);
+        assert($vimeo->formComplex() === "<input maxlength='65535' name='vimeo' placeholder='NULL' type='text'/>");
+        assert(strlen($vimeo->formComplexWrap()) === 133);
 
         // youTube
 

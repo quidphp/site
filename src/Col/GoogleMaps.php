@@ -98,7 +98,7 @@ class GoogleMaps extends Core\ColAlias
         else
         $value = null;
 
-        $return .= $this->form($value,$attr,$option);
+        $return .= parent::formComplex($value,$attr,$option);
 
         return $return;
     }
