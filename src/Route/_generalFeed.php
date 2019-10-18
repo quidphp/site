@@ -17,7 +17,7 @@ use Quid\Core;
 trait _generalFeed
 {
     // trait
-    use Core\Route\_generalPager;
+    use Lemur\Route\_generalPager;
 
 
     // rows

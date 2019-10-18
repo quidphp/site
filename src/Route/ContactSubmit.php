@@ -15,7 +15,7 @@ use Quid\Core;
 abstract class ContactSubmit extends Core\RouteAlias
 {
     // trait
-    use Core\Route\_formSubmit;
+    use Lemur\Route\_formSubmit;
 
 
     // config

@@ -10,9 +10,9 @@ declare(strict_types=1);
 namespace Quid\Site;
 use Quid\Lemur;
 
-// table
-// extended class to represent an existing table within a database, adds app config
-class Table extends Lemur\Table
+// row
+// extended class to represent a row within a table, adds app config
+class Row extends Lemur\Row
 {
     // config
     public static $config = [
@@ -25,5 +25,5 @@ class Table extends Lemur\Table
 }
 
 // init
-Table::__init();
+Row::__init();
 ?>

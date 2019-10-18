@@ -29,30 +29,10 @@ abstract class Boot extends Lemur\Boot
                     'namespace'=>[
                         __NAMESPACE__=>['closure'=>true],
                         Test\Site::class=>['closure'=>false]]]]],
-        'config'=>[
-            Core\Db::class=>[
-                'option'=>[
-                    'cols'=>[
-                        'content_en'=>['class'=>Col\TinyMce::class],
-                        'content_fr'=>['class'=>Col\TinyMce::class],
-                        'content'=>['class'=>Col\TinyMce::class],
-                        'googleMaps'=>['class'=>Col\GoogleMaps::class,'panel'=>'localization'],
-                        'youTube'=>['class'=>Col\YouTube::class,'general'=>false,'panel'=>'media'],
-                        'vimeo'=>['class'=>Col\Vimeo::class,'general'=>false,'panel'=>'media']]]]],
         '@app'=>[
             'service'=>[
                 'jQuery'=>Lemur\Service\JQuery::class],
             'sessionVersionMatch'=>false,
-            'config'=>[
-                Core\Route::class=>[
-                    'jsInit'=>'$(document).ready(function() { $(this).navigation(); });',
-                    'docOpen'=>[
-                        'head'=>[
-                            'css'=>[
-                                'type'=>'css/%type%.css'],
-                            'js'=>[
-                                'include'=>'js/include.js',
-                                'type'=>'js/%type%.js']]]]],
             'compileScss'=>[
                 '[publicCss]/app.css'=>[
                     0=>'[vendorLemur]/scss/include/_include.scss',

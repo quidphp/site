@@ -13,9 +13,9 @@ use Quid\Core;
 use Quid\Main;
 use Quid\Site;
 
-// table
-// class for testing table
-class Table extends Base\Test
+// db
+// class for testing db
+class Db extends Base\Test
 {
     // trigger
     public static function trigger(array $data):bool

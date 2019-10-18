@@ -18,7 +18,7 @@ use Quid\Site;
 abstract class NewsletterSubmit extends Core\RouteAlias
 {
     // trait
-    use Core\Route\_formSubmit;
+    use Lemur\Route\_formSubmit;
 
 
     // config
