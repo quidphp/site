@@ -8,7 +8,6 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site;
-use Quid\Core;
 use Quid\Lemur;
 use Quid\Test;
 

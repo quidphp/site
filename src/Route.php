@@ -4,7 +4,7 @@ declare(strict_types=1);
 /*
  * This file is part of the QuidPHP package.
  * Website: https://quidphp.com
- * License: https://github.com/quidphp/lemur/blob/master/LICENSE
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
  */
 
 namespace Quid\Site;
@@ -16,7 +16,7 @@ abstract class Route extends Lemur\Route
 {
     // config
     public static $config = [
-        '@app'=>array(
+        '@app'=>[
             'jsInit'=>'$(document).ready(function() { $(this).navigation(); });',
             'docOpen'=>[
                 'head'=>[
@@ -24,7 +24,7 @@ abstract class Route extends Lemur\Route
                         'type'=>'css/%type%.css'],
                     'js'=>[
                         'include'=>'js/include.js',
-                        'type'=>'js/%type%.js']]])
+                        'type'=>'js/%type%.js']]]]
     ];
 }
 
