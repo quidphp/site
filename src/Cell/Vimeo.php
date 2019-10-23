@@ -8,11 +8,11 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Cell;
-use Quid\Core;
+use Quid\Lemur;
 
 // vimeo
 // class for dealing with a cell containing a vimeo video
-class Vimeo extends Core\Cell\VideoAlias
+class Vimeo extends Lemur\Cell\VideoAlias
 {
     // config
     public static $config = [];

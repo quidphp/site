@@ -12,10 +12,11 @@ use Quid\Base;
 use Quid\Base\Html;
 use Quid\Core;
 use Quid\Site;
+use Quid\Lemur;
 
 // jsonForm
 // class for a column containing a json form (advanced jsonArray)
-class JsonForm extends Core\Col\JsonArrayAlias
+class JsonForm extends Lemur\Col\JsonArrayAlias
 {
     // config
     public static $config = [
@@ -33,14 +34,6 @@ class JsonForm extends Core\Col\JsonArrayAlias
         $return = Base\Column::keySwap($value);
 
         return $return;
-    }
-
-
-    // classHtml
-    // retourne la classe additionnelle à utiliser
-    public function classHtml():array
-    {
-        return [static::className(true)];
     }
 
 

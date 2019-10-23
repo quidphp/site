@@ -8,12 +8,12 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Col;
-use Quid\Core;
+use Quid\Lemur;
 use Quid\Site;
 
 // youTube
 // class for a column containing a youTube video
-class YouTube extends Core\Col\VideoAlias
+class YouTube extends Lemur\Col\VideoAlias
 {
     // config
     public static $config = [

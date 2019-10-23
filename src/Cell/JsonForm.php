@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Quid\Site\Cell;
 use Quid\Base;
-use Quid\Core;
+use Quid\Lemur;
 
 // jsonForm
 // class to work with a cell containing a json form (advanced jsonArray)
-class JsonForm extends Core\Cell\JsonArrayAlias
+class JsonForm extends Lemur\Cell\JsonArrayAlias
 {
     // config
     public static $config = [];

@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Quid\Site\Service;
 use Quid\Base;
-use Quid\Core;
+use Quid\Main;
 
 // pdfCrowd
 // class that provides some methods to communication with pdfcrowd (and generate a pdf from html)
-class PdfCrowd extends Core\ServiceRequestAlias
+class PdfCrowd extends Main\ServiceRequest
 {
     // config
     public static $config = [
@@ -92,7 +92,7 @@ class PdfCrowd extends Core\ServiceRequestAlias
 
     // request
     // retourne la requête à utiliser pour aller chercher une resource auprès de pdfCrowd
-    public function request(string $type,$value,?array $post=null,?array $option=null):Core\Request
+    public function request(string $type,$value,?array $post=null,?array $option=null):Main\Request
     {
         $return = null;
         $option = $this->prepareOption($option);
@@ -109,11 +109,11 @@ class PdfCrowd extends Core\ServiceRequestAlias
     // convertUri
     // lance une requête à pdfCrowd pour convertir une uri
     // retourne un objet de réponse
-    public function convertUri($value,?array $post=null,?array $option=null):Core\Response
+    public function convertUri($value,?array $post=null,?array $option=null):Main\Response
     {
         $return = null;
 
-        if($value instanceof Core\Request)
+        if($value instanceof Main\Request)
         $value = $value->absolute();
 
         $request = $this->request('url',$value,$post,$option);
@@ -126,11 +126,11 @@ class PdfCrowd extends Core\ServiceRequestAlias
     // convertString
     // lance une requête à pdfCrowd pour convertir une string
     // retourne un objet de réponse
-    public function convertString($value,?array $post=null,?array $option=null):Core\Response
+    public function convertString($value,?array $post=null,?array $option=null):Main\Response
     {
         $return = false;
 
-        if($value instanceof Core\File)
+        if($value instanceof Main\File)
         $value = $value->read();
 
         $request = $this->request('text',$value,$post,$option);

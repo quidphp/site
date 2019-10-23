@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Quid\Site\Row;
 use Quid\Base;
 use Quid\Core;
+use Quid\Routing;
 
 // _pageSectionConfig
 // trait related to the configuration of a row representing a page within a section
@@ -29,7 +30,7 @@ trait _pageSectionConfig
     // getRoutesCanPrepare
     // retourne toutes les routes qui doivent être préparés
     // n'inclut pas la route page dynamique, car plusieurs uris peuvent utilisateur cette route
-    public static function getRoutesCanPrepare():?Core\Routes
+    public static function getRoutesCanPrepare():?Routing\Routes
     {
         return static::boot()->routes(static::getRouteKey())->not('Page');
     }

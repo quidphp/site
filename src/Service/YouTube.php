@@ -9,12 +9,11 @@ declare(strict_types=1);
 
 namespace Quid\Site\Service;
 use Quid\Base;
-use Quid\Core;
 use Quid\Main;
 
 // youTube
 // class that can be used to make requests to the youTube API
-class YouTube extends Core\ServiceVideoAlias
+class YouTube extends Main\ServiceVideo
 {
     // config
     public static $config = [

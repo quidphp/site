@@ -17,15 +17,16 @@ $(document).ready(function() {
 		var preparable = formWrapper.triggerHandler('form:getPreparable');
 		
 		// jsonForm
-		var jsonForm = formWrapper.find(".element.jsonForm");
+		var jsonForm = formWrapper.find("[data-col='jsonForm']");
 		if(jsonForm.length)
 		jsonForm.jsonForm();
 		
 		preparable.on('specificForm:prepare', function(event) {
-			$(this).find(".element .googleMaps").googleMaps();
-			$(this).find(".element.tinyMce .tinymce, .element.tinyMceAdvanced .tinymce").each(function(index, el) {
+			$(this).find("[data-col='googleMaps'] .googleMaps").googleMaps();
+            
+			$(this).find("[data-group='tinymce'] .tinymce").each(function(index, el) {
 				var parent = $(this).parents(".element").first();
-				var hasTableRelation = parent.hasClass('table-relation');
+				var hasTableRelation = parent.is("[data-table-relation='1']")
 				var data = $(this).data('tinymce') || { };
 				var textarea = $(this).parent().find("textarea");
 				

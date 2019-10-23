@@ -54,7 +54,7 @@ class Db extends Base\Test
         // tinyMce
         assert($tinymce->tag() === 'textarea');
         assert(count($tinymce->formAttr()) === 1);
-        assert(count($tinymce->attr()) === 33);
+        assert(count($tinymce->attr()) === 68);
         assert(count($tinymce->attr('tinymce')) === 17);
         assert(strlen($tinymce->formComplex()) > 500);
 

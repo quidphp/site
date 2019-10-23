@@ -19,8 +19,7 @@ class Hierarchy extends Core\Col\EnumAlias
 {
     // config
     public static $config = [
-        'complex'=>'hierarchy',
-        'excerpt'=>75
+        'complex'=>'hierarchy'
     ];
 
 
@@ -92,7 +91,7 @@ class Hierarchy extends Core\Col\EnumAlias
             {
                 if(is_int($k) && array_key_exists($k,$names))
                 {
-                    $name = $this->valueComplexExcerpt($names[$k]);
+                    $name = $this->valueExcerpt($names[$k]);
                     $name = Orm\TableRelation::outputPrimary($k,$name);
 
                     $return .= Html::liOp('choice');

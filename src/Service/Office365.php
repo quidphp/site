@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Quid\Site\Service;
 use Quid\Base;
-use Quid\Core;
+use Quid\Main;
 
 // office365
 // class that grants some static methods related to office365
-class Office365 extends Core\ServiceAlias
+class Office365 extends Main\Service
 {
     // config
     public static $config = [

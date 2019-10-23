@@ -9,12 +9,11 @@ declare(strict_types=1);
 
 namespace Quid\Site\Service;
 use Quid\Base;
-use Quid\Core;
 use Quid\Main;
 
 // ipApi
 // class that grants methods to use the ipApi API, which converts IP to localization data
-class IpApi extends Core\ServiceRequestAlias
+class IpApi extends Main\ServiceRequest
 {
     // config
     public static $config = [
@@ -73,9 +72,9 @@ class IpApi extends Core\ServiceRequestAlias
     public static function prepareValue($return)
     {
         if($return === null)
-        $return = Core\Request::live();
+        $return = Main\Request::live();
 
-        if($return instanceof Core\Request)
+        if($return instanceof Main\Request)
         $return = $return->ip();
 
         if(!Base\Ip::is($return))

@@ -10,16 +10,13 @@ declare(strict_types=1);
 namespace Quid\Site\Route;
 use Quid\Base;
 use Quid\Base\Html;
-use Quid\Core;
+use Quid\Orm;
+use Quid\Lemur;
 
 // _generalFeed
 // trait that grants methods related a general feed (load more)
 trait _generalFeed
 {
-    // trait
-    use Lemur\Route\_generalPager;
-
-
     // rows
     protected $ids = null;
 
@@ -75,10 +72,10 @@ trait _generalFeed
 
     // rows
     // retourne l'objet rows pour la page courante
-    public function rows():Core\RowsIndex
+    public function rows():Orm\RowsIndex
     {
         return $this->cache(__METHOD__,function() {
-            $return = Core\RowsIndex::newOverload();
+            $return = Orm\RowsIndex::newOverload();
             $db = $this->db();
             $ids = $this->makeIds();
             $slice = $this->pageSlice(true);
@@ -116,7 +113,7 @@ trait _generalFeed
 
     // rowsVisible
     // retourne l'objet rows pour la page courante (mais seulement les visibles)
-    public function rowsVisible():Core\RowsIndex
+    public function rowsVisible():Orm\RowsIndex
     {
         return $this->cache(__METHOD__,function() {
             return $this->rows()->filter(['isVisible'=>true]);

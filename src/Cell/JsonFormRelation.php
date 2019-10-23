@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Quid\Site\Cell;
 use Quid\Base;
-use Quid\Core;
+use Quid\Lemur;
 
 // jsonFormRelation
 // class to manage a cell containing a relation value to another cell containing a json form
-class JsonFormRelation extends Core\Cell\JsonArrayRelationAlias
+class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
 {
     // config
     public static $config = [];

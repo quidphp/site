@@ -8,11 +8,11 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Cell;
-use Quid\Core;
+use Quid\Lemur;
 
 // youTube
 // class for working with a cell containing a youTube video
-class YouTube extends Core\Cell\VideoAlias
+class YouTube extends Lemur\Cell\VideoAlias
 {
     // config
     public static $config = [];

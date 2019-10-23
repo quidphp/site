@@ -10,10 +10,11 @@ declare(strict_types=1);
 namespace Quid\Site\Col;
 use Quid\Base;
 use Quid\Core;
+use Quid\Lemur;
 
 // tinyMce
 // class for a column which transforms the textarea in a simple tinymce WYSIWYG editor
-class TinyMce extends Core\Col\TextareaAlias
+class TinyMce extends Lemur\Col\TextareaAlias
 {
     // config
     public static $config = [
@@ -23,6 +24,7 @@ class TinyMce extends Core\Col\TextareaAlias
         'relative'=>'app', // custom, type pour absoluteReplace, utilise ceci pour ramener les liens absoluts dans leur version relative
         'segmentRoute'=>'app', // custom, type pour segmentReplace
         'language'=>['fr'=>'fr_FR'], // tableau pour convertir un code de language quid vers tinymce
+        'group'=>'tinymce',
         'tinymce'=>[ // config pour tinymce qui sera mis en attribut dans la tag textarea
             'plugins'=>'autolink code charmap fullscreen hr link lists paste print searchreplace visualblocks wordcount',
             'toolbar'=>'styleselect removeformat visualblocks | bold italic underline | bullist numlist | link charmap hr | searchreplace print code fullscreen',

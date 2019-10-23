@@ -9,12 +9,11 @@ declare(strict_types=1);
 
 namespace Quid\Site\Service;
 use Quid\Base;
-use Quid\Core;
 use Quid\Main;
 
 // googleGeocoding
 // class used to make googleGeocoding localization requests
-class GoogleGeocoding extends Core\ServiceRequestAlias
+class GoogleGeocoding extends Main\ServiceRequest
 {
     // config
     public static $config = [

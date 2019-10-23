@@ -27,7 +27,7 @@ class Media extends Core\RowAlias
 
     // thumbnail
     // retourne le thumbnail à utiliser pour représenter le ou les médias
-    public function thumbnail():?Core\File\Image
+    public function thumbnail():?Main\File\Image
     {
         return $this['medias']->file(0,'large');
     }

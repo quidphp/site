@@ -13,10 +13,11 @@ use Quid\Base\Html;
 use Quid\Core;
 use Quid\Orm;
 use Quid\Site;
+use Quid\Lemur;
 
 // jsonFormRelation
 // class to manage a column containing a relation value to another column which is a jsonForm
-class JsonFormRelation extends Core\Col\JsonArrayAlias
+class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 {
     // config
     public static $config = [
@@ -81,14 +82,6 @@ class JsonFormRelation extends Core\Col\JsonArrayAlias
         $return = parent::onSet($return,$row,$cell,$option);
 
         return $return;
-    }
-
-
-    // classHtml
-    // retourne la classe additionnelle à utiliser
-    public function classHtml():array
-    {
-        return [parent::classHtml(),'add-remove'];
     }
 
 

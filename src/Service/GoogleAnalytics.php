@@ -8,11 +8,11 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Service;
-use Quid\Core;
+use Quid\Main;
 
 // googleAnalytics
 // class that provides some methods to integrate googleAnalytics tracking
-class GoogleAnalytics extends Core\ServiceRequestAlias
+class GoogleAnalytics extends Main\ServiceRequest
 {
     // config
     public static $config = [

@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Quid\Test\Site;
 use Quid\Base;
-use Quid\Core;
 use Quid\Site;
 
 // boot
@@ -28,7 +27,7 @@ class Boot extends Base\Test
 
         // boot
         assert($boot->langContentClass('en') === Site\Lang\En::class);
-        assert($boot->service('googleMaps') instanceof Core\ServiceRequest);
+        assert($boot->service('googleMaps') instanceof Site\Service\GoogleMaps);
 
         // lang
         assert($lang->existsRelation('contextType/app'));
@@ -38,7 +37,7 @@ class Boot extends Base\Test
         assert(!empty($lang->relation('contextType')));
         assert($lang->relation('contextType/app') === 'Application');
         assert($lang->relation('contextType/app','en') === 'Application');
-        assert($lang->relation('jsonForm') !== $lang->relation('jsonForm',null,false));
+        assert($lang->relation('jsonForm',null,true) !== $lang->relation('jsonForm',null));
         assert($lang->required(true,null,['path'=>['tables','formSubmit','json']]) === 'The form is invalid.');
         assert($lang->pathAlternateTake('required',null,['tables','formSubmit','json']) === 'The form is invalid.');
         assert(count($lang->pathAlternateValue('required','common',false,['tables','formSubmit','json'])) === 4);

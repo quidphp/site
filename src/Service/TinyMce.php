@@ -8,11 +8,11 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Service;
-use Quid\Core;
+use Quid\Main;
 
 // tinyMce
 // class that provides a method to integrate tinyMce WYSIWYG editor
-class TinyMce extends Core\ServiceAlias
+class TinyMce extends Main\Service
 {
     // config
     public static $config = [];

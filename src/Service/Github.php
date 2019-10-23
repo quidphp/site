@@ -9,12 +9,11 @@ declare(strict_types=1);
 
 namespace Quid\Site\Service;
 use Quid\Base;
-use Quid\Core;
 use Quid\Main;
 
 // github
 // class that grants some static methods related to github
-class Github extends Core\ServiceAlias
+class Github extends Main\Service
 {
     // config
     public static $config = [];

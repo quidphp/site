@@ -9,12 +9,12 @@ declare(strict_types=1);
 
 namespace Quid\Site\Service;
 use Quid\Base;
-use Quid\Core;
+use Quid\Main;
 use Quid\Site;
 
 // mailchimp
 // class that provides some methods to communication with mailchimp (subscribe to a list)
-class Mailchimp extends Core\ServiceRequestAlias implements Site\Contract\Newsletter
+class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 {
     // config
     public static $config = [
@@ -107,7 +107,7 @@ class Mailchimp extends Core\ServiceRequestAlias implements Site\Contract\Newsle
 
     // trigger
     // fait un appel à mailchimp, retourne un objet réponse
-    public function trigger(string $method,?array $post=null,?array $option=null):Core\Response
+    public function trigger(string $method,?array $post=null,?array $option=null):Main\Response
     {
         $return = null;
         $value = [];
@@ -295,7 +295,7 @@ class Mailchimp extends Core\ServiceRequestAlias implements Site\Contract\Newsle
 
                 if($this->getOption('addLang') === true)
                 {
-                    $lang = static::getLangCode();
+                    $lang = static::boot()->lang()->currentLang();
                     if(is_string($lang))
                     $vars['MC_LANGUAGE'] = $lang;
                 }

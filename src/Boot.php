@@ -35,7 +35,6 @@ abstract class Boot extends Lemur\Boot
             'compileScss'=>[
                 '[publicCss]/app.css'=>[
                     0=>'[vendorLemur]/scss/include/_include.scss',
-                    1=>'[vendorLemur]/scss/include/_component.scss',
                     2=>'[scss]/app/_include.scss',
                     3=>'[vendorLemur]/scss/vendor/normalize/normalize.css',
                     10=>'[scss]/app/app.scss']],

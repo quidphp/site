@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Quid\Site\Service;
 use Quid\Base;
-use Quid\Core;
+use Quid\Main;
 
 // googleMaps
 // class used to generate javascript googleMaps
-class GoogleMaps extends Core\ServiceRequestAlias
+class GoogleMaps extends Main\ServiceRequest
 {
     // config
     public static $config = [

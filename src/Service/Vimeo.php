@@ -9,12 +9,11 @@ declare(strict_types=1);
 
 namespace Quid\Site\Service;
 use Quid\Base;
-use Quid\Core;
 use Quid\Main;
 
 // vimeo
 // class used to make requests to the vimeo API
-class Vimeo extends Core\ServiceVideoAlias
+class Vimeo extends Main\ServiceVideo
 {
     // config
     public static $config = [

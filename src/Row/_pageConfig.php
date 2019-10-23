@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Quid\Site\Row;
 use Quid\Base;
 use Quid\Core;
+use Quid\Routing;
 
 // _pageConfig
 // trait related to the configuration of a row representing a page
@@ -75,7 +76,7 @@ trait _pageConfig
 
     // getRoutesCanPrepare
     // retourne toutes les routes qui doivent être préparés
-    public static function getRoutesCanPrepare():?Core\Routes
+    public static function getRoutesCanPrepare():?Routing\Routes
     {
         return static::boot()->routes(static::getRouteKey());
     }
@@ -151,7 +152,7 @@ trait _pageConfig
     // prepareRoutesObject
     // permet de préparer toutes les pages des routes de l'objet routes
     // méthode protégé
-    protected static function prepareRoutesObject(Core\Routes $return):Core\Routes
+    protected static function prepareRoutesObject(Routing\Routes $return):Routing\Routes
     {
         $table = static::tableFromFqcn();
         $where = [true];
