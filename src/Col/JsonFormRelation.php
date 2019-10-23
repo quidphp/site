@@ -11,9 +11,9 @@ namespace Quid\Site\Col;
 use Quid\Base;
 use Quid\Base\Html;
 use Quid\Core;
+use Quid\Lemur;
 use Quid\Orm;
 use Quid\Site;
-use Quid\Lemur;
 
 // jsonFormRelation
 // class to manage a column containing a relation value to another column which is a jsonForm

@@ -11,8 +11,8 @@ namespace Quid\Site\Col;
 use Quid\Base;
 use Quid\Base\Html;
 use Quid\Core;
-use Quid\Site;
 use Quid\Lemur;
+use Quid\Site;
 
 // jsonForm
 // class for a column containing a json form (advanced jsonArray)

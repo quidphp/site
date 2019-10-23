@@ -4,7 +4,7 @@ declare(strict_types=1);
 /*
  * This file is part of the QuidPHP package.
  * Website: https://quidphp.com
- * License: https://github.com/quidphp/lemur/blob/master/LICENSE
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
  */
 
 namespace Quid\Site\Route;
@@ -47,8 +47,8 @@ trait _specific
     {
         return [static::makeParent(),$this];
     }
-    
-    
+
+
     // makeSpecificNav
     // génère la nav à partir d'un objet route vers general
     protected function makeSpecificNav(Core\Route $general,Core\Row $row,string $segment,?string $highlightSegment=null,?array $attr=null):array

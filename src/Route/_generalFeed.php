@@ -11,7 +11,6 @@ namespace Quid\Site\Route;
 use Quid\Base;
 use Quid\Base\Html;
 use Quid\Orm;
-use Quid\Lemur;
 
 // _generalFeed
 // trait that grants methods related a general feed (load more)

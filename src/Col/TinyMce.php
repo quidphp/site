@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Quid\Site\Col;
 use Quid\Base;
-use Quid\Core;
 use Quid\Lemur;
 
 // tinyMce
