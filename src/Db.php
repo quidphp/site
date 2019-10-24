@@ -18,9 +18,6 @@ class Db extends Lemur\Db
     public static $config = [
         'option'=>[
             'cols'=>[
-                'content_en'=>['class'=>Col\TinyMce::class],
-                'content_fr'=>['class'=>Col\TinyMce::class],
-                'content'=>['class'=>Col\TinyMce::class],
                 'googleMaps'=>['class'=>Col\GoogleMaps::class,'panel'=>'localization'],
                 'youTube'=>['class'=>Col\YouTube::class,'general'=>false,'panel'=>'media'],
                 'vimeo'=>['class'=>Col\Vimeo::class,'general'=>false,'panel'=>'media']]]

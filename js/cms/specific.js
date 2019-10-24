@@ -11,48 +11,11 @@
 $(document).ready(function() {
 	
 	// route:specificPrepare
-    // comportement pour la préparation de certains inputs plus avancés
-	$(this).on('route:specificPrepare', function(event) {
-		var formWrapper = $("main .container > .form");
-		var preparable = formWrapper.triggerHandler('form:getPreparable');
-		
-		// jsonForm
-		var jsonForm = formWrapper.find("[data-col='jsonForm']");
-		if(jsonForm.length)
-		jsonForm.jsonForm();
-		
+    // comportement pour la préparation de certains inputs avancés
+	$(this).on('route:specificPrepare', function(event,preparable) {
 		preparable.on('specificForm:prepare', function(event) {
+    		$(this).find("[data-col='jsonForm']").jsonForm();
 			$(this).find("[data-col='googleMaps'] .googleMaps").googleMaps();
-            
-			$(this).find("[data-group='tinymce'] .tinymce").each(function(index, el) {
-				var parent = $(this).parents(".element").first();
-				var hasTableRelation = parent.is("[data-table-relation='1']")
-				var data = $(this).data('tinymce') || { };
-				var textarea = $(this).parent().find("textarea");
-				
-				if(hasTableRelation === true)
-				{
-					var filters = parent.find(".relations .filter");
-					data.setup = function(editor) {
-						editor.on('click', function(e) {
-					      filters.trigger('clickOpen:close');
-					    });
-					};
-					
-					textarea.on('textarea:insert', function(event,html) {
-						var r = false;
-						var editor = $(this).data('editor');
-						
-						if($.isStringNotEmpty(html) && editor)
-						editor.execCommand('mceInsertContent',false,html);
-						
-						return r;
-					});
-				}
-				
-				var editor = $(this).tinymce(data);
-				textarea.data('editor',editor);
-			});
-		});
+        });
 	});
 });

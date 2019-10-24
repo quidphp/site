@@ -6,8 +6,8 @@
  * License: https://github.com/quidphp/lemur/blob/master/LICENSE
  */
  
-// widget
-// script containing logic for some advanced widgets
+// jsonForm
+// script containing logic for the jsonForm component
 (function ($, document, window) {
 	
 	// jsonForm

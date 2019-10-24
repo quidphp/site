@@ -6,25 +6,9 @@
  * License: https://github.com/quidphp/lemur/blob/master/LICENSE
  */
  
-// service
-// script containing logic for third-party services
+// googleMaps
+// script containing logic for a simple googleMaps component
 (function ($, document, window) {
-	
-	// googleAnalytics
-	// permet de lier le chargement d'une nouvelle page via ajax et de l'envoyer à google Analytics
-	$.fn.googleAnalytics = function()
-	{
-		$(this).on('navigation:complete', function(event,uri) {
-			if($.isStringNotEmpty(uri) && typeof ga !== 'undefined' && $.isFunction(ga))
-			{
-				ga('set','page',uri);
-				ga('send','pageview');
-			}
-		});
-		
-		return this;
-	}
-	
 	
 	// googleMaps
 	// génère une carte google à partir d'élément jquery
@@ -84,31 +68,6 @@
 		}
 		
 		return this;
-	}
-	
-	
-	// tinymce
-	// génère un éditeur de texte à partir de tinycme
-	$.fn.tinymce = function(data)
-	{
-		var r = null;
-
-		if($(this).length === 1)
-		{
-			$(this).addIds('tinycme');
-			var textarea = $(this);
-			var id = $(this).prop('id');
-			data.selector = "#"+id;
-			data.init_instance_callback = function (editor) {
-				editor.on('Blur', function (e) {
-					editor.save();
-				});
-			};
-			tinymce.init(data);
-			r = tinymce.get(id);
-		}
-		
-		return r;
 	}
 	
 }(jQuery, document, window));
