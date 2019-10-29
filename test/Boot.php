@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Quid\Test\Site;
 use Quid\Base;
-use Quid\Site;
 use Quid\Core;
+use Quid\Site;
 
 // boot
 // class for testing Quid\Site\Boot
@@ -44,7 +44,7 @@ class Boot extends Base\Test
         assert(count($lang->pathAlternateValue('required','common',false,['tables','formSubmit','json'])) === 4);
         assert(count($lang->pathAlternateValue('required','common',true,['tables','formSubmit','json'])) === 2);
         assert(count($lang->pathAlternate('required',['tables','formSubmit','json'])) === 4);
-        
+
         // googleAnalytics
         $ga = $boot->service('googleAnalytics');
         assert($ga->getKey() === 'googleAnalytics');
@@ -106,7 +106,7 @@ class Boot extends Base\Test
         $value = 'https://www.youtube.com/watch?v=8HaU7Lq0tew&start_radio=1&list=RD8HaU7Lq0tew';
         $youTube = Site\Service\YouTube::class;
         assert($youTube::target(['value'=>$value]) === 'https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=8HaU7Lq0tew&start_radio=1&list=RD8HaU7Lq0tew&format=json');
-        
+
         return true;
     }
 }
