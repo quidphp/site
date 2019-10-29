@@ -1,0 +1,18 @@
+// compileOnSave: false
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
+ */
+
+// googleMaps
+// stylesheet for the googleMaps component
+
+// googleMaps
+// mixin pour le champ googleMaps
+@mixin googleMaps() {
+    height: 200px;
+    background-color: $gray;
+    margin-bottom: 10px;
+}

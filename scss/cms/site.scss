@@ -9,6 +9,11 @@
 // form
 // stylesheet for additional form inputs in the CMS
 
+// include
+@import 'component/_googleMaps';
+@import 'component/_jsonForm';
+
+
 /* TINYMCE */
 form [data-group='tinymce'] .right textarea {
     height: 350px !important;
@@ -42,67 +47,12 @@ form [data-col='hierarchy'] .right .scroller {
 
 /* JSON FORM */
 form [data-col='jsonForm'] {
-    .right .container > .ele {
-        margin-bottom: 20px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid $lightGray;
-
-        .table {
-            height: auto;
-        }
-
-        label {
-            font-size: 90%;
-        }
-
-        .label-cell {
-            width: 150px;
-        }
-
-        .label {
-            margin-bottom: 10px;
-        }
-
-        .type {
-            margin-bottom: 10px;
-        }
-
-        .description {
-            margin-bottom: 10px;
-
-            textarea {
-                height: 50px;
-            }
-        }
-
-        .required {
-            .form-cell {
-                label {
-                    margin-left: 5px;
-                }
-            }
-        }
-
-        .choices {
-            display: none;
-            padding-top: 10px;
-
-            &.visible {
-                display: block;
-            }
-
-            textarea {
-                height: 80px;
-            }
-        }
-    }
+    @include jsonForm();
 }
 
 /* GOOGLE MAPS */
 form [data-col='googleMaps'] .right .googleMaps {
-    height: 200px;
-    background-color: $gray;
-    margin-bottom: 10px;
+    @include googleMaps();
 }
 
 /* VIDEO */

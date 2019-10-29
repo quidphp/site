@@ -26,29 +26,27 @@ abstract class Boot extends Lemur\Boot
                     'namespace'=>[
                         __NAMESPACE__=>['closure'=>true],
                         Test\Site::class=>['closure'=>false]]]]],
+        'concatenateJs'=>[
+            '[publicJs]/include.js'=>[
+                1=>'[vendorSite]/js/include',
+                2=>'[js]/include']],
         '@app'=>[
             'service'=>[
                 'jQuery'=>Lemur\Service\JQuery::class],
             'sessionVersionMatch'=>false,
             'compileScss'=>[
                 '[publicCss]/app.css'=>[
-                    0=>'[vendorLemur]/scss/utils/_include.scss',
+                    0=>'[vendorLemur]/scss/_include.scss',
                     2=>'[scss]/app/_include.scss',
                     10=>'[scss]/app/app.scss']],
             'concatenateJs'=>[
-                '[publicJs]/utils.js'=>[
-                    0=>'[vendorLemur]/js/utils'],
-                '[publicJs]/component.js'=>[
-                    0=>'[vendorLemur]/js/component',
-                    1=>'[vendorSite]/js/component'],
-                '[publicJs]/app.js'=>'[js]/app']],
+                '[publicJs]/app.js'=>[
+                    0=>'[js]/app']]],
         '@cms'=>[
             'compileScss'=>[
                 '[publicCss]/cms.css'=>[
-                    20=>'[vendorSite]/scss/cms/form.scss']],
+                    20=>'[vendorSite]/scss/cms/site.scss']],
             'concatenateJs'=>[
-                '[publicJs]/component.js'=>[
-                    1=>'[vendorSite]/js/component'],
                 '[publicJs]/cms.js'=>[
                     1=>'[vendorSite]/js/cms']]]
     ];

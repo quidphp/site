@@ -14,7 +14,7 @@ use Quid\Main;
 use Quid\Site;
 
 // db
-// class for testing db
+// class for testing Quid\Site\Db
 class Db extends Base\Test
 {
     // trigger

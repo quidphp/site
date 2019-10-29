@@ -18,7 +18,15 @@ class Github extends Main\Service
     // config
     public static $config = [];
 
-
+    
+    // construct
+    // constructeur privé
+    private function __construct()
+    {
+        return;
+    }
+    
+    
     // allMarkdown
     // génère le markdown pour php, js et scss
     public static function allMarkdown(string $namespace):array

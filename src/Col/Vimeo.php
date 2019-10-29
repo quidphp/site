@@ -20,7 +20,7 @@ class Vimeo extends Lemur\Col\VideoAlias
         'cell'=>Site\Cell\Vimeo::class,
         'preValidate'=>['uriHost'=>'vimeo.com'],
         'group'=>'video',
-        'service'=>'vimeo' // custom, clé du service utilisé
+        'service'=>Site\Service\Vimeo::class // custom, classe du service utilisé
     ];
 }
 

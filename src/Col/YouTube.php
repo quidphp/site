@@ -19,7 +19,7 @@ class YouTube extends Lemur\Col\VideoAlias
     public static $config = [
         'cell'=>Site\Cell\YouTube::class,
         'preValidate'=>['uriHost'=>['youtube.com','www.youtube.com']],
-        'service'=>'youTube' // custom, clé du service utilisé
+        'service'=>Site\Service\YouTube::class // custom, classe du service utilisé
     ];
 }
 
