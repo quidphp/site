@@ -64,7 +64,7 @@ class EmailNewsletter extends Core\Col\EmailAlias
     public function getService():?Site\Contract\Newsletter
     {
         $return = null;
-        $service = static::$config['service'];
+        $service = $this->getAttr('service');
 
         if(is_string($service))
         $return = $this->service($service);

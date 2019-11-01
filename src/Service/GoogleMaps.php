@@ -34,7 +34,7 @@ class GoogleMaps extends Main\ServiceRequest
     // retourne l'uri vers le fichier js à charger
     public function docOpenJs()
     {
-        return Base\Str::replace(['%value%'=>$this->apiKey()],static::$config['js']);
+        return Base\Str::replace(['%value%'=>$this->apiKey()],$this->getAttr('js'));
     }
 
 

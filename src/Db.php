@@ -16,11 +16,10 @@ class Db extends Lemur\Db
 {
     // config
     public static $config = [
-        'option'=>[
-            'cols'=>[
-                'googleMaps'=>['class'=>Col\GoogleMaps::class,'panel'=>'localization'],
-                'youTube'=>['class'=>Col\YouTube::class,'general'=>false,'panel'=>'media'],
-                'vimeo'=>['class'=>Col\Vimeo::class,'general'=>false,'panel'=>'media']]]
+        'cols'=>[
+            'googleMaps'=>['class'=>Col\GoogleMaps::class,'panel'=>'localization'],
+            'youTube'=>['class'=>Col\YouTube::class,'general'=>false,'panel'=>'media'],
+            'vimeo'=>['class'=>Col\Vimeo::class,'general'=>false,'panel'=>'media']]
     ];
 }
 

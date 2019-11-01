@@ -12,6 +12,7 @@ use Quid\Base;
 use Quid\Base\Html;
 use Quid\Core;
 use Quid\Site;
+use Quid\Lemur;
 
 // newsletterSubmit
 // abstract class for a newsletter submit route
@@ -93,7 +94,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
     // retourne le service à utiliser pour l'enregistrement à l'infolettre
     public function getService():Site\Contract\Newsletter
     {
-        return $this->service(static::$config['service']);
+        return $this->service($this->getAttr('service'));
     }
 
 
@@ -104,7 +105,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
         $return = [];
         $request = $this->request();
 
-        foreach (static::getFields() as $value)
+        foreach ($this->getFields() as $value)
         {
             if(is_string($value))
             $return[$value] = (string) $request->get($value);
@@ -147,19 +148,19 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // getFields
     // retourne les champs pour le formulaire
-    public static function getFields():array
+    public function getFields():array
     {
-        return static::$config['match']['post'];
+        return $this->getAttr(array('match','post')) ?? array();
     }
 
 
     // getFieldsInfo
     // retourne les informations détaillés des champs pour le formulaire
-    public static function getFieldsInfo():array
+    public function getFieldsInfo():array
     {
         $return = [];
 
-        foreach (static::getFields() as $key)
+        foreach ($this->getFields() as $key)
         {
             $array = [];
             $array['method'] = 'inputText';
@@ -182,11 +183,11 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // makeForm
     // génère le formulaire pour l'inscription à l'infolettre
-    public static function makeForm(?array $flash=null):string
+    public function makeForm(?array $flash=null):string
     {
         $r = '';
 
-        foreach (static::getFieldsInfo() as $key => $array)
+        foreach ($this->getFieldsInfo() as $key => $array)
         {
             $value = (is_array($flash) && array_key_exists($key,$flash))? $flash[$key]:null;
             $method = $array['method'];

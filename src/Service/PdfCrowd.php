@@ -54,12 +54,12 @@ class PdfCrowd extends Main\ServiceRequest
 
     // checkType
     // envoie une exception si le type n'est pas supporté
-    protected function checkType(string $type):self
+    protected function checkType(string $type):void
     {
         if(!in_array($type,['url','text'],true))
         static::throw();
 
-        return $this;
+        return;
     }
 
 

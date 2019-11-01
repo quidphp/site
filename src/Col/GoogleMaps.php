@@ -78,7 +78,7 @@ class GoogleMaps extends Core\ColAlias
     // retourne le service à utiliser
     public function getService():Main\Service
     {
-        return $this->service(static::$config['service']);
+        return $this->service($this->getAttr('service'));
     }
 
 

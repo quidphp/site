@@ -46,11 +46,11 @@ trait _pageConfig
     // setRoutePrepared
     // permet de mettre si la route a été préparé ou non
     // méthode protégé
-    protected function setRoutePrepared(bool $value=true):self
+    protected function setRoutePrepared(bool $value=true):void
     {
         $this->routePrepared = $value;
 
-        return $this;
+        return;
     }
 
 

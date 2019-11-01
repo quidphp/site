@@ -24,7 +24,7 @@ trait _generalFeed
     // permet de slice les entrées dans une page
     protected function pageSlice(bool $validate=false):array
     {
-        $return = Base\Nav::pageSlice($this->segment('page'),static::$config['limit'],$this->ids());
+        $return = Base\Nav::pageSlice($this->segment('page'),$this->getAttr('limit'),$this->ids());
 
         if($validate === true)
         {
@@ -49,7 +49,7 @@ trait _generalFeed
     // retourne le numéro de la prochaine page si existant
     protected function pageNext():?int
     {
-        return Base\Nav::pageNext($this->segment('page'),$this->ids(),static::$config['limit']);
+        return Base\Nav::pageNext($this->segment('page'),$this->ids(),$this->getAttr('limit'));
     }
 
 
@@ -57,7 +57,7 @@ trait _generalFeed
     // retourne le tableau sur les informations de pagination genral si existant
     protected function general(int $amount=3):?array
     {
-        return Base\Nav::general($this->segment('page'),$this->ids(),static::$config['limit'],$amount);
+        return Base\Nav::general($this->segment('page'),$this->ids(),$this->getAttr('limit'),$amount);
     }
 
 

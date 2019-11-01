@@ -63,13 +63,13 @@ trait _page
 
     // makeRow
     // construit l'objet row pour la route
-    protected function makeRow():self
+    protected function makeRow():void
     {
-        $row = static::$config['rowObj'] ?? null;
+        $row = $this->getAttr('rowObj');
         if(is_int($row))
-        $return = $this->row = Site\Row\Page::select($row);
+        $this->row = Site\Row\Page::select($row);
 
-        return $this;
+        return;
     }
 }
 ?>

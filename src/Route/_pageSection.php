@@ -70,16 +70,16 @@ trait _pageSection
 
     // makeSection
     // construit la section, utilisé dans onMake
-    protected function makeSection():self
+    protected function makeSection():void
     {
         if(empty($this->section))
         {
-            $section = static::$config['section'] ?? null;
+            $section = $this->getAttr('section');
             if(is_int($section))
             $this->section = Site\Row\Section::row($section);
         }
 
-        return $this;
+        return;
     }
 }
 ?>

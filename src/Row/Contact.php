@@ -42,7 +42,7 @@ abstract class Contact extends Core\RowAlias
     public function contactAdminEmailModel():?Main\Contract\Email
     {
         $return = null;
-        $key = $this->attr('emailModel/contactAdmin');
+        $key = $this->getAttr('emailModel/contactAdmin');
 
         if(!empty($key))
         $return = Core\Row\Email::find($key);
@@ -56,7 +56,7 @@ abstract class Contact extends Core\RowAlias
     public function contactConfirmEmailModel():?Main\Contract\Email
     {
         $return = null;
-        $key = $this->attr('emailModel/contactConfirm');
+        $key = $this->getAttr('emailModel/contactConfirm');
 
         if(!empty($key))
         $return = Core\Row\Email::find($key);
@@ -100,11 +100,11 @@ abstract class Contact extends Core\RowAlias
 
     // onInserted
     // lors de l'insertion d'un nouveau contact, envoie le email
-    public function onInserted(array $option):self
+    public function onInserted(array $option)
     {
         $this->sendEmail($option);
 
-        return $this;
+        return;
     }
 
 

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Quid\Site\Route;
 use Quid\Core;
+use Quid\Lemur;
 
 // contactSubmit
 // abstract class for a contact submit route
@@ -75,7 +76,7 @@ abstract class ContactSubmit extends Core\RouteAlias
         $return = [];
         $request = $this->request();
 
-        foreach (static::getFields() as $value)
+        foreach ($this->getFields() as $value)
         {
             if(is_string($value))
             $return[$value] = (string) $request->get($value);
@@ -110,9 +111,9 @@ abstract class ContactSubmit extends Core\RouteAlias
 
     // getFields
     // retourne les champs pour le formulaire
-    public static function getFields():array
+    public function getFields():array
     {
-        return static::$config['match']['post'];
+        return $this->getAttr(array('match','post')) ?? array();
     }
 }
 
