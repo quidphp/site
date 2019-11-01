@@ -113,7 +113,7 @@ abstract class ContactSubmit extends Core\RouteAlias
     // retourne les champs pour le formulaire
     public function getFields():array
     {
-        return $this->getAttr(array('match','post')) ?? array();
+        return $this->getAttr(['match','post']) ?? [];
     }
 }
 

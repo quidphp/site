@@ -11,8 +11,8 @@ namespace Quid\Site\Route;
 use Quid\Base;
 use Quid\Base\Html;
 use Quid\Core;
-use Quid\Site;
 use Quid\Lemur;
+use Quid\Site;
 
 // newsletterSubmit
 // abstract class for a newsletter submit route
@@ -150,7 +150,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
     // retourne les champs pour le formulaire
     public function getFields():array
     {
-        return $this->getAttr(array('match','post')) ?? array();
+        return $this->getAttr(['match','post']) ?? [];
     }
 
 
