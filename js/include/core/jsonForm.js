@@ -41,7 +41,7 @@ quid.core.jsonForm = $.fn.jsonForm = function()
             $(this).trigger('jsonForm:hideChoices',[parent]);
         });
     })
-    .addRemove().trigger('jsonForm:trigger');
+    .trigger('jsonForm:trigger');
     
     return this;
 }

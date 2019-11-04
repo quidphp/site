@@ -18,13 +18,12 @@ class PdfCrowd extends Main\ServiceRequest
     // config
     public static $config = [
         'target'=>'http://api.pdfcrowd.com/convert/', // uri target pour PdfCrowd
-        'option'=>[
-            'responseCode'=>null,
-            'post'=>[ // données post par défaut
-                'input_format'=>'html',
-                'output_format'=>'pdf',
-                'page_size'=>'letter',
-                'orientation'=>'portrait']]
+        'responseCode'=>null,
+        'post'=>[ // données post par défaut
+            'input_format'=>'html',
+            'output_format'=>'pdf',
+            'page_size'=>'letter',
+            'orientation'=>'portrait']
     ];
 
 
@@ -32,7 +31,7 @@ class PdfCrowd extends Main\ServiceRequest
     // retourne la clé d'api
     public function apiKey():string
     {
-        return $this->getOption('key');
+        return $this->getAttr('key');
     }
 
 
@@ -40,7 +39,7 @@ class PdfCrowd extends Main\ServiceRequest
     // retourne le username de l'api
     public function username():string
     {
-        return $this->getOption('username');
+        return $this->getAttr('username');
     }
 
 
@@ -67,7 +66,7 @@ class PdfCrowd extends Main\ServiceRequest
     // prépare le tableau option avant de le joindre à la requête
     protected function prepareOption(?array $option=null):array
     {
-        $return = Base\Arr::plus($this->option(),$option);
+        $return = Base\Arr::plus($this->attr(),$option);
         $return = Base\Arr::keysStrip(['username','key','post'],$return);
         $return['userPassword'] = $this->userPassword();
 
@@ -83,7 +82,7 @@ class PdfCrowd extends Main\ServiceRequest
         $this->checkType($type);
         $value = Base\Obj::cast($value);
 
-        $return = Base\Arr::plus($this->getOption('post'),$post);
+        $return = Base\Arr::plus($this->getAttr('post'),$post);
         $return[$type] = $value;
 
         return $return;

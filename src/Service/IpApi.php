@@ -25,7 +25,7 @@ class IpApi extends Main\ServiceRequest
     // retourne la clé d'api
     public function apiKey():?string
     {
-        return $this->getOption('key');
+        return $this->getAttr('key');
     }
 
 
@@ -60,9 +60,9 @@ class IpApi extends Main\ServiceRequest
 
     // request
     // retourne la requête à utiliser pour aller chercher une localization auprès de ipApi
-    public function request($value,?array $option=null):Main\Request
+    public function request($value,?array $attr=null):Main\Request
     {
-        return static::makeRequest(static::target(['value'=>$value]),Base\Arr::plus($this->option(),$option));
+        return static::makeRequest(static::target(['value'=>$value]),Base\Arr::plus($this->attr(),$attr));
     }
 
 

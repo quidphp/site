@@ -24,7 +24,7 @@ class GoogleAnalytics extends Main\ServiceRequest
     // retourne la clé d'api
     public function apiKey():string
     {
-        return $this->getOption('key');
+        return $this->getAttr('key');
     }
 
 

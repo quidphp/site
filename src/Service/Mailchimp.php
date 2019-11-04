@@ -18,15 +18,14 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 {
     // config
     public static $config = [
-        'option'=>[
-            'ping'=>2, // s'il y a un ping avant la requête
-            'responseCode'=>[200,500], // le code de réponse peut être 200 ou 500
-            'key'=>null, // apiKey pour mailchimp
-            'list'=>null, // code de la liste
-            'addLang'=>true, // si lang est ajouté au merge vars
-            'subscribed'=>['pending','subscribed'], // status considéré comme subscribed
-            'mergeVars'=>['firstName'=>'FNAME','lastName'=>'LNAME']], // remplacement pour les mergeVars
-        'target'=>'https://%server%.api.mailchimp.com/2.0/%method%.json' // uri target pour mailchimp
+        'target'=>'https://%server%.api.mailchimp.com/2.0/%method%.json', // uri target pour mailchimp
+        'ping'=>2, // s'il y a un ping avant la requête
+        'responseCode'=>[200,500], // le code de réponse peut être 200 ou 500
+        'key'=>null, // apiKey pour mailchimp
+        'list'=>null, // code de la liste
+        'addLang'=>true, // si lang est ajouté au merge vars
+        'subscribed'=>['pending','subscribed'], // status considéré comme subscribed
+        'mergeVars'=>['firstName'=>'FNAME','lastName'=>'LNAME'] // remplacement pour les mergeVars
     ];
 
 
@@ -34,7 +33,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // retourne la clé d'api
     public function apiKey():string
     {
-        return $this->getOption('key');
+        return $this->getAttr('key');
     }
 
 
@@ -42,7 +41,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // retourne la liste ou null
     public function getList():?string
     {
-        return $this->getOption('list');
+        return $this->getAttr('list');
     }
 
 
@@ -63,7 +62,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // change la liste courante
     public function setList(?string $value):void
     {
-        $this->setOption($value);
+        $this->setAttr('list',$value);
 
         return;
     }
@@ -101,17 +100,17 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // retourne les noms de status pour subscribed
     public function subscribedStatus():array
     {
-        return $this->getOption('subscribed');
+        return $this->getAttr('subscribed');
     }
 
 
     // trigger
     // fait un appel à mailchimp, retourne un objet réponse
-    public function trigger(string $method,?array $post=null,?array $option=null):Main\Response
+    public function trigger(string $method,?array $post=null,?array $attr=null):Main\Response
     {
         $return = null;
         $value = [];
-        $option = Base\Arr::plus($this->option(),$option);
+        $attr = Base\Arr::plus($this->attr(),$attr);
         $post = (array) $post;
         $post['apikey'] = $this->apiKey();
 
@@ -119,7 +118,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
         $value['method'] = 'post';
         $value['post'] = $post;
 
-        $request = $this->makeRequest($value,$option);
+        $request = $this->makeRequest($value,$attr);
         $return = $request->trigger();
 
         return $return;
@@ -129,10 +128,10 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // triggerBody
     // retourne le body de la réponse en tableau
     // retourne même si le code n'est pas 200
-    public function triggerBody(string $method,?array $post=null,?array $option=null):?array
+    public function triggerBody(string $method,?array $post=null,?array $attr=null):?array
     {
         $return = null;
-        $response = $this->trigger($method,$post,$option);
+        $response = $this->trigger($method,$post,$attr);
         $return = $response->body(true);
 
         return $return;
@@ -142,10 +141,10 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // triggerBody200
     // retourne le body de la réponse en tableau
     // retourne seulement si le code est 200
-    public function triggerBody200(string $method,?array $post=null,?array $option=null):?array
+    public function triggerBody200(string $method,?array $post=null,?array $attr=null):?array
     {
         $return = null;
-        $response = $this->trigger($method,$post,$option);
+        $response = $this->trigger($method,$post,$attr);
 
         if($response->is200())
         $return = $response->body(true);
@@ -157,10 +156,10 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // triggerData
     // retourne le contenu de data dans le tableau de la réponse en tableau
     // retorne null si pas de data
-    public function triggerData(string $method,?array $post=null,?array $option=null):?array
+    public function triggerData(string $method,?array $post=null,?array $attr=null):?array
     {
         $return = null;
-        $body = $this->triggerBody200($method,$post,$option);
+        $body = $this->triggerBody200($method,$post,$attr);
 
         if(is_array($body) && array_key_exists('data',$body))
         $return = $body['data'];
@@ -172,10 +171,10 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // triggerDataFirst
     // retourne le contenu de la première clé de data dans le tableau de la réponse en tableau
     // retorne null si pas de data
-    public function triggerDataFirst(string $method,?array $post=null,?array $option=null):?array
+    public function triggerDataFirst(string $method,?array $post=null,?array $attr=null):?array
     {
         $return = null;
-        $data = $this->triggerData($method,$post,$option);
+        $data = $this->triggerData($method,$post,$attr);
 
         if(is_array($data) && !empty($data))
         $return = current($data);
@@ -293,7 +292,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
                 $post['email'] = ['email'=>$email];
                 $post['merge_vars'] = [];
 
-                if($this->getOption('addLang') === true)
+                if($this->getAttr('addLang') === true)
                 {
                     $lang = static::boot()->lang()->currentLang();
                     if(is_string($lang))
@@ -350,7 +349,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // prepare le tableau mergeVars, remplace les clés
     public function prepareMergeVars(array $array):array
     {
-        return Base\Arr::keysChange($this->getOption('mergeVars'),$array);
+        return Base\Arr::keysChange($this->getAttr('mergeVars'),$array);
     }
 
 
@@ -359,7 +358,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     public function makeNameFromMergeVars(array $value):string
     {
         $return = '';
-        $mergeVars = $this->getOption('mergeVars');
+        $mergeVars = $this->getAttr('mergeVars');
 
         if(!empty($mergeVars['firstName']) && array_key_exists($mergeVars['firstName'],$value))
         $return .= $value[$mergeVars['firstName']];
