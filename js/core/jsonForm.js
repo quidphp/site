@@ -14,10 +14,7 @@
 quid.core.jsonForm = $.fn.jsonForm = function()
 {
     $(this).on('addRemove:bind', function(event,element) {
-        var $this = $(this);
-        $(this).find(".type select").on('change', function(event) {
-            $this.trigger('jsonForm:trigger');
-        });
+        $(this).find("select").selectToFake();
     })
     .on('addRemove:inserted', function(event,element) {
         element.refreshIds();
@@ -29,11 +26,11 @@ quid.core.jsonForm = $.fn.jsonForm = function()
         parent.find(".choices").removeClass("visible");
     })
     .on('jsonForm:trigger', function(event) {
-        $(this).find(".type select").each(function(index, el) {
-            var select = $(this);
-            var choices = select.data('choices');
-            var val = select.inputValue(true);
-            var parent = select.parents(".ele").first();
+        $(this).find(".type input[data-fakeselect='1']").each(function(index, el) {
+            var type = $(this).parents(".type").first();
+            var choices = type.data('choices');
+            var val = $(this).inputValue(true);
+            var parent = $(this).parents(".ele").first();
             
             if($.inArray(val,choices) !== -1)
             $(this).trigger('jsonForm:showChoices',[parent]);
@@ -41,7 +38,15 @@ quid.core.jsonForm = $.fn.jsonForm = function()
             $(this).trigger('jsonForm:hideChoices',[parent]);
         });
     })
-    .trigger('jsonForm:trigger');
+    .on('jsonForm:prepare', function(event) {
+        var $this = $(this);
+        $(this).on('change', ".type input[data-fakeselect='1']", function(event) {
+            $this.trigger('jsonForm:trigger');
+        });
+        
+        $(this).trigger('jsonForm:trigger');
+    })
+    .trigger('jsonForm:prepare');
     
     return this;
 }

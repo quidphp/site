@@ -10,8 +10,8 @@
 // stylesheet for additional form inputs in the CMS
 
 // include
-@import 'component/_googleMaps';
-@import 'component/_jsonForm';
+@import '_googleMaps';
+@import '_jsonForm';
 
 /* TINYMCE */
 form [data-group='tinymce'] .right textarea {

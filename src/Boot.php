@@ -28,8 +28,7 @@ abstract class Boot extends Lemur\Boot
                         Test\Site::class=>['closure'=>false]]]]],
         'concatenateJs'=>[
             '[publicJs]/include.js'=>[
-                1=>'[vendorSite]/js/include',
-                2=>'[js]/include']],
+                3=>'[vendorSite]/js/core']],
         '@app'=>[
             'service'=>[
                 'jQuery'=>Lemur\Service\JQuery::class],
