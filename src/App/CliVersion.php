@@ -16,8 +16,8 @@ class CliVersion extends Core\Route\CliVersion
 {
     // trait
     use Core\Route\_cli;
-    
-    
+
+
     // config
     public static $config = [];
 }
