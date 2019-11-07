@@ -22,7 +22,7 @@ class GoogleAnalytics extends Main\ServiceRequest
 
     // apiKey
     // retourne la clé d'api
-    public function apiKey():string
+    final public function apiKey():string
     {
         return $this->getAttr('key');
     }
@@ -30,7 +30,7 @@ class GoogleAnalytics extends Main\ServiceRequest
 
     // docOpenScript
     // retourne le script en début de document
-    public function docOpenScript()
+    final public function docOpenScript()
     {
         $return = "\n";
         $uri = $this->getAttr('uri');

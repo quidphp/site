@@ -53,7 +53,7 @@ abstract class Boot extends Lemur\Boot
 
     // isApp
     // retourne vrai si la clé de l'application roulant présentement est app
-    public function isApp():bool
+    final public function isApp():bool
     {
         return ($this->type() === 'app')? true:false;
     }

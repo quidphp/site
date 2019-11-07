@@ -23,7 +23,7 @@ class Office365 extends Main\Service
 
     // construct
     // constructeur privé
-    private function __construct()
+    final private function __construct()
     {
         return;
     }
@@ -31,7 +31,7 @@ class Office365 extends Main\Service
 
     // mailto
     // génère un lien mailto pour office365
-    public static function mailto(string $email):string
+    final public static function mailto(string $email):string
     {
         $return = null;
 
@@ -51,7 +51,7 @@ class Office365 extends Main\Service
 
     // event
     // génère un lien d'ajout au calendrier pour office365
-    public static function event(array $array):?string
+    final public static function event(array $array):?string
     {
         $return = null;
         $array = Base\Obj::cast($array);

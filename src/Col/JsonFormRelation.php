@@ -28,7 +28,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 
     // prepare
     // arrange le tableau pour les méthode onGet et onSet
-    protected function prepare(array $return)
+    final protected function prepare(array $return)
     {
         $return = array_values($return);
 
@@ -41,7 +41,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 
     // onGet
     // logique onGet pour un champ jsonFormRelation
-    public function onGet($return,array $option)
+    final protected function onGet($return,array $option)
     {
         if(!empty($option['context']) && $option['context'] === 'cms:general' && $return instanceof Core\Cell)
         $return = ($return->areAnswersValid())? $return->answersString(' | '):null;
@@ -56,7 +56,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
     // onSet
     // gère la logique onSet pour jsonFormRelation
     // prepare est utilisé sur le tableau
-    public function onSet($return,array $row,?Orm\Cell $cell=null,array $option)
+    final protected function onSet($return,array $row,?Orm\Cell $cell=null,array $option)
     {
         if(is_array($return))
         $return = $this->prepare($return);
@@ -87,7 +87,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 
     // beforeModel
     // génère la question avant model pour jsonFormRelation
-    public function beforeModel(int $i,$value,Core\Cell $cell):string
+    final public function beforeModel(int $i,$value,Core\Cell $cell):string
     {
         $return = '';
         $question = $cell->relationIndex($i);
@@ -101,7 +101,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 
     // prepareValueForm
     // prépare la valeur value pour le formulaire
-    protected function prepareValueForm($return,$option)
+    final protected function prepareValueForm($return,$option)
     {
         if($return instanceof Core\Cell && !$return->areAnswersValid())
         $return = null;
@@ -114,7 +114,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 
     // jsonFormExport
     // méthode utilisé pour exporter les colonnes et cellules d'un formulaire
-    public static function jsonFormExport(array $value,string $type,Core\Cell $cell,array $option):array
+    final public static function jsonFormExport(array $value,string $type,Core\Cell $cell,array $option):array
     {
         $return = [];
 

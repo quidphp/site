@@ -23,7 +23,7 @@ class IpApi extends Main\ServiceRequest
 
     // apiKey
     // retourne la clé d'api
-    public function apiKey():?string
+    final public function apiKey():?string
     {
         return $this->getAttr('key');
     }
@@ -32,7 +32,7 @@ class IpApi extends Main\ServiceRequest
     // localize
     // lance la requête à ipApi et retourne un objet de localization en cas de succès
     // plusieurs exceptions peuvent être envoyés
-    public function localize($value):?Main\Localization
+    final public function localize($value):?Main\Localization
     {
         $return = null;
         $value = $this->prepareValue($value);
@@ -60,7 +60,7 @@ class IpApi extends Main\ServiceRequest
 
     // request
     // retourne la requête à utiliser pour aller chercher une localization auprès de ipApi
-    public function request($value,?array $attr=null):Main\Request
+    final public function request($value,?array $attr=null):Main\Request
     {
         return static::makeRequest(static::target(['value'=>$value]),Base\Arr::plus($this->attr(),$attr));
     }
@@ -68,8 +68,7 @@ class IpApi extends Main\ServiceRequest
 
     // prepareValue
     // prépare la valeur, peut envoyer une exception
-    // méthode protégé
-    public static function prepareValue($return)
+    final public static function prepareValue($return)
     {
         if($return === null)
         $return = Main\Request::live();
@@ -89,7 +88,7 @@ class IpApi extends Main\ServiceRequest
 
     // parse
     // parse le tableau de retour en provenance de ipApi
-    public static function parse(array $array):array
+    final public static function parse(array $array):array
     {
         return Base\Arr::keysChange(['lon'=>'lng','query'=>'input'],$array);
     }

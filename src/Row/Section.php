@@ -44,7 +44,7 @@ abstract class Section extends Core\RowAlias
 
     // inAllSegment
     // retourne vrai si la section et ses enfants doivent apparaîtrent dans le sitemap
-    public function inAllSegment():bool
+    final public function inAllSegment():bool
     {
         return true;
     }
@@ -52,7 +52,7 @@ abstract class Section extends Core\RowAlias
 
     // hasRoute
     // retourne vrai si la section a une route
-    public function hasRoute():bool
+    final public function hasRoute():bool
     {
         return (!empty($this->getRoute()))? true:false;
     }
@@ -60,7 +60,7 @@ abstract class Section extends Core\RowAlias
 
     // isChild
     // retourne vrai si la row est un efant de la section
-    public function isChild(Core\Row $value,bool $top=true):bool
+    final public function isChild(Core\Row $value,bool $top=true):bool
     {
         $return = false;
         $childs = $this->childs();
@@ -77,7 +77,7 @@ abstract class Section extends Core\RowAlias
 
     // hasChilds
     // retourne vrai si la section a au moins un enfant
-    public function hasChilds():bool
+    final public function hasChilds():bool
     {
         $return = false;
         $childs = $this->childs();
@@ -91,7 +91,7 @@ abstract class Section extends Core\RowAlias
 
     // hasManyChilds
     // retourne vrai si la section a plusieurs enfants
-    public function hasManyChilds():bool
+    final public function hasManyChilds():bool
     {
         $return = false;
         $childs = $this->childs();
@@ -105,7 +105,7 @@ abstract class Section extends Core\RowAlias
 
     // child
     // retourne le premier enfant de la section
-    public function child():?Core\Row
+    final public function child():?Core\Row
     {
         $return = null;
         $childs = $this->childs();
@@ -133,7 +133,7 @@ abstract class Section extends Core\RowAlias
 
     // childsRoute
     // retourne les routes de tous les enftans de la section
-    public function childsRoute():array
+    final public function childsRoute():array
     {
         $return = [];
         $childs = $this->childs();
@@ -152,7 +152,7 @@ abstract class Section extends Core\RowAlias
 
     // childsRouteLi
     // retourne des liens vers les routes des enfants dans un structure ul li
-    public function childsRouteLi(bool $deepChilds=false,int $min=1):string
+    final public function childsRouteLi(bool $deepChilds=false,int $min=1):string
     {
         $return = '';
         $childs = $this->childsRoute();
@@ -180,7 +180,7 @@ abstract class Section extends Core\RowAlias
 
     // routeSection
     // méthode statique utilisé pour déterminer la route d'une section, renvoie à getRoute
-    public static function routeSection(self $row):?Core\Route
+    final public static function routeSection(self $row):?Core\Route
     {
         return $row->getRoute();
     }

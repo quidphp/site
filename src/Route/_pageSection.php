@@ -24,7 +24,7 @@ trait _pageSection
 
     // onMake
     // lors de la construction de la route
-    protected function onMake():void
+    final protected function onMake():void
     {
         $this->makeRow();
         $this->makeSection();
@@ -35,7 +35,7 @@ trait _pageSection
 
     // onBefore
     // avant le lancement de la route
-    protected function onBefore()
+    final protected function onBefore()
     {
         $return = false;
 
@@ -54,7 +54,7 @@ trait _pageSection
 
     // sectionExists
     // retourne vrai si la section existe
-    public function sectionExists():bool
+    final public function sectionExists():bool
     {
         return (!empty($this->section))? true:false;
     }
@@ -62,7 +62,7 @@ trait _pageSection
 
     // section
     // retourne la section
-    public function section():Site\Row\Section
+    final public function section():Site\Row\Section
     {
         return $this->section;
     }
@@ -70,7 +70,7 @@ trait _pageSection
 
     // makeSection
     // construit la section, utilisé dans onMake
-    protected function makeSection():void
+    final protected function makeSection():void
     {
         if(empty($this->section))
         {

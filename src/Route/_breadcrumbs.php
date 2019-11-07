@@ -21,7 +21,7 @@ trait _breadcrumbs
 
     // makeBreadcrumbs
     // construit les breadcrumbs pour la route
-    public function makeBreadcrumbs(string $separator='/',int $min=1,int $length=40):string
+    final public function makeBreadcrumbs(string $separator='/',int $min=1,int $length=40):string
     {
         $return = '';
         $separator = Html::span($separator,'separator');
@@ -36,7 +36,7 @@ trait _breadcrumbs
 
     // selectedUri
     // gère les selected uri, renvoie vers selectedUriBreadcrumbs
-    public function selectedUri():array
+    final public function selectedUri():array
     {
         return $this->selectedUriBreadcrumbs();
     }
@@ -44,8 +44,7 @@ trait _breadcrumbs
 
     // selectedUriBreadcrumbs
     // gère les selected uri selon le breadcumbs
-    // méthode protégé
-    protected function selectedUriBreadcrumbs():array
+    final protected function selectedUriBreadcrumbs():array
     {
         $return = [];
 

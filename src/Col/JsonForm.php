@@ -26,7 +26,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
 
     // preValidatePrepare
     // prépare le tableau de chargement avant la prévalidation
-    public function preValidatePrepare($value)
+    final public function preValidatePrepare($value)
     {
         $return = null;
 
@@ -39,7 +39,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
 
     // prepare
     // arrange le tableau pour les méthode onGet et onSet
-    protected function prepare(array $value):?array
+    final protected function prepare(array $value):?array
     {
         $return = [];
 
@@ -85,7 +85,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
 
     // makeModel
     // génère le model pour jsonForm
-    public function makeModel($value,array $attr,?Core\Cell $cell=null,array $option):string
+    final public function makeModel($value,array $attr,?Core\Cell $cell=null,array $option):string
     {
         $return = Html::divOp('ele');
         $name = $attr['name'];
@@ -149,7 +149,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
 
     // isChoicesInput
     // retourne vrai si le input en est un avec des choix
-    public static function isChoicesInput($value):bool
+    final public static function isChoicesInput($value):bool
     {
         return (is_string($value) && in_array($value,static::getChoicesInput(),true))? true:false;
     }
@@ -157,7 +157,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
 
     // getChoicesInput
     // retourne les inputs avec choix de réponse
-    public static function getChoicesInput():array
+    final public static function getChoicesInput():array
     {
         return Base\Html::relationTag('multiselect');
     }

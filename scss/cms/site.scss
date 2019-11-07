@@ -50,7 +50,7 @@ form [data-col='jsonForm'] {
 }
 
 /* GOOGLE MAPS */
-form [data-col='googleMaps'] .right .googleMaps {
+form [data-col='googleMaps'] .bind {
     @include googleMaps();
 }
 

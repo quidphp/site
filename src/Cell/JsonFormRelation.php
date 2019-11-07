@@ -21,7 +21,7 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
 
     // questions
     // retourne les questions du formulaire
-    public function questions():?array
+    final public function questions():?array
     {
         $return = null;
         $row = $this->relationRow();
@@ -35,7 +35,7 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
 
     // formInfo
     // retourne les données complêtes du formulaire
-    public function formInfo():?array
+    final public function formInfo():?array
     {
         $return = null;
         $row = $this->relationRow();
@@ -50,7 +50,7 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
     // answers
     // retourne les réponses au formulaire sous forme de tableau unidimensionnel
     // le label de la question est la clé
-    public function answers():array
+    final public function answers():array
     {
         $return = null;
         $infos = $this->formInfo();
@@ -90,7 +90,7 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
 
     // answersString
     // retourne les réponses au formulaire sous forme de string
-    public function answersString(string $separator):string
+    final public function answersString(string $separator):string
     {
         return implode($separator,$this->answers());
     }
@@ -98,7 +98,7 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
 
     // areAnswersValid
     // retourne vrai si les réponses sont valides
-    public function areAnswersValid():bool
+    final public function areAnswersValid():bool
     {
         $return = false;
         $form = $this->relationRow();

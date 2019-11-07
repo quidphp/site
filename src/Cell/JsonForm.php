@@ -21,7 +21,7 @@ class JsonForm extends Lemur\Cell\JsonArrayAlias
 
     // questions
     // retourne les questions du formulaire
-    public function questions():array
+    final public function questions():array
     {
         $return = [];
         $get = $this->get();
@@ -41,7 +41,7 @@ class JsonForm extends Lemur\Cell\JsonArrayAlias
 
     // hasRequired
     // retourne vrai si le formulaire a un champ requis
-    public function hasRequired():bool
+    final public function hasRequired():bool
     {
         $return = false;
         $get = $this->get();
@@ -64,7 +64,7 @@ class JsonForm extends Lemur\Cell\JsonArrayAlias
 
     // makeForm
     // génère le formulaire
-    public function makeForm(?array $values=null,$attr=null):array
+    final public function makeForm(?array $values=null,$attr=null):array
     {
         $return = [];
         $get = $this->get();

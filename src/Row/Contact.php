@@ -39,7 +39,7 @@ abstract class Contact extends Core\RowAlias
 
     // contactAdminEmailModel
     // retourne le modele de courriel pour envoyer à l'administrateur si existant
-    public function contactAdminEmailModel():?Main\Contract\Email
+    final public function contactAdminEmailModel():?Main\Contract\Email
     {
         $return = null;
         $key = $this->getAttr('emailModel/contactAdmin');
@@ -53,7 +53,7 @@ abstract class Contact extends Core\RowAlias
 
     // contactConfirmEmailModel
     // retourne le modele de courriel pour envoyer au visiteur si existant
-    public function contactConfirmEmailModel():?Main\Contract\Email
+    final public function contactConfirmEmailModel():?Main\Contract\Email
     {
         $return = null;
         $key = $this->getAttr('emailModel/contactConfirm');
@@ -67,7 +67,7 @@ abstract class Contact extends Core\RowAlias
 
     // hasEmailName
     // retourne vrai si le visiteur dans l'entrée de contact a un courriel et un nom
-    public function hasEmailName()
+    final public function hasEmailName()
     {
         return ($this->cellName()->isNotEmpty() && $this->email()->is('email'))? true:false;
     }
@@ -75,7 +75,7 @@ abstract class Contact extends Core\RowAlias
 
     // email
     // retourne la cellule du email
-    public function email(...$args)
+    final public function email(...$args)
     {
         return $this->cell('email')->pair(...$args);
     }
@@ -83,7 +83,7 @@ abstract class Contact extends Core\RowAlias
 
     // toEmail
     // retourne email=>name lors de l'envoie dans un email
-    public function toEmail():?array
+    final public function toEmail():?array
     {
         $return = null;
 
@@ -100,7 +100,7 @@ abstract class Contact extends Core\RowAlias
 
     // onInserted
     // lors de l'insertion d'un nouveau contact, envoie le email
-    public function onInserted(array $option)
+    final protected function onInserted(array $option)
     {
         $this->sendEmail($option);
 
@@ -110,7 +110,7 @@ abstract class Contact extends Core\RowAlias
 
     // sendEmail
     // envoie les courriels de confirmation à l'administrateur et au visiteur
-    protected function sendEmail(?array $option=null):int
+    final protected function sendEmail(?array $option=null):int
     {
         $return = 0;
         $option = Base\Arr::plus(['method'=>'dispatch'],$option);
@@ -143,7 +143,7 @@ abstract class Contact extends Core\RowAlias
 
     // getReplaceEmail
     // retourne le tableau de remplacement pour les courriels
-    protected function getReplaceEmail():array
+    final protected function getReplaceEmail():array
     {
         $return = [];
         $boot = static::boot();
@@ -162,7 +162,7 @@ abstract class Contact extends Core\RowAlias
 
     // makeForm
     // génère le formulaire de contact
-    public static function makeForm(?array $flash=null):string
+    final public static function makeForm(?array $flash=null):string
     {
         $r = '';
         $table = static::tableFromFqcn();
@@ -184,7 +184,7 @@ abstract class Contact extends Core\RowAlias
 
     // getCols
     // retourne les colonnes à mettre dans le formulaire
-    protected static function getCols():array
+    final protected static function getCols():array
     {
         return static::$config['fields'];
     }

@@ -27,7 +27,7 @@ class Media extends Core\RowAlias
 
     // thumbnail
     // retourne le thumbnail à utiliser pour représenter le ou les médias
-    public function thumbnail():?Main\File\Image
+    final public function thumbnail():?Main\File\Image
     {
         return $this['medias']->file(0,'large');
     }
@@ -35,7 +35,7 @@ class Media extends Core\RowAlias
 
     // regenerateVersion
     // méthode pour regénérer les versions de la colonne medias
-    public function regenerateVersion(?array $option=null):?array
+    final public function regenerateVersion(?array $option=null):?array
     {
         $return = null;
 
@@ -51,7 +51,7 @@ class Media extends Core\RowAlias
 
     // relationThumbnail
     // retourne le thumbnail de relation à utiliser
-    public function relationThumbnail():?string
+    final public function relationThumbnail():?string
     {
         $return = null;
         $thumbnail = $this->thumbnail();
@@ -65,7 +65,7 @@ class Media extends Core\RowAlias
 
     // relationOutput
     // génère le output de relation pour la table media
-    public function relationOutput():string
+    final public function relationOutput():string
     {
         $return = '';
         $namePrimary = $this->namePrimary();
@@ -80,7 +80,7 @@ class Media extends Core\RowAlias
     // tableRelationArray
     // génère le tableau de output pour les médias dans la ligne
     // utiliser par l'outil de relation dans le cms
-    protected function tableRelationArray():array
+    final protected function tableRelationArray():array
     {
         $return = [];
 
@@ -99,7 +99,7 @@ class Media extends Core\RowAlias
 
     // mediasArray
     // génère le tableau de output pour les images dans la ligne
-    public function mediasArray():array
+    final public function mediasArray():array
     {
         $return = [];
         $medias = $this['medias'];
@@ -136,7 +136,7 @@ class Media extends Core\RowAlias
 
     // storagesArray
     // génère le tableau de output pour les fichiers dans la ligne
-    public function storagesArray():array
+    final public function storagesArray():array
     {
         $return = [];
         $storages = $this['storages'];
@@ -173,7 +173,7 @@ class Media extends Core\RowAlias
 
     // videoProvider
     // retourne les providers de videos liés à la ligne
-    public function videoProvider():array
+    final public function videoProvider():array
     {
         return (array) $this->getAttr('videoProvider');
     }
@@ -182,7 +182,7 @@ class Media extends Core\RowAlias
     // videosArray
     // génère le tableau de output pour les vidéos dans la ligne
     // utilise les différents provider
-    public function videosArray():array
+    final public function videosArray():array
     {
         $return = [];
         $providers = $this->videoProvider();
@@ -212,8 +212,7 @@ class Media extends Core\RowAlias
 
     // makeVideoArray
     // génère le tableau de output pour une vidéo, à partir d'un objet main/video
-    // méthode protégé
-    protected function makeVideoArray(Main\Video $video):?array
+    final protected function makeVideoArray(Main\Video $video):?array
     {
         $return = null;
         $html = $video->html();
@@ -252,7 +251,7 @@ class Media extends Core\RowAlias
     // tableRelationOutput
     // gère le output de relation pour tableRelation dans le cms
     // permet insertion au curseur
-    public function tableRelationOutput():string
+    final public function tableRelationOutput():string
     {
         $return = '';
         $namePrimary = $this->namePrimary();
@@ -285,7 +284,7 @@ class Media extends Core\RowAlias
 
     // slides
     // retourne un tableau avec toutes les slides à partir de la row media
-    protected function slides(?array $option=null):array
+    final protected function slides(?array $option=null):array
     {
         $return = [];
         $option = Base\Arr::plus(['name'=>false,'content'=>false],$option);
@@ -328,7 +327,7 @@ class Media extends Core\RowAlias
 
     // outputSlides
     // génère toutes les slides à partir de la row media
-    public function outputSlides(?array $option=null):string
+    final public function outputSlides(?array $option=null):string
     {
         $r = '';
         $slides = $this->slides($option);
@@ -348,7 +347,7 @@ class Media extends Core\RowAlias
 
     // makeSlider
     // fait un slider à partir de plusieurs lignes média
-    public static function makeSlider(Core\Rows $rows,?array $option=null):string
+    final public static function makeSlider(Core\Rows $rows,?array $option=null):string
     {
         $r = '';
         $html = '';
@@ -373,7 +372,7 @@ class Media extends Core\RowAlias
 
     // refreshVersions
     // méthode pour rafraichir les versions de plusieurs lignes dans la médiathèque
-    public static function refreshVersions($where=true,?array $option=null):array
+    final public static function refreshVersions($where=true,?array $option=null):array
     {
         $return = [];
         $table = static::tableFromFqcn();

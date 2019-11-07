@@ -37,7 +37,7 @@ trait _pageConfig
 
     // isRoutePrepared
     // retourne vrai la route a été préparé
-    public function isRoutePrepared():bool
+    final public function isRoutePrepared():bool
     {
         return ($this->routePrepared === true)? true:false;
     }
@@ -45,8 +45,7 @@ trait _pageConfig
 
     // setRoutePrepared
     // permet de mettre si la route a été préparé ou non
-    // méthode protégé
-    protected function setRoutePrepared(bool $value=true):void
+    final protected function setRoutePrepared(bool $value=true):void
     {
         $this->routePrepared = $value;
 
@@ -57,7 +56,7 @@ trait _pageConfig
     // shouldPrepareRoute
     // retourne vrai si la route doit être préparé
     // la route doit se retrouver dans l'objet routes qui vient de routesCanPrepare
-    public function shouldPrepareRoute($key,string $route):bool
+    final public function shouldPrepareRoute($key,string $route):bool
     {
         $return = false;
 
@@ -76,7 +75,7 @@ trait _pageConfig
 
     // getRoutesCanPrepare
     // retourne toutes les routes qui doivent être préparés
-    public static function getRoutesCanPrepare():?Routing\Routes
+    final public static function getRoutesCanPrepare():?Routing\Routes
     {
         return static::boot()->routes(static::getRouteKey());
     }
@@ -85,7 +84,7 @@ trait _pageConfig
     // routePrepareConfig
     // méthode principale pour préparer une route
     // va appeler routeConfig si la route est visible
-    protected function routePrepareConfig($key,string $route):void
+    final protected function routePrepareConfig($key,string $route):void
     {
         $config['label'] = $this->cellName();
 
@@ -122,7 +121,7 @@ trait _pageConfig
     // routeConfig
     // configuration supplémentaire pour la route
     // peut être étendu dans un trait ou classe
-    public function routeConfig(array $return):array
+    final public function routeConfig(array $return):array
     {
         return $return;
     }
@@ -130,7 +129,7 @@ trait _pageConfig
 
     // getRouteKey
     // retourne le type pour la route
-    public static function getRouteKey():?string
+    final public static function getRouteKey():?string
     {
         return static::$config['routeKey'] ?? null;
     }
@@ -138,7 +137,7 @@ trait _pageConfig
 
     // prepareRoutes
     // prépare les pages des routes
-    public static function prepareRoutes():void
+    final public static function prepareRoutes():void
     {
         $routes = static::getRoutesCanPrepare();
 
@@ -151,8 +150,7 @@ trait _pageConfig
 
     // prepareRoutesObject
     // permet de préparer toutes les pages des routes de l'objet routes
-    // méthode protégé
-    protected static function prepareRoutesObject(Routing\Routes $return):Routing\Routes
+    final protected static function prepareRoutesObject(Routing\Routes $return):Routing\Routes
     {
         $table = static::tableFromFqcn();
         $where = [true];
@@ -171,7 +169,7 @@ trait _pageConfig
     // dynamicRoute
     // gère la création de la route pour la page
     // si make est false, retourne le nom de la classe plutôt que l'objet
-    public static function dynamicRoute(self $page,bool $make=true)
+    final public static function dynamicRoute(self $page,bool $make=true)
     {
         $return = null;
         $value = $page['route']->value();
@@ -190,7 +188,7 @@ trait _pageConfig
 
     // getDynamicRouteFromValue
     // retourne la classe de route a utilisé à partir d'une valeur route, stocké dans une base de donnée
-    public static function getDynamicRouteFromValue(string $value):?string
+    final public static function getDynamicRouteFromValue(string $value):?string
     {
         return Base\Fqcn::append(static::routeNamespace(),ucfirst($value));
     }
@@ -198,7 +196,7 @@ trait _pageConfig
 
     // dynamicRouteMake
     // génère la route de la page, peut être étendu
-    public static function dynamicRouteMake(string $route,self $page):?Core\Route
+    final public static function dynamicRouteMake(string $route,self $page):?Core\Route
     {
         return (is_subclass_of($route,Core\Route::class,true))? $route::make():null;
     }

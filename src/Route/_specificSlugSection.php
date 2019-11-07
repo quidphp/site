@@ -20,7 +20,7 @@ trait _specificSlugSection
 
     // onBefore
     // avant le lancement de la route
-    protected function onBefore()
+    final protected function onBefore()
     {
         return ($this->row()->isVisible() && $this->section()->isVisible())? true:false;
     }
@@ -28,7 +28,7 @@ trait _specificSlugSection
 
     // sectionExists
     // retourne vrai si la section existe
-    public function sectionExists():bool
+    final public function sectionExists():bool
     {
         return ($this->section() instanceof Core\Row)? true:false;
     }
@@ -36,7 +36,7 @@ trait _specificSlugSection
 
     // section
     // retourne la section
-    public function section():Core\Row
+    final public function section():Core\Row
     {
         return $this->row()->section();
     }
@@ -44,7 +44,7 @@ trait _specificSlugSection
 
     // sectionRowClass
     // retourne la classe de la section
-    public static function sectionRowClass():string
+    final public static function sectionRowClass():string
     {
         return static::$config['section'];
     }
@@ -52,7 +52,7 @@ trait _specificSlugSection
 
     // sectionTableFromRowClass
     // retourne la table de la section
-    public static function sectionTableFromRowClass():Core\Table
+    final public static function sectionTableFromRowClass():Core\Table
     {
         return static::boot()->db()->table(static::sectionRowClass());
     }
@@ -60,7 +60,7 @@ trait _specificSlugSection
 
     // allSegment
     // génère tous les combinaisons possibles pour le sitemap
-    public static function allSegment()
+    final public static function allSegment()
     {
         $return = [];
         $class = static::sectionRowClass();
@@ -82,8 +82,7 @@ trait _specificSlugSection
 
     // allSegmentDig
     // utilisé par allSegment pour creuser dans la hiérarchie
-    // méthode protégé
-    protected static function allSegmentDig(Core\Row $row,array $return):array
+    final protected static function allSegmentDig(Core\Row $row,array $return):array
     {
         if($row->inAllSegment() && !in_array($row,$return,true))
         {

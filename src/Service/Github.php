@@ -21,7 +21,7 @@ class Github extends Main\Service
 
     // construct
     // constructeur privé
-    private function __construct()
+    final private function __construct()
     {
         return;
     }
@@ -29,7 +29,7 @@ class Github extends Main\Service
 
     // allMarkdown
     // génère le markdown pour php, js et scss
-    public static function allMarkdown(string $namespace):array
+    final public static function allMarkdown(string $namespace):array
     {
         $return = [];
         $return['php'] = static::namespaceToMarkdown($namespace);
@@ -42,7 +42,7 @@ class Github extends Main\Service
 
     // namespaceToMarkdown
     // génère la string markdown à partir du tableau retourné par namespaceToArray
-    public static function namespaceToMarkdown(string $namespace):?string
+    final public static function namespaceToMarkdown(string $namespace):?string
     {
         $return = null;
         $array = static::namespaceToArray($namespace);
@@ -56,7 +56,7 @@ class Github extends Main\Service
 
     // assetToMarkdown
     // génère la string markdown à partir du tableau retourné par assetsToArray
-    public static function assetToMarkdown(string $type,string $namespace):?string
+    final public static function assetToMarkdown(string $type,string $namespace):?string
     {
         $return = null;
         $array = static::assetsToArray($type,$namespace);
@@ -71,7 +71,7 @@ class Github extends Main\Service
     // namespaceToArray
     // retourne un tableau multidimensinnel column avec le filename, chemin github et description de la classe
     // pour toutes les classes dans le namespace
-    public static function namespaceToArray(string $namespace):?array
+    final public static function namespaceToArray(string $namespace):?array
     {
         $return = null;
         $path = Base\Autoload::getDirPath($namespace);
@@ -100,7 +100,7 @@ class Github extends Main\Service
     // assetsToArray
     // retourne un tableau multidimensinnel column avec le filename, chemin github et description de la classe
     // pour toutes les assets du type dans le namespace
-    public static function assetsToArray(string $type,string $namespace):?array
+    final public static function assetsToArray(string $type,string $namespace):?array
     {
         $return = null;
         $path = Base\Autoload::getDirPath($namespace);
@@ -128,8 +128,7 @@ class Github extends Main\Service
 
     // makeArray
     // génère le array, utilisé par namespaceToArray et assetsToArray
-    // méthode protégé
-    protected static function makeArray(array $array,string $dirPath,\Closure $closure,bool $filename=false):array
+    final protected static function makeArray(array $array,string $dirPath,\Closure $closure,bool $filename=false):array
     {
         $return = [];
         ksort($array);
@@ -167,8 +166,7 @@ class Github extends Main\Service
 
     // arrayToMarkdown
     // génère la string markdown à partir du tableau
-    // méthode protégé
-    protected static function arrayToMarkdown(array $array):?string
+    final protected static function arrayToMarkdown(array $array):?string
     {
         $return = null;
 
@@ -213,7 +211,7 @@ class Github extends Main\Service
     // getClassDescription
     // retourne la ligne de description de la classe ou null
     // à partir d'une string fichier
-    public static function getClassDescription(string $file,bool $ucfirst=false):?string
+    final public static function getClassDescription(string $file,bool $ucfirst=false):?string
     {
         $return = null;
         $lines = Base\File::lines(0,50,$file);
@@ -244,7 +242,7 @@ class Github extends Main\Service
     // getAssetDescription
     // retourne la ligne de description du fichier asset
     // à partir d'une string fichier
-    public static function getAssetDescription(string $file,string $type,bool $ucfirst=false):?string
+    final public static function getAssetDescription(string $file,string $type,bool $ucfirst=false):?string
     {
         $return = null;
         $target = 0;
@@ -269,7 +267,7 @@ class Github extends Main\Service
 
     // prepareDescription
     // prépare la description à partir de la ligne du fichier de programmation
-    public static function prepareDescription(string $return,bool $ucfirst=false):string
+    final public static function prepareDescription(string $return,bool $ucfirst=false):string
     {
         $return = str_replace('//','',$return);
         $return = trim($return);

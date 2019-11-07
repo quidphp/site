@@ -23,7 +23,7 @@ class GoogleMaps extends Core\CellAlias
 
     // export
     // retourne la valeur pour l'exportation de cellules relation
-    public function export(?array $option=null):array
+    final public function export(?array $option=null):array
     {
         return $this->exportCommon($this->input(),$option);
     }
@@ -31,7 +31,7 @@ class GoogleMaps extends Core\CellAlias
 
     // localization
     // retourne l'objet de localization ou null
-    public function localization():?Main\Localization
+    final public function localization():?Main\Localization
     {
         return $this->get();
     }
@@ -39,7 +39,7 @@ class GoogleMaps extends Core\CellAlias
 
     // html
     // output la colonne googleMaps sous forme de map simple
-    public function html(?int $zoom=null):?string
+    final public function html(?int $zoom=null):?string
     {
         $return = null;
         $localization = $this->localization();
@@ -53,7 +53,7 @@ class GoogleMaps extends Core\CellAlias
 
     // address
     // retourne l'adresse formaté à partir de l'objet localization googleMaps
-    public function address():?string
+    final public function address():?string
     {
         $return = null;
         $localization = $this->localization();
@@ -67,7 +67,7 @@ class GoogleMaps extends Core\CellAlias
 
     // uri
     // retourne l'uri absolu vers googleMaps
-    public function uri():?string
+    final public function uri():?string
     {
         $return = null;
         $input = $this->input();
@@ -84,7 +84,7 @@ class GoogleMaps extends Core\CellAlias
 
     // input
     // retourne l'input de googleMaps
-    public function input():?string
+    final public function input():?string
     {
         $return = null;
         $localization = $this->localization();

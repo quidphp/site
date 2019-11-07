@@ -21,7 +21,7 @@ trait _page
 
     // onMake
     // lors de la construction de la route
-    protected function onMake():void
+    final protected function onMake():void
     {
         $this->makeRow();
 
@@ -31,7 +31,7 @@ trait _page
 
     // onBefore
     // avant le lancement de la route
-    protected function onBefore()
+    final protected function onBefore()
     {
         $return = parent::onBefore();
 
@@ -47,7 +47,7 @@ trait _page
 
     // rowExists
     // retourne vrai si la row existe
-    public function rowExists():bool
+    final public function rowExists():bool
     {
         return (!empty($this->row))? true:false;
     }
@@ -55,7 +55,7 @@ trait _page
 
     // row
     // retourne la row
-    public function row():Core\Row
+    final public function row():Core\Row
     {
         return $this->row;
     }
@@ -63,7 +63,7 @@ trait _page
 
     // makeRow
     // construit l'objet row pour la route
-    protected function makeRow():void
+    final protected function makeRow():void
     {
         $row = $this->getAttr('rowObj');
         if(is_int($row))

@@ -19,7 +19,7 @@ trait _pageSection
 
     // hasSection
     // retourne vrai si la section existe
-    public function hasSection():bool
+    final public function hasSection():bool
     {
         return true;
     }
@@ -28,7 +28,7 @@ trait _pageSection
     // section
     // retourne la section de la page
     // si les sections n'ont pas encore été chargés, fait le
-    public function section():?Section
+    final public function section():?Section
     {
         return $this->cache(__METHOD__,function() {
             $return = null;

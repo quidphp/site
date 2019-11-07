@@ -30,7 +30,7 @@ class YouTube extends Main\ServiceVideo
     // videoAbsolute
     // retourne l'uri absolut pour la vidéo youTube
     // callback utilisé par la classe video
-    public static function videoAbsolute(Main\Video $video):?string
+    final public static function videoAbsolute(Main\Video $video):?string
     {
         $return = null;
         $provider = $video->get('provider_url');

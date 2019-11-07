@@ -29,7 +29,7 @@ class PdfCrowd extends Main\ServiceRequest
 
     // apiKey
     // retourne la clé d'api
-    public function apiKey():string
+    final public function apiKey():string
     {
         return $this->getAttr('key');
     }
@@ -37,7 +37,7 @@ class PdfCrowd extends Main\ServiceRequest
 
     // username
     // retourne le username de l'api
-    public function username():string
+    final public function username():string
     {
         return $this->getAttr('username');
     }
@@ -45,7 +45,7 @@ class PdfCrowd extends Main\ServiceRequest
 
     // userPassword
     // retourne la tableau user password pour curl
-    public function userPassword():array
+    final public function userPassword():array
     {
         return [$this->username(),$this->apiKey()];
     }
@@ -53,7 +53,7 @@ class PdfCrowd extends Main\ServiceRequest
 
     // checkType
     // envoie une exception si le type n'est pas supporté
-    protected function checkType(string $type):void
+    final protected function checkType(string $type):void
     {
         if(!in_array($type,['url','text'],true))
         static::throw();
@@ -64,7 +64,7 @@ class PdfCrowd extends Main\ServiceRequest
 
     // prepareOption
     // prépare le tableau option avant de le joindre à la requête
-    protected function prepareOption(?array $option=null):array
+    final protected function prepareOption(?array $option=null):array
     {
         $return = Base\Arr::plus($this->attr(),$option);
         $return = Base\Arr::keysStrip(['username','key','post'],$return);
@@ -76,7 +76,7 @@ class PdfCrowd extends Main\ServiceRequest
 
     // preparePost
     // prépare le tableau post avant de le joindre à la requête
-    protected function preparePost(string $type,$value,?array $post=null):array
+    final protected function preparePost(string $type,$value,?array $post=null):array
     {
         $return = [];
         $this->checkType($type);
@@ -91,7 +91,7 @@ class PdfCrowd extends Main\ServiceRequest
 
     // request
     // retourne la requête à utiliser pour aller chercher une resource auprès de pdfCrowd
-    public function request(string $type,$value,?array $post=null,?array $option=null):Main\Request
+    final public function request(string $type,$value,?array $post=null,?array $option=null):Main\Request
     {
         $return = null;
         $option = $this->prepareOption($option);
@@ -108,7 +108,7 @@ class PdfCrowd extends Main\ServiceRequest
     // convertUri
     // lance une requête à pdfCrowd pour convertir une uri
     // retourne un objet de réponse
-    public function convertUri($value,?array $post=null,?array $option=null):Main\Response
+    final public function convertUri($value,?array $post=null,?array $option=null):Main\Response
     {
         $return = null;
 
@@ -125,7 +125,7 @@ class PdfCrowd extends Main\ServiceRequest
     // convertString
     // lance une requête à pdfCrowd pour convertir une string
     // retourne un objet de réponse
-    public function convertString($value,?array $post=null,?array $option=null):Main\Response
+    final public function convertString($value,?array $post=null,?array $option=null):Main\Response
     {
         $return = false;
 

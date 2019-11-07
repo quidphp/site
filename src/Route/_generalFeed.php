@@ -22,7 +22,7 @@ trait _generalFeed
 
     // pageSlice
     // permet de slice les entrées dans une page
-    protected function pageSlice(bool $validate=false):array
+    final protected function pageSlice(bool $validate=false):array
     {
         $return = Base\Nav::pageSlice($this->segment('page'),$this->getAttr('limit'),$this->ids());
 
@@ -47,7 +47,7 @@ trait _generalFeed
 
     // pageNext
     // retourne le numéro de la prochaine page si existant
-    protected function pageNext():?int
+    final protected function pageNext():?int
     {
         return Base\Nav::pageNext($this->segment('page'),$this->ids(),$this->getAttr('limit'));
     }
@@ -55,7 +55,7 @@ trait _generalFeed
 
     // general
     // retourne le tableau sur les informations de pagination genral si existant
-    protected function general(int $amount=3):?array
+    final protected function general(int $amount=3):?array
     {
         return Base\Nav::general($this->segment('page'),$this->ids(),$this->getAttr('limit'),$amount);
     }
@@ -63,7 +63,7 @@ trait _generalFeed
 
     // ids
     // retourne le tableau de tout les ids
-    protected function ids():array
+    final protected function ids():array
     {
         return $this->ids;
     }
@@ -71,7 +71,7 @@ trait _generalFeed
 
     // rows
     // retourne l'objet rows pour la page courante
-    public function rows():Orm\RowsIndex
+    final public function rows():Orm\RowsIndex
     {
         return $this->cache(__METHOD__,function() {
             $return = Orm\RowsIndex::newOverload();
@@ -112,7 +112,7 @@ trait _generalFeed
 
     // rowsVisible
     // retourne l'objet rows pour la page courante (mais seulement les visibles)
-    public function rowsVisible():Orm\RowsIndex
+    final public function rowsVisible():Orm\RowsIndex
     {
         return $this->cache(__METHOD__,function() {
             return $this->rows()->filter(['isVisible'=>true]);
@@ -122,7 +122,7 @@ trait _generalFeed
 
     // makePager
     // construit le pager
-    protected function makePager(int $amount=3):string
+    final protected function makePager(int $amount=3):string
     {
         $r = '';
         $general = $this->general($amount);
@@ -136,7 +136,7 @@ trait _generalFeed
 
     // loadMore
     // génère le bouton pour charger la prochaine page
-    protected function loadMore():string
+    final protected function loadMore():string
     {
         $r = '';
         $pageNext = $this->pageNext();

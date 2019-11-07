@@ -46,7 +46,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // onSuccess
     // traite le succès
-    protected function onSuccess():void
+    final protected function onSuccess():void
     {
         $com = static::sessionCom();
         static::timeoutReset('trigger');
@@ -58,7 +58,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // onFailure
     // traite l'erreur
-    protected function onFailure():void
+    final protected function onFailure():void
     {
         $com = static::sessionCom();
 
@@ -73,7 +73,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // setFlash
     // conserve les données flash, seulement si duplicate est false
-    protected function setFlash():void
+    final protected function setFlash():void
     {
         if($this->duplicate === false)
         $this->session()->flashPost($this);
@@ -84,7 +84,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // routeSuccess
     // retourne la route vers laquelle redirigé
-    public function routeSuccess():Core\Route
+    final public function routeSuccess():Core\Route
     {
         return Home::makeOverload();
     }
@@ -92,7 +92,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // getService
     // retourne le service à utiliser pour l'enregistrement à l'infolettre
-    public function getService():Site\Contract\Newsletter
+    final public function getService():Site\Contract\Newsletter
     {
         return $this->service($this->getAttr('service'));
     }
@@ -100,7 +100,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // post
     // retourne les données post pour l'enregistrement à l'infolettre
-    protected function post():array
+    final protected function post():array
     {
         $return = [];
         $request = $this->request();
@@ -117,7 +117,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // proceed
     // lance l'opération d'enregistrement
-    protected function proceed():bool
+    final protected function proceed():bool
     {
         $return = false;
         $service = $this->getService();
@@ -148,7 +148,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // getFields
     // retourne les champs pour le formulaire
-    public function getFields():array
+    final public function getFields():array
     {
         return $this->getAttr(['match','post']) ?? [];
     }
@@ -156,7 +156,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // getFieldsInfo
     // retourne les informations détaillés des champs pour le formulaire
-    public function getFieldsInfo():array
+    final public function getFieldsInfo():array
     {
         $return = [];
 
@@ -183,7 +183,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // makeForm
     // génère le formulaire pour l'inscription à l'infolettre
-    public function makeForm(?array $flash=null):string
+    final public function makeForm(?array $flash=null):string
     {
         $r = '';
 
@@ -203,7 +203,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // email
     // retourne le email à partir d'un tableau post
-    protected static function email(array $post):string
+    final protected static function email(array $post):string
     {
         return $post['email'] ?? null;
     }
@@ -211,7 +211,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
     // vars
     // retourne les variables vars pour l'enregistrement à l'infolettre à partir d'un tableau post
-    protected static function vars(array $post):array
+    final protected static function vars(array $post):array
     {
         return Base\Arr::keyStrip('email',$post);
     }

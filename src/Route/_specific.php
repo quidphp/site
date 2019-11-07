@@ -21,14 +21,14 @@ trait _specific
 
 
     // selectedUri
-    public function selectedUri():array
+    final public function selectedUri():array
     {
         return static::makeParent()->selectedUri();
     }
 
 
     // general
-    public function general():Core\Route
+    final public function general():Core\Route
     {
         return $this->cache(__METHOD__,function() {
             $return = null;
@@ -43,7 +43,7 @@ trait _specific
 
 
     // getBreadcrumbs
-    public function getBreadcrumbs():array
+    final public function getBreadcrumbs():array
     {
         return [static::makeParent(),$this];
     }
@@ -51,7 +51,7 @@ trait _specific
 
     // makeSpecificNav
     // génère la nav à partir d'un objet route vers general
-    protected function makeSpecificNav(Core\Route $general,Core\Row $row,string $segment,?string $highlightSegment=null,?array $attr=null):array
+    final protected function makeSpecificNav(Core\Route $general,Core\Row $row,string $segment,?string $highlightSegment=null,?array $attr=null):array
     {
         $return = [];
         $sql = $general->sql();

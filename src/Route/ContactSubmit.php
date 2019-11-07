@@ -41,7 +41,7 @@ abstract class ContactSubmit extends Core\RouteAlias
 
     // onSuccess
     // traite le succès
-    protected function onSuccess():void
+    final protected function onSuccess():void
     {
         static::sessionCom()->stripFloor();
         static::timeoutIncrement('success');
@@ -52,7 +52,7 @@ abstract class ContactSubmit extends Core\RouteAlias
 
     // onFailure
     // increment le timeout et appele onFailure
-    protected function onFailure():void
+    final protected function onFailure():void
     {
         static::sessionCom()->stripFloor();
         static::timeoutIncrement('failure');
@@ -63,7 +63,7 @@ abstract class ContactSubmit extends Core\RouteAlias
 
     // routeSuccess
     // retourne la route vers laquelle redirigé, home par défaut
-    public function routeSuccess():Core\Route
+    final public function routeSuccess():Core\Route
     {
         return Home::makeOverload();
     }
@@ -71,7 +71,7 @@ abstract class ContactSubmit extends Core\RouteAlias
 
     // post
     // retourne les données post pour le formulaire de contact
-    protected function post():array
+    final protected function post():array
     {
         $return = [];
         $request = $this->request();
@@ -88,7 +88,7 @@ abstract class ContactSubmit extends Core\RouteAlias
 
     // proceed
     // lance le processus pour le contact
-    protected function proceed():?Core\Row
+    final protected function proceed():?Core\Row
     {
         $return = null;
         $session = static::session();
@@ -111,7 +111,7 @@ abstract class ContactSubmit extends Core\RouteAlias
 
     // getFields
     // retourne les champs pour le formulaire
-    public function getFields():array
+    final public function getFields():array
     {
         return $this->getAttr(['match','post']) ?? [];
     }

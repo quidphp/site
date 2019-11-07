@@ -31,7 +31,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // apiKey
     // retourne la clé d'api
-    public function apiKey():string
+    final public function apiKey():string
     {
         return $this->getAttr('key');
     }
@@ -39,7 +39,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // getList
     // retourne la liste ou null
-    public function getList():?string
+    final public function getList():?string
     {
         return $this->getAttr('list');
     }
@@ -47,7 +47,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // checkList
     // retourne la liste ou envoie une exception
-    public function checkList():string
+    final public function checkList():string
     {
         $return = $this->getList();
 
@@ -60,7 +60,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // setList
     // change la liste courante
-    public function setList(?string $value):void
+    final public function setList(?string $value):void
     {
         $this->setAttr('list',$value);
 
@@ -70,7 +70,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // server
     // obtient le serveur à partir de l'apiKey
-    public function server():string
+    final public function server():string
     {
         $return = null;
         $apiKey = $this->apiKey();
@@ -85,7 +85,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // makeTarget
     // retourne la target du service mailchimp pour la méthode
-    public function makeTarget(string $method):string
+    final public function makeTarget(string $method):string
     {
         $replace = [];
         $replace['server'] = $this->server();
@@ -98,7 +98,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // subscribedStatus
     // retourne les noms de status pour subscribed
-    public function subscribedStatus():array
+    final public function subscribedStatus():array
     {
         return $this->getAttr('subscribed');
     }
@@ -106,7 +106,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // trigger
     // fait un appel à mailchimp, retourne un objet réponse
-    public function trigger(string $method,?array $post=null,?array $attr=null):Main\Response
+    final public function trigger(string $method,?array $post=null,?array $attr=null):Main\Response
     {
         $return = null;
         $value = [];
@@ -128,7 +128,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // triggerBody
     // retourne le body de la réponse en tableau
     // retourne même si le code n'est pas 200
-    public function triggerBody(string $method,?array $post=null,?array $attr=null):?array
+    final public function triggerBody(string $method,?array $post=null,?array $attr=null):?array
     {
         $return = null;
         $response = $this->trigger($method,$post,$attr);
@@ -141,7 +141,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // triggerBody200
     // retourne le body de la réponse en tableau
     // retourne seulement si le code est 200
-    public function triggerBody200(string $method,?array $post=null,?array $attr=null):?array
+    final public function triggerBody200(string $method,?array $post=null,?array $attr=null):?array
     {
         $return = null;
         $response = $this->trigger($method,$post,$attr);
@@ -156,7 +156,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // triggerData
     // retourne le contenu de data dans le tableau de la réponse en tableau
     // retorne null si pas de data
-    public function triggerData(string $method,?array $post=null,?array $attr=null):?array
+    final public function triggerData(string $method,?array $post=null,?array $attr=null):?array
     {
         $return = null;
         $body = $this->triggerBody200($method,$post,$attr);
@@ -171,7 +171,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // triggerDataFirst
     // retourne le contenu de la première clé de data dans le tableau de la réponse en tableau
     // retorne null si pas de data
-    public function triggerDataFirst(string $method,?array $post=null,?array $attr=null):?array
+    final public function triggerDataFirst(string $method,?array $post=null,?array $attr=null):?array
     {
         $return = null;
         $data = $this->triggerData($method,$post,$attr);
@@ -185,7 +185,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // listsInfo
     // retourne les informations sur les lists dans mailchimp
-    public function listsInfo():?array
+    final public function listsInfo():?array
     {
         return $this->triggerData('lists/list');
     }
@@ -193,7 +193,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // memberInfo
     // retourne l'information sur un utisateur dans la liste à partir d'un email
-    public function memberInfo(string $email,?array $post=null):?array
+    final public function memberInfo(string $email,?array $post=null):?array
     {
         $return = null;
         $list = $this->checkList();
@@ -213,7 +213,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // isSubscribed
     // retourne vrai si le membre existe dans la liste
-    public function isSubscribed(string $email,?array $post=null):bool
+    final public function isSubscribed(string $email,?array $post=null):bool
     {
         $return = false;
         $member = $this->memberInfo($email,$post);
@@ -230,7 +230,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // members
     // retourne tous les membres inscrits dans la liste
-    public function members(?array $post=null):array
+    final public function members(?array $post=null):array
     {
         $return = [];
         $list = $this->checkList();
@@ -278,7 +278,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // subscribe
     // inscrit un utilisateur à une liste mailchimp
-    public function subscribe(string $email,$vars=[],?array $post=null,bool $isSubscribed=true):?array
+    final public function subscribe(string $email,$vars=[],?array $post=null,bool $isSubscribed=true):?array
     {
         $return = null;
         $list = $this->checkList();
@@ -312,7 +312,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // subscribeBool
     // inscrit un utilisateur à une liste mailchimp et retourne un vrai ou faux
-    public function subscribeBool(string $email,$vars=[],?array $post=null,bool $isSubscribed=true):bool
+    final public function subscribeBool(string $email,$vars=[],?array $post=null,bool $isSubscribed=true):bool
     {
         $return = false;
         $subscribe = $this->subscribe($email,$vars,$post,$isSubscribed);
@@ -326,7 +326,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // unsubscribe
     // désinscrit un utilisateur à une liste mailchimp
-    public function unsubscribe(string $email,?array $post=null):?array
+    final public function unsubscribe(string $email,?array $post=null):?array
     {
         $return = null;
         $list = $this->checkList();
@@ -347,7 +347,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // prepareMergeVars
     // prepare le tableau mergeVars, remplace les clés
-    public function prepareMergeVars(array $array):array
+    final public function prepareMergeVars(array $array):array
     {
         return Base\Arr::keysChange($this->getAttr('mergeVars'),$array);
     }
@@ -355,7 +355,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // makeNameFromMergeVars
     // génère un nom complet à partir de tableaux de mergeVars
-    public function makeNameFromMergeVars(array $value):string
+    final public function makeNameFromMergeVars(array $value):string
     {
         $return = '';
         $mergeVars = $this->getAttr('mergeVars');

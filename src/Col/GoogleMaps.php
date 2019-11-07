@@ -32,7 +32,7 @@ class GoogleMaps extends Core\ColAlias
 
     // onGet
     // sur onGet, retourne l'objet de localization
-    public function onGet($return,array $option)
+    final protected function onGet($return,array $option)
     {
         if(!$return instanceof Main\Localization)
         {
@@ -48,7 +48,7 @@ class GoogleMaps extends Core\ColAlias
 
     // onSet
     // gère la logique onSet pour googleMaps
-    public function onSet($return,array $row,?Orm\Cell $cell=null,array $option)
+    final protected function onSet($return,array $row,?Orm\Cell $cell=null,array $option)
     {
         $hasChanged = true;
         $return = $this->value($return);
@@ -76,7 +76,7 @@ class GoogleMaps extends Core\ColAlias
 
     // getService
     // retourne le service à utiliser
-    public function getService():Main\Service
+    final public function getService():Main\Service
     {
         return $this->service($this->getAttr('service'));
     }
@@ -84,7 +84,7 @@ class GoogleMaps extends Core\ColAlias
 
     // formComplex
     // génère le formulaire complex pour googleMaps
-    public function formComplex($value=true,?array $attr=null,?array $option=null):string
+    final public function formComplex($value=true,?array $attr=null,?array $option=null):string
     {
         $return = '';
         $value = $this->onGet($value,(array) $option);
@@ -106,12 +106,12 @@ class GoogleMaps extends Core\ColAlias
 
     // html
     // fait une map à partir d'un objet de localization
-    public function html(Main\Localization $value,?int $zoom=null):?string
+    final public function html(Main\Localization $value,?int $zoom=null):?string
     {
         $return = null;
         $data = $value->latLng();
         $data['zoom'] = $zoom;
-        $return = Html::div(null,['googleMaps','id'=>true,'data'=>$data]);
+        $return = Html::div(null,['googleMaps','bind','id'=>true,'data'=>$data]);
 
         return $return;
     }

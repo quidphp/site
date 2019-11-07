@@ -15,7 +15,7 @@ trait _pageBreadcrumbs
 {
     // getBreadcrumbs
     // génère les breadcrumbs pour la page
-    public function getBreadcrumbs():array
+    final public function getBreadcrumbs():array
     {
         $return = [];
         $row = $this->row();

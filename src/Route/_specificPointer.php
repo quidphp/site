@@ -16,7 +16,7 @@ trait _specificPointer
 {
     // onBefore
     // avant le lancement de la route
-    protected function onBefore()
+    final protected function onBefore()
     {
         return $this->pointer()->isVisible();
     }
@@ -24,7 +24,7 @@ trait _specificPointer
 
     // hasPointer
     // retourne vrai si le pointeur existe
-    protected function hasPointer():bool
+    final protected function hasPointer():bool
     {
         return ($this->segment('pointer') instanceof Core\Row)? true:false;
     }
@@ -32,7 +32,7 @@ trait _specificPointer
 
     // pointer
     // retourne la ligne de pointeur
-    protected function pointer():Core\Row
+    final protected function pointer():Core\Row
     {
         return $this->segment('pointer');
     }
@@ -40,7 +40,7 @@ trait _specificPointer
 
     // pointerRoute
     // retourne la route de la ligne du pointeur
-    protected function pointerRoute():Core\Route
+    final protected function pointerRoute():Core\Route
     {
         return $this->pointer()->route();
     }

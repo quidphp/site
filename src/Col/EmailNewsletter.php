@@ -25,7 +25,7 @@ class EmailNewsletter extends Core\Col\EmailAlias
 
     // formComplex
     // génère le formulaire complex pour emailNewsletter
-    public function formComplex($value=true,?array $attr=null,?array $option=null):string
+    final public function formComplex($value=true,?array $attr=null,?array $option=null):string
     {
         $return = parent::formComplex($value,$attr,$option);
 
@@ -39,7 +39,7 @@ class EmailNewsletter extends Core\Col\EmailAlias
 
     // formNewsletter
     // génère le bloc indiquant si le email est dans l'infolettre
-    protected function formNewsletter(string $email):string
+    final protected function formNewsletter(string $email):string
     {
         $return = '';
         $service = $this->getService();
@@ -61,7 +61,7 @@ class EmailNewsletter extends Core\Col\EmailAlias
 
     // getService
     // retourne le service mailchimp
-    public function getService():?Site\Contract\Newsletter
+    final public function getService():?Site\Contract\Newsletter
     {
         $return = null;
         $service = $this->getAttr('service');

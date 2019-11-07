@@ -23,7 +23,7 @@ class GoogleGeocoding extends Main\ServiceRequest
 
     // apiKey
     // retourne la clé d'api
-    public function apiKey():string
+    final public function apiKey():string
     {
         return $this->getAttr('key');
     }
@@ -32,7 +32,7 @@ class GoogleGeocoding extends Main\ServiceRequest
     // localize
     // lance la requête à googleGeocoding et retourne un objet de localization en cas de succès
     // plusieurs exceptions peuvent être envoyés
-    public function localize($value):?Main\Localization
+    final public function localize($value):?Main\Localization
     {
         $return = null;
         $value = $this->prepareValue($value);
@@ -63,7 +63,7 @@ class GoogleGeocoding extends Main\ServiceRequest
 
     // request
     // retourne la requête à utiliser pour aller chercher une localization auprès de googleGeocoding
-    public function request($value,?array $attr=null):Main\Request
+    final public function request($value,?array $attr=null):Main\Request
     {
         return static::makeRequest(static::target(['key'=>$this->apiKey(),'value'=>$value]),Base\Arr::plus($this->attr(),$attr));
     }
@@ -71,8 +71,7 @@ class GoogleGeocoding extends Main\ServiceRequest
 
     // prepareValue
     // prépare la valeur, peut envoyer une exception
-    // méthode protégé
-    public static function prepareValue($return)
+    final public static function prepareValue($return)
     {
         if(is_array($return))
         $return = Base\Arr::implode(', ',$return);
@@ -86,7 +85,7 @@ class GoogleGeocoding extends Main\ServiceRequest
 
     // parse
     // parse le tableau de retour en provenance de googleGeocoding
-    public static function parse(array $array):array
+    final public static function parse(array $array):array
     {
         $return = [];
 

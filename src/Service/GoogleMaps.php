@@ -24,7 +24,7 @@ class GoogleMaps extends Main\ServiceRequest
 
     // apiKey
     // retourne la clé d'api
-    public function apiKey():string
+    final public function apiKey():string
     {
         return $this->getAttr('key');
     }
@@ -32,7 +32,7 @@ class GoogleMaps extends Main\ServiceRequest
 
     // docOpenJs
     // retourne l'uri vers le fichier js à charger
-    public function docOpenJs()
+    final public function docOpenJs()
     {
         return Base\Str::replace(['%value%'=>$this->apiKey()],$this->getAttr('js'));
     }
@@ -40,7 +40,7 @@ class GoogleMaps extends Main\ServiceRequest
 
     // uri
     // méthode statique pour générer une uri vers googleMaps
-    public static function uri(string $value):string
+    final public static function uri(string $value):string
     {
         $return = Base\Str::replace(['%value%'=>$value],static::$config['uri']);
         $return = Base\Uri::absolute($return);

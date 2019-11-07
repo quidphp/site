@@ -30,7 +30,7 @@ trait _pageSectionConfig
     // getRoutesCanPrepare
     // retourne toutes les routes qui doivent être préparés
     // n'inclut pas la route page dynamique, car plusieurs uris peuvent utilisateur cette route
-    public static function getRoutesCanPrepare():?Routing\Routes
+    final public static function getRoutesCanPrepare():?Routing\Routes
     {
         return static::boot()->routes(static::getRouteKey())->not('Page');
     }
@@ -38,7 +38,7 @@ trait _pageSectionConfig
 
     // dynamicRouteMake
     // génère la route de la page ou de la page dynamique, dépendamment de la classe
-    public static function dynamicRouteMake(string $route,Page $page):Core\Route
+    final public static function dynamicRouteMake(string $route,Page $page):Core\Route
     {
         $return = null;
         $class = static::dynamicPageClass();
@@ -57,7 +57,7 @@ trait _pageSectionConfig
     // fait une configuration sur la page non dynamique
     // lie la section à la configuration
     // cette méthode est appelé par routePrepareConfig
-    public function routeConfig(array $return):array
+    final public function routeConfig(array $return):array
     {
         $path = null;
         $section = $this->section();

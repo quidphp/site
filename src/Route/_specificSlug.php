@@ -17,7 +17,7 @@ trait _specificSlug
 {
     // onBefore
     // avant le lancement de la route
-    protected function onBefore()
+    final protected function onBefore()
     {
         return $this->row()->isVisible();
     }
@@ -25,7 +25,7 @@ trait _specificSlug
 
     // rowExists
     // retourne vrai si la route existe
-    public function rowExists():bool
+    final public function rowExists():bool
     {
         return ($this->segment('slug') instanceof Core\Row)? true:false;
     }
@@ -33,7 +33,7 @@ trait _specificSlug
 
     // row
     // retourne la row
-    public function row():Core\Row
+    final public function row():Core\Row
     {
         return $this->segment('slug');
     }
@@ -41,7 +41,7 @@ trait _specificSlug
 
     // makeTitle
     // fait le titre de la route
-    protected function makeTitle(?string $lang=null)
+    final protected function makeTitle(?string $lang=null)
     {
         $return = null;
         $row = $this->row();
@@ -63,7 +63,7 @@ trait _specificSlug
 
     // allSegment
     // génère tous les combinaisons possibles pour le sitemap
-    public static function allSegment()
+    final public static function allSegment()
     {
         $return = [];
         $class = static::rowClass();

@@ -30,7 +30,7 @@ trait _pageSectionSlug
 
     // getSlugPrepend
     // ajout le contenu avant le slug, soit le slug du parent ou soit le nom de la section
-    public static function getSlugPrepend(Core\Col $col,array $row,?Core\Cell $cell=null):?Core\Cell
+    final public static function getSlugPrepend(Core\Col $col,array $row,?Core\Cell $cell=null):?Core\Cell
     {
         $return = null;
         $parent = (!empty($cell))? $cell->row():null;

@@ -12,10 +12,8 @@ $(document).ready(function() {
 	
 	// route:specificPrepare
     // comportement pour la préparation de certains inputs avancés
-	$(this).on('route:specificPrepare', function(event,preparable) {
-		preparable.on('specificForm:prepare', function(event) {
-    		$(this).find("[data-col='jsonForm']").jsonForm();
-			$(this).find("[data-col='googleMaps'] .googleMaps").googleMaps();
-        });
+	$(this).on('specific:formPrepare', function(event,parent) {
+        parent.find("[data-col='jsonForm']").jsonForm();
+        parent.find("[data-col='googleMaps'] .bind").googleMaps();
 	});
 });

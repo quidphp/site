@@ -25,7 +25,7 @@ class Hierarchy extends Core\Col\EnumAlias
 
     // onSet
     // gère la logique onSet pour hierarchy
-    public function onSet($return,array $row,?Orm\Cell $cell=null,array $option)
+    final protected function onSet($return,array $row,?Orm\Cell $cell=null,array $option)
     {
         if($return === 0)
         $return = null;
@@ -36,7 +36,7 @@ class Hierarchy extends Core\Col\EnumAlias
 
     // formComplexHierarchy
     // génère un élément de formulaire pour hiérarchie
-    protected function formComplexHierarchy($value=true,?array $attr=null,?array $option=null):string
+    final protected function formComplexHierarchy($value=true,?array $attr=null,?array $option=null):string
     {
         $return = '';
         $id = ($value instanceof Core\Cell)? $value->row()->primary():null;
@@ -62,7 +62,7 @@ class Hierarchy extends Core\Col\EnumAlias
 
     // getNames
     // retourne un tableau avec tous les noms de pages
-    protected function getNames($where=null):array
+    final protected function getNames($where=null):array
     {
         $return = [];
         $db = $this->db();
@@ -79,7 +79,7 @@ class Hierarchy extends Core\Col\EnumAlias
 
     // makeHierarchyStructure
     // crée la structure html ul/li pour la hierarchy
-    protected function makeHierarchyStructure($value=true,array $hierarchy,array $names,int $i=0,?array $attr=null,?array $option=null):string
+    final protected function makeHierarchyStructure($value=true,array $hierarchy,array $names,int $i=0,?array $attr=null,?array $option=null):string
     {
         $return = '';
 

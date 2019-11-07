@@ -44,7 +44,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // hasParentCell
     // retourne vrai si la ligne a une cellule pour déterminer son parent
-    public function hasParentCell():bool
+    final public function hasParentCell():bool
     {
         return ($this->hasCell(static::hierarchy()))? true:false;
     }
@@ -60,7 +60,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // hasOrder
     // retourne vrai si la page a un ordre
-    public function hasOrder():bool
+    final public function hasOrder():bool
     {
         return ($this->hasCell('order'))? true:false;
     }
@@ -68,7 +68,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // isTop
     // retourne vrai si la page n'a pas de parent
-    public function isTop():bool
+    final public function isTop():bool
     {
         return ($this->top() === null)? true:false;
     }
@@ -76,7 +76,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // inAllSegment
     // retorune vrai si la page est incluse dans allSegment, pour sitemap
-    public function inAllSegment():bool
+    final public function inAllSegment():bool
     {
         return true;
     }
@@ -84,7 +84,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // getOrder
     // retourne l'ordre de la page si existant, ou null
-    public function getOrder():?Core\Cell
+    final public function getOrder():?Core\Cell
     {
         $return = null;
 
@@ -97,7 +97,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // parent
     // retourne le parent direct de la page
-    public function parent():?self
+    final public function parent():?self
     {
         return ($this->hasParentCell())? $this[static::hierarchy()](true):null;
     }
@@ -105,7 +105,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // parentOrSelf
     // retourne la page parent ou la page courante
-    public function parentOrSelf():?self
+    final public function parentOrSelf():?self
     {
         return $this->parent() ?? $this;
     }
@@ -113,7 +113,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // top
     // retourne la page top en lien avec la page
-    public function top():?self
+    final public function top():?self
     {
         return $this->cache(__METHOD__,function() {
             $return = null;
@@ -131,7 +131,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // topOrSelf
     // retourne la page top ou la page courante
-    public function topOrSelf():?self
+    final public function topOrSelf():?self
     {
         return $this->top() ?? $this;
     }
@@ -139,7 +139,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // parents
     // retourne tous les parents de la page
-    public function parents():Core\Rows
+    final public function parents():Core\Rows
     {
         $return = $this->table()->rows(false);
         $row = $this;
@@ -155,7 +155,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // breadcrumb
     // retourne les parents de la page et la page sous forme de breadcrumbs
-    public function breadcrumb():Core\Rows
+    final public function breadcrumb():Core\Rows
     {
         $return = $this->parents()->reverse();
         $return->add($this);
@@ -167,7 +167,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
     // childs
     // retourne les enfants directs de la page
     // possible de retourner un objet rows
-    public function childs(bool $rows=true)
+    final public function childs(bool $rows=true)
     {
         $return = null;
 
@@ -192,7 +192,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // childsRoute
     // retourne les routes des enfants directs de la page
-    public function childsRoute():array
+    final public function childsRoute():array
     {
         $return = [];
         $childs = $this->childs(true);
@@ -212,7 +212,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
     // childsRouteLi
     // retourne des liens vers les routes des enfants dans un structure ul li
     // possible de creuser dans la hiérarchie si deep est true
-    public function childsRouteLi(bool $deep=false):string
+    final public function childsRouteLi(bool $deep=false):string
     {
         $return = '';
         $childs = $this->childsRoute();
@@ -237,7 +237,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // parentsRoute
     // retourne les routes des parents de la page
-    public function parentsRoute():array
+    final public function parentsRoute():array
     {
         $return = [];
 
@@ -252,7 +252,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // makeBreadcrumbs
     // génère le breadcrumbs pour la page
-    public function makeBreadcrumbs(string $delimiter='/',int $max=2,int $length=40):string
+    final public function makeBreadcrumbs(string $delimiter='/',int $max=2,int $length=40):string
     {
         $r = '';
         $routes = static::boot()->routes();
@@ -298,7 +298,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // slug
     // retourne le slug de la page, utilise cellKey
-    public function slug():Core\Cell
+    final public function slug():Core\Cell
     {
         return $this->cellKey();
     }
@@ -306,13 +306,13 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // regenerateSlug
     // regenere le slug de la page, pour ce faire tu le vides
-    public function regenerateSlug(?array $option=null)
+    final public function regenerateSlug(?array $option=null)
     {
         $return = null;
         $slug = $this->slug();
 
         $slug->set('');
-        $return = $this->updateChangedIncludedValid($option);
+        $return = $this->updateValid($option);
 
         return $return;
     }
@@ -320,7 +320,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // getSlugSliceLength
     // retourne la longueur minimale et maximale de chaque slice pour le slug
-    public static function getSlugSliceLength():?array
+    final public static function getSlugSliceLength():?array
     {
         return null;
     }
@@ -329,7 +329,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
     // getSlugPrepend
     // retourne le contenu à mettre avant le slug de la page
     // cette méthode peut être étendu, par exemple pour mettre une section ou les parents
-    public static function getSlugPrepend(Core\Col $col,array $row,?Core\Cell $cell=null):?Core\Cell
+    final public static function getSlugPrepend(Core\Col $col,array $row,?Core\Cell $cell=null):?Core\Cell
     {
         return null;
     }
@@ -337,7 +337,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // getSlugArray
     // retourne le tableau de tous les éléments à mettre dans le slug pour la page
-    public static function getSlugArray(Core\Col $col,array $row,?Core\Cell $cell=null):array
+    final public static function getSlugArray(Core\Col $col,array $row,?Core\Cell $cell=null):array
     {
         $return = [];
         $hierarchy = static::hierarchy();
@@ -369,7 +369,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
     // makeSlug
     // construit le slug pour la page
     // cette méthode est appelé via la colonne slug
-    public static function makeSlug(Core\Col $col,array $row,?Core\Cell $cell=null,?array $option=null):string
+    final public static function makeSlug(Core\Col $col,array $row,?Core\Cell $cell=null,?array $option=null):string
     {
         $return = '';
         $array = static::getSlugArray($col,$row,$cell);
@@ -386,7 +386,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // refreshSlugs
     // cette méthode permet de rafraichir tous les slugs de la table
-    public static function refreshSlugs(?array $option=null):array
+    final public static function refreshSlugs(?array $option=null):array
     {
         $return = [];
         $table = static::tableFromFqcn();
@@ -413,7 +413,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
     // refreshSlugsArray
     // méthode protégé utilisé par refreshSlugs
     // permet de regénérer plusieurs slugs en respectant la hiérarchie des pages
-    protected static function refreshSlugsArray(array $array,array &$return,?array $option=null):array
+    final protected static function refreshSlugsArray(array $array,array &$return,?array $option=null):array
     {
         $table = static::tableFromFqcn();
 
@@ -437,7 +437,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
     // hierarchy
     // retourne le nom de la colonne pour la hiérarchie, si existant
     // par défaut c'est page_id
-    public static function hierarchy():?string
+    final public static function hierarchy():?string
     {
         return static::$config['hierarchy'];
     }
