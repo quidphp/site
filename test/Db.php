@@ -64,7 +64,7 @@ class Db extends Base\Test
         $vimeo = ['title'=>'James','html'=>'test','thumbnail_url'=>'http://image.com','provider_url'=>'https://vimeo.com','video_id'=>'132132','description'=>'bla','upload_date'=>'2018-07-25 23:30:36'];
         $video = Site\Service\Vimeo::makeVideo($vimeo);
         assert($myVideo instanceof Site\Col\Vimeo);
-        assert(strlen($myVideo->formComplex($video)) === 205);
+        assert(strlen($myVideo->formComplex($video)) === 216);
 
         // youTube
 

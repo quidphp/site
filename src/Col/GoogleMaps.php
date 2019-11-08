@@ -111,7 +111,7 @@ class GoogleMaps extends Core\ColAlias
         $return = null;
         $data = $value->latLng();
         $data['zoom'] = $zoom;
-        $return = Html::div(null,['googleMaps','bind','id'=>true,'data'=>$data]);
+        $return = Html::div(null,['map-render','id'=>true,'data'=>$data]);
 
         return $return;
     }

@@ -10,10 +10,11 @@
 // script of additional behaviours for the specific form page of the CMS
 $(document).ready(function() {
 	
-	// route:specificPrepare
+	// specific:formPrepareViewable
     // comportement pour la préparation de certains inputs avancés
-	$(this).on('specific:formPrepare', function(event,parent) {
-        parent.find("[data-col='jsonForm']").jsonForm();
-        parent.find("[data-col='googleMaps'] .bind").googleMaps();
+    // se bind à l'ouverture du panneau
+	$(this).on('specific:formPrepareViewable', function(event,parent) {
+        parent.find("[data-col='jsonForm'] .specific-component").jsonForm();
+        parent.find("[data-col='googleMaps'] .specific-component").find(".map-render").googleMaps();
 	});
 });

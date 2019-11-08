@@ -10,76 +10,25 @@
 // stylesheet for additional form inputs in the CMS
 
 // include
-@import '_googleMaps';
+@import '_componentSite';
 @import '_jsonForm';
 
-/* TINYMCE */
-form [data-group='tinymce'] .right textarea {
-    height: 350px !important;
+// jsonForm
+[data-col='jsonForm'] .specific-component {
+    @include componentJsonFormSpecific();
 }
 
-/* HIERARCHY */
-form [data-col='hierarchy'] .right .scroller {
-    max-height: 350px;
-    overflow-y: auto;
-    padding: 0 10px;
-
-    > ul {
-        font-size: 90%;
-    }
-
-    ul {
-        display: block;
-        list-style-type: none;
-        border-left: 1px solid $lightGray;
-        padding-left: 5px;
-    }
-
-    ul ul {
-        margin-left: 35px;
-    }
-
-    li.choice {
-        padding: 2px 0;
-    }
+// hierarchy
+[data-col='hierarchy'] .specific-component {
+    @include componentHierarchySpecific();
 }
 
-/* JSON FORM */
-form [data-col='jsonForm'] {
-    @include jsonForm();
+// googleMaps
+[data-col='googleMaps'] .specific-component {
+    @include componentGoogleMapsSpecific();
 }
 
-/* GOOGLE MAPS */
-form [data-col='googleMaps'] .bind {
-    @include googleMaps();
-}
-
-/* VIDEO */
-form [data-group='video'] .right {
-    .html {
-        margin-bottom: 5px;
-    }
-    .content {
-        font-size: 90%;
-        margin-bottom: 10px;
-    }
-}
-
-/* EMAIL NEWSLETTER */
-form [data-col='emailNewsletter'] .right > .subscribed {
-    padding: 5px 0 0;
-    font-size: 90%;
-
-    > .value {
-        font-weight: bold;
-        margin-left: 5px;
-    }
-}
-
-/* PRINT */
-@media print {
-    form [data-col='hierarchy'] .right .scroller {
-        overflow-y: inherit !important;
-        max-height: inherit !important;
-    }
+// emailNewsletter
+[data-col='googleMaps'] .specific-component {
+    @include componentEmailNewsletterSpecific();
 }

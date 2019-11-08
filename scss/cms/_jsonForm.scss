@@ -9,14 +9,20 @@
 // jsonForm
 // stylesheet for the jsonForm component
 
-// jsonForm
-// mixin pour le champ jsonForm
-@mixin jsonForm() {
-    .right .container > .ele {
+// componentJsonFormSpecific
+// component pour le champ jsonForm du formulaire
+@mixin componentJsonFormSpecific() {
+    > .playground > .ele {
         margin-bottom: 20px;
         padding-bottom: 20px;
         border-bottom: 1px solid $lightGray;
-
+        
+        &:last-child {
+            margin-bottom: 10px;
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+        
         .table {
             height: auto;
         }
@@ -26,7 +32,8 @@
         }
 
         .label-cell {
-            width: 150px;
+            width: 125px;
+            padding-right: 10px;
         }
 
         .label {
