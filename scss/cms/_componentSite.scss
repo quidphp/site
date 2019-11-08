@@ -15,14 +15,13 @@
     > textarea {
         height: 100px;
     }
-    
+
     > .map-render {
         height: 200px;
         background-color: $gray;
         margin-bottom: 10px;
     }
 }
-
 
 // componentEmailNewsletterSpecific
 // component pour le champ email newsletter du formulaire
@@ -37,7 +36,6 @@
         }
     }
 }
-
 
 // componentHierarchySpecific
 // component pour le champ hiérarchie du formulaire
@@ -66,7 +64,7 @@
             padding: 2px 0;
         }
     }
-    
+
     @media print {
         .scroller {
             overflow-y: inherit !important;
