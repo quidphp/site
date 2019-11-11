@@ -14,21 +14,21 @@
 @import '_jsonForm';
 
 // jsonForm
-[data-col='jsonForm'] .specific-component {
+#wrapper [data-col='jsonForm'] .specific-component {
     @include componentJsonFormSpecific();
 }
 
 // hierarchy
-[data-col='hierarchy'] .specific-component {
+#wrapper [data-col='hierarchy'] .specific-component {
     @include componentHierarchySpecific();
 }
 
 // googleMaps
-[data-col='googleMaps'] .specific-component {
+#wrapper [data-col='googleMaps'] .specific-component {
     @include componentGoogleMapsSpecific();
 }
 
 // emailNewsletter
-[data-col='googleMaps'] .specific-component {
+#wrapper [data-col='googleMaps'] .specific-component {
     @include componentEmailNewsletterSpecific();
 }

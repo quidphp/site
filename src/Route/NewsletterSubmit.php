@@ -86,7 +86,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
     // retourne la route vers laquelle redirigé
     final public function routeSuccess():Core\Route
     {
-        return Home::makeOverload();
+        return Home::make();
     }
 
 

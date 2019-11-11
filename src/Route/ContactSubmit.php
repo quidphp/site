@@ -65,7 +65,7 @@ abstract class ContactSubmit extends Core\RouteAlias
     // retourne la route vers laquelle redirigé, home par défaut
     final public function routeSuccess():Core\Route
     {
-        return Home::makeOverload();
+        return Home::make();
     }
 
 
