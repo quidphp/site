@@ -33,13 +33,13 @@ trait _pageSection
     }
 
 
-    // onBefore
-    // avant le lancement de la route
-    final protected function onBefore()
+    // canTrigger
+    // si la route peut être lancé
+    final public function canTrigger():bool
     {
         $return = false;
 
-        if($this->rowExists() && $this->sectionExists())
+        if(parent::canTrigger() && $this->rowExists() && $this->sectionExists())
         {
             if($this->row()->isVisible() && $this->section()->isVisible())
             {

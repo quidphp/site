@@ -15,11 +15,11 @@ use Quid\Orm;
 // trait with methods to work with a specific resource represent by a URI slug
 trait _specificSlug
 {
-    // onBefore
-    // avant le lancement de la route
-    final protected function onBefore()
+    // canTrigger
+    // si la route peut être lancé
+    final public function canTrigger():bool
     {
-        return $this->row()->isVisible();
+        return (parent::canTrigger() && $this->rowExists() && $this->row()->isVisible())? true:false;
     }
 
 

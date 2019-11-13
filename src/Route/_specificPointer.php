@@ -14,11 +14,11 @@ use Quid\Core;
 // trait that grants methods to deal with a specific resource represent by a pointer (table/id)
 trait _specificPointer
 {
-    // onBefore
-    // avant le lancement de la route
-    final protected function onBefore()
+    // canTrigger
+    // si la route peut être lancé
+    final public function canTrigger():bool
     {
-        return $this->pointer()->isVisible();
+        return (parent::canTrigger() && $this->hasPointer() && $this->pointer()->isVisible())? true:false;
     }
 
 

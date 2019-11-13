@@ -54,7 +54,7 @@ class Db extends Base\Test
         // tinyMce
         assert($tinymce->tag() === 'textarea');
         assert(count($tinymce->formAttr()) === 1);
-        assert(count($tinymce->attr()) === 70);
+        assert(count($tinymce->attr()) === 72);
         assert(count($tinymce->getAttr('tinymce')) === 17);
         assert(strlen($tinymce->formComplex()) > 500);
 
@@ -101,7 +101,7 @@ class Db extends Base\Test
         // vimeo
         assert($vimeo instanceof Site\Cell\Vimeo);
         assert($vimeo->formComplex() === "<input maxlength='65535' name='vimeo' placeholder='NULL' type='text'/>");
-        assert(strlen($vimeo->formComplexWrap()) === 133);
+        assert(strlen($vimeo->formComplexWrap()) === 171);
 
         // youTube
 

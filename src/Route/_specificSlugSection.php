@@ -18,11 +18,19 @@ trait _specificSlugSection
     use _specificSlug;
 
 
-    // onBefore
-    // avant le lancement de la route
-    final protected function onBefore()
+    // canTrigger
+    // si la route peut être lancé
+    final public function canTrigger():bool
     {
-        return ($this->row()->isVisible() && $this->section()->isVisible())? true:false;
+        $return = false;
+        
+        if(parent::canTrigger() && $this->rowExists() && $this->row()->isVisible())
+        {
+            if($this->row()->isVisible() && $this->section()->isVisible())
+            $return = true;
+        }
+        
+        return $return;
     }
 
 

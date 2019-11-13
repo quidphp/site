@@ -29,19 +29,11 @@ trait _page
     }
 
 
-    // onBefore
-    // avant le lancement de la route
-    final protected function onBefore()
+    // canTrigger
+    // si la route peut être lancé
+    final public function canTrigger():bool
     {
-        $return = parent::onBefore();
-
-        if($return !== false)
-        {
-            if($this->rowExists() && $this->row()->isVisible())
-            $return = true;
-        }
-
-        return $return;
+        return (parent::canTrigger() && $this->rowExists() && $this->row()->isVisible())? true:false;
     }
 
 
