@@ -23,13 +23,13 @@ trait _specificSlugSection
     final public function canTrigger():bool
     {
         $return = false;
-        
+
         if(parent::canTrigger() && $this->rowExists() && $this->row()->isVisible())
         {
             if($this->row()->isVisible() && $this->section()->isVisible())
             $return = true;
         }
-        
+
         return $return;
     }
 
