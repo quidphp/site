@@ -126,6 +126,23 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 
         return $return;
     }
+    
+    
+    // formComplex
+    // génère le formComplex pour jsonFormRelation avec le relation export
+    final public function formComplex($value=true,?array $attr=null,?array $option=null):string
+    {
+        $return = parent::formComplex($value,$attr,$option);
+        $tag = $this->complexTag($attr);
+        
+        if($tag === 'add-remove' && $value instanceof Core\Cell)
+        {
+            $answers = $value->answers();
+            $return .= Html::div(Base\Debug::export($answers),'relation-export');
+        }
+
+        return $return;
+    }
 }
 
 // init

@@ -70,8 +70,8 @@ class Media extends Core\RowAlias
         $return = '';
         $namePrimary = $this->namePrimary();
 
-        $return .= Html::divCond($this->relationThumbnail(),'thumbnail');
-        $return .= Html::div($namePrimary,'legend');
+        $return .= Html::spanCond($this->relationThumbnail(),'thumbnail');
+        $return .= Html::span($namePrimary,'legend');
 
         return $return;
     }
@@ -121,7 +121,7 @@ class Media extends Core\RowAlias
 
                     $excerpt = Base\Str::excerpt(50,$name);
                     $r['from'] = Html::img($uri,$rowName);
-                    $r['from'] .= Html::div($excerpt,'legend');
+                    $r['from'] .= Html::span($excerpt,'legend');
 
                     $r['to'] = Html::img($uri,$rowName);
 
@@ -158,7 +158,7 @@ class Media extends Core\RowAlias
 
                     $excerpt = Base\Str::excerpt(50,$name);
                     $r['from'] = Html::div(null,['big-icon','storage']);
-                    $r['from'] .= Html::div($excerpt,'legend');
+                    $r['from'] .= Html::span($excerpt,'legend');
 
                     $r['to'] = Html::a($uri,$rowName,['target'=>false]);
 
@@ -236,8 +236,8 @@ class Media extends Core\RowAlias
             $r['content'] .= $content;
 
             $excerpt = Base\Str::excerpt(50,$name);
-            $r['from'] = Html::div(null,['big-icon','video']);
-            $r['from'] .= Html::div($excerpt,'legend');
+            $r['from'] = Html::span(null,['big-icon','video']);
+            $r['from'] .= Html::span($excerpt,'legend');
 
             $r['to'] = $html;
 
@@ -262,9 +262,7 @@ class Media extends Core\RowAlias
             if(!empty($value['from']) && !empty($value['to']))
             {
                 $data = ['html'=>$value['to']];
-                $html .= Html::divOp(['insert','data'=>$data]);
-                $html .= $value['from'];
-                $html .= Html::divCl();
+                $html .= Html::button($value['from'],['insert','data'=>$data]);
             }
         }
 

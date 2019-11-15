@@ -17,7 +17,7 @@ abstract class Route extends Lemur\Route
     // config
     public static $config = [
         '@app'=>[
-            'jsInit'=>'$(document).ready(function() { quid.core.document(this); });',
+            'jsInit'=>'$(document).ready(function() { quid.main.document.bind.call(this); });',
             'docOpen'=>[
                 'head'=>[
                     'css'=>[

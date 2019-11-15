@@ -29,7 +29,6 @@ class Fr extends Lemur\Lang\Fr
 
             // label
             'label'=>[
-                'contact'=>'Contact',
                 'media'=>'Médiathèque',
                 'page'=>'Page',
                 'section'=>'Section']
@@ -47,13 +46,6 @@ class Fr extends Lemur\Lang\Fr
                     'youTube'=>'YouTube',
                     'vimeo'=>'Vimeo',
                     'newsletter'=>'Infolettre'
-                ],
-
-                // contact
-                'contact'=>[
-                    'email'=>'Adresse courriel',
-                    'name'=>'Prénom et nom',
-                    'phone'=>'Numéro de téléphone'
                 ]
             ]
         ],
@@ -72,13 +64,6 @@ class Fr extends Lemur\Lang\Fr
                         'failure'=>"Erreur lors de l'ajout de votre courriel à notre liste d'envoi.",
                         'duplicate'=>"Votre courriel est déjà dans notre liste d'envoi."
                     ]
-                ],
-
-                // insert
-                'insert'=>[
-                    'contact'=>[
-                        'failure'=>"Erreur lors de l'envoie du message."
-                    ]
                 ]
             ],
 
@@ -92,13 +77,6 @@ class Fr extends Lemur\Lang\Fr
                     'subscribe'=>[
                         'success'=>"Votre courriel a été ajouté à notre liste d'envoi. Vous recevrez sous peu un courriel de confirmation."
                     ]
-                ],
-
-                // insert
-                'insert'=>[
-                    'contact'=>[
-                        'success'=>'Merci, le message a été envoyé !'
-                    ]
                 ]
             ]
         ],
@@ -108,7 +86,6 @@ class Fr extends Lemur\Lang\Fr
 
             // label
             'label'=>[
-                'contactSubmit'=>'Contact - Soumettre',
                 'newsletterSubmit'=>'Infolettre - Soumettre',
             ]
         ],
@@ -149,7 +126,6 @@ class Fr extends Lemur\Lang\Fr
 
                 // description
                 'description'=>[
-                    'contact'=>'Archive des messages envoyés via le formulaire de la page de contact',
                     'media'=>'Gère les médias comme les photos, vidéos et fichiers.',
                     'page'=>"Pages accessibles via l'application",
                     'section'=>'Regroupement de pages']
@@ -178,11 +154,6 @@ class Fr extends Lemur\Lang\Fr
                     'page'=>[
                         'page_id'=>'Spécifie la page parent de la page',
                         'pageContent_ids'=>'Spécifie les contenus de la page'
-                    ],
-
-                    // contact
-                    'contact'=>[
-                        'message'=>'Contenu du message'
                     ]
                 ]
             ],

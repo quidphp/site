@@ -11,12 +11,12 @@
 
 // googleAnalytics
 // permet de lier le chargement d'une nouvelle page via ajax et de l'envoyer à google Analytics
-quid.core.googleAnalytics = $.fn.googleAnalytics = function()
+quid.core.googleAnalytics = function()
 {
     $(this).on('document:mount', function(event) {
-        var uri = quid.base.currentRelativeUri();
+        var uri = quid.base.request.relative();
         
-        if(quid.base.isStringNotEmpty(uri) && typeof ga !== 'undefined' && $.isFunction(ga))
+        if(quid.base.str.isNotEmpty(uri) && typeof ga !== 'undefined' && quid.base.func.is(ga))
         {
             ga('set','page',uri);
             ga('send','pageview');

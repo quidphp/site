@@ -25,8 +25,8 @@ abstract class NewsletterSubmit extends Core\RouteAlias
     // config
     public static $config = [
         'path'=>[
-            'fr'=>'infolettre/enregistrement',
-            'en'=>'newsletter/subscribe'],
+            'en'=>'newsletter/subscribe',
+            'fr'=>'infolettre/enregistrement'],
         'match'=>[
             'method'=>'post',
             'post'=>['email','firstName','lastName'],

@@ -18,6 +18,11 @@
     @include componentJsonFormSpecific();
 }
 
+// jsonFormRelation
+#wrapper [data-col='jsonFormRelation'] .specific-component {
+    @include componentJsonFormRelationSpecific();
+}
+
 // hierarchy
 #wrapper [data-col='hierarchy'] .specific-component {
     @include componentHierarchySpecific();

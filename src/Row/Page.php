@@ -288,7 +288,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
                 $wysiwyg = $route->aTitle(null,['target'=>false]);
                 $data = ['html'=>$wysiwyg];
                 $namePrimary = $this->namePrimary();
-                $return = Html::div($namePrimary,['insert','data'=>$data]);
+                $return = Html::button($namePrimary,['insert','data'=>$data]);
             }
         }
 

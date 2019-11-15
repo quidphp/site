@@ -29,7 +29,6 @@ class En extends Lemur\Lang\En
 
             // label
             'label'=>[
-                'contact'=>'Contact',
                 'media'=>'Media',
                 'page'=>'Page',
                 'section'=>'Section']
@@ -47,13 +46,6 @@ class En extends Lemur\Lang\En
                     'youTube'=>'YouTube',
                     'vimeo'=>'Vimeo',
                     'newsletter'=>'Newsletter'
-                ],
-
-                // contact
-                'contact'=>[
-                    'email'=>'Email',
-                    'name'=>'Full name',
-                    'phone'=>'Phone number'
                 ]
             ]
         ],
@@ -72,13 +64,6 @@ class En extends Lemur\Lang\En
                         'failure'=>'Error while adding your email to our mailing list.',
                         'duplicate'=>'Your email is already in our mailing list.'
                     ]
-                ],
-
-                // insert
-                'insert'=>[
-                    'contact'=>[
-                        'failure'=>'Error sending the message.'
-                    ]
                 ]
             ],
 
@@ -92,13 +77,6 @@ class En extends Lemur\Lang\En
                     'subscribe'=>[
                         'success'=>'Your email has been added to our mailing list. You will receive a confirmation email shortly.'
                     ]
-                ],
-
-                // insert
-                'insert'=>[
-                    'contact'=>[
-                        'success'=>'Thank you, the message was sent !'
-                    ]
                 ]
             ]
         ],
@@ -108,7 +86,6 @@ class En extends Lemur\Lang\En
 
             // label
             'label'=>[
-                'contactSubmit'=>'Contact - Submit',
                 'newsletterSubmit'=>'Newsletter - Subscribe'
             ]
         ],
@@ -149,7 +126,6 @@ class En extends Lemur\Lang\En
 
                 // description
                 'description'=>[
-                    'contact'=>'Archive messages sent via the contact page form',
                     'media'=>'Manages media like photos, videos and files.',
                     'page'=>'Pages accessible via the application',
                     'section'=>'Page grouping']
@@ -178,11 +154,6 @@ class En extends Lemur\Lang\En
                     'page'=>[
                         'page_id'=>'Parent page of the current page',
                         'pageContent_ids'=>'Specifies the contents of the page'
-                    ],
-
-                    // contact
-                    'contact'=>[
-                        'message'=>'Content of the message'
                     ]
                 ]
             ],

@@ -11,7 +11,7 @@
 
 // googleMaps
 // génère une carte google à partir d'élément jquery
-quid.core.googleMaps = $.fn.googleMaps = function(styles)
+quid.core.googleMaps = function(styles)
 {
     if(typeof(google) != 'undefined')
     {
@@ -26,7 +26,7 @@ quid.core.googleMaps = $.fn.googleMaps = function(styles)
             var iconSize = $(this).data("iconSize");
             var uri = $(this).data('url');
             
-            if(quid.base.isStringNotEmpty(id) && $.isNumeric(lat) && $.isNumeric(lng))
+            if(quid.base.str.isNotEmpty(id) && quid.base.number.is(lat) && quid.base.number.is(lng))
             {
                 var myLatLng = new google.maps.LatLng(lat,lng);
                 var mapOptions = {
@@ -37,10 +37,10 @@ quid.core.googleMaps = $.fn.googleMaps = function(styles)
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
                 
-                if(quid.base.isStringNotEmpty(icon))
+                if(quid.base.str.isNotEmpty(icon))
                 {
                     icon = { url: icon };
-                    if($.isNumeric(iconSize) && iconSize > 0)
+                    if(quid.base.number.is(iconSize) && iconSize > 0)
                     {
                         var anchor = (iconSize / 2);
                         icon.scaledSize = new google.maps.Size(iconSize,iconSize);
@@ -56,7 +56,7 @@ quid.core.googleMaps = $.fn.googleMaps = function(styles)
                     icon: icon
                 });
                 
-                if(quid.base.isStringNotEmpty(uri))
+                if(quid.base.str.isNotEmpty(uri))
                 {
                     google.maps.event.addListener(marker, 'click', function() {
                         window.open(marker.url, '_blank');

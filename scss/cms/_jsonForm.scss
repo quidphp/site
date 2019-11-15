@@ -27,10 +27,6 @@
             height: auto;
         }
 
-        label {
-            font-size: 90%;
-        }
-
         .label-cell {
             width: 125px;
             padding-right: 10px;
@@ -72,5 +68,13 @@
                 height: 80px;
             }
         }
+    }
+}
+
+// componentJsonFormRelationSpecific
+// mixin pour le champ jsonFormRelation dans le formulaire
+@mixin componentJsonFormRelationSpecific() {
+    .relation-export {
+        padding-top: 10px;
     }
 }
