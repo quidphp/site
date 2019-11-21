@@ -15,7 +15,7 @@ trait _meta
 {
     // metaTitle
     // retourne les données pour le meta title
-    final public function getMetaTitle($value=null)
+    public function getMetaTitle($value=null)
     {
         return $this->metaLoop(['metaTitle_[lang]','name_[lang]']);
     }
@@ -23,7 +23,7 @@ trait _meta
 
     // metaKeywords
     // retourne les données pour le meta keywords
-    final public function getMetaKeywords($value=null)
+    public function getMetaKeywords($value=null)
     {
         return $this->metaLoop(['metaKeywords_[lang]']);
     }
@@ -31,7 +31,7 @@ trait _meta
 
     // metaDescription
     // retourne les données pour le meta description
-    final public function getMetaDescription($value=null)
+    public function getMetaDescription($value=null)
     {
         return $this->metaLoop(['metaDescription_[lang]','excerpt_[lang]','content_[lang]']);
     }
@@ -39,7 +39,7 @@ trait _meta
 
     // metaLoop
     // loop des noms de cellules, retourne la première cellule existante et non vide
-    final protected function metaLoop(array $array)
+    protected function metaLoop(array $array)
     {
         $return = null;
 
@@ -62,7 +62,7 @@ trait _meta
 
     // metaImage
     // retourne les données pour le meta image
-    final public function getMetaImage($value=null)
+    public function getMetaImage($value=null)
     {
         $return = null;
 
@@ -77,18 +77,18 @@ trait _meta
         return $return;
     }
 
-
-    // getBodyClass
-    // retourne les données les classes de body
-    final public function getBodyClass($value=null)
+    
+    // getHtmlAttr
+    // retourne les données des attributs de html
+    public function getHtmlAttr($value=null)
     {
         return;
     }
-
-
-    // getBodyStyle
-    // retourne les données pour les styles de body
-    final public function getBodyStyle($value=null)
+    
+    
+    // getBodyAttr
+    // retourne les données des attributs de body
+    public function getBodyAttr($value=null)
     {
         return;
     }

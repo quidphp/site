@@ -76,7 +76,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
 
     // inAllSegment
     // retorune vrai si la page est incluse dans allSegment, pour sitemap
-    final public function inAllSegment():bool
+    public function inAllSegment():bool
     {
         return true;
     }
@@ -329,7 +329,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
     // getSlugPrepend
     // retourne le contenu à mettre avant le slug de la page
     // cette méthode peut être étendu, par exemple pour mettre une section ou les parents
-    final public static function getSlugPrepend(Core\Col $col,array $row,?Core\Cell $cell=null):?Core\Cell
+    public static function getSlugPrepend(Core\Col $col,array $row,?Core\Cell $cell=null):?Core\Cell
     {
         return null;
     }

@@ -62,7 +62,7 @@
         }
     }
 
-    @media print {
+    @include print() {
         .scroller {
             overflow-y: inherit !important;
             max-height: inherit !important;
