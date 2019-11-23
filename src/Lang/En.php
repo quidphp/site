@@ -48,6 +48,11 @@ class En extends Lemur\Lang\En
                     'youTube'=>'YouTube',
                     'vimeo'=>'Vimeo',
                     'newsletter'=>'Newsletter'
+                ],
+                
+                // page
+                'page'=>[
+                    'page_id'=>'Parent page'
                 ]
             ]
         ],

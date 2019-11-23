@@ -13,11 +13,16 @@ namespace Quid\Site\Service;
 use Quid\Base;
 use Quid\Main;
 use Quid\Site;
+use Quid\Core;
 
 // mailchimp
 // class that provides some methods to communication with mailchimp (subscribe to a list)
 class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 {
+    // access
+    use Core\_bootAccess;
+    
+    
     // config
     public static $config = [
         'target'=>'https://%server%.api.mailchimp.com/2.0/%method%.json', // uri target pour mailchimp

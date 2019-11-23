@@ -88,7 +88,10 @@ abstract class NewsletterSubmit extends Core\RouteAlias
     // retourne la route vers laquelle redirigé
     final public function routeSuccess():Core\Route
     {
-        return Home::make();
+        $history = static::session()->history();
+        $return = $history->previousRoute(static::routes(),Home::class);
+
+        return $return;
     }
 
 

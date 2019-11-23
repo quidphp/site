@@ -33,6 +33,7 @@ abstract class Boot extends Lemur\Boot
                 3=>'[vendorSite]/js/core']],
         '@app'=>[
             'service'=>[
+                'polyfill'=>Lemur\Service\Polyfill::class,
                 'jQuery'=>Lemur\Service\JQuery::class],
             'sessionVersionMatch'=>false,
             'compileScss'=>[

@@ -17,6 +17,10 @@ use Quid\Core;
 // class for the cli route to remove all cached data
 class CliClearCache extends Core\Route\CliClearCache
 {
+    // trait
+    use Core\Route\_cli;
+    
+    
     // config
     public static $config = [];
 }

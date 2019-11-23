@@ -17,6 +17,10 @@ use Quid\Core;
 // class for the cli route to remove all log data
 class CliClearLog extends Core\Route\CliClearLog
 {
+    // trait
+    use Core\Route\_cli;
+    
+    
     // config
     public static $config = [
         'logCron'=>null

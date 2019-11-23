@@ -13,7 +13,7 @@ $(document).ready(function() {
 	// specific:formPrepareViewable
     // comportement pour la préparation de certains inputs avancés
     // se bind à l'ouverture du panneau
-	$(this).on('specific:formPrepareViewable', function(event,parent) {
+	$(this).on('specificForm:bindView', function(event,parent) {
         parent.find("[data-col='jsonForm'] .specific-component").callThis(quid.core.jsonForm);
         parent.find("[data-col='googleMaps'] .specific-component").find(".map-render").callThis(quid.core.googleMaps);
 	});

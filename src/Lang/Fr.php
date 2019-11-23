@@ -48,6 +48,11 @@ class Fr extends Lemur\Lang\Fr
                     'youTube'=>'YouTube',
                     'vimeo'=>'Vimeo',
                     'newsletter'=>'Infolettre'
+                ],
+                
+                // page
+                'page'=>[
+                    'page_id'=>'Page parent'
                 ]
             ]
         ],

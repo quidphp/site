@@ -14,26 +14,26 @@
 @import '_jsonForm';
 
 // jsonForm
-#wrapper [data-col='jsonForm'] .specific-component {
+[data-col='jsonForm'] .specific-component {
     @include componentJsonFormSpecific();
 }
 
 // jsonFormRelation
-#wrapper [data-col='jsonFormRelation'] .specific-component {
+[data-col='jsonFormRelation'] .specific-component {
     @include componentJsonFormRelationSpecific();
 }
 
 // hierarchy
-#wrapper [data-col='hierarchy'] .specific-component {
+[data-col='hierarchy'] .specific-component {
     @include componentHierarchySpecific();
 }
 
 // googleMaps
-#wrapper [data-col='googleMaps'] .specific-component {
+[data-col='googleMaps'] .specific-component {
     @include componentGoogleMapsSpecific();
 }
 
 // emailNewsletter
-#wrapper [data-col='googleMaps'] .specific-component {
+[data-col='googleMaps'] .specific-component {
     @include componentEmailNewsletterSpecific();
 }
