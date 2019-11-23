@@ -49,7 +49,7 @@ class Fr extends Lemur\Lang\Fr
                     'vimeo'=>'Vimeo',
                     'newsletter'=>'Infolettre'
                 ],
-                
+
                 // page
                 'page'=>[
                     'page_id'=>'Page parent'

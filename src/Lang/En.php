@@ -49,7 +49,7 @@ class En extends Lemur\Lang\En
                     'vimeo'=>'Vimeo',
                     'newsletter'=>'Newsletter'
                 ],
-                
+
                 // page
                 'page'=>[
                     'page_id'=>'Parent page'

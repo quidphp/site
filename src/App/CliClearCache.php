@@ -19,8 +19,8 @@ class CliClearCache extends Core\Route\CliClearCache
 {
     // trait
     use Core\Route\_cli;
-    
-    
+
+
     // config
     public static $config = [];
 }

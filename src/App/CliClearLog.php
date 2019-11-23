@@ -19,8 +19,8 @@ class CliClearLog extends Core\Route\CliClearLog
 {
     // trait
     use Core\Route\_cli;
-    
-    
+
+
     // config
     public static $config = [
         'logCron'=>null
