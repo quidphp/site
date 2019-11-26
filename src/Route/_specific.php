@@ -20,8 +20,8 @@ trait _specific
     public static $configSpecific = [
         'group'=>'specific'
     ];
-    
-    
+
+
     // selectedUri
     final public function selectedUri():array
     {

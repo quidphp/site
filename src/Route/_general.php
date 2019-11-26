@@ -20,8 +20,8 @@ trait _general
     public static $configSpecific = [
         'group'=>'general'
     ];
-    
-    
+
+
     // selectedUri
     // gère les selected uri pour une route general
     // par défaut la route avec segment par défaut est sélectionné
@@ -34,8 +34,8 @@ trait _general
 
         return $return;
     }
-    
-    
+
+
     // makeGeneral
     // cette méthode permet de retourner une route general à partir de la classe
     final public static function makeGeneral($navKey=null,$segment=null):?self
