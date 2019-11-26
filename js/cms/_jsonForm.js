@@ -13,11 +13,9 @@
 // génère un input jsonForm, comme addRemove mais avec un peu plus de logique pour chaque élément
 quid.core.jsonForm = function()
 {
-    $(this).on('addRemove:bind', function(event,element) {
-        $(this).find("select").selectToFake();
-    })
-    .on('addRemove:inserted', function(event,element) {
+    $(this).on('addRemove:inserted', function(event,element) {
         element.refreshIds();
+        $(document).trigger('document:mountNodeCommon',[element]);
     })
     .on('jsonForm:showChoices', function(event,parent) {
         parent.find(".choices").addClass("visible");

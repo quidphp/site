@@ -11,13 +11,14 @@ declare(strict_types=1);
 
 namespace Quid\Site\Route;
 use Quid\Core;
+use Quid\Lemur;
 
 // _specificSlugSection
 // trait to work with a specific resource, within a section, represent by a URI slug
 trait _specificSlugSection
 {
     // trait
-    use _specificSlug;
+    use Lemur\Route\_specificSlug;
 
 
     // canTrigger

@@ -19,10 +19,6 @@ use Quid\Main;
 // class for a row which represents a page
 class Page extends Core\RowAlias implements Main\Contract\Meta
 {
-    // trait
-    use _meta;
-
-
     // config
     public static $config = [
         'key'=>['slug_[lang]','slugPath_[lang]',0],

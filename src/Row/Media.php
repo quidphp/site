@@ -345,31 +345,6 @@ class Media extends Core\RowAlias
     }
 
 
-    // makeSlider
-    // fait un slider à partir de plusieurs lignes média
-    final public static function makeSlider(Core\Rows $rows,?array $option=null):string
-    {
-        $r = '';
-        $html = '';
-
-        foreach ($rows as $row)
-        {
-            $html .= $row->outputSlides($option);
-        }
-
-        if(!empty($html))
-        {
-            $r .= Html::divOp('slider');
-            $r .= Html::div(null,['prev','arrow']);
-            $r .= Html::div(null,['next','arrow']);
-            $r .= $html;
-            $r .= Html::divCl();
-        }
-
-        return $r;
-    }
-
-
     // refreshVersions
     // méthode pour rafraichir les versions de plusieurs lignes dans la médiathèque
     final public static function refreshVersions($where=true,?array $option=null):array

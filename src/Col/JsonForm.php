@@ -106,7 +106,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
         $return .= Html::formWrap('*'.$label.':',$form,'divtable');
         $return .= Html::divCl();
 
-        $data = ['choices'=>$choicesInput];
+        $data = ['choices'=>$choicesInput,'anchor-corner'=>1,'absolute-placeholder'=>1];
         $return .= Html::divOp(['type','data'=>$data]);
         $label = $lang->text('jsonForm/type');
         $relation = $lang->relation('jsonForm',null,false);
@@ -122,12 +122,13 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
         $return .= Html::formWrap($label.':',$form,'divtable');
         $return .= Html::divCl();
 
+        $data = ['anchor-corner'=>1,'absolute-placeholder'=>1];
         $return .= Html::divOp('required');
         $label = $lang->text('jsonForm/required');
         $relation = $lang->relation('bool');
         $val = (!empty($value['required']))? 1:0;
         $opt = Base\Arr::plus($option,['value'=>$val]);
-        $form = ['select',$relation,Base\Arr::plus($attr,['name'=>$name.'[required]']),$opt];
+        $form = ['select',$relation,Base\Arr::plus($attr,['name'=>$name.'[required]','data'=>$data]),$opt];
         $return .= Html::formWrap($label.':',$form,'divtable',null);
         $return .= Html::divCl();
 
