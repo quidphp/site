@@ -9,20 +9,6 @@
 // _componentSite
 // stylesheet for the various sites components
 
-// componentGoogleMapsSpecific
-// component pour le champ googleMaps du formulaire
-@mixin componentGoogleMapsSpecific() {
-    > textarea {
-        height: 100px;
-    }
-
-    > .map-render {
-        height: 200px;
-        background-color: $gray;
-        margin-bottom: 10px;
-    }
-}
-
 // componentEmailNewsletterSpecific
 // component pour le champ email newsletter du formulaire
 @mixin componentEmailNewsletterSpecific() {

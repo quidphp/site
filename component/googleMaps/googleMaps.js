@@ -11,7 +11,7 @@
 
 // googleMaps
 // génère une carte google à partir d'élément jquery
-quid.core.googleMaps = function(styles)
+quid.component.googleMaps = function(styles)
 {
     if(typeof(google) != 'undefined')
     {

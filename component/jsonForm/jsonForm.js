@@ -11,8 +11,9 @@
 
 // jsonForm
 // génère un input jsonForm, comme addRemove mais avec un peu plus de logique pour chaque élément
-quid.core.jsonForm = function()
+quid.component.jsonForm = function()
 {
+    // trigger
     $(this).on('addRemove:inserted', function(event,element) {
         element.refreshIds();
         $(document).trigger('document:mountNodeCommon',[element]);
@@ -36,15 +37,16 @@ quid.core.jsonForm = function()
             $(this).trigger('jsonForm:hideChoices',[parent]);
         });
     })
-    .on('jsonForm:prepare', function(event) {
+    
+    // component:setup
+    .on('component:setup', function(event) {
         var $this = $(this);
         $(this).on('change', ".type input[data-fakeselect='1']", function(event) {
             $this.trigger('jsonForm:trigger');
         });
         
         $(this).trigger('jsonForm:trigger');
-    })
-    .trigger('jsonForm:prepare');
+    });
     
     return this;
 }

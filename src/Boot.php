@@ -30,7 +30,7 @@ abstract class Boot extends Lemur\Boot
                         Test\Site::class=>['closure'=>false]]]]],
         'concatenateJs'=>[
             '[publicJs]/include.js'=>[
-                3=>'[vendorSite]/js/core']],
+                1=>'[vendorSite]/js/include']],
         '@app'=>[
             'service'=>[
                 'polyfill'=>Lemur\Service\Polyfill::class,
@@ -38,19 +38,23 @@ abstract class Boot extends Lemur\Boot
             'sessionVersionMatch'=>false,
             'compileScss'=>[
                 '[publicCss]/app.css'=>[
-                    0=>'[vendorLemur]/scss/_include.scss',
+                    0=>'[vendorLemur]/scss/include/_init.scss',
                     2=>'[scss]/app/_include.scss',
+                    3=>'[component]',
                     10=>'[scss]/app/app.scss']],
             'concatenateJs'=>[
                 '[publicJs]/app.js'=>[
-                    0=>'[js]/app']]],
+                    0=>'[js]/app',
+                    1=>'[component]']]],
         '@cms'=>[
             'compileScss'=>[
                 '[publicCss]/cms.css'=>[
+                    4=>'[vendorSite]/component',
                     20=>'[vendorSite]/scss/cms/site.scss']],
             'concatenateJs'=>[
                 '[publicJs]/cms.js'=>[
-                    1=>'[vendorSite]/js/cms']]]
+                    2=>'[vendorSite]/js/cms',
+                    3=>'[vendorSite]/component']]]
     ];
 
 

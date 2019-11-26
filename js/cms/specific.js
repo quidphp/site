@@ -10,11 +10,13 @@
 // script of additional behaviours for the specific form page of the CMS
 $(document).ready(function() {
 	
-	// specific:formPrepareViewable
-    // comportement pour la préparation de certains inputs avancés
+	// specificForm:bindView
     // se bind à l'ouverture du panneau
 	$(this).on('specificForm:bindView', function(event,parent) {
-        parent.find("[data-col='jsonForm'] .specific-component").callThis(quid.core.jsonForm);
-        parent.find("[data-col='googleMaps'] .specific-component").find(".map-render").callThis(quid.core.googleMaps);
+        var jsonForm = parent.find("[data-col='jsonForm'] .specific-component");
+        var googleMaps = parent.find("[data-col='googleMaps'] .specific-component").find(".map-render");
+        
+        quid.component.jsonForm.call(jsonForm).trigger('component:setup');
+        quid.component.googleMaps.call(googleMaps);
 	});
 });
