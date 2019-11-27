@@ -22,19 +22,19 @@ abstract class Boot extends Lemur\Boot
         'types'=>['app','cms'],
         'finderShortcut'=>[
             'vendorSite'=>'[vendor]/quidphp/site'],
-        'compile'=>array(
+        'compile'=>[
             'php'=>[
                 'quid'=>[
                     'option'=>[
                         'namespace'=>[
                             __NAMESPACE__=>['closure'=>true],
-                            Test\Site::class=>['closure'=>false]]]]]),
+                            Test\Site::class=>['closure'=>false]]]]]],
         '@app'=>[
             'service'=>[
                 'polyfill'=>Lemur\Service\Polyfill::class,
                 'jQuery'=>Lemur\Service\JQuery::class],
             'sessionVersionMatch'=>false,
-            'compile'=>array(
+            'compile'=>[
                 'scss'=>[
                     '[publicCss]/app.css'=>[
                         0=>'[vendorLemur]/include/css/_init.scss',
@@ -46,9 +46,9 @@ abstract class Boot extends Lemur\Boot
                         0=>'[js]/app',
                         1=>'[component]',
                         2=>'[vendorLemur]/component/modal',
-                        3=>'[vendorSite]/component/googleMaps']])],
+                        3=>'[vendorSite]/component/googleMaps']]]],
         '@cms'=>[
-            'compile'=>array(
+            'compile'=>[
                 'scss'=>[
                     '[publicCss]/cms.css'=>[
                         6=>'[vendorSite]/component',
@@ -56,7 +56,7 @@ abstract class Boot extends Lemur\Boot
                 'js'=>[
                     '[publicJs]/cms.js'=>[
                         2=>'[vendorSite]/cms',
-                        3=>'[vendorSite]/component']])]
+                        3=>'[vendorSite]/component']]]]
     ];
 
 
