@@ -22,39 +22,41 @@ abstract class Boot extends Lemur\Boot
         'types'=>['app','cms'],
         'finderShortcut'=>[
             'vendorSite'=>'[vendor]/quidphp/site'],
-        'concatenatePhp'=>[
-            'quid'=>[
-                'option'=>[
-                    'namespace'=>[
-                        __NAMESPACE__=>['closure'=>true],
-                        Test\Site::class=>['closure'=>false]]]]],
-        'concatenateJs'=>[
-            '[publicJs]/include.js'=>[
-                1=>'[vendorSite]/js/include']],
+        'compile'=>array(
+            'php'=>[
+                'quid'=>[
+                    'option'=>[
+                        'namespace'=>[
+                            __NAMESPACE__=>['closure'=>true],
+                            Test\Site::class=>['closure'=>false]]]]]),
         '@app'=>[
             'service'=>[
                 'polyfill'=>Lemur\Service\Polyfill::class,
                 'jQuery'=>Lemur\Service\JQuery::class],
             'sessionVersionMatch'=>false,
-            'compileScss'=>[
-                '[publicCss]/app.css'=>[
-                    0=>'[vendorLemur]/scss/include/_init.scss',
-                    2=>'[scss]/app/_include.scss',
-                    3=>'[component]',
-                    10=>'[scss]/app/app.scss']],
-            'concatenateJs'=>[
-                '[publicJs]/app.js'=>[
-                    0=>'[js]/app',
-                    1=>'[component]']]],
+            'compile'=>array(
+                'scss'=>[
+                    '[publicCss]/app.css'=>[
+                        0=>'[vendorLemur]/include/css/_init.scss',
+                        1=>'[scss]/app/_include.scss',
+                        2=>'[component]',
+                        10=>'[scss]/app/app.scss']],
+                'js'=>[
+                    '[publicJs]/app.js'=>[
+                        0=>'[js]/app',
+                        1=>'[component]',
+                        2=>'[vendorLemur]/component/modal',
+                        3=>'[vendorSite]/component/googleMaps']])],
         '@cms'=>[
-            'compileScss'=>[
-                '[publicCss]/cms.css'=>[
-                    4=>'[vendorSite]/component',
-                    20=>'[vendorSite]/scss/cms/site.scss']],
-            'concatenateJs'=>[
-                '[publicJs]/cms.js'=>[
-                    2=>'[vendorSite]/js/cms',
-                    3=>'[vendorSite]/component']]]
+            'compile'=>array(
+                'scss'=>[
+                    '[publicCss]/cms.css'=>[
+                        6=>'[vendorSite]/component',
+                        20=>'[vendorSite]/cms/index.scss']],
+                'js'=>[
+                    '[publicJs]/cms.js'=>[
+                        2=>'[vendorSite]/cms',
+                        3=>'[vendorSite]/component']])]
     ];
 
 

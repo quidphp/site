@@ -15,7 +15,7 @@ quid.component.googleMaps = function(styles)
 {
     if(typeof(google) != 'undefined')
     {
-        $(this).addIds('googleMaps');
+        $(this).addId('googleMaps');
         $(this).each(function(index) 
         {
             var id = $(this).prop("id");

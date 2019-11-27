@@ -106,11 +106,11 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
         $return .= Html::formWrap('*'.$label.':',$form,'divtable');
         $return .= Html::divCl();
 
-        $data = ['choices'=>$choicesInput,'anchor-corner'=>1,'absolute-placeholder'=>1];
-        $return .= Html::divOp(['type','data'=>$data]);
+        $return .= Html::divOp(array('type','data'=>array('choices'=>$choicesInput)));
         $label = $lang->text('jsonForm/type');
         $relation = $lang->relation('jsonForm',null,false);
         $opt = Base\Arr::plus($option,['value'=>$type]);
+        $data = ['anchor-corner'=>1,'absolute-placeholder'=>1];
         $form = ['select',$relation,Base\Arr::plus($attr,['name'=>$name.'[type]','data'=>$data]),$opt];
         $return .= Html::formWrap($label.':',$form,'divtable',null);
         $return .= Html::divCl();

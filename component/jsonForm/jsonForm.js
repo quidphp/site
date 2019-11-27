@@ -15,38 +15,60 @@ quid.component.jsonForm = function()
 {
     // trigger
     $(this).on('addRemove:inserted', function(event,element) {
-        element.refreshIds();
         $(document).trigger('document:mountNodeCommon',[element]);
-    })
-    .on('jsonForm:showChoices', function(event,parent) {
-        parent.find(".choices").addClass("visible");
-    })
-    .on('jsonForm:hideChoices', function(event,parent) {
-        parent.find(".choices").removeClass("visible");
-    })
-    .on('jsonForm:trigger', function(event) {
-        $(this).find(".type input[data-fakeselect='1']").each(function(index, el) {
-            var type = $(this).parents(".type").first();
-            var choices = type.data('choices');
-            var val = $(this).inputValue(true);
-            var parent = $(this).parents(".ele").first();
-            
-            if(quid.base.arr.in(val,choices))
-            $(this).trigger('jsonForm:showChoices',[parent]);
-            else
-            $(this).trigger('jsonForm:hideChoices',[parent]);
-        });
+        bindElement.call(this,element);
     })
     
     // component:setup
-    .on('component:setup', function(event) {
+    .one('component:setup', function(event) {
         var $this = $(this);
-        $(this).on('change', ".type input[data-fakeselect='1']", function(event) {
-            $this.trigger('jsonForm:trigger');
-        });
         
-        $(this).trigger('jsonForm:trigger');
+        $(this).triggerHandler('addRemove:getAll').each(function() {
+            bindElement.call($this,$(this));
+        });
     });
+    
+    // bindElement
+    var bindElement = function(element) {
+        var $this = $(this);
+        var typeSelect = element.find(".type input[data-fakeselect='1']");
+        
+        element.on('jsonForm:getTypeElement', function(event) {
+            return $(this).find(".type");
+        })
+        .on('jsonForm:getTypeSelect', function(event) {
+            return $(this).triggerHandler('jsonForm:getTypeElement').find("input[data-fakeselect='1']");
+        })
+        .on('jsonForm:getTypeChoices', function(event) {
+            return $(this).triggerHandler('jsonForm:getTypeElement').data('choices');
+        })
+        .on('jsonForm:getChoices', function(event) {
+            return $(this).find(".choices");
+        })
+        .on('jsonForm:showChoices', function(event) {
+            $(this).triggerHandler('jsonForm:getChoices').addClass("visible");
+        })
+        .on('jsonForm:hideChoices', function(event,parent) {
+            $(this).triggerHandler('jsonForm:getChoices').removeClass("visible");
+        })
+        .on('jsonForm:refresh', function(event) {
+            var typeSelect = $(this).triggerHandler('jsonForm:getTypeSelect');
+            var val = typeSelect.val();
+            var choices = $(this).triggerHandler('jsonForm:getTypeChoices');
+            $(this).trigger((quid.base.arr.in(val,choices))? 'jsonForm:showChoices':'jsonForm:hideChoices');
+        })
+        .on('jsonForm:setup', function(event) {
+            var $this = $(this);
+            var type = $(this).triggerHandler('jsonForm:getTypeSelect');
+            
+            type.on('change', function(event) {
+                $this.trigger('jsonForm:refresh');
+            });
+            
+            $(this).trigger('jsonForm:refresh');
+        })
+        .trigger('jsonForm:setup');
+    };
     
     return this;
 }
