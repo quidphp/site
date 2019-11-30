@@ -1,0 +1,32 @@
+// compileOnSave: false
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/lemur/blob/master/LICENSE
+ */
+
+// jsonForm
+[data-col='jsonForm'] .specific-component {
+    @include componentJsonFormSpecific();
+}
+
+// jsonFormRelation
+[data-col='jsonFormRelation'] .specific-component {
+    @include componentJsonFormRelationSpecific();
+}
+
+// hierarchy
+[data-col='hierarchy'] .specific-component {
+    @include componentHierarchySpecific();
+}
+
+// googleMaps
+[data-col='googleMaps'] .specific-component {
+    @include componentGoogleMapsSpecific();
+}
+
+// emailNewsletter
+[data-col='googleMaps'] .specific-component {
+    @include componentEmailNewsletterSpecific();
+}

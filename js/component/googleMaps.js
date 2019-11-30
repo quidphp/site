@@ -1,5 +1,3 @@
-"use strict";
-
 /*
  * This file is part of the QuidPHP package.
  * Website: https://quidphp.com
@@ -8,14 +6,11 @@
  
 // googleMaps
 // script containing logic for a simple googleMaps component
-
-// googleMaps
-// génère une carte google à partir d'élément jquery
 quid.component.googleMaps = function(styles)
 {
     if(typeof(google) != 'undefined')
     {
-        $(this).addId('googleMaps');
+        quid.dom.addId('googleMaps-',this);
         $(this).each(function(index) 
         {
             var id = $(this).prop("id");
@@ -26,7 +21,7 @@ quid.component.googleMaps = function(styles)
             var iconSize = $(this).data("iconSize");
             var uri = $(this).data('url');
             
-            if(quid.base.str.isNotEmpty(id) && quid.base.number.is(lat) && quid.base.number.is(lng))
+            if(quid.str.isNotEmpty(id) && quid.number.is(lat) && quid.number.is(lng))
             {
                 var myLatLng = new google.maps.LatLng(lat,lng);
                 var mapOptions = {
@@ -37,10 +32,10 @@ quid.component.googleMaps = function(styles)
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
                 
-                if(quid.base.str.isNotEmpty(icon))
+                if(quid.str.isNotEmpty(icon))
                 {
                     icon = { url: icon };
-                    if(quid.base.number.is(iconSize) && iconSize > 0)
+                    if(quid.number.is(iconSize) && iconSize > 0)
                     {
                         var anchor = (iconSize / 2);
                         icon.scaledSize = new google.maps.Size(iconSize,iconSize);
@@ -56,7 +51,7 @@ quid.component.googleMaps = function(styles)
                     icon: icon
                 });
                 
-                if(quid.base.str.isNotEmpty(uri))
+                if(quid.str.isNotEmpty(uri))
                 {
                     google.maps.event.addListener(marker, 'click', function() {
                         window.open(marker.url, '_blank');

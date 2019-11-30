@@ -19,13 +19,14 @@ abstract class Route extends Lemur\Route
     // config
     public static $config = [
         '@app'=>[
-            'jsInit'=>'$(document).ready(function() { quid.core.document.call(this); });',
+            'jsInit'=>'$(document).ready(function() { quid.event.triggerSetup(quid.component.document.call(this)); });',
             'docOpen'=>[
                 'head'=>[
                     'css'=>[
                         'type'=>'css/%type%.css'],
                     'js'=>[
                         'include'=>'js/include.js',
+                        'component'=>'js/component.js',
                         'type'=>'js/%type%.js']]]]
     ];
 }

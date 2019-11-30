@@ -1,5 +1,3 @@
-"use strict";
-
 /*
  * This file is part of the QuidPHP package.
  * Website: https://quidphp.com
@@ -8,9 +6,6 @@
  
 // jsonForm
 // script containing logic for the jsonForm component
-
-// jsonForm
-// génère un input jsonForm, comme addRemove mais avec un peu plus de logique pour chaque élément
 quid.component.jsonForm = function()
 {
     // trigger
@@ -55,7 +50,7 @@ quid.component.jsonForm = function()
             var typeSelect = $(this).triggerHandler('jsonForm:getTypeSelect');
             var val = typeSelect.val();
             var choices = $(this).triggerHandler('jsonForm:getTypeChoices');
-            $(this).trigger((quid.base.arr.in(val,choices))? 'jsonForm:showChoices':'jsonForm:hideChoices');
+            $(this).trigger((quid.arr.in(val,choices))? 'jsonForm:showChoices':'jsonForm:hideChoices');
         })
         .on('jsonForm:setup', function(event) {
             var $this = $(this);

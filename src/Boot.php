@@ -28,7 +28,19 @@ abstract class Boot extends Lemur\Boot
                     'option'=>[
                         'namespace'=>[
                             __NAMESPACE__=>['closure'=>true],
-                            Test\Site::class=>['closure'=>false]]]]]],
+                            Test\Site::class=>['closure'=>false]]]]],
+            'js'=>[
+                '[publicJs]/include.js'=>[
+                    1=>'[js]/include'],
+                '[publicJs]/component.js'=>[
+                    1=>'[vendorSite]/js/component',
+                    2=>'[js]/component']]],
+        '@dev'=>array(
+            'compile'=>[
+                'js'=>[
+                    '[publicJs]/test.js'=>[
+                        1=>'[vendorSite]/js/test',
+                        2=>'[js]/test']]]),
         '@app'=>[
             'service'=>[
                 'polyfill'=>Lemur\Service\Polyfill::class,
@@ -37,26 +49,23 @@ abstract class Boot extends Lemur\Boot
             'compile'=>[
                 'scss'=>[
                     '[publicCss]/app.css'=>[
-                        0=>'[vendorLemur]/include/css/_init.scss',
-                        1=>'[scss]/app/_include.scss',
-                        2=>'[component]',
-                        10=>'[scss]/app/app.scss']],
+                        0=>'[vendorLemur]/css/include',
+                        1=>'[css]/import',
+                        2=>'[css]/app']],
                 'js'=>[
                     '[publicJs]/app.js'=>[
-                        0=>'[js]/app',
-                        1=>'[component]',
-                        2=>'[vendorLemur]/component/modal',
-                        3=>'[vendorSite]/component/googleMaps']]]],
+                        0=>'[js]/app']]]],
         '@cms'=>[
             'compile'=>[
                 'scss'=>[
                     '[publicCss]/cms.css'=>[
-                        6=>'[vendorSite]/component',
-                        20=>'[vendorSite]/cms/index.scss']],
+                        2=>'[vendorSite]/css/import',
+                        20=>'[vendorSite]/css/cms'],
+                    '[publicCss]/tinymce.css'=>[
+                        10=>'[css]/tinymce']],
                 'js'=>[
                     '[publicJs]/cms.js'=>[
-                        2=>'[vendorSite]/cms',
-                        3=>'[vendorSite]/component']]]]
+                        1=>'[vendorSite]/js/cms']]]]
     ];
 
 

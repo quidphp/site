@@ -1,5 +1,3 @@
-"use strict";
-
 /*
  * This file is part of the QuidPHP package.
  * Website: https://quidphp.com
