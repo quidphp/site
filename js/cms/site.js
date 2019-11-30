@@ -14,7 +14,7 @@ $(document).ready(function() {
         var jsonForm = parent.find("[data-col='jsonForm'] .specific-component");
         var googleMaps = parent.find("[data-col='googleMaps'] .specific-component").find(".map-render");
         
-        quid.component.jsonForm.call(jsonForm).trigger('component:setup');
-        quid.component.googleMaps.call(googleMaps);
+        Quid.Component.jsonForm.call(jsonForm).trigger('component:setup');
+        Quid.Component.googleMaps.call(googleMaps);
 	});
 });

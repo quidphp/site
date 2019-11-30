@@ -6,7 +6,7 @@
  
 // jsonForm
 // script containing logic for the jsonForm component
-quid.component.jsonForm = function()
+Quid.Component.jsonForm = function()
 {
     // trigger
     $(this).on('addRemove:inserted', function(event,element) {
@@ -50,7 +50,7 @@ quid.component.jsonForm = function()
             var typeSelect = $(this).triggerHandler('jsonForm:getTypeSelect');
             var val = typeSelect.val();
             var choices = $(this).triggerHandler('jsonForm:getTypeChoices');
-            $(this).trigger((quid.arr.in(val,choices))? 'jsonForm:showChoices':'jsonForm:hideChoices');
+            $(this).trigger((Quid.Arr.in(val,choices))? 'jsonForm:showChoices':'jsonForm:hideChoices');
         })
         .on('jsonForm:setup', function(event) {
             var $this = $(this);
