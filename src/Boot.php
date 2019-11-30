@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Quid\Site;
 use Quid\Lemur;
-use Quid\Test;
 
 // boot
 // extended abstract class for the object that bootstraps the app and cms
@@ -22,60 +21,60 @@ abstract class Boot extends Lemur\Boot
         'types'=>['app','cms'],
         'finderShortcut'=>[
             'vendorSite'=>'[vendor]/quidphp/site'],
-            
-        'compileJs'=>array(
-            'include'=>array(
-                'from'=>array(
-                    1=>'[js]/include')),
-            'component'=>array(
-                'from'=>array(
+
+        'compileJs'=>[
+            'include'=>[
+                'from'=>[
+                    1=>'[js]/include']],
+            'component'=>[
+                'from'=>[
                     1=>'[vendorSite]/js/component',
-                    2=>'[js]/component'))),
-                    
+                    2=>'[js]/component']]],
+
         '@dev'=>[
             'compileJs'=>[
                 'test'=>[
-                    'from'=>array(
+                    'from'=>[
                         1=>'[vendorSite]/js/test',
-                        2=>'[js]/test')]]],
+                        2=>'[js]/test']]]],
 
         '@app'=>[
             'service'=>[
                 'polyfill'=>Lemur\Service\Polyfill::class,
                 'jQuery'=>Lemur\Service\JQuery::class],
             'sessionVersionMatch'=>false,
-            
+
             'compileCss'=>[
-                'app'=>array(
+                'app'=>[
                     'to'=>'[publicCss]/app.css',
-                    'from'=>array(
+                    'from'=>[
                         0=>'[vendorLemur]/css/include',
                         1=>'[css]/include',
                         2=>'[css]/import',
-                        3=>'[css]/app'))],
-                        
+                        3=>'[css]/app']]],
+
             'compileJs'=>[
-                'app'=>array(
+                'app'=>[
                     'to'=>'[publicJs]/app.js',
-                    'from'=>array(
-                        0=>'[js]/app'))]],
+                    'from'=>[
+                        0=>'[js]/app']]]],
 
         '@cms'=>[
             'compileCss'=>[
-                'cms'=>array(
-                    'from'=>array(
+                'cms'=>[
+                    'from'=>[
                         3=>'[vendorSite]/css/import',
                         20=>'[vendorSite]/css/cms',
-                        40=>'[css]/cms')),
-                'tinymce'=>array(
-                    'from'=>array(
+                        40=>'[css]/cms']],
+                'tinymce'=>[
+                    'from'=>[
                         5=>'[css]/include',
-                        10=>'[css]/tinymce'))],
-                        
+                        10=>'[css]/tinymce']]],
+
             'compileJs'=>[
-                'cms'=>array(
-                    'from'=>array(
-                        1=>'[vendorSite]/js/cms'))]]
+                'cms'=>[
+                    'from'=>[
+                        1=>'[vendorSite]/js/cms']]]]
     ];
 
 
