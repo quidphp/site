@@ -22,50 +22,60 @@ abstract class Boot extends Lemur\Boot
         'types'=>['app','cms'],
         'finderShortcut'=>[
             'vendorSite'=>'[vendor]/quidphp/site'],
-        'compile'=>[
-            'php'=>[
-                'quid'=>[
-                    'option'=>[
-                        'namespace'=>[
-                            __NAMESPACE__=>['closure'=>true],
-                            Test\Site::class=>['closure'=>false]]]]],
-            'js'=>[
-                '[publicJs]/include.js'=>[
-                    1=>'[js]/include'],
-                '[publicJs]/component.js'=>[
+            
+        'compileJs'=>array(
+            'include'=>array(
+                'from'=>array(
+                    1=>'[js]/include')),
+            'component'=>array(
+                'from'=>array(
                     1=>'[vendorSite]/js/component',
-                    2=>'[js]/component']]],
+                    2=>'[js]/component'))),
+                    
         '@dev'=>[
-            'compile'=>[
-                'js'=>[
-                    '[publicJs]/test.js'=>[
+            'compileJs'=>[
+                'test'=>[
+                    'from'=>array(
                         1=>'[vendorSite]/js/test',
-                        2=>'[js]/test']]]],
+                        2=>'[js]/test')]]],
+
         '@app'=>[
             'service'=>[
                 'polyfill'=>Lemur\Service\Polyfill::class,
                 'jQuery'=>Lemur\Service\JQuery::class],
             'sessionVersionMatch'=>false,
-            'compile'=>[
-                'scss'=>[
-                    '[publicCss]/app.css'=>[
+            
+            'compileCss'=>[
+                'app'=>array(
+                    'to'=>'[publicCss]/app.css',
+                    'from'=>array(
                         0=>'[vendorLemur]/css/include',
-                        1=>'[css]/import',
-                        2=>'[css]/app']],
-                'js'=>[
-                    '[publicJs]/app.js'=>[
-                        0=>'[js]/app']]]],
+                        1=>'[css]/include',
+                        2=>'[css]/import',
+                        3=>'[css]/app'))],
+                        
+            'compileJs'=>[
+                'app'=>array(
+                    'to'=>'[publicJs]/app.js',
+                    'from'=>array(
+                        0=>'[js]/app'))]],
+
         '@cms'=>[
-            'compile'=>[
-                'scss'=>[
-                    '[publicCss]/cms.css'=>[
+            'compileCss'=>[
+                'cms'=>array(
+                    'from'=>array(
                         3=>'[vendorSite]/css/import',
-                        20=>'[vendorSite]/css/cms'],
-                    '[publicCss]/tinymce.css'=>[
-                        10=>'[css]/tinymce']],
-                'js'=>[
-                    '[publicJs]/cms.js'=>[
-                        1=>'[vendorSite]/js/cms']]]]
+                        20=>'[vendorSite]/css/cms',
+                        40=>'[css]/cms')),
+                'tinymce'=>array(
+                    'from'=>array(
+                        5=>'[css]/include',
+                        10=>'[css]/tinymce'))],
+                        
+            'compileJs'=>[
+                'cms'=>array(
+                    'from'=>array(
+                        1=>'[vendorSite]/js/cms'))]]
     ];
 
 
