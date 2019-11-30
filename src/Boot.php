@@ -35,12 +35,12 @@ abstract class Boot extends Lemur\Boot
                 '[publicJs]/component.js'=>[
                     1=>'[vendorSite]/js/component',
                     2=>'[js]/component']]],
-        '@dev'=>array(
+        '@dev'=>[
             'compile'=>[
                 'js'=>[
                     '[publicJs]/test.js'=>[
                         1=>'[vendorSite]/js/test',
-                        2=>'[js]/test']]]),
+                        2=>'[js]/test']]]],
         '@app'=>[
             'service'=>[
                 'polyfill'=>Lemur\Service\Polyfill::class,
