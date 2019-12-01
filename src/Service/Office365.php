@@ -68,8 +68,8 @@ class Office365 extends Main\Service
                 $query['subject'] = Base\Str::excerpt(255,$array['name'],['removeLineBreaks'=>true]);
                 $query['location'] = Base\Str::excerpt(255,$array['location'] ?? '',['removeLineBreaks'=>true]);
                 $query['body'] = Base\Str::excerpt(255,$array['description'] ?? '',['removeLineBreaks'=>true]);
-                $query['startdt'] = Base\Date::format('office365',$array['dateStart']);
-                $query['enddt'] = Base\Date::format('office365',$array['dateEnd']);
+                $query['startdt'] = Base\Datetime::format('office365',$array['dateStart']);
+                $query['enddt'] = Base\Datetime::format('office365',$array['dateEnd']);
 
                 $return = Base\Uri::changeQuery($query,$uri);
             }

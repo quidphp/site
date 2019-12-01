@@ -6,12 +6,12 @@
  
 // googleAnalytics
 // script containing logic for googleAnalytics component
-Quid.Component.googleAnalytics = function()
+Component.googleAnalytics = function()
 {
     $(this).on('document:mount', function(event) {
-        var uri = Quid.Request.relative();
+        const uri = Request.relative();
         
-        if(Quid.Str.isNotEmpty(uri) && typeof ga !== 'undefined' && Quid.Func.is(ga))
+        if(Str.isNotEmpty(uri) && typeof ga !== 'undefined' && Func.is(ga))
         {
             ga('set','page',uri);
             ga('send','pageview');
