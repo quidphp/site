@@ -48,7 +48,7 @@ class Boot extends Base\Test
         assert(count($lang->pathAlternate('required',['tables','formSubmit','json'])) === 4);
 
         // googleAnalytics
-        $ga = new Site\Service\GoogleAnalytics(array('key'=>'googleAnalytics'));
+        $ga = new Site\Service\GoogleAnalytics(['key'=>'googleAnalytics']);
         assert($ga->getServiceKey() === null);
         $ga->setServiceKey('bla');
         assert($ga->getServiceKey(true) === 'bla');
@@ -65,7 +65,7 @@ class Boot extends Base\Test
 
         // googleMaps
         $gmValue = ['Studio OL'];
-        $gm = new Site\Service\GoogleMaps(array('key'=>'googleMaps'));
+        $gm = new Site\Service\GoogleMaps(['key'=>'googleMaps']);
         assert(is_string($gm->apiKey()));
         assert($gm::uri('Studio OL') === 'https://maps.google.com/maps?q=Studio%20OL');
         assert(is_string($gm->docOpenJs()));
