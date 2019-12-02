@@ -9,13 +9,13 @@
 Component.jsonForm = function()
 {
     // trigger
-    $(this).on('addRemove:inserted', function(event,element) {
+    $(this).on('addRemove:inserted',function(event,element) {
         $(document).trigger('document:mountNodeCommon',[element]);
         bindElement.call(this,element);
     })
     
     // component:setup
-    .one('component:setup', function(event) {
+    .one('component:setup',function(event) {
         const $this = $(this);
         
         triggerFunc(this,'addRemove:getAll').each(function() {
@@ -28,35 +28,35 @@ Component.jsonForm = function()
         const $this = $(this);
         const typeSelect = element.find(".type input[data-fakeselect='1']");
         
-        element.on('jsonForm:getTypeElement', function(event) {
+        element.on('jsonForm:getTypeElement',function(event) {
             return $(this).find(".type");
         })
-        .on('jsonForm:getTypeSelect', function(event) {
+        .on('jsonForm:getTypeSelect',function(event) {
             return triggerFunc(this,'jsonForm:getTypeElement').find("input[data-fakeselect='1']");
         })
-        .on('jsonForm:getTypeChoices', function(event) {
+        .on('jsonForm:getTypeChoices',function(event) {
             return triggerFunc(this,'jsonForm:getTypeElement').data('choices');
         })
-        .on('jsonForm:getChoices', function(event) {
+        .on('jsonForm:getChoices',function(event) {
             return $(this).find(".choices");
         })
-        .on('jsonForm:showChoices', function(event) {
+        .on('jsonForm:showChoices',function(event) {
             triggerFunc(this,'jsonForm:getChoices').addClass("visible");
         })
-        .on('jsonForm:hideChoices', function(event,parent) {
+        .on('jsonForm:hideChoices',function(event,parent) {
             triggerFunc(this,'jsonForm:getChoices').removeClass("visible");
         })
-        .on('jsonForm:refresh', function(event) {
+        .on('jsonForm:refresh',function(event) {
             const typeSelect = triggerFunc(this,'jsonForm:getTypeSelect');
             const val = typeSelect.val();
             const choices = triggerFunc(this,'jsonForm:getTypeChoices');
             triggerCustom(this,(Arr.in(val,choices))? 'jsonForm:showChoices':'jsonForm:hideChoices');
         })
-        .on('jsonForm:setup', function(event) {
+        .on('jsonForm:setup',function(event) {
             const $this = $(this);
             const type = triggerFunc(this,'jsonForm:getTypeSelect');
             
-            type.on('change', function(event) {
+            type.on('change',function(event) {
                 $this.trigger('jsonForm:refresh');
             });
             

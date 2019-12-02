@@ -53,7 +53,7 @@ Component.googleMaps = function(styles)
                 
                 if(Str.isNotEmpty(uri))
                 {
-                    google.maps.event.addListener(marker, 'click', function() {
+                    google.maps.event.addListener(marker, 'click',function() {
                         window.open(marker.url, '_blank');
                     });
                 }

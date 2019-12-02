@@ -30,7 +30,7 @@ class Boot extends Base\Test
 
         // boot
         assert($boot->langContentClass('en') === Site\Lang\En::class);
-        assert($boot->service('googleMaps') instanceof Site\Service\GoogleMaps);
+        assert($boot->service('ipApi') instanceof Site\Service\IpApi);
 
         // lang
         assert($lang->existsRelation('contextType/app'));
@@ -48,14 +48,16 @@ class Boot extends Base\Test
         assert(count($lang->pathAlternate('required',['tables','formSubmit','json'])) === 4);
 
         // googleAnalytics
-        $ga = $boot->service('googleAnalytics');
-        assert($ga->getKey() === 'googleAnalytics');
-        assert($ga->apiKey() === 'UA-test');
+        $ga = new Site\Service\GoogleAnalytics(array('key'=>'googleAnalytics'));
+        assert($ga->getServiceKey() === null);
+        $ga->setServiceKey('bla');
+        assert($ga->getServiceKey(true) === 'bla');
+        assert($ga->apiKey() === 'googleAnalytics');
 
         // googleGeocoding
         $ggValue = ['Studio OL'];
         $gg = $boot->service('googleGeocoding');
-        assert($gg->getKey() === 'googleGeocoding');
+        assert($gg->getServiceKey() === 'googleGeocoding');
         assert(is_string($gg->apiKey()));
         assert($gg->request($ggValue) instanceof Core\Request);
         assert(strpos($gg::target(['key'=>'what','value'=>$gg::prepareValue($ggValue)]),'%') === false);
@@ -63,7 +65,7 @@ class Boot extends Base\Test
 
         // googleMaps
         $gmValue = ['Studio OL'];
-        $gm = $boot->service('googleMaps');
+        $gm = new Site\Service\GoogleMaps(array('key'=>'googleMaps'));
         assert(is_string($gm->apiKey()));
         assert($gm::uri('Studio OL') === 'https://maps.google.com/maps?q=Studio%20OL');
         assert(is_string($gm->docOpenJs()));
