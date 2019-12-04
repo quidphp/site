@@ -10,7 +10,7 @@ Component.jsonForm = function()
 {
     // trigger
     $(this).on('addRemove:inserted',function(event,element) {
-        $(document).trigger('document:mountNodeCommon',[element]);
+        $(document).trigger('doc:mountNodeCommon',[element]);
         bindElement.call(this,element);
     })
     
@@ -57,7 +57,7 @@ Component.jsonForm = function()
             const type = triggerFunc(this,'jsonForm:getTypeSelect');
             
             type.on('change',function(event) {
-                $this.trigger('jsonForm:refresh');
+                triggerCustom($this,'jsonForm:refresh');
             });
             
             triggerCustom(this,'jsonForm:refresh');

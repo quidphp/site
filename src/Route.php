@@ -19,7 +19,7 @@ abstract class Route extends Lemur\Route
     // config
     public static $config = [
         '@app'=>[
-            'jsInit'=>'$(document).ready(function() { Lemur.Evt.triggerSetup(Lemur.Component.Document.call(this)); });',
+            'jsInit'=>'$(document).ready(function() { Lemur.Evt.triggerSetup(Lemur.Component.Doc.call(this)); });',
             'docOpen'=>[
                 'head'=>[
                     'css'=>[
