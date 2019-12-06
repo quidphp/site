@@ -50,17 +50,17 @@ Component.jsonForm = function()
             const typeSelect = triggerFunc(this,'jsonForm:getTypeSelect');
             const val = typeSelect.val();
             const choices = triggerFunc(this,'jsonForm:getTypeChoices');
-            triggerCustom(this,(Arr.in(val,choices))? 'jsonForm:showChoices':'jsonForm:hideChoices');
+            triggerEvent(this,(Arr.in(val,choices))? 'jsonForm:showChoices':'jsonForm:hideChoices');
         })
         .on('jsonForm:setup',function(event) {
             const $this = $(this);
             const type = triggerFunc(this,'jsonForm:getTypeSelect');
             
             type.on('change',function(event) {
-                triggerCustom($this,'jsonForm:refresh');
+                triggerEvent($this,'jsonForm:refresh');
             });
             
-            triggerCustom(this,'jsonForm:refresh');
+            triggerEvent(this,'jsonForm:refresh');
         })
         .trigger('jsonForm:setup');
     };

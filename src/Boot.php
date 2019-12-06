@@ -50,8 +50,11 @@ abstract class Boot extends Lemur\Boot
                     'to'=>'[publicCss]/app.css',
                     'from'=>[
                         0=>'[vendorLemur]/css/include',
-                        1=>'[vendorSite]/css/include',
-                        2=>'[css]/include',
+                        1=>'[vendorLemur]/css/component',
+                        2=>'[vendorSite]/css/include',
+                        3=>'[vendorSite]/css/component',
+                        4=>'[css]/include',
+                        5=>'[css]/component',
                         10=>'[css]/app']]],
 
             'compileJs'=>[
@@ -65,10 +68,12 @@ abstract class Boot extends Lemur\Boot
             'compileCss'=>[
                 'cms'=>[
                     'from'=>[
-                        2=>'[vendorSite]/css/cms-mixin',
-                        3=>'[css]/include',
-                        4=>'[css]/cms-mixin',
-                        7=>'[vendorSite]/css/cms',
+                        3=>'[vendorSite]/css/component',
+                        4=>'[vendorSite]/css/cms-mixin',
+                        5=>'[css]/include',
+                        6=>'[css]/component',
+                        7=>'[css]/cms-mixin',
+                        9=>'[vendorSite]/css/cms',
                         10=>'[css]/cms']],
                 'tinymce'=>[
                     'from'=>[
