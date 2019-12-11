@@ -110,8 +110,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
         $label = $lang->text('jsonForm/type');
         $relation = $lang->relation('jsonForm',null,false);
         $opt = Base\Arr::plus($option,['value'=>$type]);
-        $data = ['anchor-corner'=>1,'absolute-placeholder'=>1];
-        $form = ['select',$relation,Base\Arr::plus($attr,['name'=>$name.'[type]','data'=>$data]),$opt];
+        $form = ['select',$relation,Base\Arr::plus($attr,['name'=>$name.'[type]']),$opt];
         $return .= Html::formWrap($label.':',$form,'divtable',null);
         $return .= Html::divCl();
 
@@ -122,13 +121,12 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
         $return .= Html::formWrap($label.':',$form,'divtable');
         $return .= Html::divCl();
 
-        $data = ['anchor-corner'=>1,'absolute-placeholder'=>1];
         $return .= Html::divOp('required');
         $label = $lang->text('jsonForm/required');
         $relation = $lang->relation('bool');
         $val = (!empty($value['required']))? 1:0;
         $opt = Base\Arr::plus($option,['value'=>$val]);
-        $form = ['select',$relation,Base\Arr::plus($attr,['name'=>$name.'[required]','data'=>$data]),$opt];
+        $form = ['select',$relation,Base\Arr::plus($attr,['name'=>$name.'[required]']),$opt];
         $return .= Html::formWrap($label.':',$form,'divtable',null);
         $return .= Html::divCl();
 

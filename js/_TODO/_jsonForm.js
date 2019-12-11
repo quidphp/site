@@ -18,7 +18,7 @@ Component.jsonForm = function()
     .one('component:setup',function(event) {
         const $this = $(this);
         
-        triggerFunc(this,'addRemove:getAll').each(function() {
+        trigHandler(this,'addRemove:getAll').each(function() {
             bindElement.call($this,$(this));
         });
     });
@@ -32,35 +32,35 @@ Component.jsonForm = function()
             return $(this).find(".type");
         })
         .on('jsonForm:getTypeSelect',function(event) {
-            return triggerFunc(this,'jsonForm:getTypeElement').find("input[data-fakeselect='1']");
+            return trigHandler(this,'jsonForm:getTypeElement').find("input[data-fakeselect='1']");
         })
         .on('jsonForm:getTypeChoices',function(event) {
-            return triggerFunc(this,'jsonForm:getTypeElement').data('choices');
+            return trigHandler(this,'jsonForm:getTypeElement').data('choices');
         })
         .on('jsonForm:getChoices',function(event) {
             return $(this).find(".choices");
         })
         .on('jsonForm:showChoices',function(event) {
-            triggerFunc(this,'jsonForm:getChoices').addClass("visible");
+            trigHandler(this,'jsonForm:getChoices').addClass("visible");
         })
         .on('jsonForm:hideChoices',function(event,parent) {
-            triggerFunc(this,'jsonForm:getChoices').removeClass("visible");
+            trigHandler(this,'jsonForm:getChoices').removeClass("visible");
         })
         .on('jsonForm:refresh',function(event) {
-            const typeSelect = triggerFunc(this,'jsonForm:getTypeSelect');
+            const typeSelect = trigHandler(this,'jsonForm:getTypeSelect');
             const val = typeSelect.val();
-            const choices = triggerFunc(this,'jsonForm:getTypeChoices');
-            triggerEvent(this,(Arr.in(val,choices))? 'jsonForm:showChoices':'jsonForm:hideChoices');
+            const choices = trigHandler(this,'jsonForm:getTypeChoices');
+            trigEvt(this,(Arr.in(val,choices))? 'jsonForm:showChoices':'jsonForm:hideChoices');
         })
         .on('jsonForm:setup',function(event) {
             const $this = $(this);
-            const type = triggerFunc(this,'jsonForm:getTypeSelect');
+            const type = trigHandler(this,'jsonForm:getTypeSelect');
             
             type.on('change',function(event) {
-                triggerEvent($this,'jsonForm:refresh');
+                trigEvt($this,'jsonForm:refresh');
             });
             
-            triggerEvent(this,'jsonForm:refresh');
+            trigEvt(this,'jsonForm:refresh');
         })
         .trigger('jsonForm:setup');
     };
