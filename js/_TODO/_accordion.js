@@ -14,7 +14,7 @@ Component.accordion = function(until,closeAll,wrap)
         if(closeAll === true)
         trigEvt($this,'accordion:close');
         
-        if(trigHandler(this,'accordion:isOpen'))
+        if(trigHdlr(this,'accordion:isOpen'))
         trigEvt(this,'accordion:close');
         
         else
@@ -30,23 +30,23 @@ Component.accordion = function(until,closeAll,wrap)
         return 'open';
     })
     .on('accordion:isOpen',function(event) {
-        const openClass = trigHandler(this,'accordion:getOpenClass');
+        const openClass = trigHdlr(this,'accordion:getOpenClass');
         return $(this).hasClass(openClass);
     })
     .on('accordion:close',function(event) {
-        const openClass = trigHandler(this,'accordion:getOpenClass');
-        const activeClass = trigHandler(this,'accordion:getActiveClass');
+        const openClass = trigHdlr(this,'accordion:getOpenClass');
+        const activeClass = trigHdlr(this,'accordion:getActiveClass');
         $(this).removeClass(openClass).removeClass(activeClass);
-        trigHandler(this,'accordion:getContents').removeClass(activeClass);
+        trigHdlr(this,'accordion:getContents').removeClass(activeClass);
         
         if(Str.isNotEmpty(wrap))
         $(this).parent().removeClass(openClass);
     })
     .on('accordion:open',function(event) {
-        const openClass = trigHandler(this,'accordion:getOpenClass');
-        const activeClass = trigHandler(this,'accordion:getActiveClass');
+        const openClass = trigHdlr(this,'accordion:getOpenClass');
+        const activeClass = trigHdlr(this,'accordion:getActiveClass');
         $(this).addClass(openClass).addClass(activeClass);
-        trigHandler(this,'accordion:getContents').addClass(activeClass);
+        trigHdlr(this,'accordion:getContents').addClass(activeClass);
         
         if(Str.isNotEmpty(wrap))
         $(this).parent().addClass(openClass);
