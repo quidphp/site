@@ -14,10 +14,10 @@ Component.react = function()
     {
         $that.bind.call(this);
         
-        $(this).on('doc:mount',function(event) {
+        $(this).on('doc:mountPage',function(event) {
             trigEvt(this,'reactContainer:mount');
         })
-        .on('doc:unmount',function(event) {
+        .on('doc:unmountPage',function(event) {
             trigEvt(this,'reactContainer:unmount');
         });
         

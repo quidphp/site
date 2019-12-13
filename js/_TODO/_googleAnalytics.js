@@ -8,7 +8,7 @@
 // script containing logic for googleAnalytics component
 Component.googleAnalytics = function()
 {
-    $(this).on('doc:mount',function(event) {
+    $(this).on('doc:mountPage',function(event) {
         const uri = Request.relative();
         
         if(Str.isNotEmpty(uri) && typeof ga !== 'undefined' && Func.is(ga))
