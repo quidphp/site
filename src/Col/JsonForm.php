@@ -163,13 +163,13 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
     {
         return Base\Html::relationTag('multiselect');
     }
-    
-    
+
+
     // isComplexTag
     // retourne vrai si la tag est pour le formulaire complexe
     protected static function isComplexTag(string $value):bool
     {
-        return ($value === 'json-form');
+        return $value === 'json-form';
     }
 }
 

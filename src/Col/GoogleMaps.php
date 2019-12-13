@@ -121,8 +121,8 @@ class GoogleMaps extends Core\ColAlias
 
         return $return;
     }
-    
-    
+
+
     // html
     // fait une map à partir d'un objet de localization
     final public function html(Main\Localization $value,?int $zoom=null,bool $uri=true):?string
@@ -131,9 +131,9 @@ class GoogleMaps extends Core\ColAlias
         $data = $value->latLng();
         $data['zoom'] = $zoom;
         $data['uri'] = ($uri === true)? $this->uri($value):null;
-        
+
         $return = Html::div(null,['map-render','id'=>true,'data'=>$data]);
-        
+
         return $return;
     }
 }

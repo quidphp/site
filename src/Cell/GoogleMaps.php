@@ -13,7 +13,6 @@ namespace Quid\Site\Cell;
 use Quid\Base\Html;
 use Quid\Core;
 use Quid\Main;
-use Quid\Site;
 
 // googleMaps
 // class to work with a cell containing google maps geo-localization data
@@ -45,7 +44,7 @@ class GoogleMaps extends Core\CellAlias
     {
         $return = null;
         $localization = $this->localization();
-        
+
         if(!empty($localization))
         $return = $this->col()->html($localization,$zoom,$uri);
 
@@ -73,10 +72,10 @@ class GoogleMaps extends Core\CellAlias
     {
         $return = null;
         $localization = $this->localization();
-        
+
         if(!empty($localization))
         $return = $this->col()->uri($localization);
-        
+
         return $return;
     }
 
