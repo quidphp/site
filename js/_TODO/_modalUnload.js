@@ -15,13 +15,13 @@ Component.ModalUnload = function()
         if(Str.isNotEmpty(href))
         {
             const filter = $(this).find("a:not(.external)").filter(function() {
-                return (Uri.isExternal($(this).attr("href")) && !$(this).is("[href^='mailto:']"))? true:false;
+                return (Uri.isExternal(getAttr(this,"href")) && !$(this).is("[href^='mailto:']"))? true:false;
             });
             
             filter.off('click').on('click',function(event) {
                 event.preventDefault();
-                const uri = $(this).attr('href');
-                modal.trigger('modal:fetch',[href,{v: uri},route]);
+                const uri = getAttr(this,'href');
+                modal.trigger('modal:fetch',href,{v: uri},route);
             });
         }
         
@@ -37,8 +37,8 @@ Component.ModalUnload = function()
         {
             $(this).find("a[href^='mailto:']:not(.mailto)").off('click').on('click',function(event) {
                 event.preventDefault();
-                const email = email.fromHref($(this).attr('href'));
-                modal.trigger('modal:fetch',[href,{v: email},route])
+                const email = email.fromHref(getAttr(this,'href'));
+                modal.trigger('modal:fetch',href,{v: email},route);
             });
         }
         

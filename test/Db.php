@@ -44,8 +44,8 @@ class Db extends Base\Test
         // googleMaps
         $localization = new Main\Localization(['address'=>'ok','lat'=>2,'lng'=>1,'input'=>'whét asd','countryCode'=>'ca']);
         assert($googleMaps->tag() === 'textarea');
-        assert(strlen($googleMaps->formComplex($localization)) === 157);
-        assert(strlen($googleMaps->html($localization)) === 72);
+        assert(strlen($googleMaps->formComplex($localization)) === 215);
+        assert(strlen($googleMaps->html($localization)) === 130);
 
         // hierarchy
 

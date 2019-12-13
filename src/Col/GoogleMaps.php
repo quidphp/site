@@ -106,15 +106,34 @@ class GoogleMaps extends Core\ColAlias
     }
 
 
+    // uri
+    // retourne l'uri absolu vers googleMaps
+    final public function uri(Main\Localization $value):?string
+    {
+        $return = null;
+        $input = $value->input();
+
+        if(!empty($input))
+        {
+            $service = Site\Service\GoogleMaps::class;
+            $return = $service::uri($input);
+        }
+
+        return $return;
+    }
+    
+    
     // html
     // fait une map à partir d'un objet de localization
-    final public function html(Main\Localization $value,?int $zoom=null):?string
+    final public function html(Main\Localization $value,?int $zoom=null,bool $uri=true):?string
     {
         $return = null;
         $data = $value->latLng();
         $data['zoom'] = $zoom;
+        $data['uri'] = ($uri === true)? $this->uri($value):null;
+        
         $return = Html::div(null,['map-render','id'=>true,'data'=>$data]);
-
+        
         return $return;
     }
 }

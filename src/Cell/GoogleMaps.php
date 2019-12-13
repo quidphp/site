@@ -41,13 +41,13 @@ class GoogleMaps extends Core\CellAlias
 
     // html
     // output la colonne googleMaps sous forme de map simple
-    final public function html(?int $zoom=null):?string
+    final public function html(?int $zoom=null,bool $uri=true):?string
     {
         $return = null;
         $localization = $this->localization();
-
+        
         if(!empty($localization))
-        $return = $this->col()->html($localization,$zoom);
+        $return = $this->col()->html($localization,$zoom,$uri);
 
         return $return;
     }
@@ -72,14 +72,11 @@ class GoogleMaps extends Core\CellAlias
     final public function uri():?string
     {
         $return = null;
-        $input = $this->input();
-
-        if(!empty($input))
-        {
-            $service = Site\Service\GoogleMaps::class;
-            $return = $service::uri($input);
-        }
-
+        $localization = $this->localization();
+        
+        if(!empty($localization))
+        $return = $this->col()->uri($localization);
+        
         return $return;
     }
 

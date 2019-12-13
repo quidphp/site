@@ -39,13 +39,13 @@ quid.component.scrollHash = function() {
             return ($(this).trigHdlr('windowHashScroll:isScrolling') === false && $(document).trigHdlr('document:isLoading') === false)? true:false;
         })
         .on('windowHashScroll:isScrolling', function(event) {
-            return ($(this).data('hashScroll:animate') === true)? true:false;
+            return (getData(this,'hashScroll:animate') === true)? true:false;
         })
         .on('windowHashScroll:setTarget', function(event,target) {
-            $(this).data('windowHashScroll:target',target);
+            setData(this,'windowHashScroll:target',target);
         })
         .on('windowHashScroll:getTarget', function(event,target) {
-            return $(this).data('windowHashScroll:target');
+            return getData(this,'windowHashScroll:target');
         })
         .on('windowHashScroll:getFirstTarget', function(event,target) {
             return $(this).trigHdlr('windowHashScroll:getTarget').first();
@@ -53,7 +53,7 @@ quid.component.scrollHash = function() {
         .on('windowHashScroll:getCurrentTarget', function(event,target) {
             var r = null;
             var current = $(this).trigHdlr('windowHashScroll:getTarget').filter(function() {
-                return ($(this).data('hashScrollTarget:current') === true)? true:false;
+                return (getData(this,'hashScrollTarget:current') === true)? true:false;
             });
             
             if(current.length === 1)
@@ -133,7 +133,7 @@ quid.component.scrollHash = function() {
                         $(this).removeData('windowHashScroll:noScroll');
                         
                         if(fromScroll === true)
-                        $(this).data('windowHashScroll:noScroll',true);
+                        setData(this,'windowHashScroll:noScroll',true);
                                             
                         var oldHash = quid.uri.makeHash(location.hash,false);
                         var old = $(this).trigHdlr('windowHashScroll:findTarget',[oldHash]);
@@ -201,7 +201,7 @@ quid.component.scrollHash = function() {
         var win = $(window);
         
         if(hash instanceof jQuery)
-        hash = hash.attr(win.trigHdlr('windowHashScroll:getTargetAttr'));
+        hash = getAttr(hash,win.trigHdlr('windowHashScroll:getTargetAttr'));
         
         if(win.trigHdlr('windowHashScroll:canScroll'))
         {
@@ -213,7 +213,7 @@ quid.component.scrollHash = function() {
             var source = $("html,body");
             var current = win.trigHdlr('windowHashScroll:getCurrentTarget');
             win.removeData('hashScroll:animate');
-            var noScroll = win.data('windowHashScroll:noScroll');
+            var noScroll = getData(win,'windowHashScroll:noScroll');
             win.removeData('windowHashScroll:noScroll');
             
             var callback = function() 
@@ -258,7 +258,7 @@ quid.component.scrollHash = function() {
                 
                 else
                 {
-                    win.data('hashScroll:animate',true);
+                    setData(win,'hashScroll:animate',true);
                     source.stop(true,true).animate({scrollTop: top}, 1000).promise().done(callback).done(function() {
                         setTimeout(function() {
                             win.removeData('hashScroll:animate');
@@ -305,10 +305,10 @@ quid.component.scrollHash = function() {
         var $this = $(this);
         
         $(this).on('hashScrollTarget:getHash', function(event) {
-            return quid.uri.makeHash($(this).data("id"),true);
+            return quid.uri.makeHash(getAttr(this,"data-id"),true);
         })
         .on('hashScrollTarget:getFragment', function(event) {
-            return quid.uri.makeHash($(this).data("id"),false);
+            return quid.uri.makeHash(getAttr(this,"data-id"),false);
         })
         .on('hashScrollTarget:getIndex', function(event) {
             return $this.index($(this));
@@ -331,7 +331,8 @@ quid.component.scrollHash = function() {
         })
         .on('hashScrollTarget:enter',function(event) {
             $this.removeClass('current').removeData('hashScrollTarget:current');
-            $(this).addClass('current').data('hashScrollTarget:current',true);
+            $(this).addClass('current');
+            setData(this,'hashScrollTarget:current',true);
         })
         
         return this;

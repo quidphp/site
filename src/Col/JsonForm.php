@@ -22,6 +22,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
 {
     // config
     public static $config = [
+        'complex'=>'json-form',
         'cell'=>Site\Cell\JsonForm::class
     ];
 
@@ -161,6 +162,14 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
     final public static function getChoicesInput():array
     {
         return Base\Html::relationTag('multiselect');
+    }
+    
+    
+    // isComplexTag
+    // retourne vrai si la tag est pour le formulaire complexe
+    protected static function isComplexTag(string $value):bool
+    {
+        return ($value === 'json-form');
     }
 }
 

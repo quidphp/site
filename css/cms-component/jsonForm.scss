@@ -12,6 +12,8 @@
 // componentJsonFormSpecific
 // component pour le champ jsonForm du formulaire
 @mixin componentJsonFormSpecific() {
+    @include componentAddRemoveSpecific();
+    
     > .playground > .ele {
         margin-bottom: 20px;
         padding-bottom: 20px;

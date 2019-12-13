@@ -99,7 +99,7 @@ Component.TabSlider = function()
         $(this).find(className).on('tab:close',function(event) {
             const iframe = $(this).find("iframe");
             if(iframe.length)
-            iframe.attr('src',iframe.attr('src'));
+            setAttr(iframe,'src',getAttr(iframe,'src'));
         });
         
         return this;

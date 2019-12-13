@@ -13,12 +13,12 @@ Component.windowSmall = function()
     
     $(this).on('click',function(event) {
         const win = window;
-        const href = $(this).attr('href');
+        const href = getAttr(this,'href');
         const id = $(this).prop('id');
-        const width = $(this).data('width') || 1000;
-        const height = $(this).data('height') || 1000;
-        const x = $(this).data('x') || 0;
-        const y = $(this).data('y') || 0;
+        const width = getAttr(this,'data-width') || 1000;
+        const height = getAttr(this,'data-height') || 1000;
+        const x = getAttr(this,'data-x') || 0;
+        const y = getAttr(this,'data-y') || 0;
         
         if(Num.is(width) && Num.is(height) && Num.is(x) && Num.is(y))
         {
