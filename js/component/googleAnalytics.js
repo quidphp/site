@@ -6,7 +6,7 @@
  
 // googleAnalytics
 // script containing logic for googleAnalytics component
-const GoogleAnalytics = Component.GoogleAnalytics = function()
+Component.GoogleAnalytics = function()
 {
     // document node
     Dom.checkNode(this,document);

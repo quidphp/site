@@ -6,8 +6,13 @@
  
 // jsonForm
 // script containing logic for the jsonForm component which is based on the addRemove input
-const JsonForm = Component.JsonForm = function(option)
+Component.JsonForm = function(option)
 {
+    // not empty
+    if(Vari.isEmpty(this)) 
+    return null;
+    
+    
     // components
     Component.AddRemove.call(this,option);
     

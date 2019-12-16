@@ -92,7 +92,7 @@ Component.TabSlider = function()
             trigEvt(this,'tab:changeOrFirst');
         };
         
-        $(this).each(function(index, el) {
+        Dom.each(this,function() {
             func.call(this);
         });
         

@@ -6,10 +6,19 @@
  
 // googleMaps
 // script containing logic for a simple googleMaps component
-const GoogleMaps = Component.GoogleMaps = function(option)
+Component.GoogleMaps = function(option)
 {
+    // not empty
+    if(Vari.isEmpty(this)) 
+    return null;
+    
+    
+    // components
+    Component.Base.call(this);
+    
+    
     // option
-    const $option = Pojo.replace({
+    const $option = Pojo.replaceRecursive({
         target: true,
         defaultZoom: 10,
         styles: {}
