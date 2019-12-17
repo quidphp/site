@@ -62,7 +62,7 @@
             display: none;
             padding-top: 10px;
 
-            &.visible {
+            &[data-visible='1'] {
                 display: block;
             }
 

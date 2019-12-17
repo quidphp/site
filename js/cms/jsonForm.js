@@ -52,7 +52,7 @@ Component.JsonForm = function(option)
             
             getTypeChoices: function() {
                 const type = trigHdlr(this,'jsonForm:getTypeElement');
-                return getAttr(type,'data-choices');
+                return getAttr(type,'data-choices',true);
             },
             
             getChoices: function() {
@@ -61,12 +61,12 @@ Component.JsonForm = function(option)
             
             showChoices: function() {
                 const choices = trigHdlr(this,'jsonForm:getChoices');
-                $(choices).addClass("visible");
+                setAttr(choices,'data-visible',1);
             },
             
             hideChoices: function() {
                 const choices = trigHdlr(this,'jsonForm:getChoices');
-                $(choices).removeClass("visible");
+                setAttr(choices,'data-visible',0);
             },
             
             refresh: function() {

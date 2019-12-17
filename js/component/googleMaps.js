@@ -73,7 +73,7 @@ Component.GoogleMaps = function(option)
             const target = trigHdlr(this,'googleMaps:getTarget');
             
             return {
-                zoom: getAttr(target,'data-zoom') || $option.defaultZoom,
+                zoom: getAttrInt(target,'data-zoom') || $option.defaultZoom,
                 center: latLng,
                 scrollwheel: false,
                 styles: $option.styles,

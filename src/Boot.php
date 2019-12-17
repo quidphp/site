@@ -83,7 +83,8 @@ abstract class Boot extends Lemur\Boot
             'compileJs'=>[
                 'cms'=>[
                     'from'=>[
-                        2=>'[vendorSite]/js/cms']]]]
+                        2=>'[vendorSite]/js/cms',
+                        3=>'[js]/cms']]]]
     ];
 
 
