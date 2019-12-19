@@ -112,9 +112,9 @@ class Boot extends Base\Test
         assert($youTube::target(['value'=>$value]) === 'https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=8HaU7Lq0tew&start_radio=1&list=RD8HaU7Lq0tew&format=json');
 
         // react
-        assert(Site\Service\React::monami('what',['test'=>2],['id'=>false]) === "<div data-component='Monami' data-namespace='quid.react' data-content='what' data-props='{&quot;test&quot;:2}' class='react-component'></div>");
-        assert(strlen(Site\Service\React::monami(false,['test'=>false])) === 158);
-        assert(strlen(Site\Service\React::monAmi(null,['test'=>null],['id'=>false])) === 124);
+        assert(Site\Service\React::monami('what',['test'=>2],['id'=>false]) === "<div data-component='Monami' data-namespace='Lemur.Component' data-content='what' data-props='{&quot;test&quot;:2}' class='react-component'></div>");
+        assert(strlen(Site\Service\React::monami(false,['test'=>false])) === 163);
+        assert(strlen(Site\Service\React::monAmi(null,['test'=>null],['id'=>false])) === 129);
 
         return true;
     }

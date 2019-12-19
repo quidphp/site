@@ -1,0 +1,54 @@
+// compileOnSave: false
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/lemur/blob/master/LICENSE
+ */
+
+// tabsSlider
+// stylesheet for the tabsSlider component
+@mixin TabsSlider($maxWidth, $paddingBottom) {
+    display: none;
+
+    &[data-tab='1'] {
+        display: block;
+
+        .wrap {
+            &.photo {
+                @include fadeIn(1s);
+            }
+
+            &.video {
+                opacity: 1;
+            }
+        }
+    }
+
+    .wrap {
+        opacity: 0;
+        max-width: $maxWidth;
+        margin: auto;
+
+        .ratio {
+            width: 100%;
+            padding-bottom: $paddingBottom;
+            position: relative;
+
+            .media {
+                @include abs(0, null, null, 0);
+                @include wh(100%);
+                text-align: center;
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+
+                iframe {
+                    @include wh(100% !important);
+                    display: block;
+                    margin: auto;
+                }
+            }
+        }
+    }
+}

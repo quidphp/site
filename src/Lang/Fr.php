@@ -178,7 +178,7 @@ class Fr extends Lemur\Lang\Fr
                 ]
             ],
 
-            // tinycme
+            // tinymce
             'tinymce'=>[
                 'paragraph'=>'Paragraphe',
                 'superscript'=>'Exposant',

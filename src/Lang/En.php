@@ -178,7 +178,7 @@ class En extends Lemur\Lang\En
                 ]
             ],
 
-            // tinycme
+            // tinymce
             'tinymce'=>[
                 'paragraph'=>'Paragraph',
                 'superscript'=>'Superscript',

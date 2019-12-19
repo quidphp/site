@@ -44,8 +44,8 @@ Component.GoogleMaps = function(option)
             
             if(Str.isNotEmpty(r))
             r = qs(this,r);
-            
-            return r;
+
+            return Dom.checkNode(r);
         },
         
         getUri: function() {
@@ -86,7 +86,7 @@ Component.GoogleMaps = function(option)
             const googleMaps = trigHdlr(this,'googleMaps:get');
             const target = trigHdlr(this,'googleMaps:getTarget');
             const icon = getAttr(target,'data-icon');
-            const iconSize = getAttr(target,'data-iconSize');
+            const iconSize = getAttrInt(target,'data-icon-size');
             
             if(Str.isNotEmpty(icon))
             {
