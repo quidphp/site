@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace Quid\Site\Row;
 use Quid\Base;
 use Quid\Core;
-use Quid\Site;
 use Quid\Routing;
+use Quid\Site;
 
 // _pageConfig
 // trait related to the configuration of a row representing a page
@@ -141,7 +141,7 @@ trait _pageConfig
     final public static function prepareRoutes():void
     {
         $routes = static::getRoutesCanPrepare();
-        
+
         if(!empty($routes))
         static::prepareRoutesObject($routes);
 
@@ -175,11 +175,11 @@ trait _pageConfig
     {
         $return = null;
         $value = $page['route']->get();
-        
+
         if(!empty($value))
         {
             $return = $value;
-            
+
             if($make === true)
             $return = static::dynamicRouteMake($return,$page);
         }

@@ -22,13 +22,13 @@ class Route extends Core\Col\EnumAlias
     public static $config = [
         'visible'=>['role'=>['>='=>70]],
         'required'=>true,
-        'relation'=>array(self::class,'getRoutes'),
+        'relation'=>[self::class,'getRoutes'],
         'relationIndex'=>false,
         'relationSortKey'=>false,
         'routeType'=>null // type pour les routes
     ];
-    
-    
+
+
     // onGet
     // logique onGet pour un champ route
     // va retourner le nom de la classe à partir de l'index
@@ -37,34 +37,34 @@ class Route extends Core\Col\EnumAlias
         if($return instanceof Core\Cell)
         {
             $value = $return->value();
-            
+
             if(is_string($value))
             {
                 $routes = $this->routes();
                 $return = $routes->get($value);
             }
         }
-        
+
         return $return;
     }
-    
-    
+
+
     // routes
     // retourne l'objet route pour la colonne
-    final public function routes():Routing\Routes 
+    final public function routes():Routing\Routes
     {
         $boot = static::boot();
         $type = $this->getAttr('routeType');
-        
+
         if(!is_string($type))
         static::throw('invalidRouteType');
-        
+
         $return = $boot->routes($type);
-        
+
         return $return;
     }
-    
-    
+
+
     // getRoutes
     // retourne un tableau avec les routes pour le namespace
     final public static function getRoutes(Orm\ColRelation $relation):array
@@ -73,7 +73,7 @@ class Route extends Core\Col\EnumAlias
         $col = $relation->col();
         $routes = $col->routes();
         $return = $routes->toArray();
-        
+
         return $return;
     }
 }
