@@ -159,8 +159,7 @@ class Fr extends Lemur\Lang\Fr
 
                     // page
                     'page'=>[
-                        'page_id'=>'Spécifie la page parent de la page',
-                        'pageContent_ids'=>'Spécifie les contenus de la page'
+                        'page_id'=>'Spécifie la page parent de la page'
                     ]
                 ]
             ],

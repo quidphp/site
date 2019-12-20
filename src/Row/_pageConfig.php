@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Quid\Site\Row;
 use Quid\Base;
 use Quid\Core;
+use Quid\Site;
 use Quid\Routing;
 
 // _pageConfig
@@ -23,9 +24,7 @@ trait _pageConfig
         'route'=>[
             'app'=>[self::class,'dynamicRoute']],
         'cols'=>[
-            'route'=>[
-                'visible'=>['role'=>['>='=>70]],
-                'required'=>true]],
+            'route'=>['class'=>Site\Col\Route::class,'routeType'=>'app']],
         'routeKey'=>'app', // custom
         '@app'=>[
             'route'=>[
@@ -142,7 +141,7 @@ trait _pageConfig
     final public static function prepareRoutes():void
     {
         $routes = static::getRoutesCanPrepare();
-
+        
         if(!empty($routes))
         static::prepareRoutesObject($routes);
 
@@ -157,7 +156,8 @@ trait _pageConfig
         $table = static::tableFromFqcn();
         $where = [true];
         $keys = $return->keys();
-        $where[] = ['route','in',$keys];
+        $indexes = array_keys($keys);
+        $where[] = ['route','in',$indexes];
         $routeKey = static::getRouteKey();
         foreach ($table->selects($where) as $page)
         {
@@ -174,25 +174,17 @@ trait _pageConfig
     final public static function dynamicRoute(self $page,bool $make=true)
     {
         $return = null;
-        $value = $page['route']->value();
-
+        $value = $page['route']->get();
+        
         if(!empty($value))
         {
-            $return = static::getDynamicRouteFromValue($value);
-
-            if(!empty($return) && $make === true)
+            $return = $value;
+            
+            if($make === true)
             $return = static::dynamicRouteMake($return,$page);
         }
 
         return $return;
-    }
-
-
-    // getDynamicRouteFromValue
-    // retourne la classe de route a utilisé à partir d'une valeur route, stocké dans une base de donnée
-    final public static function getDynamicRouteFromValue(string $value):?string
-    {
-        return Base\Fqcn::append(static::routeNamespace(),ucfirst($value));
     }
 
 

@@ -159,8 +159,7 @@ class En extends Lemur\Lang\En
 
                     // page
                     'page'=>[
-                        'page_id'=>'Parent page of the current page',
-                        'pageContent_ids'=>'Specifies the contents of the page'
+                        'page_id'=>'Parent page of the current page'
                     ]
                 ]
             ],

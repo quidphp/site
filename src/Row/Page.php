@@ -281,7 +281,7 @@ class Page extends Core\RowAlias implements Main\Contract\Meta
             $key = static::getRouteKey();
             $route = $this->route($key);
 
-            if(!empty($route))
+            if(!empty($route) && $route::isRedirectable())
             {
                 $wysiwyg = $route->aTitle(null,['target'=>false]);
                 $data = ['html'=>$wysiwyg];
