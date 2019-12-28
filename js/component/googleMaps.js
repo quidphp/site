@@ -73,7 +73,7 @@ Component.GoogleMaps = function(option)
             const target = trigHdlr(this,'googleMaps:getTarget');
             
             return {
-                zoom: getAttrInt(target,'data-zoom') || $option.defaultZoom,
+                zoom: Dom.getAttrInt(target,'data-zoom') || $option.defaultZoom,
                 center: latLng,
                 scrollwheel: false,
                 styles: $option.styles,
@@ -86,7 +86,7 @@ Component.GoogleMaps = function(option)
             const googleMaps = trigHdlr(this,'googleMaps:get');
             const target = trigHdlr(this,'googleMaps:getTarget');
             const icon = getAttr(target,'data-icon');
-            const iconSize = getAttrInt(target,'data-icon-size');
+            const iconSize = Dom.getAttrInt(target,'data-icon-size');
             
             if(Str.isNotEmpty(icon))
             {

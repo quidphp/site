@@ -55,8 +55,8 @@ Component.WrapConsecutive = function(option)
             Arr.each(targets,function() {
                 if(!Arr.in(this,found))
                 {
-                    const nextUntil = $(this).nextUntil(until);
-                    const nodes = $(this).add(nextUntil).get();
+                    const nextUntil = Selector.nextUntil(this,until);
+                    const nodes = Arr.merge([],this,nextUntil);
                     Arr.mergeRef(found,nodes);
                     r.push(nodes);
                 }
@@ -80,7 +80,7 @@ Component.WrapConsecutive = function(option)
         const wrap = trigHdlr(this,'wrapConsecutive:getWrap');
         
         Arr.each(group,function() {
-            $(this).wrapAll(wrap);
+            DomChange.wrapAll(this,wrap);
         });
     }
     

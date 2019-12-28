@@ -71,7 +71,7 @@ Component.Video = function(option)
         
         remove: function() {
             const player = trigHdlr(this,'video:player');
-            $(this).removeData('video-player');
+            Dom.removeData(this,'video-player');
             
             if(player != null)
             player.remove();
@@ -86,9 +86,9 @@ Component.Video = function(option)
                 file: getAttr(target,'data-file') || $option.file,
                 image: getAttr(target,'data-poster') || $option.poster,
                 stretching: getAttr(target,'data-stretching') || $option.stretching,
-                controls: getAttrBool(target,'data-controls') || $option.controls,
-                repeat: getAttrBool(target,'data-repeat') || $option.repeat,
-                autostart: getAttrBool(target,'data-autostart') || $option.autostart,
+                controls: Dom.getAttrBool(target,'data-controls') || $option.controls,
+                repeat: Dom.getAttrBool(target,'data-repeat') || $option.repeat,
+                autostart: Dom.getAttrBool(target,'data-autostart') || $option.autostart,
             }
         }
     });
@@ -109,13 +109,13 @@ Component.Video = function(option)
     const createVideo = function()
     {
         const target = trigHdlr(this,'video:getTarget');
-        DomChange.addId('video-player-',target);
-        const id = $(target).prop('id');
+        DomChange.addId(target,'video-player-');
+        const id = getProp(target,'id');
         const param = trigHdlr(this,'video:param');
         const videoLibrary = trigHdlr(this,'video:get');
 
         const player = videoLibrary(id).setup(param);
-        $(this).data('video-player', player);
+        setData(this,'video-player', player);
     }
     
     return this;

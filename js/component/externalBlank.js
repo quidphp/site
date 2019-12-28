@@ -26,7 +26,7 @@ Component.ExternalBlank = function(persistent)
         
         externalWithoutTarget: function() {
             return Arr.filter(trigHdlr(this,'externalBlank:withoutTarget'),function() {
-                return (Uri.isExternal(getAttr(this,"href")) && !$(this).is("[href^='mailto:']"));
+                return (Uri.isExternal(getAttr(this,"href")) && !Selector.match(this,"[href^='mailto:']"));
             });
         },
         
@@ -34,7 +34,7 @@ Component.ExternalBlank = function(persistent)
             const anchors = trigHdlr(this,'externalBlank:externalWithoutTarget');
             
             Arr.each(anchors,function() {
-                $(this).prop('target','_blank');
+                setProp(this,'target','_blank');
             });
         }
     });

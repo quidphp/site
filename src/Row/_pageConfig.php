@@ -141,7 +141,7 @@ trait _pageConfig
     final public static function prepareRoutes():void
     {
         $routes = static::getRoutesCanPrepare();
-
+        
         if(!empty($routes))
         static::prepareRoutesObject($routes);
 
@@ -156,14 +156,14 @@ trait _pageConfig
         $table = static::tableFromFqcn();
         $where = [true];
         $keys = $return->keys();
-        $indexes = array_keys($keys);
-        $where[] = ['route','in',$indexes];
+        $where[] = ['route','in',$keys];
         $routeKey = static::getRouteKey();
+        
         foreach ($table->selects($where) as $page)
         {
             $page->routeSafe($routeKey);
         }
-
+        
         return $return;
     }
 
@@ -175,11 +175,11 @@ trait _pageConfig
     {
         $return = null;
         $value = $page['route']->get();
-
+        
         if(!empty($value))
         {
             $return = $value;
-
+            
             if($make === true)
             $return = static::dynamicRouteMake($return,$page);
         }

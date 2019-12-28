@@ -67,8 +67,8 @@ Component.Sections = function(option)
                 return this.hash === hash;
             });
             
-            $(all).removeClass($option.anchorClass);
-            $(anchors).addClass($option.anchorClass);
+            toggleClass(all,$option.anchorClass,false);
+            toggleClass(anchors,$option.anchorClass,true);
         },
         
         enable: function(value,context) {
@@ -85,11 +85,15 @@ Component.Sections = function(option)
             
             if(shouldAnimate(target,context,targets) === true)
             {
+                const $this = this;
                 const scroller = trigHdlr(this,'sections:getScroller');
                 setData(this,'sections-scrolling',true);
-                const top = $(target).offset().top;
-                r = $(scroller).stop(true,true).animate({scrollTop: top},$option.speed).promise().done(function() {
-                    setData(this,'sections-scrolling',false);
+                
+                const top = Dom.getOffset(target).top;
+                const promise = DomChange.animate(scroller,{scrollTop: top},$option.speed);
+                
+                r = promise.done(function() {
+                    setData($this,'sections-scrolling',false);
                 });
             }
             
@@ -177,9 +181,9 @@ Component.Sections = function(option)
     const getScrollTarget = function()
     {
         let r = null;
-        const scrollTop = $(this).scrollTop();
-        const windowHeight = $(window).height();
-        const documentHeight = $(document).height();
+        const scrollTop = Dom.getScroll(this).top;
+        const windowHeight = Dom.getHeight(window);
+        const documentHeight = Dom.getHeight(document);
         const windowHeightRatio = (windowHeight / 2);
         const targets = trigHdlr(this,'sections:getTargets');
         
@@ -192,8 +196,8 @@ Component.Sections = function(option)
             {
                 Arr.each(targets,function() {
                     let keep = false;
-                    const offset = $(this).offset().top;
-                    const height = Dom.heightWithPadding(this);
+                    const offset = Dom.getOffset(this).top;
+                    const height = Dom.getHeight(this,true);
                     
                     if(scrollTop >= (offset - windowHeightRatio))
                     {
