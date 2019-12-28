@@ -44,7 +44,7 @@ trait _pageSectionConfig
     {
         $return = null;
         $class = static::dynamicPageClass();
-        
+
         if(is_a($route,$class,true))
         $return = $route::make($page);
 

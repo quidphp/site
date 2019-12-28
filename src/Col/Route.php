@@ -73,7 +73,7 @@ class Route extends Core\Col\EnumAlias
         $col = $relation->col();
         $routes = $col->routes();
         $return = $routes->toArray();
-        
+
         return $return;
     }
 }
