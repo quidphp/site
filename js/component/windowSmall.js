@@ -27,10 +27,10 @@ Component.WindowSmall = function(option)
         
         getOptions: function() {
             return {
-                width: Dom.getAttrInt(this,'data-width') || $option.width,
-                height: Dom.getAttrInt(this,'data-height') || $option.height,
-                x: Dom.getAttrInt(this,'data-x') || $option.x,
-                y: Dom.getAttrInt(this,'data-y') || $option.y
+                width: getAttr(this,'data-width','int') || $option.width,
+                height: getAttr(this,'data-height','int') || $option.height,
+                x: getAttr(this,'data-x','int') || $option.x,
+                y: getAttr(this,'data-y','int') || $option.y
             };
         },
         
@@ -50,7 +50,7 @@ Component.WindowSmall = function(option)
     // bindClick
     const bindClick = function()
     {
-        DomChange.addId(this,'window-small-');
+        EleChange.addId(this,'window-small-');
         
         ael(this,'click',function(event) {
             const href = getAttr(this,'href');

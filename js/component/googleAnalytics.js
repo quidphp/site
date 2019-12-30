@@ -9,7 +9,7 @@
 Component.GoogleAnalytics = function()
 {
     // document node
-    Dom.checkNode(this,document);
+    Vari.check(this,document);
     
     
     // handler

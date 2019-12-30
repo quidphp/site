@@ -45,7 +45,7 @@ Component.GoogleMaps = function(option)
             if(Str.isNotEmpty(r))
             r = qs(this,r);
 
-            return Dom.checkNode(r);
+            return Ele.check(r);
         },
         
         getUri: function() {
@@ -73,7 +73,7 @@ Component.GoogleMaps = function(option)
             const target = trigHdlr(this,'googleMaps:getTarget');
             
             return {
-                zoom: Dom.getAttrInt(target,'data-zoom') || $option.defaultZoom,
+                zoom: getAttr(target,'data-zoom','int') || $option.defaultZoom,
                 center: latLng,
                 scrollwheel: false,
                 styles: $option.styles,
@@ -86,7 +86,7 @@ Component.GoogleMaps = function(option)
             const googleMaps = trigHdlr(this,'googleMaps:get');
             const target = trigHdlr(this,'googleMaps:getTarget');
             const icon = getAttr(target,'data-icon');
-            const iconSize = Dom.getAttrInt(target,'data-icon-size');
+            const iconSize = getAttr(target,'data-icon-size','int');
             
             if(Str.isNotEmpty(icon))
             {

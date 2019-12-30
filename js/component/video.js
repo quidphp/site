@@ -44,7 +44,7 @@ Component.Video = function(option)
             if(Str.isNotEmpty(r))
             r = qs(this,r);
 
-            return Dom.checkNode(r);
+            return Ele.check(r);
         },
         
         hasPlayer: function() {
@@ -71,7 +71,7 @@ Component.Video = function(option)
         
         remove: function() {
             const player = trigHdlr(this,'video:player');
-            Dom.removeData(this,'video-player');
+            Ele.removeData(this,'video-player');
             
             if(player != null)
             player.remove();
@@ -86,9 +86,9 @@ Component.Video = function(option)
                 file: getAttr(target,'data-file') || $option.file,
                 image: getAttr(target,'data-poster') || $option.poster,
                 stretching: getAttr(target,'data-stretching') || $option.stretching,
-                controls: Dom.getAttrBool(target,'data-controls') || $option.controls,
-                repeat: Dom.getAttrBool(target,'data-repeat') || $option.repeat,
-                autostart: Dom.getAttrBool(target,'data-autostart') || $option.autostart,
+                controls: getAttr(target,'data-controls','bool') || $option.controls,
+                repeat: getAttr(target,'data-repeat','bool') || $option.repeat,
+                autostart: getAttr(target,'data-autostart','bool') || $option.autostart,
             }
         }
     });
@@ -109,7 +109,7 @@ Component.Video = function(option)
     const createVideo = function()
     {
         const target = trigHdlr(this,'video:getTarget');
-        DomChange.addId(target,'video-player-');
+        EleChange.addId(target,'video-player-');
         const id = getProp(target,'id');
         const param = trigHdlr(this,'video:param');
         const videoLibrary = trigHdlr(this,'video:get');

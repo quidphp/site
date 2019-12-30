@@ -89,8 +89,8 @@ Component.Sections = function(option)
                 const scroller = trigHdlr(this,'sections:getScroller');
                 setData(this,'sections-scrolling',true);
                 
-                const top = Dom.getOffset(target).top;
-                const promise = DomChange.animate(scroller,{scrollTop: top},$option.speed);
+                const top = Ele.getOffset(target).top;
+                const promise = EleChange.animate(scroller,{scrollTop: top},$option.speed);
                 
                 r = promise.done(function() {
                     setData($this,'sections-scrolling',false);
@@ -181,9 +181,9 @@ Component.Sections = function(option)
     const getScrollTarget = function()
     {
         let r = null;
-        const scrollTop = Dom.getScroll(this).top;
-        const windowHeight = Dom.getHeight(window);
-        const documentHeight = Dom.getHeight(document);
+        const scrollTop = Ele.getScroll(this).top;
+        const windowHeight = Win.getDimension().height;
+        const documentHeight = Doc.getDimension(document).height;
         const windowHeightRatio = (windowHeight / 2);
         const targets = trigHdlr(this,'sections:getTargets');
         
@@ -196,8 +196,8 @@ Component.Sections = function(option)
             {
                 Arr.each(targets,function() {
                     let keep = false;
-                    const offset = Dom.getOffset(this).top;
-                    const height = Dom.getHeight(this,true);
+                    const offset = Ele.getOffset(this).top;
+                    const height = Ele.getDimension(this).height;
                     
                     if(scrollTop >= (offset - windowHeightRatio))
                     {

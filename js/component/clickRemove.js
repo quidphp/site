@@ -20,10 +20,10 @@ Component.ClickRemove = function(speed)
     // event
     ael(this,'click',function() {
         const $this = this;
-        const promise = DomChange.animate(this,{opacity: 0},speed)
+        const promise = EleChange.animate(this,{opacity: 0},speed)
         
         promise.done(function() {
-            DomChange.remove($this);
+            EleChange.remove($this);
         });
     });
     
