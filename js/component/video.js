@@ -109,7 +109,7 @@ Component.Video = function(option)
     const createVideo = function()
     {
         const target = trigHdlr(this,'video:getTarget');
-        EleChange.addId(target,'video-player-');
+        Ele.addId(target,'video-player-');
         const id = getProp(target,'id');
         const param = trigHdlr(this,'video:param');
         const videoLibrary = trigHdlr(this,'video:get');

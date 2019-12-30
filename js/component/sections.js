@@ -90,7 +90,7 @@ Component.Sections = function(option)
                 setData(this,'sections-scrolling',true);
                 
                 const top = Ele.getOffset(target).top;
-                const promise = EleChange.animate(scroller,{scrollTop: top},$option.speed);
+                const promise = Ele.animate(scroller,{scrollTop: top},$option.speed);
                 
                 r = promise.done(function() {
                     setData($this,'sections-scrolling',false);

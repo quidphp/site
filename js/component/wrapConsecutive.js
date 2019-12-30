@@ -80,7 +80,7 @@ Component.WrapConsecutive = function(option)
         const wrap = trigHdlr(this,'wrapConsecutive:getWrap');
         
         Arr.each(group,function() {
-            EleChange.wrapAll(this,wrap);
+            Ele.wrapAll(this,wrap);
         });
     }
     

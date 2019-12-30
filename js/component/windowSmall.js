@@ -50,7 +50,7 @@ Component.WindowSmall = function(option)
     // bindClick
     const bindClick = function()
     {
-        EleChange.addId(this,'window-small-');
+        Ele.addId(this,'window-small-');
         
         ael(this,'click',function(event) {
             const href = getAttr(this,'href');
