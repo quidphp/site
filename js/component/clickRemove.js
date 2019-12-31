@@ -5,26 +5,17 @@
  */
  
 // clickRemove
-// component that fades out and removes itself on click
-Component.ClickRemove = function(speed)
+// component that removes itself on click
+Component.ClickRemove = function()
 {
     // not empty
     if(Vari.isEmpty(this)) 
     return null;
     
     
-    // speed
-    speed = speed || 1000;
-    
-    
     // event
     ael(this,'click',function() {
-        const $this = this;
-        const promise = Ele.animate(this,{opacity: 0},speed)
-        
-        promise.done(function() {
-            Ele.remove($this);
-        });
+        Ele.remove(this);
     });
     
     return this;

@@ -18,7 +18,7 @@ Component.Sections = function(option)
         child: 'section',
         childActive: 'isOpen',
         type: 'sections',
-        speed: 1000,
+        smooth: true,
         anchorClass: "selected",
         hashPush: true
     },option);
@@ -28,7 +28,7 @@ Component.Sections = function(option)
     Component.NavIndex.call(this,$option);
     Component.NavHash.call(this,$option);
     Component.KeyboardArrow.call(this,true);
-    Component.ScrollChange.call(this,$option.persistent);
+    Component.ScrollAnimate.call(this,$option);
     
     
     // handler
@@ -48,16 +48,6 @@ Component.Sections = function(option)
         
         isScrolling: function() {
             return getData(this,'sections-scrolling') === true;
-        },
-        
-        getScroller: function() {
-            let r = this;
-            const htmlBody = trigHdlr(document,'doc:getHtmlBody');
-
-            if(Arr.in(this,htmlBody))
-            r = htmlBody;
-            
-            return r;
         },
         
         updateAnchors: function() {
@@ -86,13 +76,12 @@ Component.Sections = function(option)
             if(shouldAnimate(target,context,targets) === true)
             {
                 const $this = this;
-                const scroller = trigHdlr(this,'sections:getScroller');
                 setData(this,'sections-scrolling',true);
                 
                 const top = Ele.getOffset(target).top;
-                const promise = Ele.animate(scroller,{scrollTop: top},$option.speed);
+                const promise = trigHdlr(this,'scrollAnimate:go',top,null,$option.smooth);
                 
-                r = promise.done(function() {
+                r = promise.then(function() {
                     setData($this,'sections-scrolling',false);
                 });
             }

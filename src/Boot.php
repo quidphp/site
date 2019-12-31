@@ -41,8 +41,7 @@ abstract class Boot extends Lemur\Boot
 
         '@app'=>[
             'service'=>[
-                'polyfill'=>Lemur\Service\Polyfill::class,
-                'jQuery'=>Lemur\Service\JQuery::class],
+                'polyfill'=>Lemur\Service\Polyfill::class],
             'sessionVersionMatch'=>false,
 
             'compileCss'=>[
