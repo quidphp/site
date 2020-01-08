@@ -76,9 +76,19 @@ trait _pageConfig
 
     // getRoutesCanPrepare
     // retourne toutes les routes qui doivent être préparés
+    // n'inclut pas la route page dynamique, car plusieurs uris peuvent utilisateur cette route
     final public static function getRoutesCanPrepare():?Routing\Routes
     {
-        return static::boot()->routes(static::getRouteKey());
+        $return = static::boot()->routes(static::getRouteKey());
+        $dynamic = static::dynamicPageClass();
+        
+        if(!empty($dynamic))
+        {
+            $dynamic = (array) $dynamic;
+            $return = $return->not(...$dynamic);
+        }
+        
+        return $return;
     }
 
 
@@ -93,7 +103,7 @@ trait _pageConfig
         {
             $allLang = $this->lang()->allLang();
             $config = $this->routeConfig($config);
-
+            
             if($route::isGroup('home'))
             {
                 if(count($allLang) === 1)
@@ -124,10 +134,33 @@ trait _pageConfig
     // peut être étendu dans un trait ou classe
     final public function routeConfig(array $return):array
     {
-        return $return;
+        return $this->routePathConfig($return);
     }
 
-
+    
+    // routePathConfig
+    // fait la configuration du chemin sur la route non dynamique
+    final protected function routePathConfig(array $return):array
+    {
+        $lang = $this->db()->lang();
+        
+        foreach ($lang->allLang() as $key)
+        {
+            foreach (["slug_$key","slugPath_$key"] as $value)
+            {
+                if($this->hasCell($value))
+                {
+                    $cell = $this->cell($value);
+                    $path = [$cell];
+                    $return['path'][$key] = Base\Path::append(...$path);
+                }
+            }
+        }
+        
+        return $return;
+    }
+    
+    
     // getRouteKey
     // retourne le type pour la route
     final public static function getRouteKey():?string
@@ -158,7 +191,7 @@ trait _pageConfig
         $keys = $return->keys();
         $where[] = ['route','in',$keys];
         $routeKey = static::getRouteKey();
-
+        
         foreach ($table->selects($where) as $page)
         {
             $page->routeSafe($routeKey);
@@ -189,10 +222,39 @@ trait _pageConfig
 
 
     // dynamicRouteMake
-    // génère la route de la page, peut être étendu
+    // génère la route de la page ou de la page dynamique, dépendamment de la classe
+    // la page dynamique a un segment et peut avoir différentes uris de page
     final public static function dynamicRouteMake(string $route,self $page):?Core\Route
     {
-        return (is_subclass_of($route,Core\Route::class,true))? $route::make():null;
+        $return = null;
+        $class = static::dynamicPageClass();
+        
+        if(!empty($class))
+        {
+            $classes = (array) $class;
+            foreach ($classes as $class) 
+            {
+                if(is_a($route,$class,true))
+                {
+                    $return = $route::make($page);
+                    break;
+                }
+            }
+        }
+        
+        if($return === null && is_subclass_of($route,Core\Route::class,true))
+        $return = $route::make();
+
+        return $return;
+    }
+    
+    
+    // dynamicPageClass
+    // retourne le nom de la classe de la route de page dynamique
+    // peut retourner une string ou un array
+    public static function dynamicPageClass()
+    {
+        return null;
     }
 }
 ?>

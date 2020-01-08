@@ -13,6 +13,7 @@ Component.Sections = function(option)
         persistent: true,
         target: null,
         skipFirst: true,
+        firstTop: true,
         attr: 'data-section',
         loop: false,
         child: 'section',
@@ -70,42 +71,60 @@ Component.Sections = function(option)
             disableSections.call(this);
         },
         
+        manageHashChange: function(target,old,context,targets) {
+            const $this = this;
+            const isFirst = Arr.valueFirst(targets) === target;
+            const oldTimeout = getData(this,'sections-hash-throttle');
+            let current = trigHdlr(this,'navHash:getCurrentHash');
+            let hdlr = 'history:replaceHash';
+            
+            if(oldTimeout)
+            clearTimeout(oldTimeout);
+            
+            if($option.hashPush === true && Arr.in(context,['keyboard','scroll']))
+            hdlr = 'history:pushHash';
+            
+            // throttle car safari impose une limite de 100 par 30 secondes
+            const time = (context === 'scroll')? 200:0;
+            const newTimeout = setTimeout(function() {
+                if(isFirst === true && $option.skipFirst === true)
+                trigHdlr(document,hdlr,'');
+                else
+                trigHdlr(document,hdlr,current);
+                
+                trigHdlr($this,'sections:updateAnchors');
+            },time);
+            setData(this,'sections-hash-throttle',newTimeout);
+        },
+        
         getPromise: function(target,old,context,targets) {
             let r = null;
             
             if(shouldAnimate(target,context,targets) === true)
             {
                 const $this = this;
-                setData(this,'sections-scrolling',true);
+                const isFirst = (Arr.valueFirst(targets) === target);
+                let top;
                 
-                const top = Ele.getOffset(target).top;
+                if(isFirst === true && $option.firstTop === true)
+                top = 0;
+                
+                else
+                top = Ele.getOffset(target).top;
+                
                 const promise = trigHdlr(this,'scrollAnimate:go',top,null,$option.smooth);
                 
-                r = promise.then(function() {
-                    setData($this,'sections-scrolling',false);
-                });
+                if(promise != null)
+                {
+                    setData(this,'sections-scrolling',true);
+                    r = promise.then(function() {
+                        setData($this,'sections-scrolling',false);
+                    });
+                }
             }
             
             return r;
         }
-    });
-
-    
-    // event
-    ael(this,'sections:afterChange',function(event,target,old,context,targets) {
-        const isFirst = Arr.valueFirst(targets) === target;
-        let current = trigHdlr(this,'navHash:getCurrentHash');
-        let hdlr = 'history:replaceHash';
-        
-        if($option.hashPush === true && Arr.in(context,['keyboard','scroll']))
-        hdlr = 'history:pushHash';
-        
-        if(isFirst === true && $option.skipFirst === true)
-        trigHdlr(document,hdlr,'');
-        else
-        trigHdlr(document,hdlr,current);
-        
-        trigHdlr(this,'sections:updateAnchors');
     });
 
     
