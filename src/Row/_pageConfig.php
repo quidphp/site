@@ -81,13 +81,13 @@ trait _pageConfig
     {
         $return = static::boot()->routes(static::getRouteKey());
         $dynamic = static::dynamicPageClass();
-        
+
         if(!empty($dynamic))
         {
             $dynamic = (array) $dynamic;
             $return = $return->not(...$dynamic);
         }
-        
+
         return $return;
     }
 
@@ -103,7 +103,7 @@ trait _pageConfig
         {
             $allLang = $this->lang()->allLang();
             $config = $this->routeConfig($config);
-            
+
             if($route::isGroup('home'))
             {
                 if(count($allLang) === 1)
@@ -137,13 +137,13 @@ trait _pageConfig
         return $this->routePathConfig($return);
     }
 
-    
+
     // routePathConfig
     // fait la configuration du chemin sur la route non dynamique
     final protected function routePathConfig(array $return):array
     {
         $lang = $this->db()->lang();
-        
+
         foreach ($lang->allLang() as $key)
         {
             foreach (["slug_$key","slugPath_$key"] as $value)
@@ -156,11 +156,11 @@ trait _pageConfig
                 }
             }
         }
-        
+
         return $return;
     }
-    
-    
+
+
     // getRouteKey
     // retourne le type pour la route
     final public static function getRouteKey():?string
@@ -191,7 +191,7 @@ trait _pageConfig
         $keys = $return->keys();
         $where[] = ['route','in',$keys];
         $routeKey = static::getRouteKey();
-        
+
         foreach ($table->selects($where) as $page)
         {
             $page->routeSafe($routeKey);
@@ -228,11 +228,11 @@ trait _pageConfig
     {
         $return = null;
         $class = static::dynamicPageClass();
-        
+
         if(!empty($class))
         {
             $classes = (array) $class;
-            foreach ($classes as $class) 
+            foreach ($classes as $class)
             {
                 if(is_a($route,$class,true))
                 {
@@ -241,20 +241,20 @@ trait _pageConfig
                 }
             }
         }
-        
+
         if($return === null && is_subclass_of($route,Core\Route::class,true))
         $return = $route::make();
 
         return $return;
     }
-    
-    
+
+
     // dynamicPageClass
     // retourne le nom de la classe de la route de page dynamique
     // peut retourner une string ou un array
     public static function dynamicPageClass()
     {
-        return null;
+        return;
     }
 }
 ?>

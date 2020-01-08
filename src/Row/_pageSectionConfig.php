@@ -10,9 +10,6 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Row;
-use Quid\Base;
-use Quid\Core;
-use Quid\Routing;
 
 // _pageSectionConfig
 // trait related to the configuration of a row representing a page within a section
@@ -31,7 +28,7 @@ trait _pageSectionConfig
     {
         $path = null;
         $section = $this->section();
-        
+
         if(!empty($section))
         {
             $return['section'] = $section;
