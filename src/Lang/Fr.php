@@ -175,22 +175,6 @@ class Fr extends Lemur\Lang\Fr
                     'radio'=>'Boutons radios (un choix)',
                     'checkbox'=>'Cases à cocher (multiples choix)'
                 ]
-            ],
-
-            // tinymce
-            'tinymce'=>[
-                'paragraph'=>'Paragraphe',
-                'superscript'=>'Exposant',
-                'header2'=>'En-tête 2',
-                'header3'=>'En-tête 3',
-                'header4'=>'En-tête 4',
-                'header5'=>'En-tête 5',
-                'header6'=>'En-tête 6',
-                'alignLeft'=>'Aligner à gauche',
-                'alignCenter'=>'Aligner au centre',
-                'alignRight'=>'Aligner à droite',
-                'floatLeft'=>'Flotter à gauche',
-                'floatRight'=>'Flotter à droite'
             ]
         ]
     ];

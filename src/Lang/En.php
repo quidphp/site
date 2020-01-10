@@ -175,22 +175,6 @@ class En extends Lemur\Lang\En
                     'radio'=>'Radio buttons (one choice)',
                     'checkbox'=>'Checkboxes (multiple choices)'
                 ]
-            ],
-
-            // tinymce
-            'tinymce'=>[
-                'paragraph'=>'Paragraph',
-                'superscript'=>'Superscript',
-                'header2'=>'Header 2',
-                'header3'=>'Header 3',
-                'header4'=>'Header 4',
-                'header5'=>'Header 5',
-                'header6'=>'Header 6',
-                'alignLeft'=>'Align left',
-                'alignCenter'=>'Align center',
-                'alignRight'=>'Align right',
-                'floatLeft'=>'Float left',
-                'floatRight'=>'Float right'
             ]
         ]
     ];

@@ -52,10 +52,16 @@ Component.Sections = function(option)
         },
         
         updateAnchors: function() {
-            const hash = Uri.makeHash(trigHdlr(this,'navHash:getCurrentHash'),true);
+            const hashes = [];
+            const isFirst = trigHdlr(this,'sections:isFirst');
+            hashes.push(Uri.makeHash(trigHdlr(this,'navHash:getCurrentHash'),true));
+            
+            if(isFirst === true && $option.skipFirst === true)
+            hashes.push('');
+            
             const all = qsa(this,"a[href*='#']");
             const anchors = Arr.filter(all,function() {
-                return this.hash === hash;
+                return Arr.in(this.hash,hashes);
             });
             
             toggleClass(all,$option.anchorClass,false);
