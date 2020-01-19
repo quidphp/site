@@ -15,16 +15,13 @@
     @include componentAddRemoveSpecific();
 
     > .playground > .ele {
-        margin-bottom: 20px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid $lightGray;
-
-        &:last-child {
-            margin-bottom: 10px;
-            padding-bottom: 0;
-            border-bottom: 0;
+        
+        &:not(:last-child) {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid $lightGray;
         }
-
+        
         .table {
             height: auto;
         }

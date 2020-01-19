@@ -92,14 +92,14 @@ Component.Sections = function(option)
             
             // throttle car safari impose une limite de 100 par 30 secondes
             const time = (context === 'scroll')? 200:0;
-            const newTimeout = setTimeout(function() {
+            const newTimeout = Func.timeout(time,function() {
                 if(isFirst === true && $option.skipFirst === true)
                 trigHdlr(document,hdlr,'');
                 else
                 trigHdlr(document,hdlr,current);
                 
                 trigHdlr($this,'sections:updateAnchors');
-            },time);
+            });
             setData(this,'sections-hash-throttle',newTimeout);
         },
         
