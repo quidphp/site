@@ -22,7 +22,7 @@ Component.TabsSlider = function(option)
     
     
     // components
-    Component.TabsNav.call(this,option);
+    Component.TabsNav.call(this,$option);
     
     
     // setup

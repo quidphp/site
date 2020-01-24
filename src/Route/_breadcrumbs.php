@@ -36,28 +36,26 @@ trait _breadcrumbs
     }
 
 
-    // selectedUri
+    // onPrepared
     // gère les selected uri, renvoie vers selectedUriBreadcrumbs
-    final public function selectedUri():array
+    final protected function onPrepared()
     {
-        return $this->selectedUriBreadcrumbs();
+        $this->selectedUriBreadcrumbs();
+        
+        return;
     }
 
 
     // selectedUriBreadcrumbs
     // gère les selected uri selon le breadcumbs
-    final protected function selectedUriBreadcrumbs():array
+    final protected function selectedUriBreadcrumbs():void
     {
-        $return = [];
-
         foreach ($this->getBreadcrumbs() as $route)
         {
-            $uri = $route->uri();
-            if(!empty($uri))
-            $return[$uri] = true;
+            $route->addSelectedUri();
         }
 
-        return $return;
+        return;
     }
 }
 ?>

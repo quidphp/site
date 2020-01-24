@@ -94,7 +94,4 @@ abstract class Boot extends Lemur\Boot
         return ($this->type() === 'app')? true:false;
     }
 }
-
-// init
-Boot::__init();
 ?>

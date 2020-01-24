@@ -18,10 +18,10 @@ Component.GoogleMaps = function(option)
     
     
     // option
-    const $option = Pojo.replaceRecursive({
+    const $option = Pojo.replace({
         target: true,
-        defaultZoom: 10,
-        styles: {}
+        zoom: 10,
+        style: []
     },option);
     
     
@@ -73,10 +73,10 @@ Component.GoogleMaps = function(option)
             const target = trigHdlr(this,'googleMaps:getTarget');
             
             return {
-                zoom: getAttr(target,'data-zoom','int') || $option.defaultZoom,
+                zoom: getAttr(target,'data-zoom','int') || $option.zoom,
                 center: latLng,
                 scrollwheel: false,
-                styles: $option.styles,
+                styles: $option.style,
                 mapTypeId: googleMaps.maps.MapTypeId.ROADMAP
             }
         },

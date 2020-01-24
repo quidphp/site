@@ -30,3 +30,8 @@
 [data-col='googleMaps'] .specific-component {
     @include componentEmailNewsletterSpecific();
 }
+
+// range
+[data-col='range'] .specific-component {
+    @include componentRange();
+}

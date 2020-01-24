@@ -22,17 +22,14 @@ trait _general
     ];
 
 
-    // selectedUri
+    // onPrepared
     // gère les selected uri pour une route general
     // par défaut la route avec segment par défaut est sélectionné
-    final public function selectedUri():array
+    final protected function onPrepared()
     {
-        $return = [];
-        $route = static::make();
-        $uri = $route->uri(null,['query'=>false]);
-        $return[$uri] = true;
+        static::make()->addSelectedUri(true,null,['query'=>false]);
 
-        return $return;
+        return;
     }
 
 

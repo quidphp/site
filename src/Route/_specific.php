@@ -22,10 +22,15 @@ trait _specific
     ];
 
 
-    // selectedUri
-    final public function selectedUri():array
+    // onPrepared
+    final protected function onPrepared()
     {
-        return static::makeParent()->selectedUri();
+        foreach ($this->getBreadcrumbs() as $route)
+        {
+            $route->addSelectedUri();
+        }
+
+        return;
     }
 
 

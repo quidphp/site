@@ -1,0 +1,32 @@
+// compileOnSave: false
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
+ */
+
+// range
+// stylesheet for the range component
+
+// componentRange
+// component pour les 3 champs range
+@mixin componentRange() {
+    > .range-input {
+        @include flex(flex-start,center,wrap);
+        
+        > label {
+            font-size: 90%;
+            margin-right: 5px;
+            min-width: 100px;
+        }
+        
+        > input {
+            flex: 1;
+        }
+        
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+}
