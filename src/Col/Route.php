@@ -20,7 +20,7 @@ class Route extends Core\Col\EnumAlias
 {
     // config
     public static $config = [
-        'visible'=>['role'=>['>='=>70]],
+        'editable'=>['role'=>['>='=>70]],
         'required'=>true,
         'relation'=>[self::class,'getRoutes'],
         'relationIndex'=>false,

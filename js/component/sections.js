@@ -78,7 +78,6 @@ Component.Sections = function(option)
         },
         
         manageHashChange: function(target,old,context,targets) {
-            const $this = this;
             const isFirst = Arr.valueFirst(targets) === target;
             const oldTimeout = getData(this,'sections-hash-throttle');
             let current = trigHdlr(this,'navHash:getCurrentHash');
@@ -98,8 +97,8 @@ Component.Sections = function(option)
                 else
                 trigHdlr(document,hdlr,current);
                 
-                trigHdlr($this,'sections:updateAnchors');
-            });
+                trigHdlr(this,'sections:updateAnchors');
+            },this);
             setData(this,'sections-hash-throttle',newTimeout);
         },
         

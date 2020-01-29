@@ -17,7 +17,7 @@ Component.HoverSlide = function(option)
     const $option = Pojo.replace({
         target: ".target",
         targetHeight: true,
-        targetHeightTimeout: 500,
+        transitionTimeout: 500,
         clickOutside: false,
         background: false
     },option);
@@ -29,13 +29,21 @@ Component.HoverSlide = function(option)
     
     // event
     ael(this,'mouseenter',function() {
+        const timeout = getData(this,'hoverSlide-timeout');
+        if(timeout != null)
+        clearTimeout(timeout);
+        
         trigEvt(this,'clickOpen:open');
     });
     
     ael(this,'mouseleave',function() {
-        trigEvt(this,'clickOpen:close');
+        const timeout = (trigHdlr(this,'clickOpen:canClose'))? 0:$option.transitionTimeout;
+        const func = Func.timeout(timeout,function() {
+            trigEvt(this,'clickOpen:close');
+        },this);
+        
+        setData(this,'hoverSlide-timeout',func);
     });
-    
     
     return this;
 }

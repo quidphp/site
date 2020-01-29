@@ -208,7 +208,7 @@ trait _pageConfig
     {
         $return = null;
         $value = $page['route']->get();
-
+        
         if(!empty($value))
         {
             $return = $value;

@@ -35,6 +35,7 @@ class BootSite extends Test\Suite\BootCore
             'ipApi'=>Site\Service\IpApi::class,
             'newsletter'=>[Site\Service\Mailchimp::class,['key'=>'wqeqwweqwqeeqwqwe-us1','list'=>'zxczzxc']],
             'pdfCrowd'=>[Site\Service\PdfCrowd::class,['key'=>'wqeqwweqwqeeqwqwe','username'=>'wqeqqwewqwesad']]],
+        'compile'=>true,
         'compileCss'=>false,
         'compileJsOption'=>['compress'=>false],
         'compileJs'=>[
