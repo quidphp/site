@@ -13,11 +13,10 @@ namespace Quid\Site\Row;
 use Quid\Base;
 use Quid\Base\Html;
 use Quid\Core;
-use Quid\Main;
 
 // page
 // class for a row which represents a page
-class Page extends Core\RowAlias implements Main\Contract\Meta
+class Page extends Core\RowAlias
 {
     // config
     public static $config = [
