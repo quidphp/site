@@ -21,14 +21,15 @@ Component.Sections = function(option)
         type: 'sections',
         smooth: true,
         anchorClass: "selected",
-        hashPush: true
+        hashPush: true,
+        keyboardArrow: "notInput"
     },option);
     
     
     // components
     Component.NavIndex.call(this,$option);
     Component.NavHash.call(this,$option);
-    Component.KeyboardArrow.call(this,true);
+    Component.KeyboardArrow.call(this,$option.keyboardArrow);
     Component.ScrollAnimate.call(this,$option);
     
     
@@ -155,12 +156,10 @@ Component.Sections = function(option)
         setData(this,'sections-active',true);
         
         ael(this,'keyboardArrow:up',function(event,keyEvent,isInput) {
-            if(isInput === false)
             trigHdlr(this,'sections:goPrev','keyboard');
         },'sections-keyboardUp');
         
         ael(this,'keyboardArrow:down',function(event,keyEvent,isInput) {
-            if(isInput === false)
             trigHdlr(this,'sections:goNext','keyboard');
         },'sections-keyboardDown');
         
