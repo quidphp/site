@@ -80,27 +80,18 @@ Component.Sections = function(option)
         
         manageHashChange: function(target,old,context,targets) {
             const isFirst = Arr.valueFirst(targets) === target;
-            const oldTimeout = getData(this,'sections-hash-throttle');
             let current = trigHdlr(this,'navHash:getCurrentHash');
             let hdlr = 'history:replaceHash';
-            
-            if(oldTimeout)
-            clearTimeout(oldTimeout);
             
             if($option.hashPush === true && Arr.in(context,['keyboard','scroll']))
             hdlr = 'history:pushHash';
             
-            // throttle car safari impose une limite de 100 par 30 secondes
-            const time = (context === 'scroll')? 200:0;
-            const newTimeout = Func.timeout(time,function() {
-                if(isFirst === true && $option.skipFirst === true)
-                trigHdlr(document,hdlr,'');
-                else
-                trigHdlr(document,hdlr,current);
-                
-                trigHdlr(this,'sections:updateAnchors');
-            },this);
-            setData(this,'sections-hash-throttle',newTimeout);
+            if(isFirst === true && $option.skipFirst === true)
+            trigHdlr(document,hdlr,'');
+            else
+            trigHdlr(document,hdlr,current);
+            
+            trigHdlr(this,'sections:updateAnchors');
         },
         
         getPromise: function(target,old,context,targets) {
@@ -137,6 +128,7 @@ Component.Sections = function(option)
     // shouldAnimate
     const shouldAnimate = function(target,context,targets)
     {
+        d(context);
         let r = Arr.in(context,['keyboard','hashchange']);
         const isFirst = Arr.valueFirst(targets) === target;
         
@@ -156,14 +148,16 @@ Component.Sections = function(option)
         setData(this,'sections-active',true);
         
         ael(this,'keyboardArrow:up',function(event,keyEvent,isInput) {
+            d(keyEvent);
             trigHdlr(this,'sections:goPrev','keyboard');
         },'sections-keyboardUp');
         
         ael(this,'keyboardArrow:down',function(event,keyEvent,isInput) {
+            d(keyEvent);
             trigHdlr(this,'sections:goNext','keyboard');
         },'sections-keyboardDown');
         
-        ael(this,'scroll:change',function() {
+        ael(this,'scroll:stop',function() {
             const target = getScrollTarget.call(this);
             
             if(target != null)
