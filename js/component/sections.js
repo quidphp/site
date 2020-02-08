@@ -128,7 +128,6 @@ Component.Sections = function(option)
     // shouldAnimate
     const shouldAnimate = function(target,context,targets)
     {
-        d(context);
         let r = Arr.in(context,['keyboard','hashchange']);
         const isFirst = Arr.valueFirst(targets) === target;
         
