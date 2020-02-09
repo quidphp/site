@@ -125,6 +125,12 @@ Component.Sections = function(option)
     });
 
     
+    // setup
+    aelOnce(this,'component:setup',function() {
+        disableSections.call(this);
+    });
+    
+    
     // shouldAnimate
     const shouldAnimate = function(target,context,targets)
     {
@@ -146,13 +152,15 @@ Component.Sections = function(option)
         
         setData(this,'sections-active',true);
         
+        setHdlr(this,'keyboardArrow:prevent',function(keyEvent,isInput,keyCode) {
+            return trigHdlr(this,'keyboardArrow:preventBool',keyEvent,isInput,keyCode);
+        });
+        
         ael(this,'keyboardArrow:up',function(event,keyEvent,isInput) {
-            d(keyEvent);
             trigHdlr(this,'sections:goPrev','keyboard');
         },'sections-keyboardUp');
         
         ael(this,'keyboardArrow:down',function(event,keyEvent,isInput) {
-            d(keyEvent);
             trigHdlr(this,'sections:goNext','keyboard');
         },'sections-keyboardDown');
         
@@ -175,6 +183,10 @@ Component.Sections = function(option)
         setData(this,'sections-active',false);
         const $this = this;
         const arr = ['sections-keyboardUp','sections-keyboardDown','sections-scroll'];
+        
+        setHdlr(this,'keyboardArrow:prevent',function(keyEvent,isInput,keyCode) {
+            return false;
+        });
         
         Arr.each(arr,function(value) {
             rel($this,value);
