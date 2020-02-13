@@ -305,15 +305,15 @@ class Media extends Core\RowAlias
                     $html .= Html::divOp(['wrap',$type]);
                     $html .= Html::div($ratio,'ratio');
                     $html .= Html::divCl();
-                    $html .= Html::divOp('info');
+                    $info = '';
 
                     if($option['name'] === true)
-                    $html .= Html::divCond($value['name'],'name');
+                    $info .= Html::divCond($value['name'],'name');
 
                     if($option['content'] === true)
-                    $html .= Html::divCond($value['content'],'content');
+                    $info .= Html::divCond($value['content'],'content');
 
-                    $html .= Html::divCl();
+                    $html .= Html::divCond($info,'info');
                 }
 
                 if(strlen($html))

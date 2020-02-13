@@ -9,25 +9,19 @@ declare(strict_types=1);
  * Readme: https://github.com/quidphp/site/blob/master/README.md
  */
 
-namespace Quid\Site\App;
-use Quid\Core;
+namespace Quid\Site\Cms;
 use Quid\Lemur;
 use Quid\Site;
 
 // cliPreload
-// class for the cli route to generate the preload PHP script
-class CliPreload extends Core\Route\CliPreload
+// class for the cli route to generate the preload PHP script for the CMS
+class CliPreload extends Lemur\Cms\CliPreload
 {
-    // trait
-    use Core\Route\_cli;
-
-
     // config
     public static $config = [
         'compile'=>[
             'init'=>[
                 'from'=>[
-                    Lemur::class=>['closure'=>true],
                     Site::class=>['closure'=>true]]]]
     ];
 }
