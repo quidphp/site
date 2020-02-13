@@ -20,7 +20,7 @@ class CliPreload extends Lemur\Cms\CliPreload
     // config
     public static $config = [
         'compile'=>[
-            'init'=>[
+            'closure'=>[
                 'from'=>[
                     Site::class=>['closure'=>true]]]]
     ];
