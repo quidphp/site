@@ -53,6 +53,7 @@ class GoogleMaps extends Core\ColAlias
     final protected function onSet($return,array $row,?Orm\Cell $cell=null,array $option)
     {
         $hasChanged = true;
+        $return = $this->attrCallback('onSet',false,$return,$row,$cell,$option);
         $return = $this->value($return);
 
         if(!empty($cell))
