@@ -52,9 +52,9 @@ class GoogleMaps extends Core\ColAlias
     // gère la logique onSet pour googleMaps
     final protected function onSet($return,array $row,?Orm\Cell $cell=null,array $option)
     {
-        $hasChanged = true;
-        $return = $this->attrCallback('onSet',false,$return,$row,$cell,$option);
+        $return = parent::onSet($return,$row,$cell,$option);
         $return = $this->value($return);
+        $hasChanged = true;
 
         if(!empty($cell))
         {
