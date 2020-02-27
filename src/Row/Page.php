@@ -277,15 +277,19 @@ class Page extends Core\RowAlias
 
         if($this->inAllSegment())
         {
-            $key = static::getRouteKey();
-            $route = $this->route($key);
+            $key = $this->getRouteKey();
 
-            if(!empty($route) && $route::isRedirectable())
+            if(!empty($key))
             {
-                $wysiwyg = $route->aTitle(null,['target'=>false]);
-                $data = ['html'=>$wysiwyg];
-                $namePrimary = $this->namePrimary();
-                $return = Html::button($namePrimary,['insert','data'=>$data]);
+                $route = $this->route($key);
+
+                if(!empty($route) && $route::isRedirectable())
+                {
+                    $wysiwyg = $route->aTitle(null,['target'=>false]);
+                    $data = ['html'=>$wysiwyg];
+                    $namePrimary = $this->namePrimary();
+                    $return = Html::button($namePrimary,['insert','data'=>$data]);
+                }
             }
         }
 

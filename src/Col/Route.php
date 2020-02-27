@@ -49,12 +49,20 @@ class Route extends Core\Col\EnumAlias
     }
 
 
+    // routeType
+    // retourne le type de route
+    final public function routeType():string
+    {
+        return $this->getAttr('routeType');
+    }
+
+
     // routes
     // retourne l'objet route pour la colonne
     final public function routes():Routing\Routes
     {
         $boot = static::boot();
-        $type = $this->getAttr('routeType');
+        $type = $this->routeType();
 
         if(!is_string($type))
         static::throw('invalidRouteType');

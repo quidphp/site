@@ -25,7 +25,6 @@ trait _pageConfig
             'app'=>[self::class,'dynamicRoute']],
         'cols'=>[
             'route'=>['class'=>Site\Col\Route::class,'routeType'=>'app']],
-        'routeKey'=>'app', // custom
         '@app'=>[
             'route'=>[
                 0=>[self::class,'dynamicRoute']]],
@@ -60,10 +59,11 @@ trait _pageConfig
     final public function shouldPrepareRoute($key,string $route):bool
     {
         $return = false;
+        $routeKey = $this->getRouteKey();
 
-        if(!$this->isRoutePrepared() && $key === static::getRouteKey() && is_subclass_of($route,Core\Route::class,true))
+        if(!$this->isRoutePrepared() && !empty($routeKey) && $key === $routeKey && is_subclass_of($route,Core\Route::class,true))
         {
-            $routes = static::getRoutesCanPrepare();
+            $routes = static::getRoutesCanPrepare($routeKey);
             $fqcn = $route::classFqcn();
 
             if(!empty($routes) && $routes->in($fqcn))
@@ -77,9 +77,9 @@ trait _pageConfig
     // getRoutesCanPrepare
     // retourne toutes les routes qui doivent être préparés
     // n'inclut pas la route page dynamique, car plusieurs uris peuvent utilisateur cette route
-    final public static function getRoutesCanPrepare():?Routing\Routes
+    final public static function getRoutesCanPrepare(string $routeKey):?Routing\Routes
     {
-        $return = static::boot()->routes(static::getRouteKey());
+        $return = static::boot()->routes($routeKey);
         $dynamic = static::dynamicPageClass();
 
         if(!empty($dynamic))
@@ -163,20 +163,28 @@ trait _pageConfig
 
     // getRouteKey
     // retourne le type pour la route
-    final public static function getRouteKey():?string
+    final public function getRouteKey():string
     {
-        return static::$config['routeKey'] ?? null;
+        return $this->cell('route')->col()->routeType();
+    }
+
+
+    // getViewRouteType
+    // retourne le type à utiliser pour voir la route via la page spécifique du cms
+    final public function getViewRouteType():?string
+    {
+        return $this->getRouteKey();
     }
 
 
     // prepareRoutes
     // prépare les pages des routes
-    final public static function prepareRoutes():void
+    final public static function prepareRoutes(string $type):void
     {
-        $routes = static::getRoutesCanPrepare();
+        $routes = static::getRoutesCanPrepare($type);
 
         if(!empty($routes))
-        static::prepareRoutesObject($routes);
+        static::prepareRoutesObject($type,$routes);
 
         return;
     }
@@ -184,13 +192,12 @@ trait _pageConfig
 
     // prepareRoutesObject
     // permet de préparer toutes les pages des routes de l'objet routes
-    final protected static function prepareRoutesObject(Routing\Routes $return):Routing\Routes
+    final protected static function prepareRoutesObject(string $routeKey,Routing\Routes $return):Routing\Routes
     {
         $table = static::tableFromFqcn();
         $where = [true];
         $keys = $return->keys();
         $where[] = ['route','in',$keys];
-        $routeKey = static::getRouteKey();
 
         foreach ($table->selects($where) as $page)
         {
@@ -236,14 +243,14 @@ trait _pageConfig
             {
                 if(is_a($route,$class,true))
                 {
-                    $return = $route::make($page);
+                    $return = $route::make($page,false);
                     break;
                 }
             }
         }
 
         if($return === null && is_subclass_of($route,Core\Route::class,true))
-        $return = $route::make();
+        $return = $route::make(null,false);
 
         return $return;
     }
