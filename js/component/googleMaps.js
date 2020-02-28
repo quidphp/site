@@ -20,7 +20,10 @@ Component.GoogleMaps = function(option)
     // option
     const $option = Pojo.replace({
         target: true,
+        marker: true,
+        ui: true,
         zoom: 10,
+        control: true,
         style: []
     },option);
     
@@ -71,14 +74,23 @@ Component.GoogleMaps = function(option)
         getOptions: function(latLng) {
             const googleMaps = trigHdlr(this,'googleMaps:get');
             const target = trigHdlr(this,'googleMaps:getTarget');
-            
-            return {
+            const r = {
                 zoom: getAttr(target,'data-zoom','int') || $option.zoom,
                 center: latLng,
                 scrollwheel: false,
                 styles: $option.style,
+                disableDefaultUI: ($option.ui === true)? false:true,
                 mapTypeId: googleMaps.maps.MapTypeId.ROADMAP
+            };
+            
+            if($option.control !== true)
+            {
+                r.gestureHandling = 'none';
+                r.zoomControl = false;
+                r.draggableCursor = 'default';
             }
+            
+            return r;
         },
         
         getIcon: function() {
@@ -149,6 +161,8 @@ Component.GoogleMaps = function(option)
             const icon = trigHdlr(this,'googleMaps:getIcon');
             
             const map = new googleMaps.maps.Map(target,option);
+            
+            if($option.marker)
             trigHdlr(this,'googleMaps:makeMarker',latLng,uri,icon,map);
         }
     }

@@ -52,6 +52,20 @@ class GoogleMaps extends Core\CellAlias
     }
 
 
+    // mapDataAttr
+    // retourne le tableau des data attr pour faire la map
+    final public function mapDataAttr(?int $zoom=null,bool $uri=true):array
+    {
+        $return = [];
+        $localization = $this->localization();
+
+        if(!empty($localization))
+        $return = $this->col()->mapDataAttr($localization,$zoom,$uri);
+
+        return $return;
+    }
+
+
     // address
     // retourne l'adresse formaté à partir de l'objet localization googleMaps
     final public function address():?string

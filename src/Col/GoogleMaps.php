@@ -128,12 +128,17 @@ class GoogleMaps extends Core\ColAlias
     // fait une map à partir d'un objet de localization
     final public function html(Main\Localization $value,?int $zoom=null,bool $uri=true):?string
     {
-        $return = null;
-        $data = $value->latLng();
-        $data['zoom'] = $zoom;
-        $data['uri'] = ($uri === true)? $this->uri($value):null;
+        return Html::div(null,['map-render','id'=>true,'data'=>$this->mapDataAttr($value,$zoom,$uri)]);
+    }
 
-        $return = Html::div(null,['map-render','id'=>true,'data'=>$data]);
+
+    // mapDataAttr
+    // retourne un tableau avec les data-attr pour la balise de la map
+    final public function mapDataAttr(Main\Localization $value,?int $zoom=null,bool $uri=true):array
+    {
+        $return = $value->latLng();
+        $return['zoom'] = $zoom;
+        $return['uri'] = ($uri === true)? $this->uri($value):null;
 
         return $return;
     }
