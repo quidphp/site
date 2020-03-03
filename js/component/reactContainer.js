@@ -96,7 +96,6 @@ Component.ReactContainer = function(persistent)
         
         props.parentNode = this;
         
-        const What2 = Component.What2;
         r = React.createElement(callable,props,content);
         
         return r;
