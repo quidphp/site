@@ -17,8 +17,8 @@ Component.WindowSmall = function(option)
     const $option = Pojo.replace({
         width: 1000,
         height: 1000,
-        x: 0,
-        y: 0
+        left: null,
+        top: null
     },option);
     
     
@@ -26,17 +26,22 @@ Component.WindowSmall = function(option)
     setHdlrs(this,'windowSmall:',{
         
         getOptions: function() {
+            const width = getAttr(this,'data-width','int') || $option.width;
+            const height = getAttr(this,'data-height','int') || $option.height;
+            const defaultLeft = (window.screen.width / 2) - (width / 2)
+            const defaultTop = (window.screen.height / 2) - (height / 2);
+            
             return {
-                width: getAttr(this,'data-width','int') || $option.width,
-                height: getAttr(this,'data-height','int') || $option.height,
-                x: getAttr(this,'data-x','int') || $option.x,
-                y: getAttr(this,'data-y','int') || $option.y
+                width: width,
+                height: height,
+                left: getAttr(this,'data-left','int') || $option.left || defaultLeft,
+                top: getAttr(this,'data-top','int') || $option.top || defaultTop
             };
         },
         
         getParam: function() {
             const opt = trigHdlr(this,'windowSmall:getOptions');
-            return "toolbar=no,left="+opt.x+",top="+opt.y+",width="+opt.width+",height="+opt.height+",location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no";
+            return "toolbar=no,left="+opt.left+",top="+opt.top+",width="+opt.width+",height="+opt.height+",location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no";
         }
     });
     
