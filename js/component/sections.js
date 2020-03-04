@@ -30,7 +30,7 @@ Component.Sections = function(option)
     Component.NavIndex.call(this,$option);
     Component.NavHash.call(this,$option);
     Component.KeyboardArrow.call(this,$option.keyboardArrow);
-    Component.ScrollAnimate.call(this,$option);
+    Component.Scroller.call(this,$option);
     
     
     // handler
@@ -109,7 +109,7 @@ Component.Sections = function(option)
                 else
                 top = Ele.getOffset(target).top;
                 
-                const promise = trigHdlr(this,'scrollAnimate:go',top,null,$option.smooth);
+                const promise = trigHdlr(this,'scroller:go',top,null,$option.smooth);
                 
                 if(promise != null)
                 {
@@ -165,7 +165,8 @@ Component.Sections = function(option)
         },'sections-keyboardDown');
         
         ael(this,'scroll:stop',function() {
-            const target = getScrollTarget.call(this);
+            const targets = trigHdlr(this,'sections:getTargets');
+            const target = trigHdlr(this,'scroller:getCurrentTarget',targets);
             
             if(target != null)
             trigHdlr(this,'sections:go',target,'scroll');
@@ -191,50 +192,6 @@ Component.Sections = function(option)
         Arr.each(arr,function(value) {
             rel($this,value);
         });
-    }
-    
-    
-    // getScrollTarget
-    const getScrollTarget = function()
-    {
-        let r = null;
-        const scrollTop = Ele.getScroll(this).top;
-        const windowHeight = Win.getDimension().height;
-        const documentHeight = Doc.getDimension(document).height;
-        const windowHeightRatio = (windowHeight / 2);
-        const targets = trigHdlr(this,'sections:getTargets');
-        
-        if(Arr.isNotEmpty(targets))
-        {
-            if(scrollTop <= windowHeightRatio)
-            r = Arr.valueFirst(targets);
-            
-            else
-            {
-                Arr.each(targets,function() {
-                    let keep = false;
-                    const offset = Ele.getOffset(this).top;
-                    const height = Ele.getDimension(this).height;
-                    
-                    if(scrollTop >= (offset - windowHeightRatio))
-                    {
-                        if(scrollTop < ((offset + height) - windowHeightRatio))
-                        keep = true;
-                    }
-                    
-                    if(keep === true)
-                    {
-                        r = this;
-                        return false;
-                    }
-                });
-            }
-            
-            if(r == null && scrollTop >= (documentHeight - windowHeight))
-            r = Arr.valueLast(targets);
-        }
-        
-        return r;
     }
     
     return this;

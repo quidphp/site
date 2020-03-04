@@ -60,7 +60,8 @@ Component.GoogleAnalytics = function()
     // bindDocument
     const bindDocument = function()
     {
-        ael(this,'doc:mountPage',function(event) {
+        ael(this,'doc:mountPage',function(event,routeWrap,isError,initial) {
+            if(initial === false)
             trigHdlr(this,'googleAnalytics:sendPageView',true);
         });
     }
