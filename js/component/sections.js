@@ -107,7 +107,7 @@ Component.Sections = function(option)
                 top = 0;
                 
                 else
-                top = Ele.getOffset(target).top;
+                top = Ele.getOffsetWin(target).top;
                 
                 const promise = trigHdlr(this,'scroller:go',top,null,$option.smooth);
                 
@@ -124,6 +124,13 @@ Component.Sections = function(option)
         }
     });
 
+    
+    // event
+    ael(this,'sections:afterChange',function(event,target) {
+        if(Ele.isFocusable(target))
+        target.focus();
+    });
+    
     
     // setup
     aelOnce(this,'component:setup',function() {

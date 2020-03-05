@@ -21,6 +21,7 @@ Component.Toggler = function(option) {
         attrOddEven: 'data-odd-even',
         all: 'all',
         triggerFirst: null,
+        timeout: 0
     },option);
 
 
@@ -29,7 +30,7 @@ Component.Toggler = function(option) {
 
 
     // handler
-    setHdlrs(this, 'typeToggler:', {
+    setHdlrs(this, 'toggler:', {
         
         getTogglers: function() {
             return qsa(this, '.type-toggler > button');
@@ -40,14 +41,14 @@ Component.Toggler = function(option) {
         },
 
         getToggler: function(value) {
-            const togglers = trigHdlr(this, 'typeToggler:getTogglers');
+            const togglers = trigHdlr(this, 'toggler:getTogglers');
             return Arr.find(togglers, function() {
                 return getAttr(this, $option.attr) === value;
             });
         },
 
         findTargets: function(value) {
-            const targets = trigHdlr(this, 'typeToggler:getTargets');
+            const targets = trigHdlr(this, 'toggler:getTargets');
             return Arr.filter(targets, function() {
                 return getAttr(this, $option.attr) === value || value === $option.all;
             });
@@ -56,6 +57,11 @@ Component.Toggler = function(option) {
         trigger: function(type) {
             triggerType.call(this, type);
         },
+        
+        setTimeout: function(timeout) {
+            Integer.check(timeout);
+            $option.timeout = timeout;
+        }
     });
 
 
@@ -64,7 +70,7 @@ Component.Toggler = function(option) {
         bindTogglers.call(this);
 
         if($option.triggerFirst) 
-        trigHdlr(this, 'typeToggler:trigger', $option.triggerFirst);
+        trigHdlr(this, 'toggler:trigger', $option.triggerFirst);
     });
 
 
@@ -72,11 +78,11 @@ Component.Toggler = function(option) {
     const bindTogglers = function() 
     {
         const $this = this;
-        const togglers = trigHdlr(this, 'typeToggler:getTogglers');
+        const togglers = trigHdlr(this, 'toggler:getTogglers');
 
         ael(togglers, 'click', function() {
             const type = getAttr(this, 'data-type');
-            trigHdlr($this, 'typeToggler:trigger', type);
+            trigHdlr($this, 'toggler:trigger', type);
         });
     };
 
@@ -85,10 +91,10 @@ Component.Toggler = function(option) {
     const triggerType = function(value) 
     {
         Str.check(value, true);
-        const togglers = trigHdlr(this, 'typeToggler:getTogglers');
-        const targets = trigHdlr(this, 'typeToggler:getTargets');
-        const toggler = trigHdlr(this, 'typeToggler:getToggler', value);
-        const matchTargets = trigHdlr(this, 'typeToggler:findTargets', value);
+        const togglers = trigHdlr(this, 'toggler:getTogglers');
+        const targets = trigHdlr(this, 'toggler:getTargets');
+        const toggler = trigHdlr(this, 'toggler:getToggler', value);
+        const matchTargets = trigHdlr(this, 'toggler:findTargets', value);
 
         if(toggler != null && matchTargets != null) 
         {
@@ -96,12 +102,15 @@ Component.Toggler = function(option) {
             setAttr(targets, $option.attrVisible, 0);
             setAttr(targets, $option.attrOddEven, 0);
             setAttr(toggler, $option.attrSelected, 1);
-            setAttr(matchTargets, $option.attrVisible, 1);
-
-            Arr.each(matchTargets, function(value, index) {
-                const key = index + 1;
-                const oddEven = Num.isOdd(key) ? 'odd' : 'even';
-                setAttr(this, $option.attrOddEven, oddEven);
+            
+            Func.timeout($option.timeout,function() {
+                setAttr(matchTargets, $option.attrVisible, 1);
+                
+                Arr.each(matchTargets, function(value, index) {
+                    const key = index + 1;
+                    const oddEven = Num.isOdd(key) ? 'odd' : 'even';
+                    setAttr(this, $option.attrOddEven, oddEven);
+                });
             });
         }
     };
