@@ -41,15 +41,11 @@ Component.Sections = function(option)
             
             if(!trigHdlr(document,'history:isLoading'))
             {
-                if(getData(this,'sections-active') === true && trigHdlr(this,'sections:isScrolling') === false)
+                if(getData(this,'sections-active') === true && trigHdlr(this,'scroller:isScrolling') === false)
                 r = true;
             }
             
             return r;
-        },
-        
-        isScrolling: function() {
-            return getData(this,'sections-scrolling') === true;
         },
         
         updateAnchors: function() {
@@ -107,17 +103,9 @@ Component.Sections = function(option)
                 top = 0;
                 
                 else
-                top = Ele.getOffsetWin(target).top;
+                top = Ele.getOffsetDoc(target).top;
                 
-                const promise = trigHdlr(this,'scroller:go',top,null,$option.smooth);
-                
-                if(promise != null)
-                {
-                    setData(this,'sections-scrolling',true);
-                    r = promise.then(function() {
-                        setData($this,'sections-scrolling',false);
-                    });
-                }
+                r = trigHdlr(this,'scroller:go',top,null,$option.smooth);
             }
             
             return r;

@@ -19,6 +19,7 @@ Component.Toggler = function(option) {
         attrVisible: 'data-visible',
         attrSelected: 'data-selected',
         attrOddEven: 'data-odd-even',
+        oddEven: false,
         all: 'all',
         triggerFirst: null,
         timeout: 0
@@ -100,17 +101,22 @@ Component.Toggler = function(option) {
         {
             setAttr(togglers, $option.attrSelected, 0);
             setAttr(targets, $option.attrVisible, 0);
-            setAttr(targets, $option.attrOddEven, 0);
             setAttr(toggler, $option.attrSelected, 1);
+            
+            if($option.oddEven)
+            setAttr(targets, $option.attrOddEven, 0);
             
             Func.timeout($option.timeout,function() {
                 setAttr(matchTargets, $option.attrVisible, 1);
                 
-                Arr.each(matchTargets, function(value, index) {
-                    const key = index + 1;
-                    const oddEven = Num.isOdd(key) ? 'odd' : 'even';
-                    setAttr(this, $option.attrOddEven, oddEven);
-                });
+                if($option.oddEven)
+                {
+                    Arr.each(matchTargets, function(value, index) {
+                        const key = index + 1;
+                        const oddEven = Num.isOdd(key) ? 'odd' : 'even';
+                        setAttr(this, $option.attrOddEven, oddEven);
+                    });
+                }
             });
         }
     };
