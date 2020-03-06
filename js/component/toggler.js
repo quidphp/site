@@ -92,12 +92,14 @@ Component.Toggler = function(option) {
     const triggerType = function(value) 
     {
         Str.check(value, true);
+        
         const togglers = trigHdlr(this, 'toggler:getTogglers');
         const targets = trigHdlr(this, 'toggler:getTargets');
+        const selectedToggler = Ele.find(togglers,"["+$option.attrSelected+"='1']");
         const toggler = trigHdlr(this, 'toggler:getToggler', value);
         const matchTargets = trigHdlr(this, 'toggler:findTargets', value);
 
-        if(toggler != null && matchTargets != null) 
+        if(toggler != null && matchTargets != null && toggler !== selectedToggler) 
         {
             setAttr(togglers, $option.attrSelected, 0);
             setAttr(targets, $option.attrVisible, 0);
