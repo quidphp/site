@@ -16,6 +16,7 @@
         "quidphp/orm": "dev-master",
         "quidphp/routing": "dev-master",
         "quidphp/core": "dev-master",
+        "quidphp/front": "dev-master",
         "quidphp/lemur": "dev-master",
         "verot/class.upload.php": "^2.0",
         "phpmailer/phpmailer": "^6.0",
