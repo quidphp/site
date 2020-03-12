@@ -77,10 +77,9 @@ Component.WindowSmall = function(option)
             const id = getProp(this,'id');
             const param = trigHdlr(this,'windowSmall:getParamStr');
             const small = window.open(href,id,param);
-            Ele.focus(small);
-            window.blur();
-            
             Evt.preventStop(event);
+            Win.focus(small);
+            Win.blur(window);
         });
     }
     

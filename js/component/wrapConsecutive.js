@@ -55,7 +55,7 @@ Component.WrapConsecutive = function(option)
             Arr.each(targets,function() {
                 if(!Arr.in(this,found))
                 {
-                    const nextUntil = Nod.nexts(this,null,until);
+                    const nextUntil = Ele.nexts(this,null,until);
                     const nodes = Arr.merge([],this,nextUntil);
                     Arr.mergeRef(found,nodes);
                     r.push(nodes);

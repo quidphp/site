@@ -61,12 +61,12 @@ Component.JsonForm = function(option)
             
             showChoices: function() {
                 const choices = trigHdlr(this,'jsonForm:getChoices');
-                setAttr(choices,'data-visible',1);
+                toggleAttr(choices,'data-visible',true);
             },
             
             hideChoices: function() {
                 const choices = trigHdlr(this,'jsonForm:getChoices');
-                setAttr(choices,'data-visible',0);
+                toggleAttr(choices,'data-visible',false);
             },
             
             refresh: function() {

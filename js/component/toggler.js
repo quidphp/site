@@ -107,13 +107,13 @@ Component.Toggler = function(option) {
 
         if(toggler != null && matchTargets != null && toggler !== selectedToggler) 
         {
-            setAttr(togglers, $option.attrSelected, 0);
-            setAttr(targets, $option.attrVisible, 0);
-            setAttr(toggler, $option.attrSelected, 1);
+            toggleAttr(togglers, $option.attrSelected, false);
+            toggleAttr(targets, $option.attrVisible, false);
+            toggleAttr(toggler, $option.attrSelected, true);
             trigEvt(this,'toggler:unset',targets);
             
             Func.timeout($option.timeout,function() {
-                setAttr(matchTargets, $option.attrVisible, 1);
+                toggleAttr(matchTargets, $option.attrVisible, true);
                 trigEvt(this,'toggler:set',matchTargets,targets);
             },this);
         }

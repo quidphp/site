@@ -29,8 +29,8 @@ abstract class Boot extends Lemur\Boot
                     2=>'[js]/include']],
             'component'=>[
                 'from'=>[
-                    2=>'[vendorSite]/js/component',
-                    3=>'[js]/component']]],
+                    3=>'[vendorSite]/js/component',
+                    4=>'[js]/component']]],
 
         '@dev'=>[
             'compileJs'=>[

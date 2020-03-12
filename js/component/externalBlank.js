@@ -26,7 +26,7 @@ Component.ExternalBlank = function(persistent)
         
         externalWithoutTarget: function() {
             return Arr.filter(trigHdlr(this,'externalBlank:withoutTarget'),function() {
-                return (Uri.isExternal(getAttr(this,"href")) && !Nod.match(this,"[href^='mailto:']"));
+                return (Uri.isExternal(getAttr(this,"href")) && !Ele.match(this,"[href^='mailto:']"));
             });
         },
         
