@@ -15,13 +15,14 @@ Component.Toggler = function(option) {
 
     // option
     const $option = Pojo.replace({
+        target: ".target",
+        toggler: ".toggler",
         attr: 'data-type',
         attrVisible: 'data-visible',
         attrSelected: 'data-selected',
-        attrOddEven: 'data-odd-even',
-        oddEven: false,
         all: 'all',
-        triggerFirst: null,
+        triggerSetup: null,
+        limit: null,
         timeout: 0
     },option);
 
@@ -34,11 +35,11 @@ Component.Toggler = function(option) {
     setHdlrs(this, 'toggler:', {
         
         getTogglers: function() {
-            return qsa(this, '.type-toggler > button');
+            return qsa(this, $option.toggler);
         },
 
         getTargets: function() {
-            return qsa(this, '.elements > *');
+            return qsa(this, $option.target);
         },
 
         getToggler: function(value) {
@@ -50,9 +51,14 @@ Component.Toggler = function(option) {
 
         findTargets: function(value) {
             const targets = trigHdlr(this, 'toggler:getTargets');
-            return Arr.filter(targets, function() {
+            let r = Ele.filter(targets, function() {
                 return getAttr(this, $option.attr) === value || value === $option.all;
             });
+            
+            if(Integer.is($option.limit))
+            r = Arr.slice(0,$option.limit,r);
+            
+            return r;
         },
 
         trigger: function(type) {
@@ -70,8 +76,8 @@ Component.Toggler = function(option) {
     aelOnce(this, 'component:setup', function() {
         bindTogglers.call(this);
 
-        if($option.triggerFirst) 
-        trigHdlr(this, 'toggler:trigger', $option.triggerFirst);
+        if($option.triggerSetup) 
+        trigHdlr(this, 'toggler:trigger', $option.triggerSetup);
     });
 
 
@@ -104,22 +110,12 @@ Component.Toggler = function(option) {
             setAttr(togglers, $option.attrSelected, 0);
             setAttr(targets, $option.attrVisible, 0);
             setAttr(toggler, $option.attrSelected, 1);
-            
-            if($option.oddEven)
-            setAttr(targets, $option.attrOddEven, 0);
+            trigEvt(this,'toggler:unset',targets);
             
             Func.timeout($option.timeout,function() {
                 setAttr(matchTargets, $option.attrVisible, 1);
-                
-                if($option.oddEven)
-                {
-                    Arr.each(matchTargets, function(value, index) {
-                        const key = index + 1;
-                        const oddEven = Num.isOdd(key) ? 'odd' : 'even';
-                        setAttr(this, $option.attrOddEven, oddEven);
-                    });
-                }
-            });
+                trigEvt(this,'toggler:set',matchTargets,targets);
+            },this);
         }
     };
 

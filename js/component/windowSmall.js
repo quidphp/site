@@ -14,18 +14,27 @@ Component.WindowSmall = function(option)
     
     
     // option
-    const $option = Pojo.replace({
+    const $option = Pojo.replaceRecursive({
         width: 1000,
         height: 1000,
         left: null,
-        top: null
+        top: null,
+        param: {
+            toolbar: 'no',
+            location: 'no',
+            directories: 'no',
+            status: 'no',
+            menubar: 'no',
+            scrollbars: 'no',
+            resizable: 'no'
+        }
     },option);
     
     
     // handler
     setHdlrs(this,'windowSmall:',{
         
-        getOptions: function() {
+        getPositionDimension: function() {
             const width = getAttr(this,'data-width','int') || $option.width;
             const height = getAttr(this,'data-height','int') || $option.height;
             const defaultLeft = (window.screen.width / 2) - (width / 2)
@@ -40,8 +49,14 @@ Component.WindowSmall = function(option)
         },
         
         getParam: function() {
-            const opt = trigHdlr(this,'windowSmall:getOptions');
-            return "toolbar=no,left="+opt.left+",top="+opt.top+",width="+opt.width+",height="+opt.height+",location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no";
+            let r = {};
+            const positionDimension = trigHdlr(this,'windowSmall:getPositionDimension');
+            return Pojo.replace(r,$option.param,positionDimension);
+        },
+        
+        getParamStr: function() {
+            const param = trigHdlr(this,'windowSmall:getParam');
+            return Pojo.str(param,'=',',');
         }
     });
     
@@ -60,9 +75,9 @@ Component.WindowSmall = function(option)
         ael(this,'click',function(event) {
             const href = getAttr(this,'href');
             const id = getProp(this,'id');
-            const param = trigHdlr(this,'windowSmall:getParam');
+            const param = trigHdlr(this,'windowSmall:getParamStr');
             const small = window.open(href,id,param);
-            small.focus();
+            Ele.focus(small);
             window.blur();
             
             Evt.preventStop(event);

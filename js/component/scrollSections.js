@@ -4,9 +4,9 @@
  * License: https://github.com/quidphp/lemur/blob/master/LICENSE
  */
  
-// sections
-// script containing logic for a node containing multiple sections linked to a hash
-Component.Sections = function(option) 
+// scrollSections
+// script containing logic for scrolling related to multiple sections linked to a hash
+Component.ScrollSections = function(option) 
 {
     // option
     const $option = Pojo.replace({
@@ -18,7 +18,7 @@ Component.Sections = function(option)
         loop: false,
         child: 'section',
         childActive: 'isOpen',
-        type: 'sections',
+        type: 'scrollSections',
         smooth: true,
         anchorClass: "selected",
         hashPush: true,
@@ -34,7 +34,7 @@ Component.Sections = function(option)
     
     
     // handler
-    setHdlrs(this,'sections:',{
+    setHdlrs(this,'scrollSections:',{
         
         canChange: function() {
             let r = false;
@@ -50,7 +50,7 @@ Component.Sections = function(option)
         
         updateAnchors: function() {
             const hashes = [];
-            const isFirst = trigHdlr(this,'sections:isFirst');
+            const isFirst = trigHdlr(this,'scrollSections:isFirst');
             hashes.push(Uri.makeHash(trigHdlr(this,'navHash:getCurrentHash'),true));
             
             if(isFirst === true && $option.skipFirst === true)
@@ -67,7 +67,7 @@ Component.Sections = function(option)
         
         enable: function(value,context) {
             enableSections.call(this);
-            trigHdlr(this,'sections:go',value,context);
+            trigHdlr(this,'scrollSections:go',value,context);
         },
         
         disable: function() {
@@ -87,7 +87,7 @@ Component.Sections = function(option)
             else
             trigHdlr(document,hdlr,current);
             
-            trigHdlr(this,'sections:updateAnchors');
+            trigHdlr(this,'scrollSections:updateAnchors');
         },
         
         getPromise: function(target,old,context,targets) {
@@ -103,20 +103,29 @@ Component.Sections = function(option)
                 top = 0;
                 
                 else
-                top = Ele.getOffsetDoc(target).top;
+                top = Ele.getOffsetParent(target).top;
                 
                 r = trigHdlr(this,'scroller:go',top,null,$option.smooth);
             }
             
             return r;
+        },
+        
+        goCurrent: function(context) {
+            const targets = trigHdlr(this,'scrollSections:getTargets');
+            const target = trigHdlr(this,'scroller:getCurrentVerticalTarget',targets);
+            context = (Str.isNotEmpty(context))? context:'scroll';
+            
+            if(target != null)
+            trigHdlr(this,'scrollSections:go',target,context);
         }
     });
 
     
     // event
-    ael(this,'sections:afterChange',function(event,target) {
+    ael(this,'scrollSections:afterChange',function(event,target) {
         if(Ele.isFocusable(target))
-        target.focus();
+        Ele.focus(target);
     });
     
     
@@ -152,19 +161,15 @@ Component.Sections = function(option)
         });
         
         ael(this,'keyboardArrow:up',function(event,keyEvent,isInput) {
-            trigHdlr(this,'sections:goPrev','keyboard');
+            trigHdlr(this,'scrollSections:goPrev','keyboard');
         },'sections-keyboardUp');
         
         ael(this,'keyboardArrow:down',function(event,keyEvent,isInput) {
-            trigHdlr(this,'sections:goNext','keyboard');
+            trigHdlr(this,'scrollSections:goNext','keyboard');
         },'sections-keyboardDown');
         
         ael(this,'scroll:stop',function() {
-            const targets = trigHdlr(this,'sections:getTargets');
-            const target = trigHdlr(this,'scroller:getCurrentTarget',targets);
-            
-            if(target != null)
-            trigHdlr(this,'sections:go',target,'scroll');
+            trigHdlr(this,'scrollSections:goCurrent');
         },'sections-scroll');
         
         aelOnce(document,'doc:unmountPage',function() {
