@@ -55,7 +55,6 @@ use Quid\Base;
 use Quid\Base\Html;
 use Quid\Lemur;
 use Quid\Main;
-use Quid\Site;
 
 \Quid\Main\Autoload::setClosure("Quid\Test\Suite\Assert",'Home',function() {
 
