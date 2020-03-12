@@ -42,14 +42,14 @@ class BootSite extends Test\Suite\BootCore
             'test'=>[
                 'to'=>'[publicJs]/test.js',
                 'from'=>[
-                    0=>'[vendorLemur]/js/import',
-                    1=>'[vendorLemur]/js/test']]],
+                    0=>'[vendorFront]/js/import',
+                    1=>'[vendorFront]/js/test']]],
     ];
 }
 }
 
 
-/* ASSERT  */
+// ASSERT
 namespace Quid\Test\Suite\Assert {
 use Quid\Base;
 use Quid\Base\Html;
@@ -132,13 +132,10 @@ class Home extends Lemur\Cms\Home
                 };
                 $codeOverview = Base\Autoload::overview($closure,true);
 
-                foreach (['lemur'=>Lemur\Boot::class,'site'=>Site\Boot::class] as $key => $class)
+                foreach (['front'=>'[vendorFront]','lemur'=>'[vendorLemur]','site'=>'[vendorSite]'] as $key => $value)
                 {
-                    $dir = $class::classDir();
-                    $dirname = dirname($dir);
-
-                    $codeOverview[$key.'-css'] = Base\Dir::overview($dirname.'/css');
-                    $codeOverview[$key.'-js'] = Base\Dir::overview($dirname.'/js');
+                    $codeOverview[$key.'-css'] = Base\Dir::overview($value.'/css');
+                    $codeOverview[$key.'-js'] = Base\Dir::overview($value.'/js');
                 }
 
                 $return .= Base\Debug::export($codeOverview);
@@ -203,7 +200,7 @@ class Sitemap extends Lemur\Cms\Sitemap
 }
 
 
-/* CMS */
+// CMS
 namespace Quid\Test\Suite\Cms {
 use Quid\Core;
 

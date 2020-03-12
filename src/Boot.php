@@ -48,19 +48,18 @@ abstract class Boot extends Lemur\Boot
                 'app'=>[
                     'to'=>'[publicCss]/app.css',
                     'from'=>[
-                        0=>'[vendorLemur]/css/include',
-                        1=>'[vendorLemur]/css/component',
-                        2=>'[vendorSite]/css/include',
-                        3=>'[vendorSite]/css/component',
-                        4=>'[css]/include',
-                        5=>'[css]/component',
+                        0=>'[vendorFront]/css/include',
+                        1=>'[vendorFront]/css/component',
+                        2=>'[vendorSite]/css/component',
+                        3=>'[css]/include',
+                        4=>'[css]/component',
                         10=>'[css]/app']]],
 
             'compileJs'=>[
                 'app'=>[
                     'to'=>'[publicJs]/app.js',
                     'from'=>[
-                        0=>'[vendorLemur]/js/import',
+                        0=>'[vendorFront]/js/import',
                         1=>'[js]/app']]]],
 
         '@cms'=>[
