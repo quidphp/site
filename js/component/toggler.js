@@ -22,8 +22,10 @@ Component.Toggler = function(option) {
         attrSelected: 'data-selected',
         all: 'all',
         triggerSetup: null,
+        keyboardArrow: "horizontalNotInput",
         limit: null,
-        timeout: 0
+        timeout: 0,
+        loop: true
     },option);
 
 
@@ -48,7 +50,14 @@ Component.Toggler = function(option) {
                 return getAttr(this, $option.attr) === value;
             });
         },
-
+        
+        getCurrentToggler: function() {
+            const togglers = trigHdlr(this, 'toggler:getTogglers');
+            return Arr.find(togglers, function() {
+                return getAttr(this, $option.attrSelected,'int') === 1;
+            });
+        },
+        
         findTargets: function(value) {
             const targets = trigHdlr(this, 'toggler:getTargets');
             let r = Ele.filter(targets, function() {
@@ -62,22 +71,46 @@ Component.Toggler = function(option) {
         },
 
         trigger: function(type) {
+            if(type != null)
             triggerType.call(this, type);
         },
         
         setTimeout: function(timeout) {
             Integer.check(timeout);
             $option.timeout = timeout;
+        },
+        
+        findType: function(type) {
+            const current = trigHdlr(this,'toggler:getCurrentToggler');
+            const togglers = trigHdlr(this,'toggler:getTogglers');
+            const node = Nav.indexNode(type,current,togglers,$option.loop);
+            
+            return (node != null)? Ele.getAttr(node,$option.attr):null;
         }
     });
 
-
+    
+    // event
+    ael(this,'keyboardArrow:left',function(event,keyEvent,isInput) {
+        const type = trigHdlr(this,'toggler:findType','prev');
+        trigHdlr(this,'toggler:trigger',type);
+    });
+    
+    ael(this,'keyboardArrow:right',function(event,keyEvent,isInput) {
+        const type = trigHdlr(this,'toggler:findType','next');
+        trigHdlr(this,'toggler:trigger',type);
+    });
+    
+    
     // setup
     aelOnce(this, 'component:setup', function() {
         bindTogglers.call(this);
 
         if($option.triggerSetup) 
         trigHdlr(this, 'toggler:trigger', $option.triggerSetup);
+        
+        if(Ele.match(this,'[tabindex]'))
+        Component.KeyboardArrow.call(this,$option.keyboardArrow);
     });
 
 
