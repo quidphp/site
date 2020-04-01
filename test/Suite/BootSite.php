@@ -10,7 +10,6 @@ declare(strict_types=1);
  */
 
 namespace Quid\Test\Suite {
-use Quid\Lemur;
 use Quid\Site;
 use Quid\Test;
 
