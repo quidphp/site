@@ -20,6 +20,7 @@ Once installed, the **Quid\Site** namespace will be available within your PHP ap
 **QuidPHP/Site** requires the following:
 - PHP 7.3+
 - All requirements specified in [quidphp/core](https://github.com/quidphp/core)
+- Minimal browser: Internet Explorer 11
 
 ## Dependency
 **QuidPHP/Site** has the following dependencies:
