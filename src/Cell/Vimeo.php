@@ -13,7 +13,7 @@ namespace Quid\Site\Cell;
 use Quid\Lemur;
 
 // vimeo
-// class for dealing with a cell containing a vimeo video
+// class for dealing with a cell containing a Vimeo video
 class Vimeo extends Lemur\Cell\VideoAlias
 {
     // config

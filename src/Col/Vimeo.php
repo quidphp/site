@@ -14,7 +14,7 @@ use Quid\Lemur;
 use Quid\Site;
 
 // vimeo
-// class for a column containing a vimeo video
+// class for a column containing a Vimeo video
 class Vimeo extends Lemur\Col\VideoAlias
 {
     // config

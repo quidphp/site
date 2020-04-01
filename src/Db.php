@@ -13,7 +13,7 @@ namespace Quid\Site;
 use Quid\Lemur;
 
 // db
-// extended class used to query the database, adds app logic
+// extended class used to query the database, adds app config
 class Db extends Lemur\Db
 {
     // config

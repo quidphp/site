@@ -14,7 +14,7 @@ use Quid\Base;
 use Quid\Main;
 
 // office365
-// class that grants some static methods related to office365
+// class that grants some static methods related to Office365
 class Office365 extends Main\Service
 {
     // config

@@ -13,7 +13,7 @@ namespace Quid\Site\Cell;
 use Quid\Lemur;
 
 // youTube
-// class for working with a cell containing a youTube video
+// class for working with a cell containing a YouTube video
 class YouTube extends Lemur\Cell\VideoAlias
 {
     // config

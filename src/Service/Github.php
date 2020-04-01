@@ -14,7 +14,7 @@ use Quid\Base;
 use Quid\Main;
 
 // github
-// class that grants some static methods related to github
+// class that grants some static methods related to Github
 class Github extends Main\Service
 {
     // config
@@ -30,13 +30,13 @@ class Github extends Main\Service
 
 
     // allMarkdown
-    // génère le markdown pour php, js et scss
+    // génère le markdown pour php, js et css
     final public static function allMarkdown(string $namespace):array
     {
         $return = [];
         $return['php'] = static::namespaceToMarkdown($namespace);
         $return['js'] = static::assetToMarkdown('js',$namespace);
-        $return['scss'] = static::assetToMarkdown('scss',$namespace);
+        $return['css'] = static::assetToMarkdown('css',$namespace);
 
         return $return;
     }
@@ -225,7 +225,7 @@ class Github extends Main\Service
             {
                 $value = trim($value);
 
-                if(Base\Str::isStarts(['class','trait','interface','abstract','final'],$value))
+                if(Base\Str::isStarts(['class ','trait ','interface ','abstract ','final '],$value))
                 {
                     if(!empty($description))
                     $return = static::prepareDescription($description,$ucfirst);
@@ -250,9 +250,9 @@ class Github extends Main\Service
         $target = 0;
 
         if($type === 'js')
-        $target = 9;
+        $target = 7;
 
-        elseif($type === 'scss')
+        elseif($type === 'css')
         $target = 9;
 
         $array = Base\File::lines($target,1,$file);

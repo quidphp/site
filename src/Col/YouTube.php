@@ -14,7 +14,7 @@ use Quid\Lemur;
 use Quid\Site;
 
 // youTube
-// class for a column containing a youTube video
+// class for a column containing a YouTube video
 class YouTube extends Lemur\Col\VideoAlias
 {
     // config

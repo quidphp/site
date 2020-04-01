@@ -19,7 +19,7 @@ Once installed, the **Quid\Site** namespace will be available within your PHP ap
 ## Requirement
 **QuidPHP/Site** requires the following:
 - PHP 7.3+
-- All other requirements specified in [quidphp/core](https://github.com/quidphp/core)
+- All requirements specified in [quidphp/core](https://github.com/quidphp/core)
 
 ## Dependency
 **QuidPHP/Site** has the following dependencies:
@@ -28,6 +28,7 @@ Once installed, the **Quid\Site** namespace will be available within your PHP ap
 - [quidphp/orm](https://github.com/quidphp/orm) - Quid\Orm - PHP library that provides database access and a comprehensive Object-Relational Mapper
 - [quidphp/routing](https://github.com/quidphp/routing) - Quid\Routing - PHP library that provides a simple route matching and triggering procedure
 - [quidphp/core](https://github.com/quidphp/core) - Quid\Core - PHP library that provides an extendable platform to create dynamic applications
+- [quidphp/front](https://github.com/quidphp/front) - Quid\Front - Lemur JavaScript library and Scss base stylesheets.
 - [quidphp/lemur](https://github.com/quidphp/lemur) - Quid\Lemur - LemurCMS, a content management system built on top of the QuidPHP framework
 - [verot/class.upload.php](https://github.com/verot/class.upload.php) - Verot\Upload - A popular PHP class used for resizing images
 - [phpmailer/phpmailer](https://github.com/phpmailer/phpmailer) - PHPMailer\PHPMailer - The classic email sending library for PHP
@@ -38,7 +39,7 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
 
 ## Included
 **QuidPHP/Site** comes bundled with the following front-end package:
-- [tinymce/tinymce](https://github.com/tinymce/tinymce) - TinyMCE - The popular web-based WYSIWYG editor
+- [facebook/react](https://github.com/facebook/react) - React - A flexible JavaScript library for building user interfaces
 
 ## Comment
 **QuidPHP/Site** code is commented and all methods are explained. However, most of the comments are currently written in French.
@@ -47,106 +48,136 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
 
 ### Convention
 **QuidPHP/Site** is built on the following conventions:
+- *Core overloading*: This namespace overloads many classes from Quid\Core and Quid\Lemur.
+- *Auto-alias*: All class names that finishes by Alias will resolve to the existing class if no alias exists. Exemple: MyRole extents RoleAlias -> will resolve to Role if no alias is found.
 - *Traits*: Traits filenames start with an underscore (_).
-- *Coding*: No curly braces are used in a IF statement if the condition can be resolved in only one statement.
 - *Type*: Files, function arguments and return types are strict typed.
 - *Config*: A special $config static property exists in all classes. This property gets recursively merged with the parents' property on initialization.
-- *Auto-alias*: All class names that finishes by Alias will resolve to the existing class if no alias exists. Exemple: MyRole extents RoleAlias -> will resolve to Role if no alias is found.
-- *Core overloading*: This namespace overloads many classes from Quid\Core and Quid\Lemur.
+- *Coding*: No curly braces are used in a IF statement if the condition can be resolved in only one statement.
 
 ### Overview
-**QuidPHP/Site** contains 51 classes and traits. Here is an overview:
+**QuidPHP/Site** contains 59 classes and traits. Here is an overview:
+- [App](src/App)
+    - [CliClearCache](src/App/CliClearCache.php) - Class for a cli route to remove all cached data
+    - [CliClearLog](src/App/CliClearLog.php) - Class for a cli route to remove all log data
+    - [CliCompile](src/App/CliCompile.php) - Class for a cli route to compile assets (js and css)
+    - [CliPreload](src/App/CliPreload.php) - Class for a cli route to generate the preload PHP script
+    - [CliSessionGc](src/App/CliSessionGc.php) - Class for a cli route to remove expired sessions for the app
+    - [CliVersion](src/App/CliVersion.php) - Class for a version route of the app, accessible via the cli
+    - [Error](src/App/Error.php) - Abstract class for the error route of the app
+    - [Home](src/App/Home.php) - Abstract class for the home route of the app
+    - [Robots](src/App/Robots.php) - Class for the robots.txt route of the app
+    - [Sitemap](src/App/Sitemap.php) - Class for the automated sitemap.xml route of the app
 - [Boot](src/Boot.php) - Extended abstract class for the object that bootstraps the app and cms
 - [Cell](src/Cell)
-    - [GoogleMaps](src/Cell/GoogleMaps.php) - Class to work with a cell containing google maps geo-localization data
-    - [JsonForm](src/Cell/JsonForm.php) - Class to work with a cell containing a json form (advanced jsonArray)
+    - [GoogleMaps](src/Cell/GoogleMaps.php) - Class to work with a cell containing Google maps geo-localization data
+    - [JsonForm](src/Cell/JsonForm.php) - Class to work with a cell containing a json form
     - [JsonFormRelation](src/Cell/JsonFormRelation.php) - Class to manage a cell containing a relation value to another cell containing a json form
-    - [Vimeo](src/Cell/Vimeo.php) - Class for dealing with a cell containing a vimeo video
-    - [YouTube](src/Cell/YouTube.php) - Class for working with a cell containing a youTube video
+    - [Vimeo](src/Cell/Vimeo.php) - Class for dealing with a cell containing a Vimeo video
+    - [YouTube](src/Cell/YouTube.php) - Class for working with a cell containing a YouTube video
+- [Cms](src/Cms)
+    - [CliPreload](src/Cms/CliPreload.php) - Class for a cli route to generate the preload PHP script for the CMS
 - [Col](src/Col)
     - [EmailNewsletter](src/Col/EmailNewsletter.php) - Class for an email newsletter column (subscribes to a third-party newsletter)
-    - [GoogleMaps](src/Col/GoogleMaps.php) - Class for a googleMaps column, with geo-localization data
+    - [GoogleMaps](src/Col/GoogleMaps.php) - Class for a GoogleMaps column, with geo-localization data
     - [Hierarchy](src/Col/Hierarchy.php) - Class for an hierarchy column, like a website page sitemap
-    - [JsonForm](src/Col/JsonForm.php) - Class for a column containing a json form (advanced jsonArray)
+    - [JsonForm](src/Col/JsonForm.php) - Class for a column containing a json form
     - [JsonFormRelation](src/Col/JsonFormRelation.php) - Class to manage a column containing a relation value to another column which is a jsonForm
-    - [TinyMce](src/Col/TinyMce.php) - Class for a column which transforms the textarea in a simple tinymce WYSIWYG editor
-    - [TinyMceAdvanced](src/Col/TinyMceAdvanced.php) - Class for a column which transforms the textarea in a complex tinymce WYSIWYG editor
-    - [Vimeo](src/Col/Vimeo.php) - Class for a column containing a vimeo video
-    - [YouTube](src/Col/YouTube.php) - Class for a column containing a youTube video
+    - [Route](src/Col/Route.php) - Class for a column that creates an enum relation with route classes
+    - [Vimeo](src/Col/Vimeo.php) - Class for a column containing a Vimeo video
+    - [YouTube](src/Col/YouTube.php) - Class for a column containing a YouTube video
 - [Contract](src/Contract)
     - [Newsletter](src/Contract/Newsletter.php) - Interface to describe methods for a newsletter third-party service
+- [Db](src/Db.php) - Extended class used to query the database, adds app config
 - [Lang](src/Lang)
     - [En](src/Lang/En.php) - English language content used by this namespace
     - [Fr](src/Lang/Fr.php) - French language content used by this namespace
-- [Role](src/Role.php) - Extended abstract class that provides app logic for a role
-- [Route](src/Route)
-    - [ContactSubmit](src/Route/ContactSubmit.php) - Abstract class for a contact submit route
+- [Route](src/Route.php) - Extended abstract class for a route, adds app logic
     - [NewsletterSubmit](src/Route/NewsletterSubmit.php) - Abstract class for a newsletter submit route
     - [_breadcrumbs](src/Route/_breadcrumbs.php) - Trait that provides methods related to generating breadcrumbs
-    - [_generalFeed](src/Route/_generalFeed.php) - Trait that grants methods related a general feed (load more)
+    - [_general](src/Route/_general.php) - Trait that provides basic methods used for a general route
     - [_page](src/Route/_page.php) - Trait that provides basic logic for a page route
     - [_pageBreadcrumbs](src/Route/_pageBreadcrumbs.php) - Trait that provides a method related to generating breadcrumbs for a page
     - [_pageSection](src/Route/_pageSection.php) - Trait that provides basic logic for a page route within a section
-    - [_specificPointer](src/Route/_specificPointer.php) - Trait that grants methods to deal with a specific resource represent by a pointer (table/id)
-    - [_specificSlug](src/Route/_specificSlug.php) - Trait with methods to work with a specific resource represent by a URI slug
+    - [_specific](src/Route/_specific.php) - Trait that provides basic methods used for a specific route
     - [_specificSlugSection](src/Route/_specificSlugSection.php) - Trait to work with a specific resource, within a section, represent by a URI slug
-- [Row](src/Row)
-    - [Contact](src/Row/Contact.php) - Class to work with a row of the contact table, stores contact messages
+- [Row](src/Row.php) - Extended class to represent a row within a table, adds app config
     - [Media](src/Row/Media.php) - Class to work with a row of the media table, can contain medias, storages and videos
     - [Page](src/Row/Page.php) - Class for a row which represents a page
     - [Section](src/Row/Section.php) - Class for a row which represents a section containing one or many pages
-    - [_meta](src/Row/_meta.php) - Trait with methods to make a row a meta-source
+    - [User](src/Row/User.php) - Extended class for a row of the user table, with app logic
     - [_pageConfig](src/Row/_pageConfig.php) - Trait related to the configuration of a row representing a page
     - [_pageSection](src/Row/_pageSection.php) - Trait with methods to deal with a page row within a section
     - [_pageSectionConfig](src/Row/_pageSectionConfig.php) - Trait related to the configuration of a row representing a page within a section
     - [_pageSectionSlug](src/Row/_pageSectionSlug.php) - Trait related to the slug of a page within a section
     - [_sectionPages](src/Row/_sectionPages.php) - Trait related to a row representing a section which contains pages
 - [Service](src/Service)
-    - [Github](src/Service/Github.php) - Class that grants some static methods related to github
-    - [GoogleAnalytics](src/Service/GoogleAnalytics.php) - Class that provides some methods to integrate googleAnalytics tracking
-    - [GoogleGeocoding](src/Service/GoogleGeocoding.php) - Class used to make googleGeocoding localization requests
-    - [GoogleMaps](src/Service/GoogleMaps.php) - Class used to generate javascript googleMaps
-    - [IpApi](src/Service/IpApi.php) - Class that grants methods to use the ipApi API, which converts IP to localization data
-    - [Mailchimp](src/Service/Mailchimp.php) - Class that provides some methods to communication with mailchimp (subscribe to a list)
-    - [Office365](src/Service/Office365.php) - Class that grants some static methods related to office365
-    - [PdfCrowd](src/Service/PdfCrowd.php) - Class that provides some methods to communication with pdfcrowd (and generate a pdf from html)
-    - [TinyMce](src/Service/TinyMce.php) - Class that provides a method to integrate tinyMce WYSIWYG editor
-    - [Vimeo](src/Service/Vimeo.php) - Class used to make requests to the vimeo API
-    - [YouTube](src/Service/YouTube.php) - Class that can be used to make requests to the youTube API
-- [Table](src/Table.php) - Extended class to represent an existing table within a database, adds app config
+    - [Github](src/Service/Github.php) - Class that grants some static methods related to Github
+    - [GoogleAnalytics](src/Service/GoogleAnalytics.php) - Class that provides some methods to integrate GoogleAnalytics tracking
+    - [GoogleGeocoding](src/Service/GoogleGeocoding.php) - Class used to make GoogleGeocoding localization requests
+    - [GoogleMaps](src/Service/GoogleMaps.php) - Class used to generate javascript GoogleMaps
+    - [IpApi](src/Service/IpApi.php) - Class that grants methods to use the IpApi API, which converts IP to localization data
+    - [Mailchimp](src/Service/Mailchimp.php) - Class that provides some methods to communicate with Mailchimp
+    - [Office365](src/Service/Office365.php) - Class that grants some static methods related to Office365
+    - [PdfCrowd](src/Service/PdfCrowd.php) - Class that provides some methods to communicate with Pdfcrowd (and generate a pdf from html)
+    - [React](src/Service/React.php) - Class to integrate React and react components
+    - [Vimeo](src/Service/Vimeo.php) - Class used to make requests to the Vimeo API
+    - [YouTube](src/Service/YouTube.php) - Class that can be used to make requests to the YouTube API
 	
 ### Testing
 **QuidPHP/Site** contains 3 test classes:
 - [Boot](test/Boot.php) - Class for testing Quid\Site\Boot
-- [Service](test/Service.php) - Class for testing services
-- [Table](test/Table.php) - Class for testing table
+- [Db](test/Db.php) - Class for testing Quid\Site\Db
+- [Suite](test/Suite)
+    - [BootSite](test/Suite/BootSite.php) - Class for booting the Quid\Site testsuite
 
 **QuidPHP/Site** testsuite can be run by creating a new [quidphp/project](https://github.com/quidphp/project).
 
 ## JS
 
 ### Convention
-- *Strict*: All files declare *use strict* on the first line.
 - *ES5*: All code is compatible with ES5, there is no need for any JavaScript transpiler.
-- *jQuery*: All behaviours and widgets are programmed on top of the jQuery library. Many functions are connected with jQuery.fn. Custom events are used across the board, a lot of calls to the jQuery [trigger](https://api.jquery.com/trigger/) and [triggerHandler](https://api.jquery.com/triggerHandler/) methods.
-- *Include*: Some scripts are in the include folder. These scripts are used for the CMS but can also be reused within the application.
+- *Strict*: All generated files declare *use strict* on the first line.
+- *IE11*: The minimum compatible browser is IE11. Older browsers will fail non-gracefully.
+- *Compiling*: The compiling and concatenation of the JS files is done on the PHP side.
 
 ### Overview
-**QuidPHP/Site** contains 3 JavaScript files and one folder. Here is an overview:
+**QuidPHP/Site** contains 17 JavaScript files. Here is an overview:
 - [cms](js/cms)
-    - [specific.js](js/cms/specific.js) - Script of additional behaviours for the specific form page of the CMS
-- [include](js/include)
-    - [service.js](js/include/service.js) - Script containing logic for third-party services
-    - [widget.js](js/include/widget.js) - Script containing logic for some advanced widgets
-- [vendor/tinymce](js/vendor/tinymce) - TinyMCE, the popular web-based WYSIWYG editor
+    - [jsonForm.js](js/cms/jsonForm.js) - Script containing logic for the jsonForm component which is based on the addRemove input
+    - [site.js](js/cms/site.js) - Script of additional behaviours for the specific form page of the CMS
+- [component](js/component)
+    - [clickPrint.js](js/component/clickPrint.js) - Component that triggers a window print on click
+    - [clickRemove.js](js/component/clickRemove.js) - Component that removes itself on click
+    - [externalBlank.js](js/component/externalBlank.js) - Component to make all child anchors who are external as target _blank
+    - [googleAnalytics.js](js/component/googleAnalytics.js) - Script containing logic for googleAnalytics
+    - [googleMaps.js](js/component/googleMaps.js) - Script containing logic for a simple googleMaps component
+    - [hoverSlide.js](js/component/hoverSlide.js) - Component to change height of target with mouseenter/mouseleave
+    - [preload.js](js/component/preload.js) - Component to preload assets, currently only images
+    - [reactContainer.js](js/component/reactContainer.js) - Script containing logic for mounting and unmounting react components
+    - [scrollSections.js](js/component/scrollSections.js) - Script containing logic for scrolling multiple sections linked to a hash
+    - [tabsScroll.js](js/component/tabsScroll.js) - Component that adds scrolling support to tabsSlider
+    - [tabsSlider.js](js/component/tabsSlider.js) - Component that adds timeout and iframe support to the tabsNav component
+    - [toggler.js](js/component/toggler.js) - Component to toggle attributes on many elements using a trigger
+    - [video.js](js/component/video.js) - Component for a video node, currently using jwplayer
+    - [windowSmall.js](js/component/windowSmall.js) - Component to open a small window from an anchor link
+    - [wrapConsecutive.js](js/component/wrapConsecutive.js) - Component to wrap consecutive nodes of the same type in another node
 
-## SCSS
+## CSS
 
 ### Convention
-- *Mixins*: Nesting, variables and mixins are used within the SCSS stylesheets.
+- *SCSS*: Nesting, variables and mixins are used within the stylesheets.
+- *Compiling*: The compiling and concatenation of the SCSS files is done on the PHP side.
 
 ### Overview
-**QuidPHP/Site** contains 2 SCSS stylesheets. Here is an overview:
-- [cms](scss/cms)
-    - [form.scss](scss/cms/form.scss) - Stylesheet for additional form inputs in the CMS
-    - [tinymce.scss](scss/cms/tinymce.scss) - Stylesheet providing default styling for the tinymce wysiwyg editor
+**QuidPHP/Site** contains 7 CSS stylesheets. Here is an overview:
+- [cms](css/cms)
+    - [site.scss](css/cms/site.scss) - Stylesheet to bind styles to the components
+- [cms-component](css/cms-component)
+    - [emailNewsletter.scss](css/cms-component/emailNewsletter.scss) - Stylesheet for the emailNewsletter component
+    - [googleMaps.scss](css/cms-component/googleMaps.scss) - Stylesheet for the Google maps component
+    - [hierarchy.scss](css/cms-component/hierarchy.scss) - Stylesheet for the hierarchy component
+    - [jsonForm.scss](css/cms-component/jsonForm.scss) - Stylesheet for the jsonForm component
+    - [range.scss](css/cms-component/range.scss) - Stylesheet for the range component
+- [component](css/component)
+    - [tabsSlider.scss](css/component/tabsSlider.scss) - Stylesheet for the tabsSlider component

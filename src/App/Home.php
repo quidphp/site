@@ -13,7 +13,7 @@ namespace Quid\Site\App;
 use Quid\Core;
 
 // home
-// abstract class for the home route of the CMS
+// abstract class for the home route of the app
 abstract class Home extends Core\Route\Home
 {
     // config

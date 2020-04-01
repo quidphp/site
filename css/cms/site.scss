@@ -6,6 +6,9 @@
  * License: https://github.com/quidphp/lemur/blob/master/LICENSE
  */
 
+// site
+// stylesheet to bind styles to the components
+
 // jsonForm
 [data-col='jsonForm'] .specific-component {
     @include componentJsonFormSpecific();

@@ -17,7 +17,7 @@ use Quid\Lemur;
 use Quid\Site;
 
 // jsonForm
-// class for a column containing a json form (advanced jsonArray)
+// class for a column containing a json form
 class JsonForm extends Lemur\Col\JsonArrayAlias
 {
     // config

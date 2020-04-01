@@ -15,7 +15,7 @@ use Quid\Lemur;
 use Quid\Site;
 
 // cliPreload
-// class for the cli route to generate the preload PHP script
+// class for a cli route to generate the preload PHP script
 class CliPreload extends Core\Route\CliPreload
 {
     // trait

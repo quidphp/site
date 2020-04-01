@@ -13,7 +13,7 @@ namespace Quid\Site\Service;
 use Quid\Main;
 
 // googleAnalytics
-// class that provides some methods to integrate googleAnalytics tracking
+// class that provides some methods to integrate GoogleAnalytics tracking
 class GoogleAnalytics extends Main\ServiceRequest
 {
     // config

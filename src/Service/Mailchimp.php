@@ -16,7 +16,7 @@ use Quid\Main;
 use Quid\Site;
 
 // mailchimp
-// class that provides some methods to communication with mailchimp (subscribe to a list)
+// class that provides some methods to communicate with Mailchimp
 class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 {
     // access

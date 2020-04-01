@@ -5,7 +5,7 @@
  */
  
 // googleAnalytics
-// script containing logic for googleAnalytics component
+// script containing logic for googleAnalytics
 Component.GoogleAnalytics = function()
 {
     // document node

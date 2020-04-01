@@ -5,7 +5,7 @@
  */
  
 // wrapConsecutive
-// component that allows to wrap consecutive nodes of the same type in another node, usefull for wysiwyg generated content
+// component to wrap consecutive nodes of the same type in another node
 Component.WrapConsecutive = function(option)
 {
     // not empty

@@ -5,7 +5,7 @@
  */
  
 // scrollSections
-// script containing logic for scrolling related to multiple sections linked to a hash
+// script containing logic for scrolling multiple sections linked to a hash
 Component.ScrollSections = function(option) 
 {
     // option

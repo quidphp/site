@@ -14,7 +14,7 @@ use Quid\Base;
 use Quid\Main;
 
 // pdfCrowd
-// class that provides some methods to communication with pdfcrowd (and generate a pdf from html)
+// class that provides some methods to communicate with Pdfcrowd (and generate a pdf from html)
 class PdfCrowd extends Main\ServiceRequest
 {
     // config

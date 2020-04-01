@@ -14,7 +14,7 @@ use Quid\Lemur;
 use Quid\Site;
 
 // cliPreload
-// class for the cli route to generate the preload PHP script for the CMS
+// class for a cli route to generate the preload PHP script for the CMS
 class CliPreload extends Lemur\Cms\CliPreload
 {
     // config

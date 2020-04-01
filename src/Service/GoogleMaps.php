@@ -14,7 +14,7 @@ use Quid\Base;
 use Quid\Main;
 
 // googleMaps
-// class used to generate javascript googleMaps
+// class used to generate javascript GoogleMaps
 class GoogleMaps extends Main\ServiceRequest
 {
     // config

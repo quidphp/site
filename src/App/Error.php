@@ -13,7 +13,7 @@ namespace Quid\Site\App;
 use Quid\Core;
 
 // error
-// abstract class for the error route of the CMS
+// abstract class for the error route of the app
 abstract class Error extends Core\Route\Error
 {
     // config

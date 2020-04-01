@@ -15,7 +15,7 @@ use Quid\Orm;
 use Quid\Routing;
 
 // route
-// class for column that creates an enum out of a route class
+// class for a column that creates an enum relation with route classes
 class Route extends Core\Col\EnumAlias
 {
     // config

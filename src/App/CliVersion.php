@@ -13,7 +13,7 @@ namespace Quid\Site\App;
 use Quid\Core;
 
 // cliVersion
-// class for the version route of the app, accessible via the cli
+// class for a version route of the app, accessible via the cli
 class CliVersion extends Core\Route\CliVersion
 {
     // trait

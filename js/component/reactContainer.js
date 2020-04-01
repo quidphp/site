@@ -5,7 +5,7 @@
  */
 
 // reactContainer
-// script containing logic for mounting and unmounting many react components
+// script containing logic for mounting and unmounting react components
 Component.ReactContainer = function(persistent)
 {
     // not empty

@@ -14,7 +14,7 @@ use Quid\Base;
 use Quid\Lemur;
 
 // jsonForm
-// class to work with a cell containing a json form (advanced jsonArray)
+// class to work with a cell containing a json form
 class JsonForm extends Lemur\Cell\JsonArrayAlias
 {
     // config

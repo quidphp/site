@@ -14,7 +14,7 @@ use Quid\Base;
 use Quid\Main;
 
 // react
-// class to integrate react and react components
+// class to integrate React and react components
 class React extends Main\Service
 {
     // config

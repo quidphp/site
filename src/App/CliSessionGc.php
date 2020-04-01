@@ -13,7 +13,7 @@ namespace Quid\Site\App;
 use Quid\Core;
 
 // cliSessionGc
-// class for the cli route to remove expired sessions for the app
+// class for a cli route to remove expired sessions for the app
 class CliSessionGc extends Core\Route\CliSessionGc
 {
     // trait
