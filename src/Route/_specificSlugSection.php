@@ -14,7 +14,7 @@ use Quid\Core;
 use Quid\Lemur;
 
 // _specificSlugSection
-// trait to work with a specific resource, within a section, represent by a URI slug
+// trait to work with a specific resource, within a section, represent by an URI slug
 trait _specificSlugSection
 {
     // trait

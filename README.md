@@ -56,7 +56,7 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
 - *Coding*: No curly braces are used in a IF statement if the condition can be resolved in only one statement.
 
 ### Overview
-**QuidPHP/Site** contains 59 classes and traits. Here is an overview:
+**QuidPHP/Site** contains 59 classes, traits and interfaces. Here is an overview:
 - [App](src/App)
     - [CliClearCache](src/App/CliClearCache.php) - Class for a cli route to remove all cached data
     - [CliClearLog](src/App/CliClearLog.php) - Class for a cli route to remove all log data
@@ -100,7 +100,7 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
     - [_pageBreadcrumbs](src/Route/_pageBreadcrumbs.php) - Trait that provides a method related to generating breadcrumbs for a page
     - [_pageSection](src/Route/_pageSection.php) - Trait that provides basic logic for a page route within a section
     - [_specific](src/Route/_specific.php) - Trait that provides basic methods used for a specific route
-    - [_specificSlugSection](src/Route/_specificSlugSection.php) - Trait to work with a specific resource, within a section, represent by a URI slug
+    - [_specificSlugSection](src/Route/_specificSlugSection.php) - Trait to work with a specific resource, within a section, represent by an URI slug
 - [Row](src/Row.php) - Extended class to represent a row within a table, adds app config
     - [Media](src/Row/Media.php) - Class to work with a row of the media table, can contain medias, storages and videos
     - [Page](src/Row/Page.php) - Class for a row which represents a page
