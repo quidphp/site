@@ -132,7 +132,7 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
 - [Suite](test/Suite)
     - [BootSite](test/Suite/BootSite.php) - Class for booting the Quid\Site testsuite
 
-**QuidPHP/Site** testsuite can be run by creating a new [quidphp/project](https://github.com/quidphp/project).
+**QuidPHP/Site** PHP testsuite can be run by creating a new [quidphp/project](https://github.com/quidphp/project).
 
 ## JS
 

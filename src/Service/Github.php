@@ -76,7 +76,7 @@ class Github extends Main\Service
     final public static function namespaceToArray(string $namespace):?array
     {
         $return = null;
-        $path = Base\Autoload::getDirPath($namespace);
+        $path = static::getDirPath($namespace);
 
         if(!empty($path))
         {
@@ -105,7 +105,7 @@ class Github extends Main\Service
     final public static function assetsToArray(string $type,string $namespace):?array
     {
         $return = null;
-        $path = Base\Autoload::getDirPath($namespace);
+        $path = static::getDirPath($namespace);
 
         if(!empty($path))
         {
@@ -276,6 +276,27 @@ class Github extends Main\Service
 
         if($ucfirst === true)
         $return = ucfirst($return);
+
+        return $return;
+    }
+
+
+    // getDirPath
+    // permet d'obtenir le path pour le namespace
+    // code spéciale pour front qui n'a pas de namespasce PHP enregistré
+    final public static function getDirPath(string $namespace):?string
+    {
+        $return = Base\Autoload::getDirPath($namespace);
+
+        if(empty($return))
+        {
+            $last = Base\Fqcn::last($namespace);
+            if(!empty($last))
+            {
+                $vendor = "[vendor$last]/src";
+                $return = Base\Finder::shortcut($vendor);
+            }
+        }
 
         return $return;
     }
