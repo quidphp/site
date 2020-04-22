@@ -28,7 +28,11 @@ Component.Toggler = function(option) {
         loop: true
     },option);
 
-
+    
+    // component
+    Component.IndexNode.call(this,{current: 'toggler:getCurrentToggler', targets: 'toggler:getTogglers', loop: $option.loop});
+    
+    
     // nodes
     const $nodes = this;
 
@@ -81,10 +85,7 @@ Component.Toggler = function(option) {
         },
         
         findType: function(type) {
-            const current = trigHdlr(this,'toggler:getCurrentToggler');
-            const togglers = trigHdlr(this,'toggler:getTogglers');
-            const node = Nav.indexNode(type,current,togglers,$option.loop);
-            
+            const node = trigHdlr(this,'indexNode:find',type);
             return (node != null)? Ele.getAttr(node,$option.attr):null;
         }
     });
