@@ -58,7 +58,7 @@ trait _pageSection
     // retourne vrai si la section existe
     final public function sectionExists():bool
     {
-        return (!empty($this->section))? true:false;
+        return !empty($this->section);
     }
 
 

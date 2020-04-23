@@ -35,7 +35,7 @@ trait _page
     // si la route peut être lancé
     final public function canTrigger():bool
     {
-        return (parent::canTrigger() && $this->rowExists() && $this->row()->isVisible())? true:false;
+        return parent::canTrigger() && $this->rowExists() && $this->row()->isVisible();
     }
 
 
@@ -43,7 +43,7 @@ trait _page
     // retourne vrai si la row existe
     final public function rowExists():bool
     {
-        return (!empty($this->row))? true:false;
+        return !empty($this->row);
     }
 
 

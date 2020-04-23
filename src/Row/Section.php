@@ -40,7 +40,7 @@ abstract class Section extends Core\RowAlias
     // retourne vrai si la route est visible
     public function isVisible():bool
     {
-        return (parent::isVisible() && $this->hasRoute())? true:false;
+        return parent::isVisible() && $this->hasRoute();
     }
 
 
@@ -56,7 +56,7 @@ abstract class Section extends Core\RowAlias
     // retourne vrai si la section a une route
     final public function hasRoute():bool
     {
-        return (!empty($this->getRoute()))? true:false;
+        return !empty($this->getRoute());
     }
 
 

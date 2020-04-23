@@ -57,7 +57,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
                 {
                     if(!empty($v['label']) && !empty($v['type']))
                     {
-                        $v['required'] = (!empty($v['required']))? true:false;
+                        $v['required'] = (!empty($v['required']));
                         $choiceInput = static::isChoicesInput($v['type']);
 
                         if($choiceInput === true && !empty($v['choices']))
@@ -153,7 +153,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
     // retourne vrai si le input en est un avec des choix
     final public static function isChoicesInput($value):bool
     {
-        return (is_string($value) && in_array($value,static::getChoicesInput(),true))? true:false;
+        return is_string($value) && in_array($value,static::getChoicesInput(),true);
     }
 
 

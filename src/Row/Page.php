@@ -43,7 +43,7 @@ class Page extends Core\RowAlias
     // retourne vrai si la ligne a une cellule pour déterminer son parent
     final public function hasParentCell():bool
     {
-        return ($this->hasCell(static::hierarchy()))? true:false;
+        return $this->hasCell(static::hierarchy());
     }
 
 
@@ -59,7 +59,7 @@ class Page extends Core\RowAlias
     // retourne vrai si la page a un ordre
     final public function hasOrder():bool
     {
-        return ($this->hasCell('order'))? true:false;
+        return $this->hasCell('order');
     }
 
 
@@ -67,7 +67,7 @@ class Page extends Core\RowAlias
     // retourne vrai si la page n'a pas de parent
     final public function isTop():bool
     {
-        return ($this->top() === null)? true:false;
+        return $this->top() === null;
     }
 
 

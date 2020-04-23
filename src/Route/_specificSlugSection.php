@@ -41,7 +41,7 @@ trait _specificSlugSection
     // retourne vrai si la section existe
     final public function sectionExists():bool
     {
-        return ($this->section() instanceof Core\Row)? true:false;
+        return $this->section() instanceof Core\Row;
     }
 
 

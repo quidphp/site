@@ -39,7 +39,7 @@ trait _pageConfig
     // retourne vrai la route a été préparé
     final public function isRoutePrepared():bool
     {
-        return ($this->routePrepared === true)? true:false;
+        return $this->routePrepared === true;
     }
 
 
