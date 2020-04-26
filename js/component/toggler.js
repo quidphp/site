@@ -50,22 +50,22 @@ Component.Toggler = function(option) {
 
         getToggler: function(value) {
             const togglers = trigHdlr(this, 'toggler:getTogglers');
-            return Arr.find(togglers, function() {
-                return getAttr(this, $option.attr) === value;
+            return Arr.find(togglers, function(ele) {
+                return getAttr(ele, $option.attr) === value;
             });
         },
         
         getCurrentToggler: function() {
             const togglers = trigHdlr(this, 'toggler:getTogglers');
-            return Arr.find(togglers, function() {
-                return getAttr(this, $option.attrSelected,'int') === 1;
+            return Arr.find(togglers, function(ele) {
+                return getAttr(ele, $option.attrSelected,'int') === 1;
             });
         },
         
         findTargets: function(value) {
             const targets = trigHdlr(this, 'toggler:getTargets');
-            let r = Ele.filter(targets, function() {
-                return getAttr(this, $option.attr) === value || value === $option.all;
+            let r = Arr.filter(targets, function(ele) {
+                return getAttr(ele, $option.attr) === value || value === $option.all;
             });
             
             if(Integer.is($option.limit))
@@ -80,7 +80,7 @@ Component.Toggler = function(option) {
         },
         
         setTimeout: function(timeout) {
-            Integer.check(timeout);
+            Integer.typecheck(timeout);
             $option.timeout = timeout;
         },
         
@@ -131,7 +131,7 @@ Component.Toggler = function(option) {
     // triggerType
     const triggerType = function(value) 
     {
-        Str.check(value, true);
+        Str.typecheck(value, true);
         
         const togglers = trigHdlr(this, 'toggler:getTogglers');
         const targets = trigHdlr(this, 'toggler:getTargets');

@@ -30,7 +30,7 @@ Component.WrapConsecutive = function(option)
             if(Str.isNotEmpty(r))
             r = qsa(this,r);
             
-            return Arr.check(r);
+            return Arr.typecheck(r);
         },
         
         getUntil: function() {
@@ -43,7 +43,7 @@ Component.WrapConsecutive = function(option)
         },
         
         getWrap: function() {
-            return Str.check($option.wrap);
+            return Str.typecheck($option.wrap);
         },
         
         getGroup: function() {

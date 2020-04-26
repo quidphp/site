@@ -18,7 +18,7 @@ use Quid\Site;
 class Vimeo extends Lemur\Col\VideoAlias
 {
     // config
-    public static $config = [
+    public static array $config = [
         'cell'=>Site\Cell\Vimeo::class,
         'preValidate'=>['uriHost'=>'vimeo.com'],
         'group'=>'video',

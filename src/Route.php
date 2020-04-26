@@ -17,7 +17,7 @@ use Quid\Lemur;
 abstract class Route extends Lemur\Route
 {
     // config
-    public static $config = [
+    public static array $config = [
         '@app'=>[
             'jsInit'=>'Lemur.InitDoc();',
             'docOpen'=>[

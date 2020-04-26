@@ -18,7 +18,7 @@ use Quid\Main;
 class Github extends Main\Service
 {
     // config
-    public static $config = [];
+    public static array $config = [];
 
 
     // construct
@@ -87,9 +87,7 @@ class Github extends Main\Service
             {
                 $array = array_keys($array);
                 $dirPath = dirname($path);
-                $closure = function(string $file) {
-                    return static::getClassDescription($file,true);
-                };
+                $closure = fn(string $file) => static::getClassDescription($file,true);
 
                 $return = static::makeArray($array,$dirPath,$closure,true);
             }

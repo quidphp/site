@@ -18,7 +18,7 @@ use Quid\Site;
 class CliPreload extends Lemur\Cms\CliPreload
 {
     // config
-    public static $config = [
+    public static array $config = [
         'compile'=>[
             'closure'=>[
                 'from'=>[

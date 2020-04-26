@@ -18,7 +18,7 @@ use Quid\Lemur;
 class JsonForm extends Lemur\Cell\JsonArrayAlias
 {
     // config
-    public static $config = [];
+    public static array $config = [];
 
 
     // questions

@@ -17,7 +17,7 @@ use Quid\Lemur;
 class YouTube extends Lemur\Cell\VideoAlias
 {
     // config
-    public static $config = [];
+    public static array $config = [];
 }
 
 // init

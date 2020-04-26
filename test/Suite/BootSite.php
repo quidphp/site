@@ -23,7 +23,7 @@ require dirname(__FILE__,4).'/lemur/test/Suite/BootLemur.php';
 class BootSite extends Test\Suite\BootLemur
 {
     // config
-    public static $config = [
+    public static array $config = [
         'assert'=>[
             'namespaces'=>[
                 Site::class=>Test\Site::class],
@@ -52,7 +52,7 @@ use Quid\Test\Suite;
 class OrmCol extends Site\Row
 {
     // config
-    public static $config = [
+    public static array $config = [
         'cols'=>[
             'form'=>['class'=>Site\Col\Vimeo::class],
             'myVideo'=>['class'=>Site\Col\Vimeo::class],

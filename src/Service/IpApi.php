@@ -18,7 +18,7 @@ use Quid\Main;
 class IpApi extends Main\ServiceRequest
 {
     // config
-    public static $config = [
+    public static array $config = [
         'target'=>'http://ip-api.com/json/%value%' // uri target pour ipApi
     ];
 

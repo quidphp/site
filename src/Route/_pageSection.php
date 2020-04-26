@@ -21,7 +21,7 @@ trait _pageSection
 
 
     // dynamique
-    protected $section = null;
+    protected ?Site\Row\Section $section = null;
 
 
     // onMake

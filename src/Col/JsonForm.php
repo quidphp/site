@@ -21,7 +21,7 @@ use Quid\Site;
 class JsonForm extends Lemur\Col\JsonArrayAlias
 {
     // config
-    public static $config = [
+    public static array $config = [
         'complex'=>'json-form',
         'cell'=>Site\Cell\JsonForm::class
     ];

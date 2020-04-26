@@ -20,7 +20,7 @@ use Quid\Site;
 trait _pageConfig
 {
     // config
-    public static $configPageConfig = [
+    public static array $configPageConfig = [
         'route'=>[
             'app'=>[self::class,'dynamicRoute']],
         'cols'=>[
@@ -32,7 +32,7 @@ trait _pageConfig
 
 
     // dynamique
-    protected $routePrepared = false; // garde en mémoire si la route a été préparé
+    protected bool $routePrepared = false; // garde en mémoire si la route a été préparé
 
 
     // isRoutePrepared

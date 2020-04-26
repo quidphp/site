@@ -18,7 +18,7 @@ use Quid\Lemur;
 class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
 {
     // config
-    public static $config = [];
+    public static array $config = [];
 
 
     // questions

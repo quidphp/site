@@ -19,7 +19,7 @@ use Quid\Core;
 class Page extends Core\RowAlias
 {
     // config
-    public static $config = [
+    public static array $config = [
         'key'=>['slug_[lang]','slugPath_[lang]',0],
         'cols'=>[
             'slug_fr'=>[

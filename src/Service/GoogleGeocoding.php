@@ -18,7 +18,7 @@ use Quid\Main;
 class GoogleGeocoding extends Main\ServiceRequest
 {
     // config
-    public static $config = [
+    public static array $config = [
         'target'=>'https://maps.googleapis.com/maps/api/geocode/json?address=%value%&key=%key%' // uri target pour googleGeocoding
     ];
 

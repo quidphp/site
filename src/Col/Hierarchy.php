@@ -20,7 +20,7 @@ use Quid\Orm;
 class Hierarchy extends Core\Col\EnumAlias
 {
     // config
-    public static $config = [
+    public static array $config = [
         'complex'=>'hierarchy'
     ];
 

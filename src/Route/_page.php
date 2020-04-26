@@ -18,7 +18,7 @@ use Quid\Site;
 trait _page
 {
     // dynamique
-    protected $row = null;
+    protected ?Core\Row $row = null;
 
 
     // onMake

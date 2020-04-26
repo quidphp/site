@@ -20,7 +20,7 @@ use Quid\Main;
 class Media extends Core\RowAlias
 {
     // config
-    public static $config = [
+    public static array $config = [
         'relation'=>[
             'method'=>'relationOutput','separator'=>'<br/>','order'=>['dateAdd'=>'desc'],'output'=>'name_fr'],
         'videoProvider'=>['youTube','vimeo'] // custom, service pour la vidéo

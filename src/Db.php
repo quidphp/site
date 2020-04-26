@@ -17,7 +17,7 @@ use Quid\Lemur;
 class Db extends Lemur\Db
 {
     // config
-    public static $config = [
+    public static array $config = [
         'cols'=>[
             'googleMaps'=>['class'=>Col\GoogleMaps::class,'panel'=>'localization'],
             'youTube'=>['class'=>Col\YouTube::class,'general'=>false,'panel'=>'media'],

@@ -44,7 +44,7 @@ Component.Video = function(option)
             if(Str.isNotEmpty(r))
             r = qs(this,r);
 
-            return Ele.check(r);
+            return Ele.typecheck(r);
         },
         
         hasPlayer: function() {

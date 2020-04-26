@@ -17,7 +17,7 @@ use Quid\Base;
 trait _general
 {
     // config
-    public static $configSpecific = [
+    public static array $configSpecific = [
         'group'=>'general'
     ];
 

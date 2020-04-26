@@ -22,7 +22,7 @@ use Quid\Site;
 class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 {
     // config
-    public static $config = [
+    public static array $config = [
         'cell'=>Site\Cell\JsonFormRelation::class,
         'onExport'=>[self::class,'jsonFormExport']
     ];

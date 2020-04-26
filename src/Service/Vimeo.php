@@ -18,7 +18,7 @@ use Quid\Main;
 class Vimeo extends Main\ServiceVideo
 {
     // config
-    public static $config = [
+    public static array $config = [
         'required'=>['provider_url','video_id','html'],
         'video'=>[
             'name'=>'title',

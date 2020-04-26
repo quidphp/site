@@ -17,7 +17,7 @@ use Quid\Lemur;
 class En extends Lemur\Lang\En
 {
     // config
-    public static $config = [
+    public static array $config = [
 
         // newsletter
         'newsletter'=>[

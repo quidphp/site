@@ -17,7 +17,7 @@ use Quid\Main;
 class GoogleAnalytics extends Main\ServiceRequest
 {
     // config
-    public static $config = [
+    public static array $config = [
         'uri'=>'https://www.google-analytics.com/analytics.js' // uri vers les cript analytics
     ];
 

@@ -24,7 +24,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
 
     // config
-    public static $config = [
+    public static array $config = [
         'target'=>'https://%server%.api.mailchimp.com/2.0/%method%.json', // uri target pour mailchimp
         'ping'=>2, // s'il y a un ping avant la requête
         'responseCode'=>[200,500], // le code de réponse peut être 200 ou 500

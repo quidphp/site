@@ -56,7 +56,7 @@ trait _sectionPages
     // retourne toutes les sections qui s'affichent dans le menu
     final public static function rowsInMenu():Core\Rows
     {
-        return static::rowsVisibleOrder()->filter(['inMenu'=>true]);
+        return static::rowsVisibleOrder()->filter(fn($row) => $row->inMenu());
     }
 }
 ?>

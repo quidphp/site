@@ -57,8 +57,8 @@ Component.ScrollSections = function(option)
             hashes.push('');
             
             const all = qsa(this,"a[href*='#']");
-            const anchors = Arr.filter(all,function() {
-                return Arr.in(this.hash,hashes);
+            const anchors = Arr.filter(all,function(ele) {
+                return Arr.in(ele.hash,hashes);
             });
             
             toggleClass(all,$option.anchorClass,false);

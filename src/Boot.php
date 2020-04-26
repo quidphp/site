@@ -17,7 +17,7 @@ use Quid\Lemur;
 abstract class Boot extends Lemur\Boot
 {
     // config
-    public static $config = [
+    public static array $config = [
         'types'=>['app','cms'],
         'finderShortcut'=>[
             'vendorSite'=>'[vendor]/quidphp/site'],

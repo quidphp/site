@@ -18,7 +18,7 @@ use Quid\Main;
 class YouTube extends Main\ServiceVideo
 {
     // config
-    public static $config = [
+    public static array $config = [
         'required'=>['provider_url','thumbnail_url','html'],
         'video'=>[
             'name'=>'title',

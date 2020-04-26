@@ -25,7 +25,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
 
     // config
-    public static $config = [
+    public static array $config = [
         'path'=>[
             'en'=>'newsletter/subscribe',
             'fr'=>'infolettre/enregistrement'],
@@ -43,7 +43,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
 
     // dynamique
-    protected $duplicate = false; // détermine si la raison de l'échec est un duplicata
+    protected bool $duplicate = false; // détermine si la raison de l'échec est un duplicata
 
 
     // onSuccess

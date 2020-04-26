@@ -18,7 +18,7 @@ use Quid\Core;
 abstract class Section extends Core\RowAlias
 {
     // config
-    public static $config = [
+    public static array $config = [
         'priority'=>1,
         '@app'=>[
             'route'=>[ // méthode pour générer la route de la section

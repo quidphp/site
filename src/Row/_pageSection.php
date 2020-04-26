@@ -15,8 +15,8 @@ namespace Quid\Site\Row;
 // trait with methods to deal with a page row within a section
 trait _pageSection
 {
-    // dynamic
-    protected $sectionGrabbed = false; // garde en mémoire si les sections ont été chargés au moins une fois
+    // dynamique
+    protected bool $sectionGrabbed = false; // garde en mémoire si la section a été grab
 
 
     // hasSection

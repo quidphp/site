@@ -18,7 +18,7 @@ use Quid\Site;
 class YouTube extends Lemur\Col\VideoAlias
 {
     // config
-    public static $config = [
+    public static array $config = [
         'cell'=>Site\Cell\YouTube::class,
         'preValidate'=>['uriHost'=>['youtube.com','www.youtube.com']],
         'service'=>Site\Service\YouTube::class // custom, classe du service utilisé
