@@ -19,7 +19,7 @@ use Quid\Core;
 class Page extends Core\RowAlias
 {
     // config
-    public static array $config = [
+    protected static array $config = [
         'key'=>['slug_[lang]','slugPath_[lang]',0],
         'cols'=>[
             'slug_fr'=>[
@@ -361,7 +361,7 @@ class Page extends Core\RowAlias
 
         $prepend = static::getSlugPrepend($col,$row,$cell);
         if(!empty($prepend))
-        $return = Base\Arr::append($prepend,$return);
+        $return = Base\Arr::merge($prepend,$return);
 
         return $return;
     }

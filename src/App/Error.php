@@ -17,7 +17,7 @@ use Quid\Core;
 abstract class Error extends Core\Route\Error
 {
     // config
-    public static array $config = [];
+    protected static array $config = [];
 }
 
 // init

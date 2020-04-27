@@ -18,7 +18,7 @@ use Quid\Main;
 class Github extends Main\Service
 {
     // config
-    public static array $config = [];
+    protected static array $config = [];
 
 
     // construct

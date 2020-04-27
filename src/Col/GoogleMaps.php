@@ -22,7 +22,7 @@ use Quid\Site;
 class GoogleMaps extends Core\ColAlias
 {
     // config
-    public static array $config = [
+    protected static array $config = [
         'tag'=>'textarea',
         'cell'=>Site\Cell\GoogleMaps::class,
         'required'=>true,

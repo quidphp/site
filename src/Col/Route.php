@@ -19,7 +19,7 @@ use Quid\Routing;
 class Route extends Core\Col\EnumAlias
 {
     // config
-    public static array $config = [
+    protected static array $config = [
         'editable'=>['role'=>['>='=>70]],
         'required'=>true,
         'relation'=>[self::class,'getRoutes'],

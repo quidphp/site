@@ -17,7 +17,7 @@ use Quid\Lemur;
 class User extends Lemur\Row\User
 {
     // config
-    public static array $config = [
+    protected static array $config = [
         'permission'=>[
             '*'=>['appLogin'=>false]]
     ];

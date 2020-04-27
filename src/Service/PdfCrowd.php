@@ -18,7 +18,7 @@ use Quid\Main;
 class PdfCrowd extends Main\ServiceRequest
 {
     // config
-    public static array $config = [
+    protected static array $config = [
         'target'=>'http://api.pdfcrowd.com/convert/', // uri target pour PdfCrowd
         'responseCode'=>null,
         'post'=>[ // données post par défaut

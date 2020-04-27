@@ -18,7 +18,7 @@ use Quid\Main;
 class React extends Main\Service
 {
     // config
-    public static array $config = [
+    protected static array $config = [
         'class'=>'react-component', // classe par défaut pour les components
         'id'=>true, // ajoute un id par défaut
         'namespace'=>'Lemur.Component' // object globale js ou se trouve le component

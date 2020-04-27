@@ -17,7 +17,7 @@ use Quid\Lemur;
 class Row extends Lemur\Row
 {
     // config
-    public static array $config = [
+    protected static array $config = [
         '@app'=>[
             'where'=>true,
             'search'=>false,

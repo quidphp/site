@@ -20,7 +20,7 @@ use Quid\Main;
 class Media extends Core\RowAlias
 {
     // config
-    public static array $config = [
+    protected static array $config = [
         'relation'=>[
             'method'=>'relationOutput','separator'=>'<br/>','order'=>['dateAdd'=>'desc'],'output'=>'name_fr'],
         'videoProvider'=>['youTube','vimeo'] // custom, service pour la vidéo
@@ -87,13 +87,13 @@ class Media extends Core\RowAlias
         $return = [];
 
         if($this->hasCell('medias'))
-        $return = Base\Arr::append($return,$this->mediasArray());
+        $return = Base\Arr::merge($return,$this->mediasArray());
 
         if($this->hasCell('storages'))
-        $return = Base\Arr::append($return,$this->storagesArray());
+        $return = Base\Arr::merge($return,$this->storagesArray());
 
         if(!empty($this->videoProvider()))
-        $return = Base\Arr::append($return,$this->videosArray());
+        $return = Base\Arr::merge($return,$this->videosArray());
 
         return $return;
     }

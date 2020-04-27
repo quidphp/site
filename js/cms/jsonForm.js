@@ -28,8 +28,8 @@ Component.JsonForm = function(option)
         const $this = this;
         const items = trigHdlr(this,'addRemove:getItems');
         
-        Arr.each(items,function() {
-            bindElement.call($this,this);
+        Arr.each(items,function(ele) {
+            bindElement.call($this,ele);
         });
     });
     

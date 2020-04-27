@@ -17,7 +17,7 @@ use Quid\Core;
 abstract class Home extends Core\Route\Home
 {
     // config
-    public static array $config = [];
+    protected static array $config = [];
 }
 
 // init

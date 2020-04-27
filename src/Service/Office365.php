@@ -18,7 +18,7 @@ use Quid\Main;
 class Office365 extends Main\Service
 {
     // config
-    public static array $config = [
+    protected static array $config = [
         'uri'=>'https://outlook.office.com/owa/'
     ];
 

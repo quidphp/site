@@ -17,7 +17,7 @@ use Quid\Lemur;
 class Vimeo extends Lemur\Cell\VideoAlias
 {
     // config
-    public static array $config = [];
+    protected static array $config = [];
 }
 
 // init

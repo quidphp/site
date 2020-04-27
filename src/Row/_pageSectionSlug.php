@@ -21,7 +21,7 @@ trait _pageSectionSlug
 
 
     // config
-    public static array $configSectionSlug = [
+    protected static array $configSectionSlug = [
         'cols'=>[
             'slug_fr'=>['slug'=>[self::class,'makeSlug'],'exists'=>false],
             'slug_en'=>['slug'=>[self::class,'makeSlug'],'exists'=>false],

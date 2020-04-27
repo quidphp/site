@@ -52,11 +52,11 @@ Component.WrapConsecutive = function(option)
             const until = trigHdlr(this,'wrapConsecutive:getUntil');
             const found = [];
             
-            Arr.each(targets,function() {
-                if(!Arr.in(this,found))
+            Arr.each(targets,function(ele) {
+                if(!Arr.in(ele,found))
                 {
-                    const nextUntil = Ele.nexts(this,null,until);
-                    const nodes = Arr.merge([],this,nextUntil);
+                    const nextUntil = Ele.nexts(ele,null,until);
+                    const nodes = Arr.merge([],ele,nextUntil);
                     Arr.mergeRef(found,nodes);
                     r.push(nodes);
                 }
@@ -79,8 +79,8 @@ Component.WrapConsecutive = function(option)
         const group = trigHdlr(this,'wrapConsecutive:getGroup');
         const wrap = trigHdlr(this,'wrapConsecutive:getWrap');
         
-        Arr.each(group,function() {
-            Ele.wrapAll(this,wrap);
+        Arr.each(group,function(ele) {
+            Ele.wrapAll(ele,wrap);
         });
     }
     

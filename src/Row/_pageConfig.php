@@ -20,7 +20,7 @@ use Quid\Site;
 trait _pageConfig
 {
     // config
-    public static array $configPageConfig = [
+    protected static array $configPageConfig = [
         'route'=>[
             'app'=>[self::class,'dynamicRoute']],
         'cols'=>[

@@ -20,7 +20,7 @@ use Quid\Site;
 class EmailNewsletter extends Core\Col\EmailAlias
 {
     // config
-    public static array $config = [
+    protected static array $config = [
         'service'=>'newsletter' // custom, nom du service d'infolettre
     ];
 

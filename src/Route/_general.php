@@ -17,7 +17,7 @@ use Quid\Base;
 trait _general
 {
     // config
-    public static array $configSpecific = [
+    protected static array $configSpecific = [
         'group'=>'general'
     ];
 
@@ -42,7 +42,7 @@ trait _general
 
         $key = [$class];
         if($navKey !== null)
-        $key = Base\Arr::append($key,$navKey);
+        $key = Base\Arr::merge($key,$navKey);
 
         $route = static::session()->nav()->route($key);
 
