@@ -27,8 +27,10 @@ class Hierarchy extends Core\Col\EnumAlias
 
     // onSet
     // gère la logique onSet pour hierarchy
-    final protected function onSet($return,array $row,?Orm\Cell $cell=null,array $option)
+    final protected function onSet($return,?Orm\Cell $cell=null,array $row,array $option)
     {
+        $return = parent::onSet($return,$cell,$row,$option);
+
         if($return === 0)
         $return = null;
 

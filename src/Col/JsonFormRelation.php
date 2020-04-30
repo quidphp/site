@@ -43,13 +43,12 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 
     // onGet
     // logique onGet pour un champ jsonFormRelation
-    final protected function onGet($return,array $option)
+    final protected function onGet($return,?Orm\Cell $cell=null,array $option)
     {
-        if(!empty($option['context']) && $option['context'] === 'cms:general' && $return instanceof Core\Cell)
-        $return = ($return->areAnswersValid())? $return->answersString(' | '):null;
+        $return = parent::onGet($return,$cell,$option);
 
-        else
-        $return = parent::onGet($return,$option);
+        if(!emoty($cell) && !empty($option['context']) && $option['context'] === 'cms:general')
+        $return = ($cell->areAnswersValid())? $cell->answersString(' | '):null;
 
         return $return;
     }
@@ -58,7 +57,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
     // onSet
     // gère la logique onSet pour jsonFormRelation
     // prepare est utilisé sur le tableau
-    final protected function onSet($return,array $row,?Orm\Cell $cell=null,array $option)
+    final protected function onSet($return,?Orm\Cell $cell=null,array $row,array $option)
     {
         if(is_array($return))
         $return = $this->prepare($return);
@@ -81,7 +80,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
             $return = null;
         }
 
-        $return = parent::onSet($return,$row,$cell,$option);
+        $return = parent::onSet($return,$cell,$row,$option);
 
         return $return;
     }
