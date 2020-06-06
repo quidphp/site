@@ -47,7 +47,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
     {
         $return = parent::onGet($return,$cell,$option);
 
-        if(!emoty($cell) && !empty($option['context']) && $option['context'] === 'cms:general')
+        if(!empty($cell) && !empty($option['context']) && $option['context'] === 'cms:general')
         $return = ($cell->areAnswersValid())? $cell->answersString(' | '):null;
 
         return $return;

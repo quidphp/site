@@ -36,8 +36,6 @@ class GoogleMaps extends Core\ColAlias
     // sur onGet, retourne l'objet de localization
     final protected function onGet($return,?Orm\Cell $cell=null,array $option)
     {
-        $return = parent::onGet($return,$cell,$option);
-
         if(Base\Json::is($return))
         $return = Main\Localization::newOverload($return);
 
@@ -49,7 +47,6 @@ class GoogleMaps extends Core\ColAlias
     // gère la logique onSet pour googleMaps
     final protected function onSet($return,?Orm\Cell $cell=null,array $row,array $option)
     {
-        $return = parent::onSet($return,$cell,$row,$option);
         $hasChanged = true;
 
         if(!empty($cell))
@@ -86,7 +83,7 @@ class GoogleMaps extends Core\ColAlias
     final public function formComplex($value=true,?array $attr=null,?array $option=null):string
     {
         $return = '';
-        $value = $this->onGet($value,null,(array) $option);
+        $value = $this->get($value,$option);
 
         if($value instanceof Main\Localization)
         {

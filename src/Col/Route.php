@@ -34,8 +34,6 @@ class Route extends Core\Col\EnumAlias
     // va retourner le nom de la classe à partir de l'index
     final protected function onGet($return,?Orm\Cell $cell=null,array $option)
     {
-        $return = parent::onGet($return,$cell,$option);
-
         if(!empty($cell) && is_string($return))
         {
             $routes = $this->routes();

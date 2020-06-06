@@ -39,11 +39,14 @@ Component.TabsSlider = function(option)
     const bindIframe = function()
     {
         ael(this,'tabs:beforeChange',function(event,tab,oldTab) {
-            const iframe = qs(oldTab,'iframe');
-            if(iframe != null)
+            if(oldTab != null)
             {
-                const src = getAttr(iframe,'src');
-                setAttr(iframe,'src',src);
+                const iframe = qs(oldTab,'iframe');
+                if(iframe != null)
+                {
+                    const src = getAttr(iframe,'src');
+                    setAttr(iframe,'src',src);
+                }
             }
         });
     }

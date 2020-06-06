@@ -85,7 +85,7 @@ trait _pageConfig
         if(!empty($dynamic))
         {
             $dynamic = (array) $dynamic;
-            $return = $return->not(...$dynamic);
+            $return = $return->filterReject(...$dynamic);
         }
 
         return $return;
