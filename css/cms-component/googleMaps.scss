@@ -14,13 +14,12 @@
 @mixin componentGoogleMapsGeneral() {
     min-width: 250px;
     padding: 0;
-    
+
     > .map-render {
         min-height: 100px;
         background-color: $gray;
     }
 }
-
 
 // componentGoogleMapsSpecific
 // component pour le champ googleMaps du formulaire
