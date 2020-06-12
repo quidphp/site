@@ -25,6 +25,9 @@
 }
 
 // googleMaps
+[data-col='googleMaps'] .general-component {
+    @include componentGoogleMapsGeneral();
+}
 [data-col='googleMaps'] .specific-component {
     @include componentGoogleMapsSpecific();
 }
@@ -37,4 +40,9 @@
 // range
 [data-col='range'] .specific-component {
     @include componentRange();
+}
+
+// video
+[data-cell='video'] .general-component {
+    @include componentVideoGeneral();
 }

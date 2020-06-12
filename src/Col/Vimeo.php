@@ -19,10 +19,8 @@ class Vimeo extends Lemur\Col\VideoAlias
 {
     // config
     protected static array $config = [
-        'cell'=>Site\Cell\Vimeo::class,
         'preValidate'=>['uriHost'=>'vimeo.com'],
-        'group'=>'video',
-        'service'=>Site\Service\Vimeo::class // custom, classe du service utilisé
+        'services'=>[Site\Service\Vimeo::class] // custom, classe du service utilisé
     ];
 }
 

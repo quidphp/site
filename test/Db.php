@@ -101,7 +101,7 @@ class Db extends Base\Test
         // jsonFormRelation
 
         // vimeo
-        assert($vimeo instanceof Site\Cell\Vimeo);
+        assert($vimeo->col() instanceof Site\Col\Vimeo);
         assert($vimeo->formComplex() === "<input maxlength='65535' name='vimeo' placeholder='NULL' type='text'/>");
         assert(strlen($vimeo->specificComponentWrap()) === 171);
 

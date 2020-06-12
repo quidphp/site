@@ -47,14 +47,6 @@ class Page extends Core\RowAlias
     }
 
 
-    // hasSection
-    // retourne vrai si la page a une section
-    public function hasSection():bool
-    {
-        return false;
-    }
-
-
     // hasOrder
     // retourne vrai si la page a un ordre
     final public function hasOrder():bool
@@ -329,7 +321,7 @@ class Page extends Core\RowAlias
 
     // getSlugPrepend
     // retourne le contenu à mettre avant le slug de la page
-    // cette méthode peut être étendu, par exemple pour mettre une section ou les parents
+    // cette méthode peut être étendu, par exemple pour mettre les parents
     public static function getSlugPrepend(Core\Col $col,array $row,?Core\Cell $cell=null):?Core\Cell
     {
         return null;

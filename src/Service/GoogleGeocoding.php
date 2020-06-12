@@ -38,6 +38,7 @@ class GoogleGeocoding extends Main\ServiceRequest
     {
         $return = null;
         $value = $this->prepareValue($value);
+
         $request = $this->request($value);
         $response = $request->trigger();
         $json = $response->body(true);

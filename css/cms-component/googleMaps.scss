@@ -9,6 +9,19 @@
 // googleMaps
 // stylesheet for the Google maps component
 
+// componentGoogleMapsGeneral
+// component pour le champ googleMaps dans le tableau général
+@mixin componentGoogleMapsGeneral() {
+    min-width: 250px;
+    padding: 0;
+    
+    > .map-render {
+        min-height: 100px;
+        background-color: $gray;
+    }
+}
+
+
 // componentGoogleMapsSpecific
 // component pour le champ googleMaps du formulaire
 @mixin componentGoogleMapsSpecific() {

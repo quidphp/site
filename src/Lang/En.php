@@ -31,9 +31,7 @@ class En extends Lemur\Lang\En
 
             // label
             'label'=>[
-                'media'=>'Media',
-                'page'=>'Page',
-                'section'=>'Section']
+                'page'=>'Page']
         ],
 
         // col
@@ -133,9 +131,7 @@ class En extends Lemur\Lang\En
 
                 // description
                 'description'=>[
-                    'media'=>'Manages media like photos, videos and files.',
-                    'page'=>'Pages accessible via the application',
-                    'section'=>'Page grouping']
+                    'page'=>'Pages accessible via the application']
             ],
 
             // col
@@ -149,12 +145,6 @@ class En extends Lemur\Lang\En
                         'googleMaps'=>'Enter a full address as in Google Maps, use commas',
                         'youTube'=>'Enter a full YouTube URL',
                         'vimeo'=>'Enter a full Vimeo URL',
-                    ],
-
-                    // section
-                    'section'=>[
-                        'page_id'=>'Root page of the section',
-                        'page_ids'=>'First-level pages of the section'
                     ],
 
                     // page

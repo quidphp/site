@@ -31,9 +31,7 @@ class Fr extends Lemur\Lang\Fr
 
             // label
             'label'=>[
-                'media'=>'Médiathèque',
-                'page'=>'Page',
-                'section'=>'Section']
+                'page'=>'Page']
         ],
 
         // col
@@ -45,6 +43,7 @@ class Fr extends Lemur\Lang\Fr
                 // *
                 '*'=>[
                     'googleMaps'=>'Géo-localisation',
+                    'embed'=>'Vidéo',
                     'youTube'=>'YouTube',
                     'vimeo'=>'Vimeo',
                     'newsletter'=>'Infolettre'
@@ -133,9 +132,7 @@ class Fr extends Lemur\Lang\Fr
 
                 // description
                 'description'=>[
-                    'media'=>'Gère les médias comme les photos, vidéos et fichiers.',
-                    'page'=>"Pages accessibles via l'application",
-                    'section'=>'Regroupement de pages']
+                    'page'=>"Pages accessibles via l'application"]
             ],
 
             // col
@@ -147,14 +144,9 @@ class Fr extends Lemur\Lang\Fr
                     // *
                     '*'=>[
                         'googleMaps'=>'Entrer une adresse complète comme dans Google Maps, utiliser des virgules.',
+                        'embed'=>'Entrer une URL YouTube ou Vimeo',
                         'youTube'=>'Entrer une URL YouTube complète',
                         'vimeo'=>'Entrer une URL Vimeo complète'
-                    ],
-
-                    // section
-                    'section'=>[
-                        'page_id'=>'Spécifie la page racine de la section',
-                        'page_ids'=>'Spécifie les pages de premier niveau de la section'
                     ],
 
                     // page

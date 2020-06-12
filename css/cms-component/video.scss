@@ -1,0 +1,17 @@
+// compileOnSave: false
+
+/*
+ * This file is part of the QuidPHP package.
+ * Website: https://quidphp.com
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
+ */
+
+// video
+// stylesheet for the video component
+
+// componentVideoGeneral
+// component pour la cellule générale d'un vidéo
+@mixin componentVideoGeneral() {
+    min-width: 250px;
+    padding: 0;
+}

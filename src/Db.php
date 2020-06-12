@@ -20,6 +20,7 @@ class Db extends Lemur\Db
     protected static array $config = [
         'cols'=>[
             'googleMaps'=>['class'=>Col\GoogleMaps::class,'panel'=>'localization'],
+            'embed'=>['class'=>Col\Embed::class,'general'=>false,'panel'=>'media'],
             'youTube'=>['class'=>Col\YouTube::class,'general'=>false,'panel'=>'media'],
             'vimeo'=>['class'=>Col\Vimeo::class,'general'=>false,'panel'=>'media']]
     ];

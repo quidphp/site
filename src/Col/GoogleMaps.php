@@ -28,7 +28,9 @@ class GoogleMaps extends Core\ColAlias
         'required'=>true,
         'search'=>false,
         'check'=>['kind'=>'text'],
-        'service'=>'googleGeocoding' // custom, clé du service utilisé
+        'service'=>'googleGeocoding', // custom, clé du service utilisé
+        '@cms'=>[
+            'generalExcerptMin'=>null]
     ];
 
 
@@ -36,8 +38,17 @@ class GoogleMaps extends Core\ColAlias
     // sur onGet, retourne l'objet de localization
     final protected function onGet($return,?Orm\Cell $cell=null,array $option)
     {
-        if(Base\Json::is($return))
-        $return = Main\Localization::newOverload($return);
+        if(!empty($return) && !empty($option['context']) && $option['context'] === 'cms:general' && !empty($cell))
+        $return = $cell->html();
+
+        else
+        {
+            if(Base\Json::is($return))
+            $return = Main\Localization::newOverload($return);
+
+            if(!empty($return) && !empty($option['context']) && $option['context'] === 'cms:general' && $return instanceof Main\Localization)
+            $return = $return->html();
+        }
 
         return $return;
     }

@@ -13,17 +13,17 @@ namespace Quid\Site\Col;
 use Quid\Lemur;
 use Quid\Site;
 
-// youTube
-// class for a column containing a YouTube video
-class YouTube extends Lemur\Col\VideoAlias
+// embed
+// class for a column containing an embed video (from youtube or vimeo)
+class Embed extends Lemur\Col\VideoAlias
 {
     // config
     protected static array $config = [
-        'preValidate'=>['uriHost'=>['youtube.com','www.youtube.com']],
-        'services'=>[Site\Service\YouTube::class] // custom, classe du service utilisé
+        'preValidate'=>['uriHost'=>['youtube.com','www.youtube.com','vimeo.com']],
+        'services'=>[Site\Service\YouTube::class,Site\Service\Vimeo::class] // custom, classe du service utilisé
     ];
 }
 
 // init
-YouTube::__init();
+Embed::__init();
 ?>

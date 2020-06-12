@@ -25,6 +25,7 @@ class YouTube extends Main\ServiceVideo
             'absolute'=>[self::class,'videoAbsolute'],
             'thumbnail'=>'thumbnail_url',
             'html'=>'html'],
+        'hostsValid'=>['youtube.com','www.youtube.com'],
         'target'=>'https://www.youtube.com/oembed?url=%value%&format=json' // uri target pour youTube
     ];
 

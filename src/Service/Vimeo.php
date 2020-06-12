@@ -27,6 +27,7 @@ class Vimeo extends Main\ServiceVideo
             'absolute'=>[self::class,'videoAbsolute'],
             'thumbnail'=>'thumbnail_url',
             'html'=>'html'],
+        'hostsValid'=>['vimeo.com'],
         'target'=>'https://vimeo.com/api/oembed.json?url=%value%' // uri target pour vimeo
     ];
 
