@@ -106,6 +106,14 @@ class GoogleMaps extends Core\CellAlias
 
         return $return;
     }
+
+
+    // generalOutput
+    // génère le output général pour une cellule googleMaps
+    final public function generalOutput(array $option):?string
+    {
+        return $this->html();
+    }
 }
 
 // init

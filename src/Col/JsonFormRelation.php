@@ -41,19 +41,6 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
     }
 
 
-    // onGet
-    // logique onGet pour un champ jsonFormRelation
-    final protected function onGet($return,?Orm\Cell $cell=null,array $option)
-    {
-        $return = parent::onGet($return,$cell,$option);
-
-        if(!empty($cell) && !empty($option['context']) && $option['context'] === 'cms:general')
-        $return = ($cell->areAnswersValid())? $cell->answersString(' | '):null;
-
-        return $return;
-    }
-
-
     // onSet
     // gère la logique onSet pour jsonFormRelation
     // prepare est utilisé sur le tableau

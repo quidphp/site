@@ -111,6 +111,14 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
 
         return $return;
     }
+
+
+    // generalOutput
+    // génère le output général pour une cellule jsonFormRelation
+    final public function generalOutput(array $option):?string
+    {
+        return ($this->areAnswersValid())? $this->answersString(' | '):null;
+    }
 }
 
 // init
