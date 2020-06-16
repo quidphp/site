@@ -27,6 +27,7 @@ class GoogleMaps extends Core\ColAlias
         'cell'=>Site\Cell\GoogleMaps::class,
         'required'=>true,
         'search'=>false,
+        'detailMaxLength'=>false,
         'check'=>['kind'=>'text'],
         'service'=>'googleGeocoding', // custom, clé du service utilisé
         '@cms'=>[
