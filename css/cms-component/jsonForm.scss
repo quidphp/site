@@ -24,23 +24,23 @@
         .table {
             height: auto;
         }
-        
+
         .label-cell {
             width: 150px;
             padding-right: 15px;
         }
-        
+
         textarea {
             height: 75px;
         }
-        
+
         .model-form-element {
             display: none;
-            
+
             &.type {
                 display: block;
             }
-            
+
             &[data-visible='1'] {
                 display: block;
                 padding-top: 10px;
