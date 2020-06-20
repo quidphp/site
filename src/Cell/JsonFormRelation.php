@@ -26,24 +26,25 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
     final public function questions():?array
     {
         $return = null;
-        $row = $this->relationRow();
+        $cell = $this->relationCell();
 
-        if(!empty($row))
-        $return = $row->questions();
+        if(!empty($cell))
+        $return = $cell->questions();
 
         return $return;
     }
 
 
-    // formInfo
-    // retourne les données complêtes du formulaire
-    final public function formInfo():?array
+    // getData
+    // retourne les données complêtes du formulaire soumis
+    final public function getData():?array
     {
         $return = null;
+        $toCell = $this->toCell();
         $row = $this->relationRow();
 
         if(!empty($row))
-        $return = $row->formInfo();
+        $return = $row[$toCell]->get();
 
         return $return;
     }
@@ -52,21 +53,21 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
     // answers
     // retourne les réponses au formulaire sous forme de tableau unidimensionnel
     // le label de la question est la clé
-    final public function answers():array
+    final public function answers():?array
     {
         $return = null;
-        $infos = $this->formInfo();
+        $datas = $this->getData();
         $get = $this->get();
 
-        if(!empty($infos) && !empty($get))
+        if(!empty($datas) && !empty($get))
         {
             $return = [];
 
             foreach ($get as $i => $answer)
             {
-                if(array_key_exists($i,$infos) && !empty($infos[$i]['label']))
+                if(array_key_exists($i,$datas) && !empty($datas[$i]['label']))
                 {
-                    $question = $infos[$i];
+                    $question = $datas[$i];
 
                     if(Base\Html::isRelationTag($question['type']) && is_array($question['choices']))
                     {
@@ -103,10 +104,13 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
     final public function areAnswersValid():bool
     {
         $return = false;
-        $form = $this->relationRow();
+        $cell = $this->relationCell();
         $get = $this->get();
 
-        if(!empty($form) && !empty($get) && $form->areAnswersValid($get))
+        if(is_array($get))
+        $get = Base\Arr::clean($get);
+
+        if(!empty($cell) && !empty($get) && $cell->areAnswersValid($get))
         $return = true;
 
         return $return;

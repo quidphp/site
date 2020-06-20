@@ -23,7 +23,17 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
     // config
     protected static array $config = [
         'complex'=>'json-form',
-        'cell'=>Site\Cell\JsonForm::class
+        'cell'=>Site\Cell\JsonForm::class,
+        'formFields'=>['label','description','required','minLength','maxLength','choices'],
+        'typesGroup'=>[
+            'all'=>['inputText','textarea','select','radio','checkbox','inputFile','separator']],
+        'fieldsType'=>[
+            'label'=>['inputText','textarea','select','radio','checkbox','inputFile','separator'],
+            'description'=>['inputText','textarea','select','radio','checkbox','inputFile','separator'],
+            'required'=>['inputText','textarea','select','radio','checkbox','inputFile'],
+            'minLength'=>['textarea'],
+            'maxLength'=>['textarea'],
+            'choices'=>['select','radio','checkbox']]
     ];
 
 
@@ -31,12 +41,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
     // prépare le tableau de chargement avant la prévalidation
     final public function preValidatePrepare($value)
     {
-        $return = null;
-
-        if(Base\Arrs::is($value))
-        $return = Base\Column::keySwap($value);
-
-        return $return;
+        return (Base\Arrs::is($value))? Base\Column::keySwap($value):null;
     }
 
 
@@ -53,36 +58,37 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
         {
             foreach ($value as $k => $v)
             {
-                if(is_int($k) && Base\Arr::keysExists(['label','type','description','choices'],$v))
+                if(is_int($k) && Base\Arr::keysExists(['type','label'],$v) && !Base\Vari::isReallyEmpty($v['label']) && !empty($v['type']))
                 {
-                    if(!empty($v['label']) && !empty($v['type']))
+                    $keep = true;
+
+                    $v['required'] = (!empty($v['required']));
+                    $v['minLength'] = (!empty($v['minLength']) && is_int($v['minLength']))? $v['minLength']:null;
+                    $v['maxLength'] = (!empty($v['maxLength']) && is_int($v['maxLength']))? $v['maxLength']:null;
+                    $choiceInput = static::isChoicesInput($v['type']);
+
+                    if($choiceInput === true)
                     {
-                        $v['required'] = (!empty($v['required']));
-                        $choiceInput = static::isChoicesInput($v['type']);
+                        if(!empty($v['choices']) && is_string($v['choices']))
+                        $v['choices'] = Base\Str::lines($v['choices']);
 
-                        if($choiceInput === true && !empty($v['choices']))
-                        {
-                            if(is_string($v['choices']))
-                            $v['choices'] = Base\Str::lines($v['choices']);
-                        }
-                        else
-                        $v['choices'] = null;
+                        if(empty($v['choices']) || !is_array($v['choices']))
+                        $keep = false;
+                    }
 
-                        if($choiceInput === false || is_array($v['choices']))
-                        {
-                            $v = Base\Arr::reallyEmptyToNull($v);
-                            $v = Base\Arrs::trim($v);
-                            $return[] = $v;
-                        }
+                    else
+                    $v['choices'] = null;
+
+                    if($keep === true)
+                    {
+                        $v = Base\Arr::reallyEmptyToNull($v);
+                        $return[] = Base\Arrs::trim($v);
                     }
                 }
             }
         }
 
-        if(empty($return))
-        $return = null;
-
-        return $return;
+        return (!empty($return))? $return:null;
     }
 
 
@@ -90,60 +96,92 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
     // génère le model pour jsonForm
     final public function makeModel($value,array $attr,?Core\Cell $cell=null,array $option):string
     {
-        $return = Html::divOp('ele');
-        $name = $attr['name'];
-        $lang = $this->db()->lang();
-        $choicesInput = static::getChoicesInput();
-        $type = $value['type'] ?? null;
+        $r = '';
 
         if(!empty($cell) && array_key_exists('index',$option))
-        $return .= $this->beforeModel($option['index'],$value,$cell);
+        $r .= $this->beforeModel($option['index'],$value,$cell);
 
-        $return .= Html::divOp('current');
-        $return .= Html::divOp('label');
-        $label = $lang->text('jsonForm/label');
-        $val = $value['label'] ?? null;
-        $form = ['inputText',$val,Base\Arr::plus($attr,['name'=>$name.'[label]']),$option];
-        $return .= Html::formWrap('*'.$label.':',$form,'divtable');
-        $return .= Html::divCl();
+        $form = $this->makeModelForm($value,$attr,$option);
+        $r .= Html::div($form,'current');
 
-        $return .= Html::divOp(['type','data'=>['choices'=>$choicesInput]]);
-        $label = $lang->text('jsonForm/type');
-        $relation = $lang->relation('jsonForm',null,false);
-        $opt = Base\Arr::plus($option,['value'=>$type]);
-        $form = ['select',$relation,Base\Arr::plus($attr,['name'=>$name.'[type]']),$opt];
-        $return .= Html::formWrap($label.':',$form,'divtable',null);
-        $return .= Html::divCl();
+        $r .= $this->makeModelUtils();
 
-        $return .= Html::divOp('description');
-        $label = $lang->text('jsonForm/description');
-        $val = $value['description'] ?? null;
-        $form = ['textarea',$val,Base\Arr::plus($attr,['name'=>$name.'[description]']),$option];
-        $return .= Html::formWrap($label.':',$form,'divtable');
-        $return .= Html::divCl();
+        return Html::div($r,'ele');
+    }
 
-        $return .= Html::divOp('required');
-        $label = $lang->text('jsonForm/required');
-        $relation = $lang->relation('bool');
+
+    // makeModelForm
+    // génère le formulaire du modèle
+    final protected function makeModelForm($value,array $attr,array $option):string
+    {
+        $r = '';
+        $lang = $this->db()->lang();
+
+        $val = $value['type'] ?? null;
+        $opt = Base\Arr::plus($option,['value'=>$val]);
+        $r .= $this->makeModelFormElement('type','select',true,static::getTypes(),$attr,$opt);
+
+        $r .= $this->makeModelFormElement('label','inputText',true,$value['label'] ?? null,$attr,$option);
+        $r .= $this->makeModelFormElement('description','textarea',false,$value['description'] ?? null,$attr,$option);
+
         $val = (!empty($value['required']))? 1:0;
         $opt = Base\Arr::plus($option,['value'=>$val]);
-        $form = ['select',$relation,Base\Arr::plus($attr,['name'=>$name.'[required]']),$opt];
-        $return .= Html::formWrap($label.':',$form,'divtable',null);
-        $return .= Html::divCl();
+        $r .= $this->makeModelFormElement('required','select',false,$lang->relation('bool'),$attr,$opt);
 
-        $class = (static::isChoicesInput($type))? 'visible':null;
-        $return .= Html::divOp(['choices',$class]);
-        $label = $lang->text('jsonForm/choices');
+        $r .= $this->makeModelFormElement('minLength','inputDecimal',false,$value['minLength'] ?? null,$attr,$option);
+        $r .= $this->makeModelFormElement('maxLength','inputDecimal',false,$value['maxLength'] ?? null,$attr,$option);
+
         $val = $value['choices'] ?? null;
-        $val = (is_array($value['choices']))? Base\Str::lineImplode($value['choices']):$val;
-        $form = ['textarea',$val,Base\Arr::plus($attr,['name'=>$name.'[choices]']),$option];
-        $return .= Html::formWrap('*'.$label.':',$form,'divtable');
-        $return .= Html::divCl();
+        $val = (is_array($val))? Base\Str::lineImplode($val):$val;
+        $r .= $this->makeModelFormElement('choices','textarea',true,$val,$attr,$option);
 
-        $return .= Html::divCl();
+        return $r;
+    }
 
-        $return .= $this->makeModelUtils();
-        $return .= Html::divCl();
+
+    // makeModelFormElement
+    // génère un formulaire pour un élément du modèle
+    final protected function makeModelFormElement(string $type,string $tag,bool $required,$value,array $attr,array $option):string
+    {
+        $r = '';
+        $lang = $this->db()->lang();
+        $name = $attr['name'].'['.$type.']';
+
+        $attr = Base\Arr::plus($attr,['name'=>$name]);
+        $form = [$tag,$value,$attr,$option];
+
+        $label = ($required === true)? '*':'';
+        $label .= $lang->text(['jsonForm',$type]);
+        $label .= ':';
+        $r .= Html::formWrap($label,$form,'divtable');
+
+        $tagAttr = ['model-form-element',$type];
+
+        return Html::div($r,$tagAttr);
+    }
+
+
+    // getSpecificComponentAttr
+    // retourne les attr pour le specific component de jsonForm
+    public function getSpecificComponentAttr(array $return):array
+    {
+        $return = parent::getSpecificComponentAttr($return);
+        $return['data-form'] = static::getFormDataAttr();
+
+        return $return;
+    }
+
+
+    // getFormDataAttr
+    // retourne les data attr pour form
+    protected static function getFormDataAttr():array
+    {
+        $return = [];
+
+        foreach (static::$config['formFields'] as $v)
+        {
+            $return[$v] = static::getFieldWith($v);
+        }
 
         return $return;
     }
@@ -153,15 +191,31 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
     // retourne vrai si le input en est un avec des choix
     final public static function isChoicesInput($value):bool
     {
-        return is_string($value) && in_array($value,static::getChoicesInput(),true);
+        return is_string($value) && in_array($value,static::getFieldWith('choices'),true);
     }
 
 
-    // getChoicesInput
-    // retourne les inputs avec choix de réponse
-    final public static function getChoicesInput():array
+    // getTypes
+    // retourne les types pour le jsonForm
+    final public static function getTypes():array
     {
-        return Base\Html::relationTag('multiselect');
+        $return = [];
+        $lang = static::lang();
+
+        foreach (static::$config['typesGroup']['all'] as $v)
+        {
+            $return[$v] = $lang->relation(['jsonForm',$v],null,false);
+        }
+
+        return $return;
+    }
+
+
+    // getFieldWith
+    // retourne les inputs avec
+    final public static function getFieldWith(string $type):array
+    {
+        return static::$config['fieldsType'][$type];
     }
 
 

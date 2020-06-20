@@ -75,7 +75,7 @@ abstract class Boot extends Lemur\Boot
                         10=>'[css]/cms']],
                 'tinymce'=>[
                     'from'=>[
-                        1=>'[css]/include',
+                        2=>'[css]/include',
                         10=>'[css]/cms-tinymce']]],
 
             'compileJs'=>[

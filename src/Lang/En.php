@@ -109,10 +109,12 @@ class En extends Lemur\Lang\En
 
             // jsonForm
             'jsonForm'=>[
-                'label'=>'Label',
-                'required'=>'Required',
-                'description'=>'Description',
                 'type'=>'Type',
+                'label'=>'Label',
+                'description'=>'Description',
+                'required'=>'Required',
+                'minLength'=>'Minimum length',
+                'maxLength'=>'Maximum length',
                 'choices'=>'Answer choice (one per line)',
             ],
 
@@ -163,7 +165,9 @@ class En extends Lemur\Lang\En
                     'textarea'=>'Textarea',
                     'select'=>'Select menu',
                     'radio'=>'Radio buttons (one choice)',
-                    'checkbox'=>'Checkboxes (multiple choices)'
+                    'checkbox'=>'Checkboxes (multiple choices)',
+                    'inputFile'=>'File input',
+                    'separator'=>'Section separator'
                 ]
             ]
         ]

@@ -17,6 +17,15 @@ Component.JsonForm = function(option)
     Component.AddRemove.call(this,option);
     
     
+    // handler
+    setHdlrs(this,'jsonForm:',{
+        
+        getAttr: function() {
+            return getAttr(this,'data-form',true);
+        }
+    });
+    
+    
     // event
     ael(this,'addRemove:inserted',function(event,element) {
         bindElement.call(this,element);
@@ -41,39 +50,26 @@ Component.JsonForm = function(option)
         // handler
         setHdlrs(element,'jsonForm:',{
             
+            getComponent: function() {
+                return $this;
+            },
+            
             getTypeElement: function() {
-                return qs(this,".type");
+                return qs(this,".current > .type",true);
             },
             
             getTypeSelect: function() {
                 const type = trigHdlr(this,'jsonForm:getTypeElement');
-                return qs(type,"select");
+                return qs(type,"select",true);
             },
-            
-            getTypeChoices: function() {
-                const type = trigHdlr(this,'jsonForm:getTypeElement');
-                return getAttr(type,'data-choices',true);
-            },
-            
-            getChoices: function() {
-                return qs(this,".choices");
-            },
-            
-            showChoices: function() {
-                const choices = trigHdlr(this,'jsonForm:getChoices');
-                toggleAttr(choices,'data-visible',true);
-            },
-            
-            hideChoices: function() {
-                const choices = trigHdlr(this,'jsonForm:getChoices');
-                toggleAttr(choices,'data-visible',false);
+                        
+            getNodeFromKey: function(key) {
+                Str.typecheck(key,true);
+                return qs(this,".current > ."+key);
             },
             
             refresh: function() {
-                const typeSelect = trigHdlr(this,'jsonForm:getTypeSelect');
-                const val = trigHdlr(typeSelect,'input:getValue');
-                const choices = trigHdlr(this,'jsonForm:getTypeChoices');
-                trigHdlr(this,(Arr.in(val,choices))? 'jsonForm:showChoices':'jsonForm:hideChoices');
+                syncJsonForm.call(this);
             }
         });
         
@@ -88,6 +84,21 @@ Component.JsonForm = function(option)
             
             trigHdlr(this,'jsonForm:refresh');
         });
+        
+        // syncJsonForm
+        const syncJsonForm = function()
+        {
+            const $this = this;
+            const component = trigHdlr(this,'jsonForm:getComponent');
+            const attr = trigHdlr(component,'jsonForm:getAttr');
+            const typeSelect = trigHdlr(this,'jsonForm:getTypeSelect');
+            const typeValue = trigHdlr(typeSelect,'input:getValue');
+            
+            Pojo.each(attr,function(val,key) {
+                const node = trigHdlr($this,'jsonForm:getNodeFromKey',key);
+                toggleAttr(node,'data-visible',Arr.in(typeValue,val));
+            });
+        }
         
         trigSetup(element);
     };

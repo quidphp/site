@@ -110,10 +110,12 @@ class Fr extends Lemur\Lang\Fr
 
             // jsonForm
             'jsonForm'=>[
-                'label'=>'Libellé',
-                'required'=>'Requis',
-                'description'=>'Description',
                 'type'=>'Type',
+                'label'=>'Libellé',
+                'description'=>'Description',
+                'required'=>'Requis',
+                'minLength'=>'Longueur minimale',
+                'maxLength'=>'Longueur maximale',
                 'choices'=>'Choix de réponse (un par ligne)',
             ],
 
@@ -165,7 +167,9 @@ class Fr extends Lemur\Lang\Fr
                     'textarea'=>'Champ texte long',
                     'select'=>'Menu de sélection',
                     'radio'=>'Boutons radios (un choix)',
-                    'checkbox'=>'Cases à cocher (multiples choix)'
+                    'checkbox'=>'Cases à cocher (multiples choix)',
+                    'inputFile'=>'Champ fichier',
+                    'separator'=>'Séparateur de section'
                 ]
             ]
         ]

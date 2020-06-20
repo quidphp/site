@@ -24,46 +24,26 @@
         .table {
             height: auto;
         }
-
+        
         .label-cell {
-            width: 125px;
-            padding-right: 10px;
+            width: 150px;
+            padding-right: 15px;
         }
-
-        .label {
-            margin-bottom: 10px;
+        
+        textarea {
+            height: 75px;
         }
-
-        .type {
-            margin-bottom: 10px;
-        }
-
-        .description {
-            margin-bottom: 10px;
-
-            textarea {
-                height: 50px;
-            }
-        }
-
-        .required {
-            .form-cell {
-                label {
-                    margin-left: 5px;
-                }
-            }
-        }
-
-        .choices {
+        
+        .model-form-element {
             display: none;
-            padding-top: 10px;
-
-            &[data-visible='1'] {
+            
+            &.type {
                 display: block;
             }
-
-            textarea {
-                height: 80px;
+            
+            &[data-visible='1'] {
+                display: block;
+                padding-top: 10px;
             }
         }
     }

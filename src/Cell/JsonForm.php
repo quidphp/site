@@ -21,6 +21,14 @@ class JsonForm extends Lemur\Cell\JsonArrayAlias
     protected static array $config = [];
 
 
+    // areAnswersValid
+    // retourne vrai si les réponses sont valides pour le formulaire
+    final public function areAnswersValid(array $array):bool
+    {
+        return true;
+    }
+
+
     // questions
     // retourne les questions du formulaire
     final public function questions():array
