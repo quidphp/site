@@ -99,9 +99,9 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
     }
 
 
-    // areAnswersValid
+    // isDataValid
     // retourne vrai si les réponses sont valides
-    final public function areAnswersValid():bool
+    final public function isDataValid():bool
     {
         $return = false;
         $cell = $this->relationCell();
@@ -110,7 +110,7 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
         if(is_array($get))
         $get = Base\Arr::clean($get);
 
-        if(!empty($cell) && !empty($get) && $cell->areAnswersValid($get))
+        if(!empty($cell) && !empty($get) && $cell->isDataValid($get))
         $return = true;
 
         return $return;
@@ -121,7 +121,7 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
     // génère le output général pour une cellule jsonFormRelation
     final public function generalOutput(array $option):?string
     {
-        return ($this->areAnswersValid())? $this->answersString(' | '):null;
+        return ($this->isDataValid())? $this->answersString(' | '):null;
     }
 }
 

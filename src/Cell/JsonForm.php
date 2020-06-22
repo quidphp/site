@@ -21,11 +21,41 @@ class JsonForm extends Lemur\Cell\JsonArrayAlias
     protected static array $config = [];
 
 
-    // areAnswersValid
-    // retourne vrai si les réponses sont valides pour le formulaire
-    final public function areAnswersValid(array $array):bool
+    // isDataValid
+    // retourne vrai si les réponses sont valides
+    final public function isDataValid($values):bool
     {
-        return true;
+        $return = false;
+        $formData = $this->getData();
+
+        if(is_array($formData) && !empty($formData) && is_array($values) && array_keys($formData) === array_keys($values))
+        {
+            foreach ($formData as $k => $v)
+            {
+                $valid = (empty($v['required']) || !Base\Validate::isReallyEmpty($values[$k]))? true:false;
+
+                if(Base\Html::isRelationTag($v['type']) && is_array($v['choices']))
+                {
+                    if($values[$k] === '')
+                    $values[$k] = null;
+
+                    if($values[$k] !== null)
+                    {
+                        if(is_scalar($values[$k]))
+                        $values[$k] = Base\Set::arr($values[$k]);
+
+                        $valid = (is_array($values[$k]))? Base\Arr::keysExists($values[$k],$v['choices']):false;
+                    }
+                }
+
+                if($valid === false)
+                break;
+            }
+
+            $return = $valid;
+        }
+
+        return $return;
     }
 
 

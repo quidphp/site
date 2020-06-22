@@ -21,6 +21,7 @@ class Hierarchy extends Core\Col\EnumAlias
 {
     // config
     protected static array $config = [
+        'orderHierarchy'=>['order'=>'asc'],
         'complex'=>'hierarchy'
     ];
 
@@ -48,11 +49,12 @@ class Hierarchy extends Core\Col\EnumAlias
         $table = $this->table();
         $primary = $table->primary();
         $where = [true];
+        $order = $this->getAttr('orderHierarchy');
 
         if(is_int($id))
         $where[] = [$primary,'!=',$id];
 
-        $hierarchy = $table->hierarchy($this,true,$where,['order'=>'asc']);
+        $hierarchy = $table->hierarchy($this,true,$where,$order);
         $names = $this->getNames($where);
         $attr = Base\Arr::plus(['tag'=>'radio',$attr]);
         $option = Base\Arr::plus(['value'=>$value],$option);
@@ -87,40 +89,35 @@ class Hierarchy extends Core\Col\EnumAlias
     {
         $return = '';
 
-        if(!empty($hierarchy))
+        foreach ($hierarchy as $k => $v)
         {
-            $return .= Html::ulOp();
-
-            foreach ($hierarchy as $k => $v)
+            if(is_int($k) && array_key_exists($k,$names))
             {
-                if(is_int($k) && array_key_exists($k,$names))
-                {
-                    $name = $this->valueExcerpt($names[$k]);
-                    $name = Orm\TableRelation::outputPrimary($k,$name);
+                $name = $this->valueExcerpt($names[$k]);
+                $name = Orm\TableRelation::outputPrimary($k,$name);
 
-                    $return .= Html::liOp('choice');
-                    $return .= $this->formComplexOutput([$k=>$name],$attr,$option);
-
-                    if(is_array($v))
-                    $return .= $this->makeHierarchyStructure($value,$v,$names,($i + 1),$attr,$option);
-
-                    $return .= Html::liCl();
-                }
-            }
-
-            if($i === 0)
-            {
-                if($value === null)
-                $option['value'] = 0;
-
-                $noParent = '-- '.static::langText('hierarchy/noParent').' --';
                 $return .= Html::liOp('choice');
-                $return .= $this->formComplexOutput([0=>$noParent],$attr,$option);
+                $return .= $this->formComplexOutput([$k=>$name],$attr,$option);
+
+                if(is_array($v))
+                $return .= $this->makeHierarchyStructure($value,$v,$names,($i + 1),$attr,$option);
+
                 $return .= Html::liCl();
             }
-
-            $return .= Html::ulCl();
         }
+
+        if($i === 0)
+        {
+            if($value === null)
+            $option['value'] = 0;
+
+            $noParent = '-- '.static::langText('hierarchy/noParent').' --';
+            $return .= Html::liOp('choice');
+            $return .= $this->formComplexOutput([0=>$noParent],$attr,$option);
+            $return .= Html::liCl();
+        }
+
+        $return = Html::ulCond($return);
 
         return $return;
     }

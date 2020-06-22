@@ -335,6 +335,7 @@ class Page extends Core\RowAlias
         $return = [];
         $hierarchy = static::hierarchy();
         $parent = $row[$hierarchy] ?? null;
+        $lang = $col->schema()->nameLangCode();
 
         if(is_int($parent))
         {
@@ -344,12 +345,12 @@ class Page extends Core\RowAlias
             {
                 foreach ($parent->breadcrumb() as $breadcrumb)
                 {
-                    $return[] = $breadcrumb->cellName();
+                    $return[] = $breadcrumb->cellName($lang);
                 }
             }
         }
 
-        $return[] = Base\Lang::arr('name',$row);
+        $return[] = Base\Lang::arr('name',$row,$lang);
 
         $prepend = static::getSlugPrepend($col,$row,$cell);
         if(!empty($prepend))

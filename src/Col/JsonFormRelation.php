@@ -21,11 +21,14 @@ use Quid\Site;
 // class to manage a column containing a relation value to another column which is a jsonForm
 class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 {
+    // trait
+    use Lemur\Col\_jsonRelation;
+
+
     // config
     protected static array $config = [
         'cell'=>Site\Cell\JsonFormRelation::class,
-        'onExport'=>[self::class,'jsonFormExport'],
-        'relationCols'=>null // custom
+        'onExport'=>[self::class,'jsonFormExport']
     ];
 
 
@@ -55,7 +58,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
         {
             $cellForm = $this->relationCell($row[$fromCell]);
 
-            if(!empty($cellForm) && is_array($return) && $cellForm->areAnswersValid($return))
+            if(!empty($cellForm) && is_array($return) && $cellForm->isDataValid($return))
             {
                 foreach ($cellForm->getData() as $k => $v)
                 {
@@ -68,9 +71,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
             $return = null;
         }
 
-        $return = parent::onSet($return,$cell,$row,$option);
-
-        return $return;
+        return parent::onSet($return,$cell,$row,$option);
     }
 
 
@@ -92,10 +93,27 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
     // prépare la valeur value pour le formulaire
     final protected function prepareValueForm($return,$option)
     {
-        if($return instanceof Core\Cell && !$return->areAnswersValid())
+        if($return instanceof Core\Cell && !$return->isDataValid())
         $return = null;
 
         $return = parent::prepareValueForm($return,$option);
+
+        return $return;
+    }
+
+
+    // formComplex
+    // génère le formComplex pour jsonFormRelation avec le relation export
+    final public function formComplex($value=true,?array $attr=null,?array $option=null):string
+    {
+        $return = parent::formComplex($value,$attr,$option);
+        $tag = $this->complexTag($attr);
+
+        if($tag === 'add-remove' && $value instanceof Core\Cell && $value->isDataValid())
+        {
+            $answers = $value->answers();
+            $return .= Html::div(Base\Debug::export($answers),'relation-export');
+        }
 
         return $return;
     }
@@ -112,73 +130,6 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 
         else
         $return = $cell->answers();
-
-        return $return;
-    }
-
-
-    // formComplex
-    // génère le formComplex pour jsonFormRelation avec le relation export
-    final public function formComplex($value=true,?array $attr=null,?array $option=null):string
-    {
-        $return = parent::formComplex($value,$attr,$option);
-        $tag = $this->complexTag($attr);
-
-        if($tag === 'add-remove' && $value instanceof Core\Cell)
-        {
-            $answers = $value->answers();
-            $return .= Html::div(Base\Debug::export($answers),'relation-export');
-        }
-
-        return $return;
-    }
-
-
-    // relationCell
-    // retourne la cellule de la row de relation
-    final public function relationCell(int $id):?Core\cell
-    {
-        $return = null;
-        $fromCell = $this->fromCell();
-        $tableName = Orm\ColSchema::table($fromCell);
-
-        if(!empty($tableName))
-        {
-            $toCell = $this->toCell();
-            $db = $this->db();
-            $row = $db->table($tableName)->row($id);
-
-            if(!empty($row))
-            $return = $row->cell($toCell);
-        }
-
-        return $return;
-    }
-
-
-    // fromCell
-    // retourne la cellule from de la ligne courante
-    final public function fromCell():string
-    {
-        $return = null;
-        $relationCols = $this->getAttr('relationCols');
-
-        if(is_array($relationCols) && count($relationCols) === 2)
-        $return = $relationCols[0];
-
-        return $return;
-    }
-
-
-    // toCell
-    // retourne la cellule to de la ligne de relation
-    final public function toCell():string
-    {
-        $return = null;
-        $relationCols = $this->getAttr('relationCols');
-
-        if(is_array($relationCols) && count($relationCols) === 2)
-        $return = $relationCols[1];
 
         return $return;
     }
