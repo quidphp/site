@@ -35,6 +35,7 @@ class Page extends Core\RowAlias
                 'slug'=>[self::class,'makeSlug'],
                 'exists'=>false]],
         'priority'=>2,
+        'deleteAutoIncrement'=>true,
         'hierarchy'=>'page_id' // custom, détermine la hiérarchie
     ];
 
