@@ -28,8 +28,6 @@ trait _general
     final protected function onPrepared()
     {
         static::make()->addSelectedUri(true,null,['query'=>false]);
-
-        return;
     }
 
 

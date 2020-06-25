@@ -41,8 +41,6 @@ trait _breadcrumbs
     final protected function onPrepared()
     {
         $this->selectedUriBreadcrumbs();
-
-        return;
     }
 
 
@@ -54,8 +52,6 @@ trait _breadcrumbs
         {
             $route->addSelectedUri();
         }
-
-        return;
     }
 }
 ?>

@@ -53,8 +53,6 @@ abstract class NewsletterSubmit extends Core\RouteAlias
         $com = static::sessionCom();
         static::timeoutReset('trigger');
         $com->pos('newsletter/subscribe/success');
-
-        return;
     }
 
 
@@ -68,8 +66,6 @@ abstract class NewsletterSubmit extends Core\RouteAlias
         $com->neg('newsletter/subscribe/duplicate');
         else
         $com->neg('newsletter/subscribe/failure');
-
-        return;
     }
 
 
@@ -79,8 +75,6 @@ abstract class NewsletterSubmit extends Core\RouteAlias
     {
         if($this->duplicate === false)
         $this->session()->flashPost($this);
-
-        return;
     }
 
 

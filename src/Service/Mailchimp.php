@@ -70,8 +70,6 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     final public function setList(?string $value):void
     {
         $this->setAttr('list',$value);
-
-        return;
     }
 
 

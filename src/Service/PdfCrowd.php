@@ -59,8 +59,6 @@ class PdfCrowd extends Main\ServiceRequest
     {
         if(!in_array($type,['url','text'],true))
         static::throw();
-
-        return;
     }
 
 

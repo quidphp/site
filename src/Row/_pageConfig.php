@@ -48,8 +48,6 @@ trait _pageConfig
     final protected function setRoutePrepared(bool $value=true):void
     {
         $this->routePrepared = $value;
-
-        return;
     }
 
 
@@ -124,8 +122,6 @@ trait _pageConfig
 
         $route::config($config);
         $this->setRoutePrepared(true);
-
-        return;
     }
 
 
@@ -185,8 +181,6 @@ trait _pageConfig
 
         if(!empty($routes))
         static::prepareRoutesObject($type,$routes);
-
-        return;
     }
 
 

@@ -29,8 +29,6 @@ trait _specific
         {
             $route->addSelectedUri();
         }
-
-        return;
     }
 
 

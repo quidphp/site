@@ -1,6 +1,6 @@
 /*
- * This file is part of the QuidPHP package.
- * Website: https://quidphp.com
+ * This file is part of the QuidPHP package <https://quidphp.com>
+ * Author: Pierre-Philippe Emond <emondpph@gmail.com>
  * License: https://github.com/quidphp/site/blob/master/LICENSE
  */
  
@@ -65,7 +65,7 @@ Component.JsonForm = function(option)
                         
             getNodeFromKey: function(key) {
                 Str.typecheck(key,true);
-                return qs(this,".current > ."+key);
+                return qs(this,".current > ."+key,true);
             },
             
             refresh: function() {

@@ -26,8 +26,6 @@ trait _page
     final protected function onMake():void
     {
         $this->makeRow();
-
-        return;
     }
 
 
@@ -62,8 +60,6 @@ trait _page
         $row = $this->getAttr('rowObj');
         if(is_int($row))
         $this->row = Site\Row\Page::select($row);
-
-        return;
     }
 }
 ?>
