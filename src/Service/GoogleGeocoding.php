@@ -31,7 +31,6 @@ class GoogleGeocoding extends Main\ServiceRequest
 
     // localize
     // lance la requête à googleGeocoding et retourne un objet de localization en cas de succès
-    // plusieurs exceptions peuvent être envoyés
     final public function localize($value):?Main\Localization
     {
         $return = null;
