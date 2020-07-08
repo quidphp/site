@@ -17,7 +17,8 @@ Component.TabsSlider = function(option)
     const $option = Pojo.replace({
         iframe: true,
         timeoutEvent: 'tabs:afterChange',
-        timeout: null
+        timeout: null,
+        targetClick: false
     },option);
     
     
@@ -32,6 +33,9 @@ Component.TabsSlider = function(option)
         
         if(Integer.isPositive($option.timeout))
         bindTimeout.call(this);
+        
+        if($option.targetClick === true)
+        bindTargetClick.call(this);
     });
     
     
@@ -67,6 +71,20 @@ Component.TabsSlider = function(option)
         
         ael(this,'mouseleave',function() {
             trigHdlr(this,'timeout:set',$option.timeoutEvent);
+        });
+    }
+    
+    // bindTargetClick
+    const bindTargetClick = function()
+    {
+        const $this = this;
+        const targets = trigHdlr(this,'tabs:getTargets');
+        
+        ael(targets,'click',function(event) {
+            const triggerTarget = Evt.getTriggerTarget(event);
+            
+            if(!Ele.closest(triggerTarget,'a'))
+            trigHdlr($this,'tabs:goNext');
         });
     }
     
