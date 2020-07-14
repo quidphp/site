@@ -93,9 +93,10 @@ trait _pageConfig
     // va appeler routeConfig si la route est visible
     final protected function routePrepareConfig($key,string $route):void
     {
+        $config = [];
         $config['label'] = $this->cellName();
 
-        if($this->isVisible())
+        if($this->isVisible() && $route::shouldConfigPath())
         {
             $allLang = $this->lang()->allLang();
             $config = $this->routeConfig($config);
@@ -145,8 +146,12 @@ trait _pageConfig
                 if($this->hasCell($value))
                 {
                     $cell = $this->cell($value);
-                    $path = [$cell];
-                    $return['path'][$key] = Base\Path::append(...$path);
+
+                    if($cell->isNotEmpty())
+                    {
+                        $path = [$cell];
+                        $return['path'][$key] = Base\Path::append(...$path);
+                    }
                 }
             }
         }

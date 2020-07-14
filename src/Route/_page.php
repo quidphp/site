@@ -59,5 +59,14 @@ trait _page
         if(is_int($row))
         $this->row = Site\Row\Page::select($row);
     }
+
+
+    // shouldConfigPath
+    // retourne vrai si le chemin de la page doit être configuré
+    // ceci permet de conserver les chemins dans le fichier, même si défini dans la base de données
+    final public static function shouldConfigPath():bool
+    {
+        return true;
+    }
 }
 ?>

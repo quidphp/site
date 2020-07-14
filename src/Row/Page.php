@@ -119,7 +119,7 @@ class Page extends Core\RowAlias
 
     // topOrSelf
     // retourne la page top ou la page courante
-    final public function topOrSelf():?self
+    final public function topOrSelf():self
     {
         return $this->top() ?? $this;
     }
