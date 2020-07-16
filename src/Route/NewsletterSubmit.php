@@ -32,7 +32,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
             'post'=>['email','firstName','lastName'],
             'timeout'=>true,
             'genuine'=>true,
-            'csrf'=>true],
+            'csrf'=>false],
         'timeout'=>[
             'trigger'=>['max'=>4,'timeout'=>600]],
         'group'=>'submit',
@@ -148,6 +148,14 @@ abstract class NewsletterSubmit extends Core\RouteAlias
     }
 
 
+    // isFieldRequired
+    // retourne vrai si le champ est requis
+    protected function isFieldRequired(string $key):bool
+    {
+        return true;
+    }
+
+
     // getFieldsInfo
     // retourne les informations détaillés des champs pour le formulaire
     final public function getFieldsInfo():array
@@ -160,7 +168,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
             $array['method'] = 'inputText';
             $array['attr']['name'] = $key;
             $array['attr']['placeholder'] = static::langText(['newsletter',$key]);
-            $array['attr']['data-required'] = true;
+            $array['attr']['data-required'] = $this->isFieldRequired($key);
 
             if($key === 'email')
             {
