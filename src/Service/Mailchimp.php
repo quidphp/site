@@ -30,6 +30,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
         'list'=>null, // code de la liste
         'addLang'=>true, // si lang est ajouté au merge vars
         'subscribed'=>['pending','subscribed'], // status considéré comme subscribed
+        'subscribedConfirmed'=>['subscribed'], // status considéré comme subscribed et confirmer
         'mergeVars'=>['firstName'=>'FNAME','lastName'=>'LNAME'] // remplacement pour les mergeVars
     ];
 
@@ -101,9 +102,10 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // subscribedStatus
     // retourne les noms de status pour subscribed
-    final public function subscribedStatus():array
+    // si confirmed est true, retourne juste les status inscrit et confirmer
+    final public function subscribedStatus(bool $confirmed=false):array
     {
-        return $this->getAttr('subscribed');
+        return ($confirmed === true)? $this->getAttr('subscribedConfirmed'):$this->getAttr('subscribed');
     }
 
 
@@ -216,14 +218,14 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // isSubscribed
     // retourne vrai si le membre existe dans la liste
-    final public function isSubscribed(string $email,?array $post=null):bool
+    final public function isSubscribed(string $email,?array $post=null,bool $confirmed=false):bool
     {
         $return = false;
         $member = $this->memberInfo($email,$post);
 
         if(!empty($member) && !empty($member['status']))
         {
-            if(in_array($member['status'],$this->subscribedStatus(),true))
+            if(in_array($member['status'],$this->subscribedStatus($confirmed),true))
             $return = true;
         }
 

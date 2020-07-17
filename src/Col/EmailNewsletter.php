@@ -19,8 +19,18 @@ class EmailNewsletter extends Core\Col\EmailAlias
 {
     // config
     protected static array $config = [
+        'cell'=>Site\Cell\EmailNewsletter::class,
         'service'=>'newsletter' // custom, nom du service d'infolettre
     ];
+
+
+    // isSubscribed
+    // retourne vrai si l'utilisateur est enregistré à l'infolettre
+    final public function isSubscribed($email,bool $confirmed=false):bool
+    {
+        $service = $this->getService();
+        return (!empty($service) && Base\Validate::isEmail($email))? $service->isSubscribed($email,null,$confirmed):false;
+    }
 
 
     // formComplex
@@ -42,13 +52,12 @@ class EmailNewsletter extends Core\Col\EmailAlias
     final protected function formNewsletter(string $email):string
     {
         $return = '';
-        $service = $this->getService();
 
-        if(!empty($service))
+        if(!empty($this->getService()))
         {
             $lang = $this->db()->lang();
             $label = $lang->text('emailNewsletter/label');
-            $subscribed = $service->isSubscribed($email);
+            $subscribed = $this->isSubscribed($email);
             $return .= Html::divOp('subscribed');
             $return .= Html::span($label.':','label');
             $return .= Html::span($lang->bool($subscribed),'value');
@@ -60,7 +69,7 @@ class EmailNewsletter extends Core\Col\EmailAlias
 
 
     // getService
-    // retourne le service mailchimp
+    // retourne le service newsletter
     final public function getService():?Site\Contract\Newsletter
     {
         $return = null;
