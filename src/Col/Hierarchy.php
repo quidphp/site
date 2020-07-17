@@ -44,21 +44,65 @@ class Hierarchy extends Core\Col\EnumAlias
         $return = '';
         $id = ($value instanceof Core\Cell)? $value->row()->primary():null;
         $value = $this->valueComplex($value,$option);
-        $table = $this->table();
-        $primary = $table->primary();
-        $where = [true];
-        $order = $this->getAttr('orderHierarchy');
 
-        if(is_int($id))
-        $where[] = [$primary,'!=',$id];
-
-        $hierarchy = $table->hierarchy($this,true,$where,$order);
+        $where = $this->getWhere($id);
+        $hierarchy = $this->getHierarchy($where);
         $names = $this->getNames($where);
         $attr = Base\Arr::plus(['tag'=>'radio',$attr]);
         $option = Base\Arr::plus(['value'=>$value],$option);
 
         $return .= $this->formHidden();
         $return .= Html::divCond($this->makeHierarchyStructure($value,$hierarchy,$names,0,$attr,$option),'scroller');
+
+        return $return;
+    }
+
+
+    // getWhere
+    // retourne le where pour la requête
+    // si id fourni, ne l'inclut pas dans le résultat de la requête
+    final public function getWhere(?int $id=null):array
+    {
+        $return = [true];
+
+        if(is_int($id))
+        {
+            $table = $this->table();
+            $primary = $table->primary();
+            $return[] = [$primary,'!=',$id];
+        }
+
+        return $return;
+    }
+
+
+    // getHierarchy
+    // retournee la hiérarchie
+    final public function getHierarchy(?array $where=null):array
+    {
+        $table = $this->table();
+        $order = $this->getAttr('orderHierarchy');
+
+        return $table->hierarchy($this,true,$where,$order);
+    }
+
+
+    // getFlatHierarchy
+    // retourne la hiérarchie dans un tableau associatif non multidimensionnel
+    final public function getFlatHierarchy(?array $where=null):array
+    {
+        $return = [];
+        $hierarchy = $this->getHierarchy($where);
+        $keys = Base\Arrs::keys($hierarchy);
+
+        foreach ($keys as $array)
+        {
+            foreach ($array as $value)
+            {
+                if(!in_array($value,$return,true))
+                $return[] = $value;
+            }
+        }
 
         return $return;
     }
