@@ -20,7 +20,8 @@ class EmailNewsletter extends Core\Col\EmailAlias
     // config
     protected static array $config = [
         'cell'=>Site\Cell\EmailNewsletter::class,
-        'service'=>'newsletter' // custom, nom du service d'infolettre
+        'service'=>'newsletter', // custom, nom du service d'infolettre
+        'formNewsletter'=>true // affiche l'indication pour la newsletter sous le champ
     ];
 
 
@@ -40,7 +41,7 @@ class EmailNewsletter extends Core\Col\EmailAlias
         $return = parent::formComplex($value,$attr,$option);
 
         $email = Base\Obj::cast($value);
-        if(Base\Validate::isEmail($email))
+        if(Base\Validate::isEmail($email) && $this->getAttr('formNewsletter') === true)
         $return .= $this->formNewsletter($email);
 
         return $return;
