@@ -224,10 +224,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
         $member = $this->memberInfo($email,$post);
 
         if(!empty($member) && !empty($member['status']))
-        {
-            if(in_array($member['status'],$this->subscribedStatus($confirmed),true))
-            $return = true;
-        }
+        $return = (in_array($member['status'],$this->subscribedStatus($confirmed),true));
 
         return $return;
     }
@@ -319,13 +316,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // inscrit un utilisateur à une liste mailchimp et retourne un vrai ou faux
     final public function subscribeBool(string $email,$vars=[],?array $post=null,bool $isSubscribed=true):bool
     {
-        $return = false;
-        $subscribe = $this->subscribe($email,$vars,$post,$isSubscribed);
-
-        if(!empty($subscribe))
-        $return = true;
-
-        return $return;
+        return !empty($this->subscribe($email,$vars,$post,$isSubscribed));
     }
 
 

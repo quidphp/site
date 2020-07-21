@@ -85,16 +85,7 @@ class JsonForm extends Lemur\Cell\JsonArrayAlias
         $get = $this->get();
 
         if(Base\Column::is($get))
-        {
-            foreach ($get as $v)
-            {
-                if(array_key_exists('required',$v) && $v['required'] === true)
-                {
-                    $return = true;
-                    break;
-                }
-            }
-        }
+        $return = Base\Arr::some($get,fn($v) => (array_key_exists('required',$v) && $v['required'] === true));
 
         return $return;
     }

@@ -61,9 +61,7 @@ trait _pageConfig
         {
             $routes = static::getRoutesCanPrepare($routeKey);
             $fqcn = $route::classFqcn();
-
-            if(!empty($routes) && $routes->in($fqcn))
-            $return = true;
+            $return = (!empty($routes) && $routes->in($fqcn));
         }
 
         return $return;

@@ -101,17 +101,13 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
     // retourne vrai si les réponses sont valides
     final public function isDataValid():bool
     {
-        $return = false;
         $cell = $this->relationCell();
         $get = $this->get();
 
         if(is_array($get))
         $get = Base\Arr::clean($get);
 
-        if(!empty($cell) && !empty($get) && $cell->isDataValid($get))
-        $return = true;
-
-        return $return;
+        return !empty($cell) && !empty($get) && $cell->isDataValid($get);
     }
 
 
