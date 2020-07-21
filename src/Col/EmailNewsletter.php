@@ -59,10 +59,9 @@ class EmailNewsletter extends Core\Col\EmailAlias
             $lang = $this->db()->lang();
             $label = $lang->text('emailNewsletter/label');
             $subscribed = $this->isSubscribed($email);
-            $return .= Html::divOp('subscribed');
-            $return .= Html::span($label.':','label');
-            $return .= Html::span($lang->bool($subscribed),'value');
-            $return .= Html::divCl();
+            $html = Html::span($label.':','label');
+            $html .= Html::span($lang->bool($subscribed),'value');
+            $return .= Html::div($html,'subscribed');
         }
 
         return $return;

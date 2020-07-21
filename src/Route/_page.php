@@ -15,6 +15,12 @@ use Quid\Site;
 // trait that provides basic logic for a page route
 trait _page
 {
+    // config
+    protected static array $configSitePage = [
+        'configPath'=>true
+    ];
+
+
     // dynamique
     protected ?Core\Row $row = null;
 
@@ -66,7 +72,7 @@ trait _page
     // ceci permet de conserver les chemins dans le fichier, même si défini dans la base de données
     final public static function shouldConfigPath():bool
     {
-        return true;
+        return static::$config['configPath'];
     }
 }
 ?>

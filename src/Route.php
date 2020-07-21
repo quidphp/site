@@ -17,7 +17,7 @@ abstract class Route extends Lemur\Route
     // config
     protected static array $config = [
         '@app'=>[
-            'jsInit'=>'Lemur.InitDoc();',
+            'jsInit'=>'Quid.InitDoc();',
             'docOpen'=>[
                 'head'=>[
                     'css'=>[

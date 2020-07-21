@@ -138,13 +138,12 @@ class Hierarchy extends Core\Col\EnumAlias
                 $name = $this->valueExcerpt($names[$k]);
                 $name = Orm\TableRelation::outputPrimary($k,$name);
 
-                $return .= Html::liOp('choice');
-                $return .= $this->formComplexOutput([$k=>$name],$attr,$option);
+                $liHtml = $this->formComplexOutput([$k=>$name],$attr,$option);
 
                 if(is_array($v))
-                $return .= $this->makeHierarchyStructure($value,$v,$names,($i + 1),$attr,$option);
+                $liHtml .= $this->makeHierarchyStructure($value,$v,$names,($i + 1),$attr,$option);
 
-                $return .= Html::liCl();
+                $return .= Html::li($liHtml,'choice');
             }
         }
 
@@ -154,9 +153,8 @@ class Hierarchy extends Core\Col\EnumAlias
             $option['value'] = 0;
 
             $noParent = '-- '.static::langText('hierarchy/noParent').' --';
-            $return .= Html::liOp('choice');
-            $return .= $this->formComplexOutput([0=>$noParent],$attr,$option);
-            $return .= Html::liCl();
+            $liHtml = $this->formComplexOutput([0=>$noParent],$attr,$option);
+            $return .= Html::li($liHtml,'choice');
         }
 
         $return = Html::ulCond($return);

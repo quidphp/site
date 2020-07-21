@@ -207,16 +207,15 @@ class Page extends Core\RowAlias
 
         foreach ($childs as $child)
         {
-            $return .= Html::liOp();
-            $return .= $child->aTitle();
+            $liHtml = $child->aTitle();
 
             if($deep === true)
             {
                 $row = $child->row();
-                $return .= Html::ulCond($row->childsRouteLi(true));
+                $liHtml .= Html::ulCond($row->childsRouteLi(true));
             }
 
-            $return .= Html::liCl();
+            $return .= Html::li($liHtml);
         }
 
         return $return;

@@ -28,7 +28,23 @@ abstract class Boot extends Lemur\Boot
             'component'=>[
                 'from'=>[
                     3=>'[vendorSite]/js/component',
-                    4=>'[js]/component']]],
+                    4=>'[js]/component']],
+            'app'=>[
+                'to'=>'[publicJs]/app.js',
+                'from'=>[
+                    0=>'[vendorFront]/js/import',
+                    1=>'[js]/app']]],
+
+        'compileCss'=>[
+            'app'=>[
+                'to'=>'[publicCss]/app.css',
+                'from'=>[
+                    0=>'[vendorFront]/css/include',
+                    1=>'[vendorFront]/css/component',
+                    2=>'[vendorSite]/css/component',
+                    3=>'[css]/include',
+                    4=>'[css]/component',
+                    10=>'[css]/app']]],
 
         '@dev'=>[
             'compileJs'=>[
@@ -40,25 +56,7 @@ abstract class Boot extends Lemur\Boot
         '@app'=>[
             'service'=>[
                 'polyfill'=>Lemur\Service\Polyfill::class],
-            'sessionVersionMatch'=>false,
-
-            'compileCss'=>[
-                'app'=>[
-                    'to'=>'[publicCss]/app.css',
-                    'from'=>[
-                        0=>'[vendorFront]/css/include',
-                        1=>'[vendorFront]/css/component',
-                        2=>'[vendorSite]/css/component',
-                        3=>'[css]/include',
-                        4=>'[css]/component',
-                        10=>'[css]/app']]],
-
-            'compileJs'=>[
-                'app'=>[
-                    'to'=>'[publicJs]/app.js',
-                    'from'=>[
-                        0=>'[vendorFront]/js/import',
-                        1=>'[js]/app']]]],
+            'sessionVersionMatch'=>false],
 
         '@cms'=>[
             'compileCss'=>[

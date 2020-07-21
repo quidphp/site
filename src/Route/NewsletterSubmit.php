@@ -32,7 +32,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
             'post'=>['email','firstName','lastName'],
             'timeout'=>true,
             'genuine'=>true,
-            'csrf'=>false],
+            'csrf'=>true],
         'timeout'=>[
             'trigger'=>['max'=>4,'timeout'=>600]],
         'group'=>'submit',
@@ -193,10 +193,8 @@ abstract class NewsletterSubmit extends Core\RouteAlias
         {
             $value = (is_array($flash) && array_key_exists($key,$flash))? $flash[$key]:null;
             $method = $array['method'];
-
-            $r .= Html::divOp('field');
-            $r .= Html::$method($value,$array['attr']);
-            $r .= Html::divCl();
+            $field = Html::$method($value,$array['attr']);
+            $r .= Html::div($field,'field');
         }
 
         return $r;
