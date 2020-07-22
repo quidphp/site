@@ -29,7 +29,7 @@ class GoogleMaps extends Core\ColAlias
         'check'=>['kind'=>'text'],
         'service'=>'googleGeocoding', // custom, clé du service utilisé
         '@cms'=>[
-            'generalExcerptMin'=>null]
+            'generalExcerpt'=>null]
     ];
 
 

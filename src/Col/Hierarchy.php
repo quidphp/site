@@ -136,7 +136,7 @@ class Hierarchy extends Core\Col\EnumAlias
             if(is_int($k) && array_key_exists($k,$names))
             {
                 $name = $this->valueExcerpt($names[$k]);
-                $name = Orm\TableRelation::outputPrimary($k,$name);
+                $name = Orm\Relation::appendPrimary($name,$k);
 
                 $liHtml = $this->formComplexOutput([$k=>$name],$attr,$option);
 
