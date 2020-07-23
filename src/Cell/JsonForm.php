@@ -30,7 +30,7 @@ class JsonForm extends Lemur\Cell\JsonArrayAlias
         {
             foreach ($formData as $k => $v)
             {
-                $valid = (empty($v['required']) || !Base\Validate::isReallyEmpty($values[$k]))? true:false;
+                $valid = (empty($v['required']) || !Base\Validate::isReallyEmpty($values[$k]));
 
                 if(Base\Html::isRelationTag($v['type']) && is_array($v['choices']))
                 {
