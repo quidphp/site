@@ -86,7 +86,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
             }
         }
 
-        return (!empty($return))? $return:null;
+        return $return ?: null;
     }
 
 
