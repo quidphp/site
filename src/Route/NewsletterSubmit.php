@@ -191,7 +191,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
 
         foreach ($this->getFieldsInfo() as $key => $array)
         {
-            $value = (is_array($flash) && array_key_exists($key,$flash))? $flash[$key]:null;
+            $value = $flash[$key] ?? null;
             $method = $array['method'];
             $field = Html::$method($value,$array['attr']);
             $r .= Html::div($field,'field');
