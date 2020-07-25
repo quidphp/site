@@ -130,13 +130,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
             $return = $service->subscribeBool($email,$vars,null,false);
         }
 
-        if(empty($return))
-        $this->failureComplete();
-
-        else
-        $this->successComplete();
-
-        return $return;
+        return $this->proceedAfter($return);
     }
 
 

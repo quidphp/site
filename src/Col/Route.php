@@ -60,9 +60,7 @@ class Route extends Core\Col\EnumAlias
         if(!is_string($type))
         static::throw('invalidRouteType');
 
-        $return = $boot->routes($type);
-
-        return $return;
+        return $boot->routes($type);
     }
 
 

@@ -55,12 +55,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // retourne la liste ou envoie une exception
     final public function checkList():string
     {
-        $return = $this->getList();
-
-        if(empty($return))
-        static::throw();
-
-        return $return;
+        return $this->getList() ?: static::throw();
     }
 
 

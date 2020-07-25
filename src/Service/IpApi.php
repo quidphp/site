@@ -44,13 +44,8 @@ class IpApi extends Main\ServiceRequest
             if(!empty($json['message']))
             static::throw($json['status'] ?? null,$json['message']);
 
-            $json = static::parse($json);
-
-            if(!empty($json))
+            $json = static::parse($json) ?: static::throw('invalidResponseFormat');
             $return = Main\Localization::newOverload($json);
-
-            else
-            static::throw('invalidResponseFormat');
         }
 
         return $return;
