@@ -61,13 +61,19 @@ class GoogleMaps extends Core\ColAlias
             }
         }
 
-        if(!empty($return) && $hasChanged === true)
-        {
-            $googleMaps = $this->getService();
-            $return = $googleMaps->localize($return);
-        }
+        if(!empty($return) && is_string($return) && $hasChanged === true)
+        $return = $this->localize($return);
 
         return $return;
+    }
+
+
+    // localize
+    // permet de localizer un endroit à partir d'une string
+    final public function localize(string $value):?Main\Localization
+    {
+        $googleMaps = $this->getService();
+        return $googleMaps->localize($value);
     }
 
 
