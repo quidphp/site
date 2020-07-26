@@ -63,7 +63,7 @@ class Hierarchy extends Core\Col\EnumAlias
     // si id fourni, ne l'inclut pas dans le résultat de la requête
     final public function getWhere(?int $id=null):array
     {
-        $return = [true];
+        $return = [];
 
         if(is_int($id))
         {

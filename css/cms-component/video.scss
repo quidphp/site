@@ -11,5 +11,10 @@
 // component pour la cellule générale d'un vidéo
 @mixin componentVideoGeneral() {
     min-width: 250px;
+    min-height: 125px;
     padding: 0;
+    
+    > .empty-placeholder {
+        padding: 8px 10px;
+    }
 }
