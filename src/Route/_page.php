@@ -17,7 +17,8 @@ trait _page
 {
     // config
     protected static array $configSitePage = [
-        'configPath'=>true
+        'configPath'=>true,
+        'pageRowClass'=>Site\Row\Page::class
     ];
 
 
@@ -62,8 +63,10 @@ trait _page
     final protected function makeRow():void
     {
         $row = $this->getAttr('rowObj');
-        if(is_int($row))
-        $this->row = Site\Row\Page::select($row);
+        $class = $this->getAttr('pageRowClass');
+
+        if(is_int($row) && !empty($class))
+        $this->row = $class::select($row);
     }
 
 

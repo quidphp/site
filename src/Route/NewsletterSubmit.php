@@ -36,7 +36,8 @@ abstract class NewsletterSubmit extends Core\RouteAlias
         'timeout'=>[
             'trigger'=>['max'=>4,'timeout'=>600]],
         'group'=>'submit',
-        'service'=>'newsletter'
+        'service'=>'newsletter',
+        'subscribeArg'=>false
     ];
 
 
@@ -122,12 +123,13 @@ abstract class NewsletterSubmit extends Core\RouteAlias
         {
             $email = static::email($post);
             $vars = static::vars($post);
+            $subscribeArg = $this->getAttr('subscribeArg',true);
 
             if($service->isSubscribed($email))
             $this->duplicate = true;
 
             else
-            $return = $service->subscribeBool($email,$vars,null,false);
+            $return = $service->subscribeBool($email,$vars,null,$subscribeArg);
         }
 
         return $this->proceedAfter($return);

@@ -275,7 +275,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // subscribe
     // inscrit un utilisateur à une liste mailchimp
-    final public function subscribe(string $email,$vars=[],?array $post=null,bool $isSubscribed=true):?array
+    final public function subscribe(string $email,array $vars=[],?array $post=null,bool $isSubscribed=true):?array
     {
         $return = null;
         $list = $this->checkList();
@@ -309,7 +309,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // subscribeBool
     // inscrit un utilisateur à une liste mailchimp et retourne un vrai ou faux
-    final public function subscribeBool(string $email,$vars=[],?array $post=null,bool $isSubscribed=true):bool
+    final public function subscribeBool(string $email,array $vars=[],?array $post=null,bool $isSubscribed=true):bool
     {
         return !empty($this->subscribe($email,$vars,$post,$isSubscribed));
     }
