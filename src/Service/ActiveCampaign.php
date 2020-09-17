@@ -27,7 +27,7 @@ class ActiveCampaign extends Main\ServiceRequest implements Site\Contract\Newsle
         'target'=>'https://%account%.api-us1.com/api/3/%method%', // uri target pour activeCampaign
         'account'=>null, // contient le account pour activeCampaign
         'ping'=>2, // s'il y a un ping avant la requête
-        'responseCode'=>[200,201,422,500], // le code de réponse peut être 200 ou 500
+        'responseCode'=>[200,201,422,500],
         'key'=>null // apiKey pour activeCampaign
     ];
 
@@ -48,19 +48,6 @@ class ActiveCampaign extends Main\ServiceRequest implements Site\Contract\Newsle
     }
 
 
-    // makeTarget
-    // retourne la target du service activeCampaign pour la méthode
-    final public function makeTarget(string $method):string
-    {
-        $replace = [];
-        $replace['account'] = $this->getAccount();
-        $replace['method'] = $method;
-        $return = static::target($replace);
-
-        return $return;
-    }
-
-
     // trigger
     // fait un appel à activeCampaign, retourne un objet réponse
     final public function trigger(string $httpMethod,string $method,?array $data=null,?array $attr=null):Main\Response
@@ -74,7 +61,10 @@ class ActiveCampaign extends Main\ServiceRequest implements Site\Contract\Newsle
         $headers = [];
         $headers['Api-Token'] = $this->apiKey();
 
-        $value['uri'] = $this->makeTarget($method);
+        $replace = [];
+        $replace['account'] = $this->getAccount();
+        $replace['method'] = $method;
+        $value['uri'] = static::target($replace);
         $value['method'] = $httpMethod;
 
         if($httpMethod === 'post')
