@@ -118,14 +118,25 @@ class SquarePayment extends Main\ServiceRequest
 
     // payFromNonce
     // charge un paiement à partir d'un nonce
-    final public function payFromNonce(string $nonce,string $amount,array $data):array
+    final public function payFromNonce(string $nonce,string $amount,array $data,bool $removeSensitive=false):array
     {
         $data['amount_money']['amount'] = (int) ($amount * 100);
         $data['source_id'] = $nonce;
         $data['autocomplete'] = true;
         $response = $this->trigger('post','payments',$data);
+        $body = $response->body(true);
 
-        return ['bool'=>$response->is200(),'body'=>$response->body(true)];
+        if($removeSensitive === true)
+        {
+            $unsets = [];
+            $unsets[] = 'payment/card_details/card/exp_month';
+            $unsets[] = 'payment/card_details/card/exp_year';
+            $unsets[] = 'payment/card_details/card/fingerprint';
+            $unsets[] = 'payment/card_details/card/bin';
+            $body = Base\Arrs::unsets($unsets,$body);
+        }
+
+        return ['bool'=>$response->is200(),'body'=>$body];
     }
 }
 
