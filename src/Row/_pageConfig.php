@@ -93,8 +93,9 @@ trait _pageConfig
     {
         $config = [];
         $config['label'] = $this->cellName();
+        $shouldConfig = $this->isVisible() && method_exists($route,'shouldConfigPath') && $route::shouldConfigPath();
 
-        if($this->isVisible() && $route::shouldConfigPath())
+        if($shouldConfig === true)
         {
             $allLang = $this->lang()->allLang();
             $config = $this->routeConfig($config);
@@ -111,14 +112,20 @@ trait _pageConfig
             $config['path'] = null;
         }
 
-        else
-        $config['sitemap'] = false;
-
         $config['rowObj'] = $this;
+        $config = $this->routeFinishConfig($config,$route,$shouldConfig);
         $config = Base\Obj::cast($config);
 
         $route::config($config);
         $this->setRoutePrepared(true);
+    }
+
+
+    // routeFinishConfig
+    // méthode à étendre pour finir la configuration de la route
+    protected function routeFinishConfig($return,string $route,bool $shouldConfig):array
+    {
+        return $return;
     }
 
 

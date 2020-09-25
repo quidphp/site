@@ -41,6 +41,7 @@ class En extends Lemur\Lang\En
                 // *
                 '*'=>[
                     'googleMaps'=>'Google Maps',
+                    'embed'=>'Video',
                     'youTube'=>'YouTube',
                     'vimeo'=>'Vimeo',
                     'newsletter'=>'Newsletter'
@@ -143,6 +144,7 @@ class En extends Lemur\Lang\En
                     // *
                     '*'=>[
                         'googleMaps'=>'Enter a full address as in Google Maps, use commas',
+                        'embed'=>'Enter a YouTube or Vimeo URL',
                         'youTube'=>'Enter a full YouTube URL',
                         'vimeo'=>'Enter a full Vimeo URL',
                     ],
