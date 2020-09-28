@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Quid\Site\Cell;
 use Quid\Base;
+use Quid\Base\Html;
 use Quid\Lemur;
 
 // jsonFormRelation
@@ -67,7 +68,7 @@ class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
                 {
                     $question = $datas[$i];
 
-                    if(Base\Html::isRelationTag($question['type']) && is_array($question['choices']))
+                    if(Html::isRelationTag($question['type']) && is_array($question['choices']))
                     {
                         if(is_array($answer))
                         $answer = Base\Arr::getsExists($answer,$question['choices']);

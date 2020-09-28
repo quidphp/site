@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Quid\Site\Cell;
 use Quid\Base;
+use Quid\Base\Html;
 use Quid\Lemur;
 
 // jsonForm
@@ -32,7 +33,7 @@ class JsonForm extends Lemur\Cell\JsonArrayAlias
             {
                 $valid = (empty($v['required']) || !Base\Validate::isReallyEmpty($values[$k]));
 
-                if(Base\Html::isRelationTag($v['type']) && is_array($v['choices']))
+                if(Html::isRelationTag($v['type']) && is_array($v['choices']))
                 {
                     if($values[$k] === '')
                     $values[$k] = null;
@@ -108,7 +109,7 @@ class JsonForm extends Lemur\Cell\JsonArrayAlias
             {
                 $attr = ['name'=>$name."[$k]"];
                 $value = (array_key_exists($k,$values))? $values[$k]:null;
-                $return[$k] = Base\Html::formWrapArray($value,$v,$wrap,$attr,$replace);
+                $return[$k] = Html::formWrapArray($value,$v,$wrap,$attr,$replace);
             }
         }
 
