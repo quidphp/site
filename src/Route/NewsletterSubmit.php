@@ -157,13 +157,14 @@ abstract class NewsletterSubmit extends Core\RouteAlias
     final public function getFieldsInfo():array
     {
         $return = [];
+        $lang = static::lang();
 
         foreach ($this->getFields() as $key)
         {
             $array = [];
             $array['method'] = 'inputText';
             $array['attr']['name'] = $key;
-            $array['attr']['placeholder'] = static::langText(['newsletter',$key]);
+            $array['attr']['placeholder'] = $lang->text(['newsletter',$key]);
             $array['attr']['data-required'] = $this->isFieldRequired($key);
 
             if($key === 'email')

@@ -24,6 +24,7 @@ abstract class Route extends Lemur\Route
                         'type'=>'css/%type%.css'],
                     'js'=>[
                         'include'=>'js/include.js',
+                        'navigation'=>'js/navigation.js',
                         'component'=>'js/component.js',
                         'type'=>'js/%type%.js']]]]
     ];

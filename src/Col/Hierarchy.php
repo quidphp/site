@@ -130,6 +130,7 @@ class Hierarchy extends Core\Col\EnumAlias
     final protected function makeHierarchyStructure($value=true,array $hierarchy,array $names,int $i=0,?array $attr=null,?array $option=null):string
     {
         $return = '';
+        $lang = $this->db()->lang();
 
         foreach ($hierarchy as $k => $v)
         {
@@ -152,7 +153,7 @@ class Hierarchy extends Core\Col\EnumAlias
             if($value === null)
             $option['value'] = 0;
 
-            $noParent = '-- '.static::langText('hierarchy/noParent').' --';
+            $noParent = '-- '.$lang->text('hierarchy/noParent').' --';
             $liHtml = $this->formComplexOutput([0=>$noParent],$attr,$option);
             $return .= Html::li($liHtml,'choice');
         }
