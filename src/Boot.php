@@ -25,10 +25,6 @@ abstract class Boot extends Lemur\Boot
                 'from'=>[
                     1=>'[vendorSite]/include',
                     2=>'[js]/include']],
-            'navigation'=>[
-                'from'=>[
-                    2=>'[vendorSite]/navigation',
-                    3=>'[js]/navigation']],
             'component'=>[
                 'from'=>[
                     3=>'[vendorSite]/js/component',
@@ -49,13 +45,6 @@ abstract class Boot extends Lemur\Boot
                     3=>'[css]/include',
                     4=>'[css]/component',
                     10=>'[css]/app']]],
-
-        '@dev'=>[
-            'compileJs'=>[
-                'test'=>[
-                    'from'=>[
-                        2=>'[vendorSite]/js/test',
-                        3=>'[js]/test']]]],
 
         '@app'=>[
             'service'=>[
