@@ -48,7 +48,7 @@ abstract class Boot extends Lemur\Boot
 
         '@app'=>[
             'service'=>[
-                'polyfill'=>Lemur\Service\Polyfill::class],
+                'polyfill'=>[Lemur\Service\Polyfill::class,['mode'=>'ie11']]],
             'sessionVersionMatch'=>false],
 
         '@cms'=>[
