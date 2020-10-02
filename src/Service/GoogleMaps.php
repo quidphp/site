@@ -10,11 +10,16 @@ declare(strict_types=1);
 namespace Quid\Site\Service;
 use Quid\Base;
 use Quid\Main;
+use Quid\Routing;
 
 // googleMaps
 // class used to generate javascript GoogleMaps
 class GoogleMaps extends Main\ServiceRequest
 {
+    // trait
+    use Routing\_service;
+
+
     // config
     protected static array $config = [
         'js'=>'//maps.googleapis.com/maps/api/js?v=3&key=%value%', // uri vers fichier js à charger
