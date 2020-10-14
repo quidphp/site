@@ -9,11 +9,16 @@ declare(strict_types=1);
 
 namespace Quid\Site\Service;
 use Quid\Main;
+use Quid\Routing;
 
 // googleAnalytics
 // class that provides some methods to integrate GoogleAnalytics tracking
 class GoogleAnalytics extends Main\ServiceRequest
 {
+    // trait
+    use Routing\_service;
+
+
     // config
     protected static array $config = [
         'uri'=>'https://www.google-analytics.com/analytics.js' // uri vers le script analytics
