@@ -48,7 +48,7 @@ Component.GoogleMaps = function(option)
             if(Str.isNotEmpty(r))
             r = qs(this,r);
 
-            return Ele.typecheck(r);
+            return r;
         },
         
         getUri: function() {
