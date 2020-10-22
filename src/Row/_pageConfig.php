@@ -167,7 +167,7 @@ trait _pageConfig
 
     // getRouteKey
     // retourne le type pour la route
-    final public function getRouteKey():string
+    public function getRouteKey():string
     {
         return $this->cell('route')->col()->routeType();
     }

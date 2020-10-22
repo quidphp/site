@@ -46,7 +46,7 @@ class Route extends Core\Col\EnumAlias
     // retourne le type de route
     final public function routeType():string
     {
-        return $this->getAttr('routeType');
+        return $this->getAttr('routeType',true);
     }
 
 
