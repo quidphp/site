@@ -20,6 +20,7 @@ class PdfCrowd extends Main\ServiceRequest
         'target'=>'http://api.pdfcrowd.com/convert/', // uri target pour PdfCrowd
         'responseCode'=>null,
         'post'=>[ // données post par défaut
+            'default_encoding'=>'utf8',
             'input_format'=>'html',
             'output_format'=>'pdf',
             'page_size'=>'letter',
