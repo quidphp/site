@@ -28,7 +28,6 @@ class BootSite extends Test\Suite\BootLemur
             'frontEnd'=>['front'=>'[vendorFront]','lemur'=>'[vendorLemur]','site'=>'[vendorSite]'],],
         'service'=>[
             'googleGeocoding'=>[Site\Service\GoogleGeocoding::class,['key'=>'wqeqwweqwqeeqwqwe']],
-            'ipApi'=>Site\Service\IpApi::class,
             'newsletter'=>[Site\Service\Mailchimp::class,['key'=>'wqeqwweqwqeeqwqwe-us1','list'=>'zxczzxc']],
             'pdfCrowd'=>[Site\Service\PdfCrowd::class,['key'=>'wqeqwweqwqeeqwqwe','username'=>'wqeqqwewqwesad']]]
     ];

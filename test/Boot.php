@@ -28,7 +28,6 @@ class Boot extends Base\Test
 
         // boot
         assert($boot->langContentClass('en') === Site\Lang\En::class);
-        assert($boot->service('ipApi') instanceof Site\Service\IpApi);
 
         // lang
         assert($lang->existsRelation('contextType/app'));
@@ -67,14 +66,6 @@ class Boot extends Base\Test
         assert(is_string($gm->apiKey()));
         assert($gm::uri('Studio OL') === 'https://maps.google.com/maps?q=Studio%20OL');
         assert(is_string($gm->docOpenJs()));
-
-        // ipApi
-        $ipValue = '8.8.8.8';
-        $ipApi = $boot->service('ipApi');
-        assert(null === $ipApi->_cast());
-        assert($ipApi->request(null) instanceof Core\Request);
-        assert($ipApi::target(['value'=>'ok']) === 'http://ip-api.com/json/ok');
-        assert(null === $ipApi->apiKey('key'));
 
         // mailchimp
         $mc = $boot->service('newsletter');
