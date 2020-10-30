@@ -112,9 +112,9 @@ trait _pageConfig
             $config['path'] = null;
         }
 
-        $config['rowObj'] = $this;
         $config = $this->routeFinishConfig($config,$route,$shouldConfig);
         $config = Base\Obj::cast($config);
+        $config['rowObj'] = $this;
 
         $route::config($config);
         $this->setRoutePrepared(true);

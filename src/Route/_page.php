@@ -65,8 +65,14 @@ trait _page
         $row = $this->getAttr('rowObj');
         $class = $this->getAttr('pageRowClass');
 
-        if(is_int($row) && !empty($class))
-        $this->row = $class::select($row);
+        if(!empty($class))
+        {
+            if(is_int($row))
+            $row = $class::select($row);
+
+            if($row instanceof Core\Row)
+            $this->row = $row;
+        }
     }
 
 
