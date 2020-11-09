@@ -73,7 +73,7 @@ abstract class NewsletterSubmit extends Core\RouteAlias
     final protected function setFlash():void
     {
         if($this->duplicate === false)
-        $this->session()->flashPost($this);
+        static::session()->flashPost($this);
     }
 
 
