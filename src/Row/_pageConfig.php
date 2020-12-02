@@ -93,7 +93,7 @@ trait _pageConfig
     {
         $config = [];
         $config['label'] = $this->cellName();
-        $shouldConfig = $this->isVisible() && method_exists($route,'shouldConfigPath') && $route::shouldConfigPath();
+        $shouldConfig = $this->isVisible() && $route::classHasMethod('shouldConfigPath') && $route::shouldConfigPath();
 
         if($shouldConfig === true)
         {
