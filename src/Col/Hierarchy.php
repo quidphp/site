@@ -127,7 +127,7 @@ class Hierarchy extends Core\Col\EnumAlias
 
     // makeHierarchyStructure
     // crée la structure html ul/li pour la hierarchy
-    final protected function makeHierarchyStructure($value=true,array $hierarchy,array $names,int $i=0,?array $attr=null,?array $option=null):string
+    final protected function makeHierarchyStructure($value,array $hierarchy,array $names,int $i=0,?array $attr=null,?array $option=null):string
     {
         $return = '';
         $lang = $this->db()->lang();
