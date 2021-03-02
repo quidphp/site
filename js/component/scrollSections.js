@@ -79,7 +79,7 @@ Component.ScrollSections = function(option)
             let current = trigHdlr(this,'navHash:getCurrentHash');
             let hdlr = 'history:replaceHash';
             
-            if($option.hashPush === true && Arr.in(context,['keyboard','scroll']))
+            if($option.hashPush === true && Arr.in(context,['keyboard','scroll','click']))
             hdlr = 'history:pushHash';
             
             if(isFirst === true && $option.skipFirst === true)
@@ -138,7 +138,7 @@ Component.ScrollSections = function(option)
     // shouldAnimate
     const shouldAnimate = function(target,context,targets)
     {
-        let r = Arr.in(context,['keyboard','hashchange']);
+        let r = Arr.in(context,['keyboard','hashchange','click']);
         const isFirst = Arr.valueFirst(targets) === target;
         
         if(Arr.in(context,['ready','mountPage']))
