@@ -24,6 +24,7 @@ Component.GoogleMaps = function(option)
         ui: true,
         zoom: 10,
         control: true,
+        param: {},
         style: []
     },option);
     
@@ -74,7 +75,7 @@ Component.GoogleMaps = function(option)
         getOptions: function(latLng) {
             const googleMaps = trigHdlr(this,'googleMaps:get');
             const target = trigHdlr(this,'googleMaps:getTarget');
-            const r = {
+            let r = {
                 zoom: getAttr(target,'data-zoom','int') || $option.zoom,
                 center: latLng,
                 scrollwheel: false,
@@ -82,6 +83,8 @@ Component.GoogleMaps = function(option)
                 disableDefaultUI: ($option.ui === true)? false:true,
                 mapTypeId: googleMaps.maps.MapTypeId.ROADMAP
             };
+            
+            r = Pojo.replace(r,$option.param);
             
             if($option.control !== true)
             {
