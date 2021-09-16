@@ -24,6 +24,7 @@ Component.GoogleMaps = function(option)
         ui: true,
         zoom: 10,
         control: true,
+        scrollwheel: false,
         param: {},
         style: []
     },option);
@@ -37,7 +38,7 @@ Component.GoogleMaps = function(option)
         },
         
         get: function() {
-            return google;
+            return Obj.typecheck(google);
         },
         
         getTarget: function() {
@@ -47,9 +48,13 @@ Component.GoogleMaps = function(option)
             r = this;
             
             if(Str.isNotEmpty(r))
-            r = qs(this,r);
+            r = qs(this,r,true);
 
             return r;
+        },
+        
+        getMap: function() {
+            return Obj.typecheck(getData(this,'google-map'));
         },
         
         getUri: function() {
@@ -63,22 +68,25 @@ Component.GoogleMaps = function(option)
     const handlersSetup = {
         
         getLatLng: function() {
-            const googleMaps = trigHdlr(this,'googleMaps:get');
-            
             const target = trigHdlr(this,'googleMaps:getTarget');
             const lat = getAttr(target,'data-lat');
             const lng = getAttr(target,'data-lng');
             
-            return new googleMaps.maps.LatLng(lat,lng);
+            return {
+                lat: lat,
+                lng: lng
+            }
         },
         
-        getOptions: function(latLng) {
+        getOptions: function() {
             const googleMaps = trigHdlr(this,'googleMaps:get');
             const target = trigHdlr(this,'googleMaps:getTarget');
+            const latLng = makeLatLng.call(this,true);
+            
             let r = {
                 zoom: getAttr(target,'data-zoom','int') || $option.zoom,
                 center: latLng,
-                scrollwheel: false,
+                scrollwheel: $option.scrollwheel,
                 styles: $option.style,
                 disableDefaultUI: ($option.ui === true)? false:true,
                 mapTypeId: googleMaps.maps.MapTypeId.ROADMAP
@@ -119,23 +127,36 @@ Component.GoogleMaps = function(option)
             return r;
         },
 
-        makeMarker: function(latLng,uri,icon,map) {
+        makeMarker: function(latLng,uri,icon) {
+            let r = null;
             const googleMaps = trigHdlr(this,'googleMaps:get');
-            const marker = new googleMaps.maps.Marker({
+            const map = trigHdlr(this,'googleMaps:getMap');
+            latLng = makeLatLng.call(this,latLng);
+                
+            if(uri === true)
+            uri = trigHdlr(this,'googleMaps:getUri');
+            
+            if(icon === true)
+            icon = trigHdlr(this,'googleMaps:getIcon');
+            
+            const param = {
                 position: latLng,
                 map: map,
                 icon: icon
-            });
+            };
+            
+            r = new googleMaps.maps.Marker(param);
             
             if(Str.isNotEmpty(uri))
             {
-                marker.url = uri;
-                googleMaps.maps.event.addListener(marker, 'click',function() {
-                    window.open(marker.url,'_blank');
+                r.url = uri;
+                googleMaps.maps.event.addListener(r, 'click',function(arg) {
+                    Evt.preventStop(arg.domEvent);
+                    window.open(r.url,'_blank');
                 });
             }
             
-            return marker;
+            return r;
         }
     };
     
@@ -150,24 +171,37 @@ Component.GoogleMaps = function(option)
     });
     
     
+    // makeLatLng
+    const makeLatLng = function(value)
+    {
+        let r = null;
+        const googleMaps = trigHdlr(this,'googleMaps:get');
+        
+        if(value === true)
+        value = trigHdlr(this,'googleMaps:getLatLng');
+        
+        if(Pojo.is(value))
+        {
+            const lat = Num.typecheck(value.lat);
+            const lng = Num.typecheck(value.lng);
+            r = new googleMaps.maps.LatLng(lat,lng);
+        }
+        
+        return Obj.typecheck(r);
+    }
+    
+    
     // renderMap
     const renderMap = function()
     {
         const googleMaps = trigHdlr(this,'googleMaps:get');
         const target = trigHdlr(this,'googleMaps:getTarget');
+        const option = trigHdlr(this,'googleMaps:getOptions');
+        const map = new googleMaps.maps.Map(target,option);
+        setData(this,'google-map',map);
         
-        if(target != null)
-        {
-            const latLng = trigHdlr(this,'googleMaps:getLatLng');
-            const option = trigHdlr(this,'googleMaps:getOptions',latLng);
-            const uri = trigHdlr(this,'googleMaps:getUri');
-            const icon = trigHdlr(this,'googleMaps:getIcon');
-            
-            const map = new googleMaps.maps.Map(target,option);
-            
-            if($option.marker)
-            trigHdlr(this,'googleMaps:makeMarker',latLng,uri,icon,map);
-        }
+        if($option.marker)
+        trigHdlr(this,'googleMaps:makeMarker',true,true,true);
     }
     
     return this;
