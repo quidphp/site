@@ -63,9 +63,14 @@ class GoogleGeocoding extends Main\ServiceRequest
 
     // request
     // retourne la requête à utiliser pour aller chercher une localization auprès de googleGeocoding
+    // la valeur est maintenant encodé pour éviter des bogues avec le caractère #
     final public function request($value,?array $attr=null):Main\Request
     {
-        return static::makeRequest(static::target(['key'=>$this->apiKey(),'value'=>$value]),Base\Arr::plus($this->attr(),$attr));
+        if(is_string($value))
+        $value = Base\Uri::encode($value,1);
+
+        $target = static::target(['key'=>$this->apiKey(),'value'=>$value]);
+        return static::makeRequest($target,Base\Arr::plus($this->attr(),$attr));
     }
 
 
