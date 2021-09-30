@@ -54,7 +54,8 @@ Component.GoogleMaps = function(option)
         },
         
         getMap: function() {
-            return Obj.typecheck(getData(this,'google-map'));
+            const map = getData(this,'google-map');
+            return Obj.typecheck(map);
         },
         
         getUri: function() {
@@ -83,16 +84,14 @@ Component.GoogleMaps = function(option)
             const target = trigHdlr(this,'googleMaps:getTarget');
             const latLng = makeLatLng.call(this,true);
             
-            let r = {
+            const r = Pojo.replace({
                 zoom: getAttr(target,'data-zoom','int') || $option.zoom,
                 center: latLng,
                 scrollwheel: $option.scrollwheel,
                 styles: $option.style,
                 disableDefaultUI: ($option.ui === true)? false:true,
                 mapTypeId: googleMaps.maps.MapTypeId.ROADMAP
-            };
-            
-            r = Pojo.replace(r,$option.param);
+            },$option.param);
             
             if($option.control !== true)
             {
@@ -175,13 +174,13 @@ Component.GoogleMaps = function(option)
     const makeLatLng = function(value)
     {
         let r = null;
-        const googleMaps = trigHdlr(this,'googleMaps:get');
         
         if(value === true)
         value = trigHdlr(this,'googleMaps:getLatLng');
         
         if(Pojo.is(value))
         {
+            const googleMaps = trigHdlr(this,'googleMaps:get');
             const lat = Num.typecheck(value.lat);
             const lng = Num.typecheck(value.lng);
             r = new googleMaps.maps.LatLng(lat,lng);

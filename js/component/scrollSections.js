@@ -22,7 +22,8 @@ Component.ScrollSections = function(option)
         smooth: true,
         anchorClass: "selected",
         hashPush: true,
-        keyboardArrow: "notInput"
+        keyboardArrow: "notInput",
+        offsetType: "parent"
     },option);
     
     
@@ -97,13 +98,14 @@ Component.ScrollSections = function(option)
             {
                 const $this = this;
                 const isFirst = (Arr.valueFirst(targets) === target);
+                const offsetFunc = ($option.offsetType === 'doc')? 'getOffsetDoc':'getOffsetParent';
                 let top;
                 
                 if(isFirst === true && $option.firstTop === true)
                 top = 0;
                 
                 else
-                top = Ele.getOffsetParent(target).top;
+                top = Ele[offsetFunc](target).top;
                 
                 r = trigHdlr(this,'scroller:go',top,null,$option.smooth);
             }
@@ -139,10 +141,12 @@ Component.ScrollSections = function(option)
     const shouldAnimate = function(target,context,targets)
     {
         let r = Arr.in(context,['keyboard','hashchange','click']);
-        const isFirst = Arr.valueFirst(targets) === target;
         
         if(Arr.in(context,['ready','mountPage']))
-        r = (isFirst === false || $option.skipFirst !== true);
+        {
+            const isFirst = Arr.valueFirst(targets) === target;
+            r = (isFirst === false || $option.skipFirst !== true);
+        }
         
         return r;
     }
