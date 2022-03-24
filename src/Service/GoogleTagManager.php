@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 /*
- * Projet: Site web de Obelysq | https://obelysq.com
- * Auteur: Pierre-Philippe Emond | Studio OL | pph@olstudio.co
- * Ce fichier de programmation est la propriété de la Obelysq.
+ * This file is part of the QuidPHP package <https://quidphp.com>
+ * Author: Pierre-Philippe Emond <emondpph@gmail.com>
+ * License: https://github.com/quidphp/site/blob/master/LICENSE
  */
 
 namespace Quid\Site\Service;
