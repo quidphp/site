@@ -35,7 +35,7 @@ class GoogleMaps extends Core\ColAlias
 
     // onGet
     // sur onGet, retourne l'objet de localization
-    final protected function onGet($return,?Orm\Cell $cell=null,array $option)
+    final protected function onGet($return,?Orm\Cell $cell,array $option)
     {
         if(Base\Json::is($return))
         $return = Main\Localization::newOverload($return);
@@ -46,7 +46,7 @@ class GoogleMaps extends Core\ColAlias
 
     // onSet
     // gère la logique onSet pour googleMaps
-    final protected function onSet($return,?Orm\Cell $cell=null,array $row,array $option)
+    final protected function onSet($return,?Orm\Cell $cell,array $row,array $option)
     {
         $hasChanged = true;
 

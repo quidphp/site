@@ -92,7 +92,7 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
 
     // makeModel
     // génère le model pour jsonForm
-    final public function makeModel($value,array $attr,?Core\Cell $cell=null,array $option):string
+    final public function makeModel($value,array $attr,?Core\Cell $cell,array $option):string
     {
         $r = '';
 

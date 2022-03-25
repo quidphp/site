@@ -41,7 +41,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
     // onSet
     // gère la logique onSet pour jsonFormRelation
     // prepare est utilisé sur le tableau
-    final protected function onSet($return,?Orm\Cell $cell=null,array $row,array $option)
+    final protected function onSet($return,?Orm\Cell $cell,array $row,array $option)
     {
         if(is_array($return))
         $return = $this->prepare($return);
