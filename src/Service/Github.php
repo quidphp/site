@@ -249,7 +249,7 @@ class Github extends Main\Service
         $target = 7;
 
         elseif($type === 'css')
-        $target = 9;
+        $target = 7;
 
         $array = Base\File::lines($target,1,$file);
         if(!empty($array))
