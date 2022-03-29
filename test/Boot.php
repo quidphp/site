@@ -52,7 +52,7 @@ class Boot extends Base\Test
         assert($ga->apiKey() === 'googleAnalytics');
 
         // googleGeocoding
-        $ggValue = ['Studio OL'];
+        $ggValue = ['Studio ZZ'];
         $gg = $boot->service('googleGeocoding');
         assert($gg->getServiceKey() === 'googleGeocoding');
         assert(is_string($gg->apiKey()));
@@ -61,10 +61,10 @@ class Boot extends Base\Test
         assert(is_string($gg->apiKey('key')));
 
         // googleMaps
-        $gmValue = ['Studio OL'];
+        $gmValue = ['Studio ZZ'];
         $gm = new Site\Service\GoogleMaps(['key'=>'googleMaps']);
         assert(is_string($gm->apiKey()));
-        assert($gm::uri('Studio OL') === 'https://maps.google.com/maps?q=Studio%20OL');
+        assert($gm::uri('Studio ZZ') === 'https://maps.google.com/maps?q=Studio%20ZZ');
         assert(is_string($gm->docOpenJs()));
 
         // mailchimp
