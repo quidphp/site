@@ -7,7 +7,7 @@
 **QuidPHP/Site** is available as an open-source software under the [MIT license](LICENSE).
 
 ## Documentation
-**QuidPHP/Site** documentation is being written. Once ready, it will be available at https://quidphp.github.io/project.
+**QuidPHP/Site** documentation is being written. Once ready, it will be available at [QuidPHP/Docs](https://github.com/quidphp/docs).
 
 ## Installation
 **QuidPHP/Site** can be easily installed with [Composer](https://getcomposer.org). It is available on [Packagist](https://packagist.org/packages/quidphp/site).
