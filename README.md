@@ -1,4 +1,10 @@
 # QuidPHP/Site
+[![Release](https://img.shields.io/github/v/release/quidphp/site)](https://packagist.org/packages/quidphp/site)
+[![License](https://img.shields.io/github/license/quidphp/site)](https://github.com/quidphp/site/blob/master/LICENSE)
+[![PHP Version](https://img.shields.io/packagist/php-v/quidphp/site)](https://www.php.net)
+[![Style CI](https://styleci.io/repos/206858888/shield)](https://styleci.io)
+[![Code Size](https://img.shields.io/github/languages/code-size/quidphp/site)](https://github.com/quidphp/site)
+
 
 ## About
 **QuidPHP/Site** is an extended platform to build a website using the QuidPHP framework and LemurCMS. It is part of the [QuidPHP](https://github.com/quidphp/project) package. 
