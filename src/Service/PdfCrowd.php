@@ -109,15 +109,12 @@ class PdfCrowd extends Main\ServiceRequest
     // retourne un objet de réponse
     final public function convertUri($value,?array $post=null,?array $option=null):Main\Response
     {
-        $return = null;
-
         if($value instanceof Main\Request)
         $value = $value->absolute();
 
         $request = $this->request('url',$value,$post,$option);
-        $return = $request->trigger();
 
-        return $return;
+        return $request->trigger();
     }
 
 
@@ -126,15 +123,12 @@ class PdfCrowd extends Main\ServiceRequest
     // retourne un objet de réponse
     final public function convertString($value,?array $post=null,?array $option=null):Main\Response
     {
-        $return = false;
-
         if($value instanceof Main\File)
         $value = $value->read();
 
         $request = $this->request('text',$value,$post,$option);
-        $return = $request->trigger();
 
-        return $return;
+        return $request->trigger();
     }
 }
 
