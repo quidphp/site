@@ -140,7 +140,7 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
 - *Compiling*: The concatenation of the JS files is done on the PHP side.
 
 ### Overview
-**QuidPHP/Site** contains 15 JavaScript files. Here is an overview:
+**QuidPHP/Site** contains 14 JavaScript files. Here is an overview:
 - [cms](js/cms)
     - [jsonForm.js](js/cms/jsonForm.js) - Script containing logic for the jsonForm component which is based on the addRemove input
     - [site.js](js/cms/site.js) - Script of additional behaviours for the specific form page of the CMS
@@ -155,7 +155,6 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
     - [tabsScroll.js](js/component/tabsScroll.js) - Component that adds scrolling support to tabsSlider
     - [tabsSlider.js](js/component/tabsSlider.js) - Component that adds timeout and iframe support to the tabsNav component
     - [toggler.js](js/component/toggler.js) - Component to toggle attributes on many elements using a trigger
-    - [video.js](js/component/video.js) - Component for a video node, currently using jwplayer
     - [windowSmall.js](js/component/windowSmall.js) - Component to open a small window from an anchor link
     - [wrapConsecutive.js](js/component/wrapConsecutive.js) - Component to wrap consecutive nodes of the same type in another node
 
