@@ -16,7 +16,7 @@ use Quid\Site;
 
 // jsonForm
 // class for a column containing a json form
-class JsonForm extends Lemur\Col\JsonArrayAlias
+class JsonForm extends Lemur\Col\JsonArrayModelAlias
 {
     // config
     protected static array $config = [
@@ -35,53 +35,39 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
     ];
 
 
-    // preValidatePrepare
-    // prépare le tableau de chargement avant la prévalidation
-    final public function preValidatePrepare($value)
-    {
-        return (Base\Arrs::is($value))? Base\Column::keySwap($value):null;
-    }
-
-
-    // prepare
+    // onModelPrepare
     // arrange le tableau pour les méthode onGet et onSet
-    final protected function prepare(array $value):?array
+    final protected function onModelPrepare(array $value):?array
     {
         $return = [];
 
-        if(Base\Arr::isAssoc($value))
-        $return = $this->preValidatePrepare($value);
-
-        elseif(Base\Column::is($value))
+        foreach ($value as $k => $v)
         {
-            foreach ($value as $k => $v)
+            if(is_int($k) && Base\Arr::keysExists(['type','label'],$v) && !Base\Vari::isReallyEmpty($v['label']) && !empty($v['type']))
             {
-                if(is_int($k) && Base\Arr::keysExists(['type','label'],$v) && !Base\Vari::isReallyEmpty($v['label']) && !empty($v['type']))
+                $keep = true;
+
+                $v['required'] = (!empty($v['required']));
+                $v['minLength'] = (!empty($v['minLength']) && is_int($v['minLength']))? $v['minLength']:null;
+                $v['maxLength'] = (!empty($v['maxLength']) && is_int($v['maxLength']))? $v['maxLength']:null;
+                $choiceInput = static::isChoicesInput($v['type']);
+
+                if($choiceInput === true)
                 {
-                    $keep = true;
+                    if(!empty($v['choices']) && is_string($v['choices']))
+                    $v['choices'] = Base\Str::lines($v['choices']);
 
-                    $v['required'] = (!empty($v['required']));
-                    $v['minLength'] = (!empty($v['minLength']) && is_int($v['minLength']))? $v['minLength']:null;
-                    $v['maxLength'] = (!empty($v['maxLength']) && is_int($v['maxLength']))? $v['maxLength']:null;
-                    $choiceInput = static::isChoicesInput($v['type']);
+                    if(empty($v['choices']) || !is_array($v['choices']))
+                    $keep = false;
+                }
 
-                    if($choiceInput === true)
-                    {
-                        if(!empty($v['choices']) && is_string($v['choices']))
-                        $v['choices'] = Base\Str::lines($v['choices']);
+                else
+                $v['choices'] = null;
 
-                        if(empty($v['choices']) || !is_array($v['choices']))
-                        $keep = false;
-                    }
-
-                    else
-                    $v['choices'] = null;
-
-                    if($keep === true)
-                    {
-                        $v = Base\Arr::reallyEmptyToNull($v);
-                        $return[] = Base\Arrs::trim($v);
-                    }
+                if($keep === true)
+                {
+                    $v = Base\Arr::reallyEmptyToNull($v);
+                    $return[] = Base\Arrs::trim($v);
                 }
             }
         }
@@ -90,72 +76,41 @@ class JsonForm extends Lemur\Col\JsonArrayAlias
     }
 
 
-    // makeModel
-    // génère le model pour jsonForm
-    final public function makeModel($value,array $attr,?Core\Cell $cell,array $option):string
-    {
-        $r = '';
-
-        if(!empty($cell) && array_key_exists('index',$option))
-        $r .= $this->beforeModel($option['index'],$value,$cell);
-
-        $form = $this->makeModelForm($value,$attr,$option);
-        $r .= Html::div($form,'current');
-
-        $r .= $this->makeModelUtils();
-
-        return Html::div($r,'ele');
-    }
-
-
-    // makeModelForm
+    // onModel
     // génère le formulaire du modèle
-    final protected function makeModelForm($value,array $attr,array $option):string
+    final protected function onModel($value,array $attr,?Core\Cell $cell,array $option):string
     {
         $r = '';
         $lang = $this->db()->lang();
 
         $val = $value['type'] ?? null;
         $opt = Base\Arr::plus($option,['value'=>$val]);
-        $r .= $this->makeModelFormElement('type','select',true,static::getTypes(),$attr,$opt);
+        $label = $lang->text(['jsonForm','type']);
+        $r .= static::makeModelFormElement('type','select',$label,true,static::getTypes(),$attr,$opt);
 
-        $r .= $this->makeModelFormElement('label','inputText',true,$value['label'] ?? null,$attr,$option);
-        $r .= $this->makeModelFormElement('description','textarea',false,$value['description'] ?? null,$attr,$option);
+        $label = $lang->text(['jsonForm','label']);
+        $r .= static::makeModelFormElement('label','inputText',$label,true,$value['label'] ?? null,$attr,$option);
+
+        $label = $lang->text(['jsonForm','description']);
+        $r .= static::makeModelFormElement('description','textarea',$label,false,$value['description'] ?? null,$attr,$option);
 
         $val = (!empty($value['required']))? 1:0;
         $opt = Base\Arr::plus($option,['value'=>$val]);
-        $r .= $this->makeModelFormElement('required','select',false,$lang->relation('bool'),$attr,$opt);
+        $label = $lang->text(['jsonForm','required']);
+        $r .= static::makeModelFormElement('required','select',$label,false,$lang->relation('bool'),$attr,$opt);
 
-        $r .= $this->makeModelFormElement('minLength','inputDecimal',false,$value['minLength'] ?? null,$attr,$option);
-        $r .= $this->makeModelFormElement('maxLength','inputDecimal',false,$value['maxLength'] ?? null,$attr,$option);
+        $label = $lang->text(['jsonForm','minLength']);
+        $r .= static::makeModelFormElement('minLength','inputDecimal',$label,false,$value['minLength'] ?? null,$attr,$option);
+
+        $label = $lang->text(['jsonForm','maxLength']);
+        $r .= static::makeModelFormElement('maxLength','inputDecimal',$label,false,$value['maxLength'] ?? null,$attr,$option);
 
         $val = $value['choices'] ?? null;
         $val = (is_array($val))? Base\Str::lineImplode($val):$val;
-        $r .= $this->makeModelFormElement('choices','textarea',true,$val,$attr,$option);
+        $label = $lang->text(['jsonForm','choices']);
+        $r .= static::makeModelFormElement('choices','textarea',$label,true,$val,$attr,$option);
 
         return $r;
-    }
-
-
-    // makeModelFormElement
-    // génère un formulaire pour un élément du modèle
-    final protected function makeModelFormElement(string $type,string $tag,bool $required,$value,array $attr,array $option):string
-    {
-        $r = '';
-        $lang = $this->db()->lang();
-        $name = $attr['name'].'['.$type.']';
-
-        $attr = Base\Arr::plus($attr,['name'=>$name]);
-        $form = [$tag,$value,$attr,$option];
-
-        $label = ($required === true)? '*':'';
-        $label .= $lang->text(['jsonForm',$type]);
-        $label .= ':';
-        $r .= Html::formWrap($label,$form,'divtable');
-
-        $tagAttr = ['model-form-element',$type];
-
-        return Html::div($r,$tagAttr);
     }
 
 

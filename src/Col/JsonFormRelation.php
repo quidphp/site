@@ -32,7 +32,7 @@ class JsonFormRelation extends Lemur\Col\JsonArrayAlias
 
     // prepare
     // arrange le tableau pour les méthode onGet et onSet
-    final protected function prepare(array $return)
+    final protected function prepare(array $return):?array
     {
         return array_values($return) ?: null;
     }
