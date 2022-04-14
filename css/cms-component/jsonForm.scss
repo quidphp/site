@@ -11,7 +11,7 @@
 // component pour le champ jsonForm du formulaire
 @mixin componentJsonFormSpecific() {
     @include componentAddRemoveSpecific();
-    @include componentJsonArrayModelSpecific();
+    @include componentJsonModelSpecific();
     
     > .playground > .ele {
         .model-form-element {
@@ -31,5 +31,5 @@
 // componentJsonFormRelationSpecific
 // mixin pour le champ jsonFormRelation dans le formulaire
 @mixin componentJsonFormRelationSpecific() {
-    @include componentJsonArrayRelationSpecific();
+    @include componentJsonRelationSpecific();
 }

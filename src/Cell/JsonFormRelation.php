@@ -14,7 +14,7 @@ use Quid\Lemur;
 
 // jsonFormRelation
 // class to manage a cell containing a relation value to another cell containing a json form
-class JsonFormRelation extends Lemur\Cell\JsonArrayRelationAlias
+class JsonFormRelation extends Lemur\Cell\JsonRelationAlias
 {
     // config
     protected static array $config = [];

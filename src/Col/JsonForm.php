@@ -15,7 +15,7 @@ use Quid\Site;
 
 // jsonForm
 // class for a column containing a json form
-class JsonForm extends Lemur\Col\JsonArrayModelAlias
+class JsonForm extends Lemur\Col\JsonModelAlias
 {
     // config
     protected static array $config = [
@@ -34,9 +34,9 @@ class JsonForm extends Lemur\Col\JsonArrayModelAlias
     ];
 
 
-    // onModelPrepare
+    // onPrepare
     // arrange le tableau pour les méthode onGet et onSet
-    final protected function onModelPrepare(array $value):?array
+    final protected function onPrepare(array $value):?array
     {
         $return = [];
 
