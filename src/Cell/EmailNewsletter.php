@@ -8,12 +8,12 @@ declare(strict_types=1);
  */
 
 namespace Quid\Site\Cell;
-use Quid\Core;
+use Quid\Lemur;
 use Quid\Site;
 
 // emailNewsletter
 // class for an email newsletter cell (subscribes to a third-party newsletter)
-class EmailNewsletter extends Core\CellAlias
+class EmailNewsletter extends Lemur\Cell\UriAlias
 {
     // config
     protected static array $config = [];

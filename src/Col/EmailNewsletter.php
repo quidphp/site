@@ -42,15 +42,15 @@ class EmailNewsletter extends Core\Col\EmailAlias
 
         $email = Base\Obj::cast($value);
         if(Base\Validate::isEmail($email) && $this->getAttr('formNewsletter') === true)
-        $return .= $this->formNewsletter($email);
+        $return .= $this->infoNewsletter($email);
 
         return $return;
     }
 
 
-    // formNewsletter
+    // infoNewsletter
     // génère le bloc indiquant si le email est dans l'infolettre
-    final protected function formNewsletter(string $email):string
+    final public function infoNewsletter(string $email):string
     {
         $return = '';
 

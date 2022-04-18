@@ -211,6 +211,29 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     }
 
 
+    // addMemberStaticSegment
+    // permet d'ajouter un static segment à un membre
+    final public function addMemberStaticSegment(string $email,int $staticSegment,?array $post=null):?array
+    {
+        $return = null;
+        $memberInfo = $this->memberInfo($email);
+        $tags = $memberInfo['static_segments'] ?? [];
+        $find = Base\Arr::some($tags,fn($tag) => $tag['id'] === $staticSegment);
+
+        if($find === false)
+        {
+            $list = $this->checkList();
+            $post = (array) $post;
+            $post['id'] = $list;
+            $post['seg_id'] = $staticSegment;
+            $post['batch'] = [['email'=>$email]];
+            $return = $this->triggerBody('lists/static-segment-members-add',$post);
+        }
+
+        return $return;
+    }
+
+
     // isSubscribed
     // retourne vrai si le membre existe dans la liste
     final public function isSubscribed(string $email,?array $post=null,bool $confirmed=false):bool
