@@ -71,11 +71,7 @@ class Boot extends Base\Test
         $mc = $boot->service('newsletter');
         assert(is_string($mc->apiKey()));
         assert(is_string($mc->getList()));
-        assert(is_string($mc->checkList()));
         assert(is_string($mc->server()));
-        assert($mc->subscribedStatus() === ['pending','subscribed']);
-        assert(Base\Uri::isAbsolute($mc->makeTarget('lists/list')));
-        assert($mc->prepareMergeVars(['firstName'=>'LOL','ok'=>'test']) === ['ok'=>'test','FNAME'=>'LOL']);
 
         // pdfCrowd
         $pdf = $boot->service('pdfCrowd');

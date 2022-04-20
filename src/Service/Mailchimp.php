@@ -14,7 +14,7 @@ use Quid\Main;
 use Quid\Site;
 
 // mailchimp
-// class that provides some methods to communicate with Mailchimp
+// class that provides some methods to communicate with Mailchimp using api 3
 class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 {
     // access
@@ -23,9 +23,10 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // config
     protected static array $config = [
-        'target'=>'https://%server%.api.mailchimp.com/2.0/%method%.json', // uri target pour mailchimp
+        'target'=>'https://%server%.api.mailchimp.com/3.0/', // uri target pour mailchimp
+        'postJson'=>true, // convertie le post en json
         'ping'=>2, // s'il y a un ping avant la requête
-        'responseCode'=>[200,500], // le code de réponse peut être 200 ou 500
+        'responseCode'=>[200,204,400,404], // différent code de réponse possible
         'key'=>null, // apiKey pour mailchimp
         'list'=>null, // code de la liste
         'addLang'=>true, // si lang est ajouté au merge vars
@@ -44,24 +45,16 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
 
     // getList
-    // retourne la liste ou null
-    final public function getList():?string
+    // retourne la liste
+    final public function getList():string
     {
         return $this->getAttr('list');
     }
 
 
-    // checkList
-    // retourne la liste ou envoie une exception
-    final public function checkList():string
-    {
-        return $this->getList() ?: static::throw();
-    }
-
-
     // setList
     // change la liste courante
-    final public function setList(?string $value):void
+    final public function setList(string $value):void
     {
         $this->setAttr('list',$value);
     }
@@ -82,155 +75,45 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     }
 
 
-    // makeTarget
-    // retourne la target du service mailchimp pour la méthode
-    final public function makeTarget(string $method):string
+    // prepareUri
+    // permet de préparer l'uri en vue de l'appel à mailchimp
+    final protected function prepareUri(string $path):string
     {
-        $replace = [];
-        $replace['server'] = $this->server();
-        $replace['method'] = $method;
-        $return = static::target($replace);
+        $replace = ['server'=>$this->server(),'list'=>$this->getList()];
+        $target = static::target($replace);
+        $replace = Base\Arr::keysWrap('%','%',$replace);
+        $path = Base\Str::replace($replace,$path);
 
-        return $return;
-    }
-
-
-    // subscribedStatus
-    // retourne les noms de status pour subscribed
-    // si confirmed est true, retourne juste les status inscrit et confirmer
-    final public function subscribedStatus(bool $confirmed=false):array
-    {
-        return ($confirmed === true)? $this->getAttr('subscribedConfirmed'):$this->getAttr('subscribed');
+        return $target.$path;
     }
 
 
     // trigger
     // fait un appel à mailchimp, retourne un objet réponse
-    final public function trigger(string $method,?array $post=null,?array $attr=null):Main\Response
+    final public function trigger(string $httpMethod,string $path,?array $post=null,?array $attr=null):Main\Response
     {
         $return = null;
-        $value = [];
         $attr = Base\Arr::plus($this->attr(),$attr);
-        $post = (array) $post;
-        $post['apikey'] = $this->apiKey();
+        $token = $this->apiKey();
 
-        $value['uri'] = $this->makeTarget($method);
-        $value['method'] = 'post';
-        $value['post'] = $post;
+        $value = [];
+        $value['uri'] = $this->prepareUri($path);
+        $value['method'] = $httpMethod;
+        $value['post'] = (array) $post;
+        $value['headers']['Authorization'] = "Bearer $token";
 
         $request = $this->makeRequest($value,$attr);
-        $return = $request->trigger();
 
-        return $return;
+        return $request->trigger();
     }
 
 
     // triggerBody
     // retourne le body de la réponse en tableau
-    // retourne même si le code n'est pas 200
-    final public function triggerBody(string $method,?array $post=null,?array $attr=null):?array
+    final public function triggerBody(string $httpMethod,string $path,?array $post=null,?array $attr=null):?array
     {
-        $return = null;
-        $response = $this->trigger($method,$post,$attr);
-        $return = $response->body(true);
-
-        return $return;
-    }
-
-
-    // triggerBody200
-    // retourne le body de la réponse en tableau
-    // retourne seulement si le code est 200
-    final public function triggerBody200(string $method,?array $post=null,?array $attr=null):?array
-    {
-        $return = null;
-        $response = $this->trigger($method,$post,$attr);
-
-        if($response->is200())
-        $return = $response->body(true);
-
-        return $return;
-    }
-
-
-    // triggerData
-    // retourne le contenu de data dans le tableau de la réponse en tableau
-    // retorne null si pas de data
-    final public function triggerData(string $method,?array $post=null,?array $attr=null):?array
-    {
-        $return = null;
-        $body = $this->triggerBody200($method,$post,$attr);
-
-        if(is_array($body) && array_key_exists('data',$body))
-        $return = $body['data'];
-
-        return $return;
-    }
-
-
-    // triggerDataFirst
-    // retourne le contenu de la première clé de data dans le tableau de la réponse en tableau
-    // retorne null si pas de data
-    final public function triggerDataFirst(string $method,?array $post=null,?array $attr=null):?array
-    {
-        $return = null;
-        $data = $this->triggerData($method,$post,$attr);
-
-        if(is_array($data) && !empty($data))
-        $return = current($data);
-
-        return $return;
-    }
-
-
-    // listsInfo
-    // retourne les informations sur les lists dans mailchimp
-    final public function listsInfo():?array
-    {
-        return $this->triggerData('lists/list');
-    }
-
-
-    // memberInfo
-    // retourne l'information sur un utisateur dans la liste à partir d'un email
-    final public function memberInfo(string $email,?array $post=null):?array
-    {
-        $return = null;
-        $list = $this->checkList();
-
-        if(Base\Validate::isEmail($email))
-        {
-            $post = (array) $post;
-            $post['id'] = $list;
-            $post['emails'] = [['email'=>$email]];
-
-            $return = $this->triggerDataFirst('lists/member-info',$post);
-        }
-
-        return $return;
-    }
-
-
-    // addMemberStaticSegment
-    // permet d'ajouter un static segment à un membre
-    final public function addMemberStaticSegment(string $email,int $staticSegment,?array $post=null):?array
-    {
-        $return = null;
-        $memberInfo = $this->memberInfo($email);
-        $tags = $memberInfo['static_segments'] ?? [];
-        $find = Base\Arr::some($tags,fn($tag) => $tag['id'] === $staticSegment);
-
-        if($find === false)
-        {
-            $list = $this->checkList();
-            $post = (array) $post;
-            $post['id'] = $list;
-            $post['seg_id'] = $staticSegment;
-            $post['batch'] = [['email'=>$email]];
-            $return = $this->triggerBody('lists/static-segment-members-add',$post);
-        }
-
-        return $return;
+        $response = $this->trigger($httpMethod,$path,$post,$attr);
+        return $response->body(true);
     }
 
 
@@ -239,57 +122,45 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     final public function isSubscribed(string $email,?array $post=null,bool $confirmed=false):bool
     {
         $return = false;
-        $member = $this->memberInfo($email,$post);
+        $member = $this->member($email,$post);
 
         if(!empty($member) && !empty($member['status']))
-        $return = (in_array($member['status'],$this->subscribedStatus($confirmed),true));
+        {
+            $key = ($confirmed === true)? 'subscribedConfirmed':'subscribed';
+            $array = $this->getAttr($key) ?? static::throw();
+            $return = (in_array($member['status'],$array,true));
+        }
 
         return $return;
     }
 
 
-    // members
-    // retourne tous les membres inscrits dans la liste
-    final public function members(?array $post=null):array
+    // account
+    // retourne les informations sur le compte courant
+    final public function account():?array
     {
-        $return = [];
-        $list = $this->checkList();
-        $subscribed = $this->subscribedStatus();
-        $post = (array) $post;
+        return $this->triggerBody('get','');
+    }
 
-        $post['id'] = $list;
-        $limit = 100;
-        $start = 0;
 
-        while (true)
+    // lists
+    // retourne les informations sur les lists dans mailchimp
+    final public function lists():?array
+    {
+        return $this->triggerBody('get','lists');
+    }
+
+
+    // member
+    // retourne l'information sur un utisateur dans la liste à partir d'un email
+    final public function member(string $email,?array $post=null):?array
+    {
+        $return = null;
+
+        if(Base\Validate::isEmail($email))
         {
-            $post['opts'] = ['start'=>$start,'limit'=>$limit];
-            $data = $this->triggerData('lists/members',$post);
-
-            if(!empty($data))
-            {
-                foreach ($data as $member)
-                {
-                    if(!empty($member['email']) && Base\Validate::isEmail($member['email']))
-                    {
-                        if(!empty($member['status']) && in_array($member['status'],$subscribed,true))
-                        {
-                            $email = $member['email'];
-                            $name = '';
-
-                            if(!empty($member['merges']))
-                            $name = $this->makeNameFromMergeVars($member['merges']);
-
-                            $return[$email] = $name;
-                        }
-                    }
-                }
-            }
-
-            else
-            break;
-
-            $start += 1;
+            $hash = Base\Crypt::md5($email);
+            $return = $this->triggerBody('get',"lists/%list%/members/$hash",$post);
         }
 
         return $return;
@@ -298,31 +169,32 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
 
     // subscribe
     // inscrit un utilisateur à une liste mailchimp
-    final public function subscribe(string $email,array $vars=[],?array $post=null,bool $isSubscribed=true):?array
+    // possible de changer le statut par défaut en passant un tableau post
+    final public function subscribe(string $email,array $vars=[],?array $post=null,bool $checkSubscribed=true):?array
     {
         $return = null;
-        $list = $this->checkList();
 
         if(Base\Validate::isEmail($email))
         {
-            if($isSubscribed === false || !$this->isSubscribed($email))
+            if($checkSubscribed === false || !$this->isSubscribed($email))
             {
                 $post = (array) $post;
-                $post['id'] = $list;
-                $post['email'] = ['email'=>$email];
-                $post['merge_vars'] = [];
+                $post['email_address'] = $email;
+
+                if(!array_key_exists('status',$post))
+                $post['status'] = 'pending';
 
                 if($this->getAttr('addLang') === true)
                 {
                     $lang = static::boot()->lang()->currentLang();
                     if(is_string($lang))
-                    $vars['MC_LANGUAGE'] = $lang;
+                    $post['language'] = $lang;
                 }
 
                 if(!empty($vars) && is_array($vars))
-                $post['merge_vars'] = $this->prepareMergeVars($vars);
+                $post['merge_fields'] = Base\Arr::keysChange($this->getAttr('mergeVars'),$vars);
 
-                $return = $this->triggerBody('lists/subscribe',$post);
+                $return = $this->triggerBody('post','lists/%list%/members',$post);
             }
         }
 
@@ -334,53 +206,32 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
     // inscrit un utilisateur à une liste mailchimp et retourne un vrai ou faux
     final public function subscribeBool(string $email,array $vars=[],?array $post=null,bool $isSubscribed=true):bool
     {
-        return !empty($this->subscribe($email,$vars,$post,$isSubscribed));
+        $result = $this->subscribe($email,$vars,$post,$isSubscribed);
+        return is_array($result) && !empty($result['email_address']) && $result['email_address'] === $email;
     }
 
 
-    // unsubscribe
-    // désinscrit un utilisateur à une liste mailchimp
-    final public function unsubscribe(string $email,?array $post=null):?array
+    // addMemberTag
+    // permet d'ajouter un tag à un membre
+    // en cas de succès, le body de cette réponse sera null
+    final public function addMemberTag(string $email,string $tag,?array $post=null):?array
     {
         $return = null;
-        $list = $this->checkList();
+        $member = $this->member($email);
 
-        if(Base\Validate::isEmail($email) && $this->isSubscribed($email))
+        if(!empty($member))
         {
-            $post = (array) $post;
-            $post['id'] = $list;
-            $post['email'] = ['email'=>$email];
-            $post['delete_member'] = true;
+            $tagsCurrent = $member['tags'] ?? [];
+            $find = Base\Arr::some($tagsCurrent,fn($value) => $value['name'] === $tag);
 
-            $return = $this->triggerBody('lists/unsubscribe',$post);
-        }
-
-        return $return;
-    }
-
-
-    // prepareMergeVars
-    // prepare le tableau mergeVars, remplace les clés
-    final public function prepareMergeVars(array $array):array
-    {
-        return Base\Arr::keysChange($this->getAttr('mergeVars'),$array);
-    }
-
-
-    // makeNameFromMergeVars
-    // génère un nom complet à partir de tableaux de mergeVars
-    final public function makeNameFromMergeVars(array $value):string
-    {
-        $return = '';
-        $mergeVars = $this->getAttr('mergeVars');
-
-        if(!empty($mergeVars['firstName']) && array_key_exists($mergeVars['firstName'],$value))
-        $return .= $value[$mergeVars['firstName']];
-
-        if(!empty($mergeVars['lastName']) && array_key_exists($mergeVars['lastName'],$value))
-        {
-            $return .= (strlen($return))? ' ':'';
-            $return .= $value[$mergeVars['lastName']];
+            if($find === false)
+            {
+                $hash = Base\Crypt::md5($email);
+                $tagsArray = [['name'=>$tag,'status'=>'active']];
+                $post = (array) $post;
+                $post['tags'] = $tagsArray;
+                $return = $this->triggerBody('post',"lists/%list%/members/$hash/tags",$post);
+            }
         }
 
         return $return;
