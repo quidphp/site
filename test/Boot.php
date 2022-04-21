@@ -79,13 +79,6 @@ class Boot extends Base\Test
         assert(is_string($pdf->username()));
         assert(is_array($pdf->userPassword()));
 
-        // office365
-        assert(Site\Service\Office365::mailto('test@test.com') === 'https://outlook.office.com/owa/?path=/mail/action/compose&to=test@test.com');
-        assert(Base\Uri::output(Site\Service\Office365::mailto('test@test.com')) === 'https://outlook.office.com/owa/?path=%2Fmail%2Faction%2Fcompose&to=test%40test.com');
-        $date = Base\Datetime::make([2018,02,02]);
-        $array = ['dateStart'=>$date,'dateEnd'=>$date,'name'=>'lorem','description'=>'ok','location'=>'well'];
-        assert(Site\Service\Office365::event($array) === 'https://outlook.office.com/owa/?path=/calendar/action/compose&subject=lorem&location=well&body=ok&startdt=20180202T000000-05:00&enddt=20180202T000000-05:00');
-
         // vimeo
         $value = 'https://vimeo.com/channels/staffpicks/259901946';
         $vimeo = Site\Service\Vimeo::class;
