@@ -78,7 +78,7 @@ Component.JsonForm = function(option)
             const $this = this;
             const typeSelect = trigHdlr(this,'jsonForm:getTypeSelect');
             
-            ael(typeSelect,'change',function() {
+            ael(typeSelect,'input',function() {
                 trigHdlr($this,'jsonForm:refresh');
             });
             
