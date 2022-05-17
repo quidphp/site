@@ -21,10 +21,10 @@ abstract class Boot extends Lemur\Boot
             'vendorSite'=>'[vendor]/quidphp/site'],
 
         'compileJs'=>[
-            'include'=>[
+            'browser'=>[
                 'from'=>[
-                    1=>'[vendorSite]/include',
-                    2=>'[js]/include']],
+                    1=>'[vendorSite]/browser',
+                    2=>'[js]/browser']],
             'navigation'=>[
                 'from'=>[
                     2=>'[vendorSite]/navigation',
@@ -52,7 +52,8 @@ abstract class Boot extends Lemur\Boot
 
         '@app'=>[
             'service'=>[
-                'polyfill'=>[Lemur\Service\Polyfill::class,['mode'=>'ie11']]],
+                'polyfill'=>Lemur\Service\Polyfill::class,
+                'node'=>Lemur\Service\Node::class],
             'sessionVersionMatch'=>false],
 
         '@cms'=>[
