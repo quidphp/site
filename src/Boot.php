@@ -21,10 +21,6 @@ abstract class Boot extends Lemur\Boot
             'vendorSite'=>'[vendor]/quidphp/site'],
 
         'compileJs'=>[
-            'browser'=>[
-                'from'=>[
-                    1=>'[vendorSite]/browser',
-                    2=>'[js]/browser']],
             'navigation'=>[
                 'from'=>[
                     2=>'[vendorSite]/navigation',
@@ -53,7 +49,7 @@ abstract class Boot extends Lemur\Boot
         '@app'=>[
             'service'=>[
                 'polyfill'=>Lemur\Service\Polyfill::class,
-                'node'=>Lemur\Service\Node::class],
+                'browser'=>Lemur\Service\Browser::class],
             'sessionVersionMatch'=>false],
 
         '@cms'=>[
