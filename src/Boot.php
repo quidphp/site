@@ -28,15 +28,15 @@ abstract class Boot extends Lemur\Boot
             'app'=>[
                 'to'=>'[publicJs]/app.js',
                 'from'=>[
-                    0=>'[vendorFront]/js/import',
+                    0=>'[vendorFront]/init.js',
                     1=>'[js]/app']]],
 
         'compileCss'=>[
             'app'=>[
                 'to'=>'[publicCss]/app.css',
                 'from'=>[
-                    0=>'[vendorFront]/css/include',
-                    1=>'[vendorFront]/css/component',
+                    0=>'[vendorNavigation]/css',
+                    1=>'[vendorFront]/css',
                     2=>'[vendorSite]/css/component',
                     3=>'[css]/include',
                     4=>'[css]/component',
