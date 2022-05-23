@@ -25,7 +25,8 @@ class BootSite extends Test\Suite\BootLemur
         'assert'=>[
             'namespaces'=>[
                 Site::class=>Test\Site::class],
-            'frontEnd'=>['site'=>'[vendorSite]']],
+            'frontEnd'=>['site'=>'[vendorSite]'],
+            'frontEndWithPhp'=>['site'=>true]],
         'service'=>[
             'googleGeocoding'=>[Site\Service\GoogleGeocoding::class,['key'=>'wqeqwweqwqeeqwqwe']],
             'newsletter'=>[Site\Service\Mailchimp::class,['key'=>'wqeqwweqwqeeqwqwe-us1','list'=>'zxczzxc']],
