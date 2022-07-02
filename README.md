@@ -5,7 +5,6 @@
 [![Style CI](https://styleci.io/repos/206858888/shield)](https://styleci.io)
 [![Code Size](https://img.shields.io/github/languages/code-size/quidphp/site)](https://github.com/quidphp/site)
 
-
 ## About
 **QuidPHP/Site** is an extended platform to build a website using the QuidPHP framework and LemurCMS. It is part of the [QuidPHP](https://github.com/quidphp/project) package. 
 
@@ -13,7 +12,7 @@
 **QuidPHP/Site** is available as an open-source software under the [MIT license](LICENSE).
 
 ## Documentation
-**QuidPHP/Site** documentation is being written. Once ready, it will be available at [QuidPHP/Docs](https://github.com/quidphp/docs).
+**QuidPHP/Site** documentation is available at [QuidPHP/Docs](https://github.com/quidphp/docs).
 
 ## Installation
 **QuidPHP/Site** can be easily installed with [Composer](https://getcomposer.org). It is available on [Packagist](https://packagist.org/packages/quidphp/site).
@@ -24,31 +23,18 @@ Once installed, the **Quid\Site** namespace will be available within your PHP ap
 
 ## Requirement
 **QuidPHP/Site** requires the following:
-- PHP 7.4, 8.0 or 8.1
-- Mysql (>= 8.0) or MariaDB (>= 10.5) database
-- All other requirements specified in [quidphp/core](https://github.com/quidphp/core)
-- Minimal browser: Internet Explorer 11
+- PHP 8.1
+- All requirements of [quidphp/lemur](https://github.com/quidphp/lemur)
+- Any modern browser (not Internet Explorer)
 
 ## Dependency
-**QuidPHP/Site** has the following dependencies:
-- [quidphp/base](https://github.com/quidphp/base) - Quid\Base - PHP library that provides a set of low-level static methods
-- [quidphp/main](https://github.com/quidphp/main) - Quid\Main - PHP library that provides a set of base objects and collections 
-- [quidphp/orm](https://github.com/quidphp/orm) - Quid\Orm - PHP library that provides database access and a comprehensive ORM
-- [quidphp/routing](https://github.com/quidphp/routing) - Quid\Routing - PHP library that provides a route matching and triggering procedure
-- [quidphp/core](https://github.com/quidphp/core) - Quid\Core - PHP library that provides an extendable platform to create dynamic applications
-- [quidphp/front](https://github.com/quidphp/front) - Quid\Front - QuidPHP JavaScript and CSS front-end assets
-- [quidphp/include](https://github.com/quidphp/include) - Quid\Include - Contains third-party front-end scripts
+**QuidPHP/Site** has the following dependency:
 - [quidphp/lemur](https://github.com/quidphp/lemur) - Quid\Lemur - LemurCMS, a content management system built on top of the QuidPHP framework
-- [verot/class.upload.php](https://github.com/verot/class.upload.php) - Verot\Upload - A popular PHP class used for resizing images
-- [phpmailer/phpmailer](https://github.com/phpmailer/phpmailer) - PHPMailer\PHPMailer - The classic email sending library for PHP
-- [tedivm/jshrink](https://github.com/tedious/JShrink) - JShrink - Javascript Minifier built in PHP
-- [scssphp/scssphp](https://github.com/scssphp/scssphp) - ScssPhp\ScssPhp - SCSS compiler written in PHP
-- [tinymce/tinymce](https://github.com/tinymce/tinymce) - Tinymce - The world's best JavaScript library for rich text editing
 
 All dependencies will be resolved by using the [Composer](https://getcomposer.org) installation process.
 
 ## Comment
-**QuidPHP/Site** code is commented and all methods are explained. However, most of the comments are written in French.
+**QuidPHP/Site** code is commented and all methods are explained (in French).
 
 ## PHP
 
