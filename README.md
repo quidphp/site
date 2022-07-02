@@ -48,8 +48,7 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
 - *Coding*: No curly braces are used in a IF statement if the condition can be resolved in only one statement.
 
 ### Overview
-**QuidPHP/Site** contains 59 classes, traits and interfaces. Here is an overview:
-- [App](src/App)
+**QuidPHP/Site** contains 49 classes, traits and interfaces. Here is an overview:
 - [App](src/App)
     - [CliClearAll](src/App/CliClearAll.php) - Class for a cli route to remove all cached and logged data
     - [CliClearCache](src/App/CliClearCache.php) - Class for a cli route to remove all cached data
@@ -98,13 +97,11 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
     - [User](src/Row/User.php) - Extended class for a row of the user table, with app logic
     - [_pageConfig](src/Row/_pageConfig.php) - Trait related to the configuration of a row representing a page
 - [Service](src/Service)
-    - [Github](src/Service/Github.php) - Class that grants some static methods related to Github
     - [GoogleAnalytics](src/Service/GoogleAnalytics.php) - Class that provides some methods to integrate GoogleAnalytics tracking
     - [GoogleGeocoding](src/Service/GoogleGeocoding.php) - Class used to make GoogleGeocoding localization requests
     - [GoogleMaps](src/Service/GoogleMaps.php) - Class used to generate javascript GoogleMaps
     - [GoogleTagManager](src/Service/GoogleTagManager.php) - Class used to generate the googleTagManager trackers
-    - [Mailchimp](src/Service/Mailchimp.php) - Class that provides some methods to communicate with Mailchimp
-    - [Office365](src/Service/Office365.php) - Class that grants some static methods related to Office365
+    - [Mailchimp](src/Service/Mailchimp.php) - Class that provides some methods to communicate with Mailchimp using api 3
     - [PdfCrowd](src/Service/PdfCrowd.php) - Class that provides some methods to communicate with Pdfcrowd (and generate a pdf from html)
     - [Vimeo](src/Service/Vimeo.php) - Class used to make requests to the Vimeo API
     - [YouTube](src/Service/YouTube.php) - Class that can be used to make requests to the YouTube API
@@ -118,32 +115,31 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
 
 **QuidPHP/Site** testsuite can be run by creating a new [QuidPHP/Assert](https://github.com/quidphp/assert) project.
 
-## JS
+## JavaScript
 
 ### Convention
 - *ES5*: All code is compatible with ES5, there is no need for any JavaScript transpiler.
 - *Strict*: All generated files declare *use strict* on the first line.
-- *IE11*: The minimum compatible browser is IE11. Older browsers will fail non-gracefully.
 - *Compiling*: The concatenation of the JS files is done on the PHP side.
 
 ### Overview
 **QuidPHP/Site** contains 14 JavaScript files. Here is an overview:
 - [cms](js/cms)
-    - [jsonForm.js](js/cms/jsonForm.js) - Script containing logic for the jsonForm component which is based on the addRemove input
-    - [site.js](js/cms/site.js) - Script of additional behaviours for the specific form page of the CMS
+    - [jsonForm](js/cms/jsonForm.js) - Script containing logic for the jsonForm component which is based on the addRemove input
+    - [site](js/cms/site.js) - Script of additional behaviours for the specific form page of the CMS
 - [component](js/component)
-    - [carouselScroll.js](js/component/carouselScroll.js) - Script for a carousel component which scrolls
-    - [clickRemove.js](js/component/clickRemove.js) - Component that removes itself on click
-    - [googleAnalytics.js](js/component/googleAnalytics.js) - Script containing logic for googleAnalytics
-    - [googleMaps.js](js/component/googleMaps.js) - Script containing logic for a simple googleMaps component
-    - [hoverSlide.js](js/component/hoverSlide.js) - Component to change height of target with mouseenter/mouseleave
-    - [preload.js](js/component/preload.js) - Component to preload assets, currently only images
-    - [scrollSections.js](js/component/scrollSections.js) - Script containing logic for scrolling multiple sections linked to a hash
-    - [tabsScroll.js](js/component/tabsScroll.js) - Component that adds scrolling support to tabsSlider
-    - [tabsSlider.js](js/component/tabsSlider.js) - Component that adds timeout and iframe support to the tabsNav component
-    - [toggler.js](js/component/toggler.js) - Component to toggle attributes on many elements using a trigger
-    - [windowSmall.js](js/component/windowSmall.js) - Component to open a small window from an anchor link
-    - [wrapConsecutive.js](js/component/wrapConsecutive.js) - Component to wrap consecutive nodes of the same type in another node
+    - [carouselScroll](js/component/carouselScroll.js) - Script for a carousel component which scrolls
+    - [clickRemove](js/component/clickRemove.js) - Component that removes itself on click
+    - [googleAnalytics](js/component/googleAnalytics.js) - Script containing logic for googleAnalytics
+    - [googleMaps](js/component/googleMaps.js) - Script containing logic for a simple googleMaps component
+    - [hoverSlide](js/component/hoverSlide.js) - Component to change height of target with mouseenter/mouseleave
+    - [preload](js/component/preload.js) - Component to preload assets, currently only images
+    - [scrollSections](js/component/scrollSections.js) - Script containing logic for scrolling multiple sections linked to a hash
+    - [tabsScroll](js/component/tabsScroll.js) - Component that adds scrolling support to tabsSlider
+    - [tabsSlider](js/component/tabsSlider.js) - Component that adds timeout and iframe support to the tabsNav component
+    - [toggler](js/component/toggler.js) - Component to toggle attributes on many elements using a trigger
+    - [windowSmall](js/component/windowSmall.js) - Component to open a small window from an anchor link
+    - [wrapConsecutive](js/component/wrapConsecutive.js) - Component to wrap consecutive nodes of the same type in another node
 
 ## CSS
 
@@ -154,13 +150,13 @@ All dependencies will be resolved by using the [Composer](https://getcomposer.or
 ### Overview
 **QuidPHP/Site** contains 8 SCSS stylesheets. Here is an overview:
 - [cms](css/cms)
-    - [site.scss](css/cms/site.scss) - Stylesheet to bind styles to the components
+    - [site](css/cms/site.scss) - Stylesheet to bind styles to the components
 - [cms-component](css/cms-component)
-    - [emailNewsletter.scss](css/cms-component/emailNewsletter.scss) - Stylesheet for the emailNewsletter component
-    - [googleMaps.scss](css/cms-component/googleMaps.scss) - Stylesheet for the Google maps component
-    - [hierarchy.scss](css/cms-component/hierarchy.scss) - Stylesheet for the hierarchy component
-    - [jsonForm.scss](css/cms-component/jsonForm.scss) - Stylesheet for the jsonForm component
-    - [range.scss](css/cms-component/range.scss) - Stylesheet for the range component
-    - [video.scss](css/cms-component/video.scss) - Stylesheet for the video component
+    - [emailNewsletter](css/cms-component/emailNewsletter.scss) - Stylesheet for the emailNewsletter component
+    - [googleMaps](css/cms-component/googleMaps.scss) - Stylesheet for the Google maps component
+    - [hierarchy](css/cms-component/hierarchy.scss) - Stylesheet for the hierarchy component
+    - [jsonForm](css/cms-component/jsonForm.scss) - Stylesheet for the jsonForm component
+    - [range](css/cms-component/range.scss) - Stylesheet for the range component
+    - [video](css/cms-component/video.scss) - Stylesheet for the video component
 - [component](css/component)
-    - [tabsSlider.scss](css/component/tabsSlider.scss) - Stylesheet for the tabsSlider component
+    - [tabsSlider](css/component/tabsSlider.scss) - Stylesheet for the tabsSlider component
