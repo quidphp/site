@@ -19,6 +19,7 @@ Component.CarouselScroll = function(option)
         prev: null,
         next: null,
         step: null,
+        amount: 1,
         smooth: true,
         attrPrevNext: 'data-active'
     },option);
@@ -65,6 +66,10 @@ Component.CarouselScroll = function(option)
                     r = dimension.width;
                 }
             }
+            
+            const amount = Integer.typecheck($option.amount);
+            if(amount > 1)
+            r = r * amount;
             
             return Integer.typecheck(r);
         }

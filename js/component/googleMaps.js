@@ -25,6 +25,7 @@ Component.GoogleMaps = function(option)
         zoom: 10,
         control: true,
         scrollwheel: false,
+        click: false,
         param: {},
         style: []
     },option);
@@ -126,6 +127,18 @@ Component.GoogleMaps = function(option)
             return r;
         },
 
+        handleClick: function() {
+            const map = trigHdlr(this,'googleMaps:getMap');
+            const uri = trigHdlr(this,'googleMaps:getUri');
+
+            if(Str.isNotEmpty(uri)) {
+                map.addListener("click", function(arg) {
+                    Evt.preventStop(arg.domEvent);
+                    window.open(uri,'_blank');
+                });
+            }
+        },
+
         makeMarker: function(latLng,uri,icon) {
             let r = null;
             const googleMaps = trigHdlr(this,'googleMaps:get');
@@ -201,6 +214,9 @@ Component.GoogleMaps = function(option)
         
         if($option.marker)
         trigHdlr(this,'googleMaps:makeMarker',true,true,true);
+
+        if($option.click)
+        trigHdlr(this,'googleMaps:handleClick');
     }
     
     return this;
