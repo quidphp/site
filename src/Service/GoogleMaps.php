@@ -22,7 +22,7 @@ class GoogleMaps extends Main\ServiceRequest
 
     // config
     protected static array $config = [
-        'js'=>'//maps.googleapis.com/maps/api/js?v=3&key=%value%', // uri vers fichier js à charger
+        'js'=>'//maps.googleapis.com/maps/api/js?v=3&key=%value%&callback=Function.prototype', // uri vers fichier js à charger
         'uri'=>'https://maps.google.com/maps?q=%value%' // uri vers googleMaps
     ];
 
