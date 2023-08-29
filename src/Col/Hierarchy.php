@@ -142,7 +142,7 @@ class Hierarchy extends Core\Col\EnumAlias
                 $liHtml = $this->formComplexOutput([$k=>$name],$attr,$option);
 
                 if(is_array($v))
-                $liHtml .= $this->makeHierarchyStructure($value,$v,$names,($i + 1),$attr,$option);
+                $liHtml .= $this->makeHierarchyStructure($value,$v,$names, $i + 1,$attr,$option);
 
                 $return .= Html::li($liHtml,'choice');
             }

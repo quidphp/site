@@ -128,7 +128,7 @@ class Mailchimp extends Main\ServiceRequest implements Site\Contract\Newsletter
         {
             $key = ($confirmed === true)? 'subscribedConfirmed':'subscribed';
             $array = $this->getAttr($key) ?? static::throw();
-            $return = (in_array($member['status'],$array,true));
+            $return = in_array($member['status'],$array,true);
         }
 
         return $return;
