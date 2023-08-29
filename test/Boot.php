@@ -44,13 +44,6 @@ class Boot extends Base\Test
         assert(count($lang->pathAlternateValue('required','common',true,['tables','formSubmit','json'])) === 2);
         assert(count($lang->pathAlternate('required',['tables','formSubmit','json'])) === 4);
 
-        // googleAnalytics
-        $ga = new Site\Service\GoogleAnalytics(['key'=>'googleAnalytics']);
-        assert($ga->getServiceKey() === null);
-        $ga->setServiceKey('bla');
-        assert($ga->getServiceKey(true) === 'bla');
-        assert($ga->apiKey() === 'googleAnalytics');
-
         // googleGeocoding
         $ggValue = ['Studio ZZ'];
         $gg = $boot->service('googleGeocoding');
