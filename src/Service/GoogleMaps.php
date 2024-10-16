@@ -22,7 +22,7 @@ class GoogleMaps extends Main\ServiceRequest
 
     // config
     protected static array $config = [
-        'js'=>'//maps.googleapis.com/maps/api/js?v=3&key=%value%&callback=Function.prototype', // uri vers fichier js à charger
+        'js'=>'//maps.googleapis.com/maps/api/js?v=3&key=%value%&loading=async&libraries=marker&callback=setGoogleMapLoaded', // uri vers fichier js à charger
         'uri'=>'https://maps.google.com/maps?q=%value%' // uri vers googleMaps
     ];
 
@@ -39,7 +39,7 @@ class GoogleMaps extends Main\ServiceRequest
     // retourne l'uri vers le fichier js à charger
     final public function docOpenJs()
     {
-        return Base\Str::replace(['%value%'=>$this->apiKey()],$this->getAttr('js'));
+        return [[Base\Str::replace(['%value%'=>$this->apiKey()],$this->getAttr('js')),['async'=>true]]];
     }
 
 

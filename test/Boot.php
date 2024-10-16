@@ -58,7 +58,7 @@ class Boot extends Base\Test
         $gm = new Site\Service\GoogleMaps(['key'=>'googleMaps']);
         assert(is_string($gm->apiKey()));
         assert($gm::uri('Studio ZZ') === 'https://maps.google.com/maps?q=Studio%20ZZ');
-        assert(is_string($gm->docOpenJs()));
+        assert(is_array($gm->docOpenJs()));
 
         // mailchimp
         $mc = $boot->service('newsletter');
